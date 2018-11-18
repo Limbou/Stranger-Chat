@@ -14,6 +14,7 @@
 		D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */; };
 		D3CAAB9F21A2083B00B9149C /* Stranger_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB9E21A2083B00B9149C /* Stranger_ChatTests.swift */; };
 		D3CAABAA21A2083B00B9149C /* Stranger_ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */; };
+		D3CAABB821A213B600B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABB721A213B600B9149C /* GoogleService-Info.plist */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stranger_ChatUITests.swift; sourceTree = "<group>"; };
 		D3CAABAB21A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3CAABB721A213B600B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				D3CAAB9021A2083B00B9149C /* Assets.xcassets */,
 				D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */,
 				D3CAAB9521A2083B00B9149C /* Info.plist */,
+				D3CAABB721A213B600B9149C /* GoogleService-Info.plist */,
 			);
 			path = "Stranger-Chat";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				D3CAAB8221A2083700B9149C /* Sources */,
 				D3CAAB8321A2083700B9149C /* Frameworks */,
 				D3CAAB8421A2083700B9149C /* Resources */,
+				A6E0FEF3E084FE99F51405D1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +272,7 @@
 			files = (
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
+				D3CAABB821A213B600B9149C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +357,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6E0FEF3E084FE99F51405D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble-Snapshots/Nimble_Snapshots.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble_Snapshots.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSnapshotTestCase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
