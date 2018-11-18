@@ -1,0 +1,6 @@
+framework module Pods_Stranger_Chat {
+  umbrella header "Pods-Stranger-Chat-umbrella.h"
+
+  export *
+  module * { export * }
+}
