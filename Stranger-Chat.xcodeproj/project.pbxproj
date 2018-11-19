@@ -13,7 +13,7 @@
 		D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */; };
 		D3CAAB9F21A2083B00B9149C /* Stranger_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB9E21A2083B00B9149C /* Stranger_ChatTests.swift */; };
 		D3CAABAA21A2083B00B9149C /* Stranger_ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */; };
-		D3CAABBA21A2C67D00B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */; };
+		D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,7 @@
 		D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stranger_ChatUITests.swift; sourceTree = "<group>"; };
 		D3CAABAB21A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Stranger-Chat/GoogleService/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 				D3CAAB9021A2083B00B9149C /* Assets.xcassets */,
 				D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */,
 				D3CAAB9521A2083B00B9149C /* Info.plist */,
-				D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */,
+				D3CAABD121A2DE0300B9149C /* GoogleService */,
 			);
 			path = "Stranger-Chat";
 			sourceTree = "<group>";
@@ -154,6 +154,14 @@
 				D3CAABAB21A2083B00B9149C /* Info.plist */,
 			);
 			path = "Stranger-ChatUITests";
+			sourceTree = "<group>";
+		};
+		D3CAABD121A2DE0300B9149C /* GoogleService */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */,
+			);
+			path = GoogleService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,8 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
+				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
-				D3CAABBA21A2C67D00B9149C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
