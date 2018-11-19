@@ -11,8 +11,8 @@
 		D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB8921A2083700B9149C /* AppDelegate.swift */; };
 		D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9021A2083B00B9149C /* Assets.xcassets */; };
 		D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */; };
-		D3CAAB9F21A2083B00B9149C /* Stranger_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB9E21A2083B00B9149C /* Stranger_ChatTests.swift */; };
-		D3CAABAA21A2083B00B9149C /* Stranger_ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */; };
+		D3CAAB9F21A2083B00B9149C /* StrangerChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB9E21A2083B00B9149C /* StrangerChatTests.swift */; };
+		D3CAABAA21A2083B00B9149C /* StrangerChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABA921A2083B00B9149C /* StrangerChatUITests.swift */; };
 		D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
@@ -48,10 +48,10 @@
 		D3CAAB9321A2083B00B9149C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3CAAB9521A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3CAAB9A21A2083B00B9149C /* Stranger-ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3CAAB9E21A2083B00B9149C /* Stranger_ChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stranger_ChatTests.swift; sourceTree = "<group>"; };
+		D3CAAB9E21A2083B00B9149C /* StrangerChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerChatTests.swift; sourceTree = "<group>"; };
 		D3CAABA021A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stranger_ChatUITests.swift; sourceTree = "<group>"; };
+		D3CAABA921A2083B00B9149C /* StrangerChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerChatUITests.swift; sourceTree = "<group>"; };
 		D3CAABAB21A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Stranger-Chat/GoogleService/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -141,7 +141,7 @@
 		D3CAAB9D21A2083B00B9149C /* Stranger-ChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				D3CAAB9E21A2083B00B9149C /* Stranger_ChatTests.swift */,
+				D3CAAB9E21A2083B00B9149C /* StrangerChatTests.swift */,
 				D3CAABA021A2083B00B9149C /* Info.plist */,
 			);
 			path = "Stranger-ChatTests";
@@ -150,7 +150,7 @@
 		D3CAABA821A2083B00B9149C /* Stranger-ChatUITests */ = {
 			isa = PBXGroup;
 			children = (
-				D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */,
+				D3CAABA921A2083B00B9149C /* StrangerChatUITests.swift */,
 				D3CAABAB21A2083B00B9149C /* Info.plist */,
 			);
 			path = "Stranger-ChatUITests";
@@ -176,6 +176,7 @@
 				D3CAAB8321A2083700B9149C /* Frameworks */,
 				D3CAAB8421A2083700B9149C /* Resources */,
 				A6E0FEF3E084FE99F51405D1 /* [CP] Embed Pods Frameworks */,
+				D3CAABD221A2FBC300B9149C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -369,6 +370,23 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D3CAABD221A2FBC300B9149C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		EED54FAD0D1960A93418E3C3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,7 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CAAB9F21A2083B00B9149C /* Stranger_ChatTests.swift in Sources */,
+				D3CAAB9F21A2083B00B9149C /* StrangerChatTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CAABAA21A2083B00B9149C /* Stranger_ChatUITests.swift in Sources */,
+				D3CAABAA21A2083B00B9149C /* StrangerChatUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
