@@ -11,7 +11,6 @@ inhibit_all_warnings!
  end
 
  def test_pods
-   pod 'Nimble-Snapshots', '~> 6.9.0'
    pod 'Nimble', '~> 7.3.1'
    pod 'Quick', '~> 1.3.2'
    pod 'Sourcery', '~> 0.15'
@@ -26,17 +25,10 @@ target 'Stranger-Chat' do
   use_frameworks!
   firebase_pods
   rx_pods
-  test_pods
-
 
   target 'Stranger-ChatTests' do
     inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'Stranger-ChatUITests' do
-    inherit! :search_paths
-    # Pods for testing
+    test_pods
   end
 
 end
