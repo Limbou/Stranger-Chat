@@ -14,7 +14,14 @@
 		D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */; };
 		D3CAAB9F21A2083B00B9149C /* Stranger_ChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB9E21A2083B00B9149C /* Stranger_ChatTests.swift */; };
 		D3CAABAA21A2083B00B9149C /* Stranger_ChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */; };
-		D3CAABB821A213B600B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABB721A213B600B9149C /* GoogleService-Info.plist */; };
+		D3CAABBA21A2C67D00B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */; };
+		D3CAABBB21A2C67D00B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */; };
+		D3CAABBC21A2C67D00B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */; };
+		D3CAABC221A2C98D00B9149C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CAABC121A2C98D00B9149C /* XCTest.framework */; };
+		D3CAABC321A2C98D00B9149C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CAABC121A2C98D00B9149C /* XCTest.framework */; };
+		D3CAABC421A2C98D00B9149C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CAABC121A2C98D00B9149C /* XCTest.framework */; };
+		D3CAABC521A2CA0600B9149C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3CAABC121A2C98D00B9149C /* XCTest.framework */; };
+		D3CAABC621A2CA0600B9149C /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3CAABC121A2C98D00B9149C /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +41,20 @@
 			remoteInfo = "Stranger-Chat";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3CAABC721A2CA0700B9149C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D3CAABC621A2CA0600B9149C /* XCTest.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		17C9842F995B0CBE9DC40E71 /* Pods-Stranger-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stranger-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -56,7 +77,8 @@
 		D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CAABA921A2083B00B9149C /* Stranger_ChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stranger_ChatUITests.swift; sourceTree = "<group>"; };
 		D3CAABAB21A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3CAABB721A213B600B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D3CAABC121A2C98D00B9149C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +87,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */,
+				D3CAABC521A2CA0600B9149C /* XCTest.framework in Frameworks */,
+				D3CAABC221A2C98D00B9149C /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				960AB30F727C4DC070023546 /* Pods_Stranger_ChatTests.framework in Frameworks */,
+				D3CAABC321A2C98D00B9149C /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +106,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				338CB1931535A54304F6F686 /* Pods_Stranger_ChatUITests.framework in Frameworks */,
+				D3CAABC421A2C98D00B9149C /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +116,7 @@
 		6981C91022EA75AEB3A6CE53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3CAABC121A2C98D00B9149C /* XCTest.framework */,
 				2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */,
 				1BEEFFE643688F4A05751E6D /* Pods_Stranger_ChatTests.framework */,
 				A594BC1B4CE144C08DF6A978 /* Pods_Stranger_ChatUITests.framework */,
@@ -139,7 +166,7 @@
 				D3CAAB9021A2083B00B9149C /* Assets.xcassets */,
 				D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */,
 				D3CAAB9521A2083B00B9149C /* Info.plist */,
-				D3CAABB721A213B600B9149C /* GoogleService-Info.plist */,
+				D3CAABB921A2C67D00B9149C /* GoogleService-Info.plist */,
 			);
 			path = "Stranger-Chat";
 			sourceTree = "<group>";
@@ -174,6 +201,7 @@
 				D3CAAB8321A2083700B9149C /* Frameworks */,
 				D3CAAB8421A2083700B9149C /* Resources */,
 				A6E0FEF3E084FE99F51405D1 /* [CP] Embed Pods Frameworks */,
+				D3CAABC721A2CA0700B9149C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -272,7 +300,7 @@
 			files = (
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
-				D3CAABB821A213B600B9149C /* GoogleService-Info.plist in Resources */,
+				D3CAABBA21A2C67D00B9149C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CAABBB21A2C67D00B9149C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +316,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CAABBC21A2C67D00B9149C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,7 +532,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -557,7 +587,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
