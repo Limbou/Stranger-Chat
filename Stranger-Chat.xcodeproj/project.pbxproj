@@ -14,6 +14,12 @@
 		D3CAAB9F21A2083B00B9149C /* StrangerChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB9E21A2083B00B9149C /* StrangerChatTests.swift */; };
 		D3CAABAA21A2083B00B9149C /* StrangerChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABA921A2083B00B9149C /* StrangerChatUITests.swift */; };
 		D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */; };
+		D3CAABD721A34C8900B9149C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD621A34C8900B9149C /* Router.swift */; };
+		D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD821A355D900B9149C /* LandingViewController.swift */; };
+		D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABDC21A3560100B9149C /* LandingRouter.swift */; };
+		D3CAABE221A356DE00B9149C /* LandingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE121A356DE00B9149C /* LandingProtocols.swift */; };
+		D3CAABE521A35B5000B9149C /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE421A35B5000B9149C /* LandingView.swift */; };
+		D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +60,12 @@
 		D3CAABA921A2083B00B9149C /* StrangerChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerChatUITests.swift; sourceTree = "<group>"; };
 		D3CAABAB21A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Stranger-Chat/GoogleService/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D3CAABD621A34C8900B9149C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		D3CAABD821A355D900B9149C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
+		D3CAABDC21A3560100B9149C /* LandingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingRouter.swift; sourceTree = "<group>"; };
+		D3CAABE121A356DE00B9149C /* LandingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingProtocols.swift; sourceTree = "<group>"; };
+		D3CAABE421A35B5000B9149C /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +141,8 @@
 		D3CAAB8821A2083700B9149C /* Stranger-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				D3CAABD421A34C6100B9149C /* Base */,
+				D3CAABD321A34C2D00B9149C /* Scenes */,
 				D3CAAB8921A2083700B9149C /* AppDelegate.swift */,
 				D3CAAB9021A2083B00B9149C /* Assets.xcassets */,
 				D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */,
@@ -162,6 +176,66 @@
 				D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */,
 			);
 			path = GoogleService;
+			sourceTree = "<group>";
+		};
+		D3CAABD321A34C2D00B9149C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABE621A3616C00B9149C /* Factories */,
+				D3CAABD521A34C6500B9149C /* Landing */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D3CAABD421A34C6100B9149C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABD621A34C8900B9149C /* Router.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		D3CAABD521A34C6500B9149C /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABE321A35B3A00B9149C /* Views */,
+				D3CAABE021A356C900B9149C /* Protocols */,
+				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
+				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		D3CAABE021A356C900B9149C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABE121A356DE00B9149C /* LandingProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D3CAABE321A35B3A00B9149C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABE421A35B5000B9149C /* LandingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D3CAABE621A3616C00B9149C /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABE721A3617400B9149C /* ViewControllerFactory */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		D3CAABE721A3617400B9149C /* ViewControllerFactory */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */,
+			);
+			path = ViewControllerFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +427,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -363,6 +438,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +494,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CAABE521A35B5000B9149C /* LandingView.swift in Sources */,
+				D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */,
+				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
+				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
+				D3CAABE221A356DE00B9149C /* LandingProtocols.swift in Sources */,
+				D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */,
 				D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

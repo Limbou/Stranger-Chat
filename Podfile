@@ -19,12 +19,18 @@ inhibit_all_warnings!
    pod 'SnapKit', '~> 4.2.0'
  end
 
+ def other_pods
+   pod 'SwiftLint'
+ end
+
 
 target 'Stranger-Chat' do
   use_frameworks!
   firebase_pods
   rx_pods
-  pod 'SwiftLint'
+  ui_pods
+  other_pods
+  
 
   target 'Stranger-ChatTests' do
     inherit! :search_paths

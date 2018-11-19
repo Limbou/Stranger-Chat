@@ -6,10 +6,12 @@
 //  Copyright © 2018 Jakub Danielczyk. All rights reserved.
 //
 
-import XCTest
 @testable import Stranger_Chat
 
-class StrangerChatTests: XCTestCase {
+import Quick
+import Nimble
+
+class StrangerChatTests: QuickSpec {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
