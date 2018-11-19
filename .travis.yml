@@ -1,11 +1,11 @@
-osx_image: xcode10
- language: swift
- rvm:
+osx_image: xcode10.1
+language: objective-c
+rvm:
  - 1.29.4
- podfile: Podfile
- before_install:
+podfile: Podfile
+before_install:
  - bundle install
  - bundle exec pod repo update
  - bundle exec pod install
- after_success:
+after_success:
  - bash <(curl -s https://codecov.io/bash) -J 'Stranger-Chat'
