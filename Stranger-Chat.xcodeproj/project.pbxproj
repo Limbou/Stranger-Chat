@@ -176,6 +176,7 @@
 				D3CAAB8321A2083700B9149C /* Frameworks */,
 				D3CAAB8421A2083700B9149C /* Resources */,
 				A6E0FEF3E084FE99F51405D1 /* [CP] Embed Pods Frameworks */,
+				D3CAABD221A2FBC300B9149C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -368,6 +369,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D3CAABD221A2FBC300B9149C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		EED54FAD0D1960A93418E3C3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
