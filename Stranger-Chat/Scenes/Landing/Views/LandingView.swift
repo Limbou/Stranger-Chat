@@ -27,6 +27,7 @@ class LandingView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.TitleLabel.title
+        label.textAlignment = .center
         return label
     }()
 
