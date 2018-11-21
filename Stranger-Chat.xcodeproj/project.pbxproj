@@ -11,7 +11,6 @@
 		D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB8921A2083700B9149C /* AppDelegate.swift */; };
 		D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9021A2083B00B9149C /* Assets.xcassets */; };
 		D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */; };
-		D3CAAB9F21A2083B00B9149C /* LandingViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB9E21A2083B00B9149C /* LandingViewControllerSpec.swift */; };
 		D3CAABAA21A2083B00B9149C /* LandingUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABA921A2083B00B9149C /* LandingUITest.swift */; };
 		D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */; };
 		D3CAABD721A34C8900B9149C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD621A34C8900B9149C /* Router.swift */; };
@@ -20,8 +19,8 @@
 		D3CAABE221A356DE00B9149C /* LandingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE121A356DE00B9149C /* LandingProtocols.swift */; };
 		D3CAABE521A35B5000B9149C /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE421A35B5000B9149C /* LandingView.swift */; };
 		D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */; };
-		D3CAABEB21A48D8E00B9149C /* LandingRouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABEA21A48D8E00B9149C /* LandingRouterSpec.swift */; };
 		D3CAABED21A48D9B00B9149C /* RouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */; };
+		D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABFF21A5DE0F00B9149C /* Localizable.strings */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +55,6 @@
 		D3CAAB9321A2083B00B9149C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3CAAB9521A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3CAAB9A21A2083B00B9149C /* Stranger-ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D3CAAB9E21A2083B00B9149C /* LandingViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewControllerSpec.swift; sourceTree = "<group>"; };
 		D3CAABA021A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CAABA921A2083B00B9149C /* LandingUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingUITest.swift; sourceTree = "<group>"; };
@@ -68,8 +66,8 @@
 		D3CAABE121A356DE00B9149C /* LandingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingProtocols.swift; sourceTree = "<group>"; };
 		D3CAABE421A35B5000B9149C /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
-		D3CAABEA21A48D8E00B9149C /* LandingRouterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingRouterSpec.swift; sourceTree = "<group>"; };
 		D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSpec.swift; sourceTree = "<group>"; };
+		D3CAABFE21A5DE0F00B9149C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +149,7 @@
 				D3CAAB9021A2083B00B9149C /* Assets.xcassets */,
 				D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */,
 				D3CAAB9521A2083B00B9149C /* Info.plist */,
+				D3CAABFF21A5DE0F00B9149C /* Localizable.strings */,
 				D3CAABD121A2DE0300B9149C /* GoogleService */,
 			);
 			path = "Stranger-Chat";
@@ -159,9 +158,8 @@
 		D3CAAB9D21A2083B00B9149C /* Stranger-ChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */,
-				D3CAAB9E21A2083B00B9149C /* LandingViewControllerSpec.swift */,
-				D3CAABEA21A48D8E00B9149C /* LandingRouterSpec.swift */,
+				D3CAABF921A5D52800B9149C /* Router */,
+				D3CAABF721A5D4FA00B9149C /* Landing */,
 				D3CAABA021A2083B00B9149C /* Info.plist */,
 			);
 			path = "Stranger-ChatTests";
@@ -204,9 +202,9 @@
 		D3CAABD521A34C6500B9149C /* Landing */ = {
 			isa = PBXGroup;
 			children = (
+				D3CAABFA21A5DDCB00B9149C /* ViewController */,
 				D3CAABE321A35B3A00B9149C /* Views */,
 				D3CAABE021A356C900B9149C /* Protocols */,
-				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
 				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
 			);
 			path = Landing;
@@ -242,6 +240,29 @@
 				D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */,
 			);
 			path = ViewControllerFactory;
+			sourceTree = "<group>";
+		};
+		D3CAABF721A5D4FA00B9149C /* Landing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Landing;
+			sourceTree = "<group>";
+		};
+		D3CAABF921A5D52800B9149C /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D3CAABFA21A5DDCB00B9149C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
+				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
 			);
@@ -430,6 +452,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -441,6 +464,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -515,8 +539,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CAABED21A48D9B00B9149C /* RouterSpec.swift in Sources */,
-				D3CAAB9F21A2083B00B9149C /* LandingViewControllerSpec.swift in Sources */,
-				D3CAABEB21A48D8E00B9149C /* LandingRouterSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +572,14 @@
 				D3CAAB9321A2083B00B9149C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D3CAABFF21A5DE0F00B9149C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3CAABFE21A5DE0F00B9149C /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

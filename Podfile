@@ -21,6 +21,7 @@ inhibit_all_warnings!
 
  def other_pods
    pod 'SwiftLint'
+   pod 'Localize-Swift', '~> 2.0'
  end
 
 
