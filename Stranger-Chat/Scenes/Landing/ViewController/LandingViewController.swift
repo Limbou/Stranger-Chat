@@ -12,7 +12,6 @@ import RxCocoa
 
 final class LandingViewController: UIViewController {
 
-    //private let mainView = LandingView()
     private let disposeBag = DisposeBag()
     private let interactor: LandingInteractable
     @IBOutlet var loginButton: UIButton!

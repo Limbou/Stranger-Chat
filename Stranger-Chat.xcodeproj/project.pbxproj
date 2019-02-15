@@ -23,6 +23,13 @@
 		D3E6D55D2216CA7100AF73D7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D55B2216CA7100AF73D7 /* RegisterViewController.swift */; };
 		D3E6D55E2216CA7100AF73D7 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55C2216CA7100AF73D7 /* RegisterViewController.xib */; };
 		D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */; };
+		D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5622216D60800AF73D7 /* UIControl+Localizable.swift */; };
+		D3E6D5672216D94100AF73D7 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5662216D94100AF73D7 /* RegisterInteractor.swift */; };
+		D3E6D5692216D94A00AF73D7 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5682216D94A00AF73D7 /* RegisterPresenter.swift */; };
+		D3E6D56B2216D96C00AF73D7 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D56A2216D96C00AF73D7 /* RegisterRouter.swift */; };
+		D3E6D5702216E89A00AF73D7 /* InteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */; };
+		D3E6D5722216E8A300AF73D7 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */; };
+		D3E6D5742216E8B600AF73D7 /* RouterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +79,15 @@
 		D3E6D55B2216CA7100AF73D7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D3E6D55C2216CA7100AF73D7 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
+		D3E6D5622216D60800AF73D7 /* UIControl+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Localizable.swift"; sourceTree = "<group>"; };
+		D3E6D5642216D6BC00AF73D7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D3E6D5652216D6BC00AF73D7 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D3E6D5662216D94100AF73D7 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		D3E6D5682216D94A00AF73D7 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		D3E6D56A2216D96C00AF73D7 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorFactory.swift; sourceTree = "<group>"; };
+		D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
+		D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +165,7 @@
 			children = (
 				D3CAABD421A34C6100B9149C /* Base */,
 				D3CAABD321A34C2D00B9149C /* Scenes */,
+				D3E6D5612216D5E000AF73D7 /* Helpers */,
 				D3CAAB8921A2083700B9149C /* AppDelegate.swift */,
 				D3CAAB9021A2083B00B9149C /* Assets.xcassets */,
 				D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */,
@@ -218,6 +235,9 @@
 			isa = PBXGroup;
 			children = (
 				D3CAABE721A3617400B9149C /* ViewControllerFactory */,
+				D3E6D56C2216E87300AF73D7 /* InteractorFactory */,
+				D3E6D56D2216E87900AF73D7 /* PresenterFactory */,
+				D3E6D56E2216E87F00AF73D7 /* RouterFactory */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -276,6 +296,7 @@
 		D3E6D5532216C98C00AF73D7 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				D3E6D5662216D94100AF73D7 /* RegisterInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -292,6 +313,7 @@
 		D3E6D5562216C9AC00AF73D7 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				D3E6D56A2216D96C00AF73D7 /* RegisterRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -307,8 +329,41 @@
 		D3E6D5582216C9C300AF73D7 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				D3E6D5682216D94A00AF73D7 /* RegisterPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D3E6D5612216D5E000AF73D7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6D5622216D60800AF73D7 /* UIControl+Localizable.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D3E6D56C2216E87300AF73D7 /* InteractorFactory */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */,
+			);
+			path = InteractorFactory;
+			sourceTree = "<group>";
+		};
+		D3E6D56D2216E87900AF73D7 /* PresenterFactory */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */,
+			);
+			path = PresenterFactory;
+			sourceTree = "<group>";
+		};
+		D3E6D56E2216E87F00AF73D7 /* RouterFactory */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */,
+			);
+			path = RouterFactory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,6 +457,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = D3CAAB7D21A2083700B9149C;
 			productRefGroup = D3CAAB8721A2083700B9149C /* Products */;
@@ -570,13 +626,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E6D5672216D94100AF73D7 /* RegisterInteractor.swift in Sources */,
+				D3E6D5702216E89A00AF73D7 /* InteractorFactory.swift in Sources */,
 				D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */,
 				D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */,
+				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
+				D3E6D56B2216D96C00AF73D7 /* RegisterRouter.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* RegisterViewController.swift in Sources */,
+				D3E6D5692216D94A00AF73D7 /* RegisterPresenter.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
 				D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */,
+				D3E6D5722216E8A300AF73D7 /* PresenterFactory.swift in Sources */,
 				D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */,
+				D3E6D5742216E8B600AF73D7 /* RouterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -616,6 +679,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D3CAAB9321A2083B00B9149C /* Base */,
+				D3E6D5642216D6BC00AF73D7 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -624,6 +688,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D3CAABFE21A5DE0F00B9149C /* en */,
+				D3E6D5652216D6BC00AF73D7 /* pl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -635,6 +700,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -696,6 +762,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

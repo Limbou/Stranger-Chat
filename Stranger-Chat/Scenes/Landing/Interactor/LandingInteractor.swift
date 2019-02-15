@@ -14,7 +14,7 @@ protocol LandingInteractable: AnyObject {
     var registerButtonObserver: AnyObserver<Void> { get }
 }
 
-final class LandingInteractorImpl: LandingInteractable {
+final class LandingInteractor: LandingInteractable {
 
     private let bag = DisposeBag()
     private let router: LandingRoutable

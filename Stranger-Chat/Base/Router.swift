@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Router {
+protocol Router: AnyObject {
 
     var viewController: UIViewController? { get set }
 

@@ -10,4 +10,19 @@ import UIKit
 
 final class RegisterViewController: UIViewController {
 
+    private let interactor: RegisterInteractable
+
+    init(interactor: RegisterInteractable) {
+        self.interactor = interactor
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
+extension RegisterViewController: RegisterDisplayable {
+
 }
