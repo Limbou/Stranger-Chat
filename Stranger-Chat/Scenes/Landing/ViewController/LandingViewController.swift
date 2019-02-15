@@ -7,43 +7,40 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-private extension Selector {
-    static let goToLogin = #selector(LandingViewController.goToLogin)
-    static let goToRegister = #selector(LandingViewController.goToRegister)
-}
+final class LandingViewController: UIViewController {
 
-class LandingViewController: UIViewController {
+    //private let mainView = LandingView()
+    private let disposeBag = DisposeBag()
+    private let interactor: LandingInteractable
+    @IBOutlet var loginButton: UIButton!
+    @IBOutlet var registerButton: UIButton!
 
-    private let mainView = LandingView()
-    private lazy var router: LandingRoutable = LandingRouter(viewController: self)
-
-    init() {
+    init(interactor: LandingInteractable) {
+        self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
-        setupView()
-        setupButtonsActions()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupView() {
-        view = mainView
-        mainView.setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupButtonsActions()
     }
 
     private func setupButtonsActions() {
-        mainView.loginButton.addTarget(self, action: .goToLogin, for: .touchUpInside)
-        mainView.registerButton.addTarget(self, action: .goToRegister, for: .touchUpInside)
-    }
-
-    @objc fileprivate func goToLogin() {
-        router.showLoginScene()
-    }
-
-    @objc fileprivate func goToRegister() {
-        router.showRegisterScene()
+        loginButton.rx.tap
+            .throttle(1.0, scheduler: MainScheduler.instance)
+            .bind(to: interactor.loginButtonObserver)
+            .disposed(by: disposeBag)
+        registerButton.rx.tap
+            .throttle(1.0, scheduler: MainScheduler.instance)
+            .bind(to: interactor.registerButtonObserver)
+            .disposed(by: disposeBag)
     }
 
 }

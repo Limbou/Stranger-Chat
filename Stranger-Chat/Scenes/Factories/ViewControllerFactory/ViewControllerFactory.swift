@@ -11,7 +11,11 @@ import Foundation
 final class ViewControllerFactory {
 
     func getLandingViewController() -> LandingViewController {
-        return LandingViewController()
+        let router = LandingRouter()
+        let interactor = LandingInteractorImpl(router: router)
+        let controller = LandingViewController(interactor: interactor)
+        router.viewController = controller
+        return controller
     }
 
 }

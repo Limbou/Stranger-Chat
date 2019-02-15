@@ -15,10 +15,6 @@ inhibit_all_warnings!
    pod 'Quick', '~> 1.3.2'
  end
 
- def ui_pods
-   pod 'SnapKit', '~> 4.2.0'
- end
-
  def other_pods
    pod 'SwiftLint'
    pod 'Localize-Swift', '~> 2.0'
@@ -29,7 +25,6 @@ target 'Stranger-Chat' do
   use_frameworks!
   firebase_pods
   rx_pods
-  ui_pods
   other_pods
   
 

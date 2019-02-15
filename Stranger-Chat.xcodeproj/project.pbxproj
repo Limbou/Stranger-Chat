@@ -16,11 +16,13 @@
 		D3CAABD721A34C8900B9149C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD621A34C8900B9149C /* Router.swift */; };
 		D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD821A355D900B9149C /* LandingViewController.swift */; };
 		D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABDC21A3560100B9149C /* LandingRouter.swift */; };
-		D3CAABE221A356DE00B9149C /* LandingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE121A356DE00B9149C /* LandingProtocols.swift */; };
-		D3CAABE521A35B5000B9149C /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE421A35B5000B9149C /* LandingView.swift */; };
 		D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */; };
 		D3CAABED21A48D9B00B9149C /* RouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */; };
 		D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABFF21A5DE0F00B9149C /* Localizable.strings */; };
+		D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */; };
+		D3E6D55D2216CA7100AF73D7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D55B2216CA7100AF73D7 /* RegisterViewController.swift */; };
+		D3E6D55E2216CA7100AF73D7 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55C2216CA7100AF73D7 /* RegisterViewController.xib */; };
+		D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,11 +65,13 @@
 		D3CAABD621A34C8900B9149C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D3CAABD821A355D900B9149C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		D3CAABDC21A3560100B9149C /* LandingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingRouter.swift; sourceTree = "<group>"; };
-		D3CAABE121A356DE00B9149C /* LandingProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingProtocols.swift; sourceTree = "<group>"; };
-		D3CAABE421A35B5000B9149C /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSpec.swift; sourceTree = "<group>"; };
 		D3CAABFE21A5DE0F00B9149C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingInteractor.swift; sourceTree = "<group>"; };
+		D3E6D55B2216CA7100AF73D7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D3E6D55C2216CA7100AF73D7 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 			children = (
 				D3CAABE621A3616C00B9149C /* Factories */,
 				D3CAABD521A34C6500B9149C /* Landing */,
+				D3E6D5522216C97D00AF73D7 /* Register */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -203,27 +208,10 @@
 			isa = PBXGroup;
 			children = (
 				D3CAABFA21A5DDCB00B9149C /* ViewController */,
-				D3CAABE321A35B3A00B9149C /* Views */,
-				D3CAABE021A356C900B9149C /* Protocols */,
-				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
+				D3E6D54F2216B65100AF73D7 /* Interactor */,
+				D3E6D5572216C9B500AF73D7 /* Router */,
 			);
 			path = Landing;
-			sourceTree = "<group>";
-		};
-		D3CAABE021A356C900B9149C /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				D3CAABE121A356DE00B9149C /* LandingProtocols.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		D3CAABE321A35B3A00B9149C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D3CAABE421A35B5000B9149C /* LandingView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		D3CAABE621A3616C00B9149C /* Factories */ = {
@@ -261,8 +249,66 @@
 			isa = PBXGroup;
 			children = (
 				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
+				D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D3E6D54F2216B65100AF73D7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D3E6D5522216C97D00AF73D7 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6D5542216C99200AF73D7 /* ViewController */,
+				D3E6D5532216C98C00AF73D7 /* Interactor */,
+				D3E6D5582216C9C300AF73D7 /* Presenter */,
+				D3E6D5562216C9AC00AF73D7 /* Router */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		D3E6D5532216C98C00AF73D7 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D3E6D5542216C99200AF73D7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D3E6D55B2216CA7100AF73D7 /* RegisterViewController.swift */,
+				D3E6D55C2216CA7100AF73D7 /* RegisterViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D3E6D5562216C9AC00AF73D7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D3E6D5572216C9B500AF73D7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D3E6D5582216C9C300AF73D7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,7 +420,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */,
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
+				D3E6D55E2216CA7100AF73D7 /* RegisterViewController.xib in Resources */,
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
@@ -456,7 +504,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -468,7 +515,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,11 +570,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CAABE521A35B5000B9149C /* LandingView.swift in Sources */,
 				D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */,
+				D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */,
+				D3E6D55D2216CA7100AF73D7 /* RegisterViewController.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
-				D3CAABE221A356DE00B9149C /* LandingProtocols.swift in Sources */,
 				D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */,
 				D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */,
 			);

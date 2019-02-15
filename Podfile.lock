@@ -56,7 +56,6 @@ PODS:
     - RxSwift (~> 4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
-  - SnapKit (4.2.0)
   - SwiftLint (0.28.0)
 
 DEPENDENCIES:
@@ -66,7 +65,6 @@ DEPENDENCIES:
   - Quick (~> 1.3.2)
   - RxCocoa (~> 4.4.0)
   - RxSwift (~> 4.4.0)
-  - SnapKit (~> 4.2.0)
   - SwiftLint
 
 SPEC REPOS:
@@ -84,7 +82,6 @@ SPEC REPOS:
     - RxAtomic
     - RxCocoa
     - RxSwift
-    - SnapKit
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -101,9 +98,8 @@ SPEC CHECKSUMS:
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftLint: 088cfacb75b45970017e62b7524d506776d60148
 
-PODFILE CHECKSUM: 0cfe3137eec452413fd59511d1f73088bab3462a
+PODFILE CHECKSUM: e2eebc8531ae5870aa2bf3f9c55458457e46a1b0
 
 COCOAPODS: 1.5.3
