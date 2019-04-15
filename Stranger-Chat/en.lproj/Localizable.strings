@@ -9,3 +9,9 @@
 "landing.titleLabel.text" = "WELCOME";
 "landing.loginButton.title" = "Login";
 "landing.registerButton.title" = "Register";
+
+"register.title" = "Registration";
+"register.email.placeholder" = "e-mail";
+"register.password.placeholder" = "password";
+"register.repeatPassword.placeholder" = "repeat password";
+"register.button.title" = "Register";

@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import RxSwift
 
-protocol RegisterInteractable: AnyObject {
-
+protocol RegisterInteractor: AnyObject {
+    var registerButtonObserver: AnyObserver<Void> { get }
 }
 
-final class RegisterInteractor: RegisterInteractable {
+final class RegisterInteractorImpl: RegisterInteractor {
 
-    private let presenter: RegisterPresentable
-    private let router: RegisterRoutable
+    private let presenter: RegisterPresenter
+    private let router: RegisterRouter
+    private let bag = DisposeBag()
+    private let registerSubject = PublishSubject<Void>()
+    var registerButtonObserver: AnyObserver<Void> {
+        return registerSubject.asObserver()
+    }
 
-    init(presenter: RegisterPresentable, router: RegisterRoutable) {
+    init(presenter: RegisterPresenter, router: RegisterRouter) {
         self.presenter = presenter
         self.router = router
+        setupBindings()
+    }
+
+    private func setupBindings() {
+        registerSubject.subscribe { _ in
+
+        }.disposed(by: bag)
     }
 
 }

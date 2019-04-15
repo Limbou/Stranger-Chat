@@ -9,12 +9,12 @@
 import UIKit
 import RxSwift
 
-protocol LandingRoutable: Router {
+protocol LandingRouter: Router {
     var loginObserver: AnyObserver<Void> { get }
     var registerObserver: AnyObserver<Void> { get }
 }
 
-final class LandingRouter: LandingRoutable {
+final class LandingRouterImpl: LandingRouter {
 
     private let bag = DisposeBag()
     private let loginSubject = PublishSubject<Void>()
@@ -46,8 +46,8 @@ final class LandingRouter: LandingRoutable {
     }
 
     private func showRegisterScene() {
-        let registerViewController = UIViewController()
-        push(viewController: registerViewController) //RegisterViewController in the future
+        let registerViewController = ViewControllerFactory.get.registerViewController()
+        push(viewController: registerViewController)
     }
 
 }

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configureRootViewController() {
-        let controller = ViewControllerFactory().getLandingViewController()
+        let controller = ViewControllerFactory.get.landingViewController()
         let navigationController = UINavigationController(rootViewController: controller)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

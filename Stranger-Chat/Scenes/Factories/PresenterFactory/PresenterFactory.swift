@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct PresenterFactory {
+final class PresenterFactory {
 
-    func getRegisterPresenter() -> RegisterPresentable {
-        return RegisterPresenter()
+    func getRegisterPresenter() -> RegisterPresenter {
+        return RegisterPresenterImpl()
     }
 
 }

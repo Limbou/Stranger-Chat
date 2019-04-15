@@ -9,15 +9,15 @@
 import UIKit
 import RxSwift
 
-protocol LandingInteractable: AnyObject {
+protocol LandingInteractor: AnyObject {
     var loginButtonObserver: AnyObserver<Void> { get }
     var registerButtonObserver: AnyObserver<Void> { get }
 }
 
-final class LandingInteractor: LandingInteractable {
+final class LandingInteractorImpl: LandingInteractor {
 
     private let bag = DisposeBag()
-    private let router: LandingRoutable
+    private let router: LandingRouter
     private let loginSubject = PublishSubject<Void>()
     var loginButtonObserver: AnyObserver<Void> {
         return loginSubject.asObserver()
@@ -27,7 +27,7 @@ final class LandingInteractor: LandingInteractable {
         return registerSubject.asObserver()
     }
 
-    init(router: LandingRoutable) {
+    init(router: LandingRouter) {
         self.router = router
         setupBindings()
     }

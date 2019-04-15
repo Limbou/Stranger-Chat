@@ -9,16 +9,16 @@
 import UIKit
 import RxSwift
 
-protocol RegisterRoutable: Router {
-    var loginObserver: AnyObserver<Void> { get }
+protocol RegisterRouter: Router {
+    var registerObserver: AnyObserver<Void> { get }
 }
 
-final class RegisterRouter: RegisterRoutable {
+final class RegisterRouterImpl: RegisterRouter {
 
     private let bag = DisposeBag()
-    private let loginSubject = PublishSubject<Void>()
-    var loginObserver: AnyObserver<Void> {
-        return loginSubject.asObserver()
+    private let registerSubject = PublishSubject<Void>()
+    var registerObserver: AnyObserver<Void> {
+        return registerSubject.asObserver()
     }
     var viewController: UIViewController?
 
@@ -27,7 +27,7 @@ final class RegisterRouter: RegisterRoutable {
     }
 
     private func setupBindings() {
-        loginSubject.subscribe { _ in
+        registerSubject.subscribe { _ in
             self.goToMainView()
         }.disposed(by: bag)
     }

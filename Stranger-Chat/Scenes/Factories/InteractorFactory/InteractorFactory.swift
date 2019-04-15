@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct InteractorFactory {
+final class InteractorFactory {
 
-    func getLandingInteractor(router: LandingRoutable) -> LandingInteractable {
-        return LandingInteractor(router: router)
+    func getLandingInteractor(router: LandingRouter) -> LandingInteractor {
+        return LandingInteractorImpl(router: router)
     }
 
-    func getRegisterInteractor(presenter: RegisterPresentable, router: RegisterRoutable) -> RegisterInteractable {
-        return RegisterInteractor(presenter: presenter, router: router)
+    func getRegisterInteractor(presenter: RegisterPresenter, router: RegisterRouter) -> RegisterInteractor {
+        return RegisterInteractorImpl(presenter: presenter, router: router)
     }
 
 }

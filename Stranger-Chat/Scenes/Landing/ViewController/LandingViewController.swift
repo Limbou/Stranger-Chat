@@ -12,12 +12,12 @@ import RxCocoa
 
 final class LandingViewController: UIViewController {
 
-    private let disposeBag = DisposeBag()
-    private let interactor: LandingInteractable
+    private let bag = DisposeBag()
+    internal let interactor: LandingInteractor
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var registerButton: UIButton!
 
-    init(interactor: LandingInteractable) {
+    init(interactor: LandingInteractor) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,11 +35,11 @@ final class LandingViewController: UIViewController {
         loginButton.rx.tap
             .throttle(1.0, scheduler: MainScheduler.instance)
             .bind(to: interactor.loginButtonObserver)
-            .disposed(by: disposeBag)
+            .disposed(by: bag)
         registerButton.rx.tap
             .throttle(1.0, scheduler: MainScheduler.instance)
             .bind(to: interactor.registerButtonObserver)
-            .disposed(by: disposeBag)
+            .disposed(by: bag)
     }
 
 }

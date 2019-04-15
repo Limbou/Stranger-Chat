@@ -8,13 +8,20 @@
 
 import Foundation
 
-struct ViewControllerFactory {
+final class ViewControllerFactory {
 
-    private let routerFactory = RouterFactory()
-    private let interactorFactory = InteractorFactory()
-    private let presenterFactory = PresenterFactory()
+    static let get = ViewControllerFactory()
+    private let routerFactory: RouterFactory
+    private let interactorFactory: InteractorFactory
+    private let presenterFactory: PresenterFactory
 
-    func getLandingViewController() -> LandingViewController {
+    private init() {
+        routerFactory = RouterFactory()
+        interactorFactory = InteractorFactory()
+        presenterFactory = PresenterFactory()
+    }
+
+    func landingViewController() -> LandingViewController {
         let router = routerFactory.getLandingRouter()
         let interactor = interactorFactory.getLandingInteractor(router: router)
         let controller = LandingViewController(interactor: interactor)
@@ -22,7 +29,7 @@ struct ViewControllerFactory {
         return controller
     }
 
-    func getRegisterViewController() -> RegisterViewController {
+    func registerViewController() -> RegisterViewController {
         let router = routerFactory.getRegisterRouter()
         let presenter = presenterFactory.getRegisterPresenter()
         let interactor = interactorFactory.getRegisterInteractor(presenter: presenter, router: router)

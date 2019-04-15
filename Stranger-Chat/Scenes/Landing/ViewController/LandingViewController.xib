@@ -32,30 +32,38 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnG-bS-8q3">
-                    <rect key="frame" x="168.5" y="241" width="38" height="30"/>
+                    <rect key="frame" x="100" y="241" width="175" height="30"/>
                     <color key="backgroundColor" red="1" green="0.45465992789999998" blue="0.45388659469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <state key="normal" title="Login"/>
+                    <state key="normal" title="Login">
+                        <color key="titleColor" red="0.52878557429999995" green="1" blue="0.40816306250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="landing.loginButton.title"/>
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewR-HL-MoP">
-                    <rect key="frame" x="159" y="371" width="57" height="30"/>
+                    <rect key="frame" x="100" y="371" width="175" height="30"/>
                     <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Register"/>
+                    <state key="normal" title="Register">
+                        <color key="titleColor" red="0.52878557429999995" green="1" blue="0.40816306250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </state>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="landing.registerButton.title"/>
                     </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.24535659624429706" green="0.90464754817285642" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
                 <constraint firstItem="cnG-bS-8q3" firstAttribute="top" secondItem="Ekz-Bj-QHa" secondAttribute="bottom" constant="100" id="7tM-ba-trt"/>
+                <constraint firstItem="ewR-HL-MoP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="9Fv-OR-LcT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cnG-bS-8q3" secondAttribute="trailing" constant="100" id="Env-vq-Kfi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ewR-HL-MoP" secondAttribute="trailing" constant="100" id="KkU-so-50d"/>
                 <constraint firstItem="ewR-HL-MoP" firstAttribute="centerX" secondItem="Ekz-Bj-QHa" secondAttribute="centerX" id="TUt-j0-izX"/>
                 <constraint firstItem="Ekz-Bj-QHa" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="h4I-gW-yt8"/>
                 <constraint firstItem="cnG-bS-8q3" firstAttribute="centerX" secondItem="Ekz-Bj-QHa" secondAttribute="centerX" id="jei-IR-rlo"/>
                 <constraint firstItem="Ekz-Bj-QHa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="l90-ob-LOu"/>
                 <constraint firstItem="ewR-HL-MoP" firstAttribute="top" secondItem="cnG-bS-8q3" secondAttribute="bottom" constant="100" id="nbp-Fg-Xr3"/>
+                <constraint firstItem="cnG-bS-8q3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="w12-da-kPA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
         </view>

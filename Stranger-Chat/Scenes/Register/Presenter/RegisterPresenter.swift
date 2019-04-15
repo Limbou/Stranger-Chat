@@ -12,11 +12,11 @@ protocol RegisterDisplayable: AnyObject {
 
 }
 
-protocol RegisterPresentable: AnyObject {
+protocol RegisterPresenter: AnyObject {
     var viewController: RegisterDisplayable? { get set }
 }
 
-final class RegisterPresenter: RegisterPresentable {
+final class RegisterPresenterImpl: RegisterPresenter {
 
     weak var viewController: RegisterDisplayable?
 

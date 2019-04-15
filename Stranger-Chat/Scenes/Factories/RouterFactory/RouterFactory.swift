@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct RouterFactory {
+final class RouterFactory {
 
-    func getLandingRouter() -> LandingRoutable {
-        return LandingRouter()
+    func getLandingRouter() -> LandingRouter {
+        return LandingRouterImpl()
     }
 
-    func getRegisterRouter() -> RegisterRoutable {
-        return RegisterRouter()
+    func getRegisterRouter() -> RegisterRouter {
+        return RegisterRouterImpl()
     }
 
 }
