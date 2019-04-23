@@ -14,8 +14,8 @@ final class RouterFactory {
         return LandingRouterImpl()
     }
 
-    func getRegisterRouter() -> RegisterRouter {
-        return RegisterRouterImpl()
+    func getRegisterRouter() -> OfflineModeLoginRouter {
+        return OfflineModeLoginRouterImpl()
     }
 
 }

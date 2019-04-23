@@ -6,12 +6,9 @@
   Copyright © 2018 Jakub Danielczyk. All rights reserved.
 */
 
-"landing.titleLabel.text" = "WITAJ";
 "landing.loginButton.title" = "Zaloguj";
-"landing.registerButton.title" = "Zarejestruj";
+"landing.offlineModeButton.title" = "Tryb Offline";
 
-"register.title" = "Rejestracja";
-"register.email.placeholder" = "e-mail";
-"register.password.placeholder" = "hasło";
-"register.repeatPassword.placeholder" = "powtórz hasło";
-"register.button.title" = "Zarejestruj";
+"offlineModeLogin.name.title" = "Podaj swoją nazwę";
+"offlineModeLogin.name.placeholder" = "nazwa";
+"offlineModeLogin.button.title" = "Zaloguj";

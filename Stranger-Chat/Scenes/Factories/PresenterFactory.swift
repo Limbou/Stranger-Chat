@@ -10,8 +10,8 @@ import Foundation
 
 final class PresenterFactory {
 
-    func getRegisterPresenter() -> RegisterPresenter {
-        return RegisterPresenterImpl()
+    func getRegisterPresenter() -> OfflineModeLoginPresenter {
+        return OfflineModeLoginPresenterImpl()
     }
 
 }

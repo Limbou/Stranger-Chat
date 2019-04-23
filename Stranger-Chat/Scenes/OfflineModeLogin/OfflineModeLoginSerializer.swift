@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol RegisterSerializer: AnyObject {
+protocol OfflineModeLoginSerializer: AnyObject {
 
 }
 
-final class RegisterSerializerImpl: RegisterSerializer {
+final class OfflineModeLoginSerializerImpl: OfflineModeLoginSerializer {
 
 }

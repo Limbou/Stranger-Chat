@@ -6,12 +6,9 @@
   Copyright © 2018 Jakub Danielczyk. All rights reserved.
 */
 
-"landing.titleLabel.text" = "WELCOME";
 "landing.loginButton.title" = "Login";
-"landing.registerButton.title" = "Register";
+"landing.offlineModeButton.title" = "Offline Mode";
 
-"register.title" = "Registration";
-"register.email.placeholder" = "e-mail";
-"register.password.placeholder" = "password";
-"register.repeatPassword.placeholder" = "repeat password";
-"register.button.title" = "Register";
+"offlineModeLogin.name.title" = "Choose your nickname";
+"offlineModeLogin.name.placeholder" = "nickname";
+"offlineModeLogin.button.title" = "Login";

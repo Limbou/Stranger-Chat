@@ -13,9 +13,9 @@ final class WorkerFactory {
     let networkingFactory = NetworkingFactory()
     let serializerFactory = SerializerFactory()
 
-    func getRegisterWorker() -> RegisterWorker {
+    func getRegisterWorker() -> OfflineModeLoginWorker {
         let serializer = serializerFactory.getRegisterSerializer()
-        return RegisterWorkerImpl(serializer: serializer)
+        return OfflineModeLoginWorkerImpl(serializer: serializer)
     }
 
 }

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LandingViewController" customModule="Stranger_Chat" customModuleProvider="target">
             <connections>
-                <outlet property="loginButton" destination="cnG-bS-8q3" id="HwG-vk-jJJ"/>
-                <outlet property="registerButton" destination="ewR-HL-MoP" id="hzy-oe-smn"/>
+                <outlet property="loginButton" destination="ewR-HL-MoP" id="Zgk-ah-Csx"/>
+                <outlet property="offlineModeButton" destination="cnG-bS-8q3" id="WNr-Ge-muL"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vjn-uC-q4h"/>
             </connections>
         </placeholder>
@@ -22,50 +22,55 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekz-Bj-QHa">
-                    <rect key="frame" x="145.5" y="120" width="84" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="landing.titleLabel.text"/>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnG-bS-8q3">
-                    <rect key="frame" x="100" y="241" width="175" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.45465992789999998" blue="0.45388659469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    <state key="normal" title="Login">
-                        <color key="titleColor" red="0.52878557429999995" green="1" blue="0.40816306250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </state>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewR-HL-MoP" customClass="RoundButton" customModule="Stranger_Chat" customModuleProvider="target">
+                    <rect key="frame" x="100" y="329" width="175" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="2HQ-1o-YDg"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="landing.loginButton.title"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.52878557429999995" green="1" blue="0.40816306250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewR-HL-MoP">
-                    <rect key="frame" x="100" y="371" width="175" height="30"/>
-                    <color key="backgroundColor" red="0.21176470589999999" green="0.23137254900000001" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Register">
-                        <color key="titleColor" red="0.52878557429999995" green="1" blue="0.40816306250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </state>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnG-bS-8q3" customClass="RoundButton" customModule="Stranger_Chat" customModuleProvider="target">
+                    <rect key="frame" x="100" y="429" width="175" height="40"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="landing.registerButton.title"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="landing.offlineModeButton.title"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="1" green="0.45465992789999998" blue="0.45388659469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.24535659624429706" green="0.90464754817285642" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="cnG-bS-8q3" firstAttribute="top" secondItem="Ekz-Bj-QHa" secondAttribute="bottom" constant="100" id="7tM-ba-trt"/>
                 <constraint firstItem="ewR-HL-MoP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="9Fv-OR-LcT"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cnG-bS-8q3" secondAttribute="trailing" constant="100" id="Env-vq-Kfi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ewR-HL-MoP" secondAttribute="trailing" constant="100" id="KkU-so-50d"/>
-                <constraint firstItem="ewR-HL-MoP" firstAttribute="centerX" secondItem="Ekz-Bj-QHa" secondAttribute="centerX" id="TUt-j0-izX"/>
-                <constraint firstItem="Ekz-Bj-QHa" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="h4I-gW-yt8"/>
-                <constraint firstItem="cnG-bS-8q3" firstAttribute="centerX" secondItem="Ekz-Bj-QHa" secondAttribute="centerX" id="jei-IR-rlo"/>
-                <constraint firstItem="Ekz-Bj-QHa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="l90-ob-LOu"/>
-                <constraint firstItem="ewR-HL-MoP" firstAttribute="top" secondItem="cnG-bS-8q3" secondAttribute="bottom" constant="100" id="nbp-Fg-Xr3"/>
+                <constraint firstItem="ewR-HL-MoP" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="5.5" id="Noj-Vr-MxN"/>
+                <constraint firstItem="cnG-bS-8q3" firstAttribute="height" secondItem="ewR-HL-MoP" secondAttribute="height" id="ceq-8N-osh"/>
+                <constraint firstItem="ewR-HL-MoP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="jeM-YN-rxV"/>
                 <constraint firstItem="cnG-bS-8q3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="w12-da-kPA"/>
+                <constraint firstItem="cnG-bS-8q3" firstAttribute="top" secondItem="ewR-HL-MoP" secondAttribute="bottom" constant="60" id="ydJ-sG-qnD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="140" y="154.27286356821591"/>
         </view>
     </objects>
 </document>

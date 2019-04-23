@@ -29,11 +29,11 @@ final class ViewControllerFactory {
         return controller
     }
 
-    func registerViewController() -> RegisterViewController {
+    func registerViewController() -> OfflineModeLoginViewController {
         let router = routerFactory.getRegisterRouter()
         let presenter = presenterFactory.getRegisterPresenter()
         let interactor = interactorFactory.getRegisterInteractor(presenter: presenter, router: router)
-        let controller = RegisterViewController(interactor: interactor)
+        let controller = OfflineModeLoginViewController(interactor: interactor)
         router.viewController = controller
         presenter.viewController = controller
         return controller

@@ -9,16 +9,16 @@
 import UIKit
 import RxSwift
 
-protocol RegisterRouter: Router {
-    var registerObserver: AnyObserver<Void> { get }
+protocol OfflineModeLoginRouter: Router {
+    var offlineModeLoginObserver: AnyObserver<Void> { get }
 }
 
-final class RegisterRouterImpl: RegisterRouter {
+final class OfflineModeLoginRouterImpl: OfflineModeLoginRouter {
 
     private let bag = DisposeBag()
-    private let registerSubject = PublishSubject<Void>()
-    var registerObserver: AnyObserver<Void> {
-        return registerSubject.asObserver()
+    private let offlineModeLoginSubject = PublishSubject<Void>()
+    var offlineModeLoginObserver: AnyObserver<Void> {
+        return offlineModeLoginSubject.asObserver()
     }
     var viewController: UIViewController?
 
@@ -27,7 +27,7 @@ final class RegisterRouterImpl: RegisterRouter {
     }
 
     private func setupBindings() {
-        registerSubject.subscribe { _ in
+        offlineModeLoginSubject.subscribe { _ in
             self.goToMainView()
         }.disposed(by: bag)
     }

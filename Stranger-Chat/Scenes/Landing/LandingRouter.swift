@@ -11,7 +11,7 @@ import RxSwift
 
 protocol LandingRouter: Router {
     var loginObserver: AnyObserver<Void> { get }
-    var registerObserver: AnyObserver<Void> { get }
+    var offlineModeObserver: AnyObserver<Void> { get }
 }
 
 final class LandingRouterImpl: LandingRouter {
@@ -21,9 +21,9 @@ final class LandingRouterImpl: LandingRouter {
     var loginObserver: AnyObserver<Void> {
         return loginSubject.asObserver()
     }
-    private let registerSubject = PublishSubject<Void>()
-    var registerObserver: AnyObserver<Void> {
-        return registerSubject.asObserver()
+    private let offlineModeSubject = PublishSubject<Void>()
+    var offlineModeObserver: AnyObserver<Void> {
+        return offlineModeSubject.asObserver()
     }
     weak var viewController: UIViewController?
 
@@ -35,8 +35,8 @@ final class LandingRouterImpl: LandingRouter {
         loginSubject.subscribe { _ in
             self.showLoginScene()
         }.disposed(by: bag)
-        registerSubject.subscribe { _ in
-            self.showRegisterScene()
+        offlineModeSubject.subscribe { _ in
+            self.showOfflineModeLoginScene()
         }.disposed(by: bag)
     }
 
@@ -45,7 +45,7 @@ final class LandingRouterImpl: LandingRouter {
         push(viewController: loginViewController)
     }
 
-    private func showRegisterScene() {
+    private func showOfflineModeLoginScene() {
         let registerViewController = ViewControllerFactory.get.registerViewController()
         push(viewController: registerViewController)
     }

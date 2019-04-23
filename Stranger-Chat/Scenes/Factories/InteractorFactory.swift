@@ -14,8 +14,8 @@ final class InteractorFactory {
         return LandingInteractorImpl(router: router)
     }
 
-    func getRegisterInteractor(presenter: RegisterPresenter, router: RegisterRouter) -> RegisterInteractor {
-        return RegisterInteractorImpl(presenter: presenter, router: router)
+    func getRegisterInteractor(presenter: OfflineModeLoginPresenter, router: OfflineModeLoginRouter) -> OfflineModeLoginInteractor {
+        return OfflineModeLoginInteractorImpl(presenter: presenter, router: router)
     }
 
 }

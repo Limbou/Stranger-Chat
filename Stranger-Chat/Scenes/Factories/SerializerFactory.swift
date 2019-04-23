@@ -10,8 +10,4 @@ import UIKit
 
 final class SerializerFactory {
 
-    func getRegisterSerializer() -> RegisterSerializer {
-        return RegisterSerializerImpl()
-    }
-
 }

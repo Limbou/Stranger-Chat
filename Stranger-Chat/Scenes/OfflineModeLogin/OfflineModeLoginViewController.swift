@@ -10,16 +10,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class RegisterViewController: UIViewController {
+final class OfflineModeLoginViewController: UIViewController {
 
-    private let interactor: RegisterInteractor
+    private let interactor: OfflineModeLoginInteractor
     private let bag = DisposeBag()
-    @IBOutlet var emailField: UITextField!
-    @IBOutlet var passwordField: UITextField!
-    @IBOutlet var repeatPasswordField: UITextField!
-    @IBOutlet var registerButton: UIButton!
+    @IBOutlet var nameField: UITextField!
+    @IBOutlet var offlineModeLoginButton: UIButton!
 
-    init(interactor: RegisterInteractor) {
+    init(interactor: OfflineModeLoginInteractor) {
         self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,14 +32,15 @@ final class RegisterViewController: UIViewController {
     }
 
     private func setupBindings() {
-        registerButton.rx.tap
-            .throttle(1.0, scheduler: MainScheduler.instance)
-            .bind(to: interactor.registerButtonObserver)
+        offlineModeLoginButton.rx.tap
+            .throttle(1.0, latest: false, scheduler: MainScheduler.instance)
+            .withLatestFrom(nameField.rx.text)
+            .bind(to: interactor.offlineModeLoginButtonObserver)
             .disposed(by: bag)
     }
 
 }
 
-extension RegisterViewController: RegisterDisplayable {
+extension OfflineModeLoginViewController: OfflineModeLoginDisplayable {
 
 }

@@ -10,8 +10,4 @@ import UIKit
 
 final class NetworkingFactory {
 
-    func getRegisterNetworking() {
-
-    }
-
 }
