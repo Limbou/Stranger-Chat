@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/jakubdanielczyk/Dev/Stranger-Chat/Stranger-Chat/Extensions/Optional+NilOrEmpty.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/jakubdanielczyk/Dev/Stranger-Chat/Stranger-ChatTests/Landing/LandingInteractor.swift">
-   </FileRef>
-   <FileRef
       location = "group:Stranger-Chat.xcodeproj">
    </FileRef>
    <FileRef

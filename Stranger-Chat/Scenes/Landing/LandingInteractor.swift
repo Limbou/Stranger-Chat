@@ -19,10 +19,10 @@ final class LandingInteractorImpl: LandingInteractor {
     private let bag = DisposeBag()
     private let router: LandingRouter
     private let loginSubject = PublishSubject<Void>()
+    private let registerSubject = PublishSubject<Void>()
     var loginButtonObserver: AnyObserver<Void> {
         return loginSubject.asObserver()
     }
-    private let registerSubject = PublishSubject<Void>()
     var registerButtonObserver: AnyObserver<Void> {
         return registerSubject.asObserver()
     }

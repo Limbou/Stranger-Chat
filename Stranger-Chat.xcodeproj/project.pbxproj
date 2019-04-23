@@ -12,6 +12,11 @@
 		D32B288C223A8BEF00F25FC2 /* SerializerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B288B223A8BEF00F25FC2 /* SerializerFactory.swift */; };
 		D32B288F223A8C9800F25FC2 /* WorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B288E223A8C9800F25FC2 /* WorkerFactory.swift */; };
 		D32B2891223A8D8D00F25FC2 /* NetworkingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2890223A8D8D00F25FC2 /* NetworkingFactory.swift */; };
+		D3B6B89C2264B1CC00B7CC14 /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89B2264B1CC00B7CC14 /* MPCManager.swift */; };
+		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
+		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
+		D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */; };
+		D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B8A32265AE6900B7CC14 /* PeerSession.swift */; };
 		D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAAB8921A2083700B9149C /* AppDelegate.swift */; };
 		D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9021A2083B00B9149C /* Assets.xcassets */; };
 		D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3CAAB9221A2083B00B9149C /* LaunchScreen.storyboard */; };
@@ -70,6 +75,11 @@
 		D32B288B223A8BEF00F25FC2 /* SerializerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializerFactory.swift; sourceTree = "<group>"; };
 		D32B288E223A8C9800F25FC2 /* WorkerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerFactory.swift; sourceTree = "<group>"; };
 		D32B2890223A8D8D00F25FC2 /* NetworkingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingFactory.swift; sourceTree = "<group>"; };
+		D3B6B89B2264B1CC00B7CC14 /* MPCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
+		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
+		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
+		D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerHostSession.swift; sourceTree = "<group>"; };
+		D3B6B8A32265AE6900B7CC14 /* PeerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerSession.swift; sourceTree = "<group>"; };
 		D3CAAB8621A2083700B9149C /* Stranger-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stranger-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CAAB8921A2083700B9149C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3CAAB9021A2083B00B9149C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,36 +163,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D32B2886223A8ACB00F25FC2 /* Serializer */ = {
+		D3B6B89A2264B1B300B7CC14 /* MultipeerConnectivity */ = {
 			isa = PBXGroup;
 			children = (
-				D32B2887223A8AE500F25FC2 /* RegisterSerializer.swift */,
+				D3B6B89B2264B1CC00B7CC14 /* MPCManager.swift */,
+				D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */,
+				D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */,
+				D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */,
+				D3B6B8A32265AE6900B7CC14 /* PeerSession.swift */,
 			);
-			path = Serializer;
-			sourceTree = "<group>";
-		};
-		D32B2889223A8B7F00F25FC2 /* NetworkingFactory */ = {
-			isa = PBXGroup;
-			children = (
-				D32B2890223A8D8D00F25FC2 /* NetworkingFactory.swift */,
-			);
-			path = NetworkingFactory;
-			sourceTree = "<group>";
-		};
-		D32B288A223A8B8C00F25FC2 /* SerializerFactory */ = {
-			isa = PBXGroup;
-			children = (
-				D32B288B223A8BEF00F25FC2 /* SerializerFactory.swift */,
-			);
-			path = SerializerFactory;
-			sourceTree = "<group>";
-		};
-		D32B288D223A8C8700F25FC2 /* WorkerFactory */ = {
-			isa = PBXGroup;
-			children = (
-				D32B288E223A8C9800F25FC2 /* WorkerFactory.swift */,
-			);
-			path = WorkerFactory;
+			path = MultipeerConnectivity;
 			sourceTree = "<group>";
 		};
 		D3CAAB7D21A2083700B9149C = {
@@ -209,6 +199,7 @@
 		D3CAAB8821A2083700B9149C /* Stranger-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				D3B6B89A2264B1B300B7CC14 /* MultipeerConnectivity */,
 				D3CAABD421A34C6100B9149C /* Base */,
 				D3CAABD321A34C2D00B9149C /* Scenes */,
 				D3E6D58522281D3D00AF73D7 /* Validators */,
@@ -263,9 +254,10 @@
 		D3CAABD521A34C6500B9149C /* Landing */ = {
 			isa = PBXGroup;
 			children = (
-				D3CAABFA21A5DDCB00B9149C /* ViewController */,
-				D3E6D54F2216B65100AF73D7 /* Interactor */,
-				D3E6D5572216C9B500AF73D7 /* Router */,
+				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
+				D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */,
+				D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */,
+				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -273,23 +265,15 @@
 		D3CAABE621A3616C00B9149C /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				D3CAABE721A3617400B9149C /* ViewControllerFactory */,
-				D3E6D56C2216E87300AF73D7 /* InteractorFactory */,
-				D3E6D56D2216E87900AF73D7 /* PresenterFactory */,
-				D3E6D56E2216E87F00AF73D7 /* RouterFactory */,
-				D32B288D223A8C8700F25FC2 /* WorkerFactory */,
-				D32B2889223A8B7F00F25FC2 /* NetworkingFactory */,
-				D32B288A223A8B8C00F25FC2 /* SerializerFactory */,
+				D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */,
+				D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */,
+				D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */,
+				D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */,
+				D32B288E223A8C9800F25FC2 /* WorkerFactory.swift */,
+				D32B2890223A8D8D00F25FC2 /* NetworkingFactory.swift */,
+				D32B288B223A8BEF00F25FC2 /* SerializerFactory.swift */,
 			);
 			path = Factories;
-			sourceTree = "<group>";
-		};
-		D3CAABE721A3617400B9149C /* ViewControllerFactory */ = {
-			isa = PBXGroup;
-			children = (
-				D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */,
-			);
-			path = ViewControllerFactory;
 			sourceTree = "<group>";
 		};
 		D3CAABF721A5D4FA00B9149C /* Landing */ = {
@@ -308,75 +292,18 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		D3CAABFA21A5DDCB00B9149C /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
-				D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		D3E6D54F2216B65100AF73D7 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
 		D3E6D5522216C97D00AF73D7 /* Register */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D5542216C99200AF73D7 /* ViewController */,
-				D3E6D5532216C98C00AF73D7 /* Interactor */,
-				D3E6D5582216C9C300AF73D7 /* Presenter */,
-				D3E6D5562216C9AC00AF73D7 /* Router */,
-				D3E6D58222281B7200AF73D7 /* Worker */,
-				D32B2886223A8ACB00F25FC2 /* Serializer */,
-			);
-			path = Register;
-			sourceTree = "<group>";
-		};
-		D3E6D5532216C98C00AF73D7 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D5662216D94100AF73D7 /* RegisterInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		D3E6D5542216C99200AF73D7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				D3E6D55B2216CA7100AF73D7 /* RegisterViewController.swift */,
 				D3E6D55C2216CA7100AF73D7 /* RegisterViewController.xib */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		D3E6D5562216C9AC00AF73D7 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D56A2216D96C00AF73D7 /* RegisterRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		D3E6D5572216C9B500AF73D7 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		D3E6D5582216C9C300AF73D7 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
+				D3E6D5662216D94100AF73D7 /* RegisterInteractor.swift */,
 				D3E6D5682216D94A00AF73D7 /* RegisterPresenter.swift */,
+				D3E6D56A2216D96C00AF73D7 /* RegisterRouter.swift */,
+				D3E6D58322281BD700AF73D7 /* RegisterWorker.swift */,
+				D32B2887223A8AE500F25FC2 /* RegisterSerializer.swift */,
 			);
-			path = Presenter;
+			path = Register;
 			sourceTree = "<group>";
 		};
 		D3E6D5612216D5E000AF73D7 /* Helpers */ = {
@@ -384,38 +311,6 @@
 			children = (
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		D3E6D56C2216E87300AF73D7 /* InteractorFactory */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */,
-			);
-			path = InteractorFactory;
-			sourceTree = "<group>";
-		};
-		D3E6D56D2216E87900AF73D7 /* PresenterFactory */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */,
-			);
-			path = PresenterFactory;
-			sourceTree = "<group>";
-		};
-		D3E6D56E2216E87F00AF73D7 /* RouterFactory */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */,
-			);
-			path = RouterFactory;
-			sourceTree = "<group>";
-		};
-		D3E6D58222281B7200AF73D7 /* Worker */ = {
-			isa = PBXGroup;
-			children = (
-				D3E6D58322281BD700AF73D7 /* RegisterWorker.swift */,
-			);
-			path = Worker;
 			sourceTree = "<group>";
 		};
 		D3E6D58522281D3D00AF73D7 /* Validators */ = {
@@ -704,9 +599,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B6B89C2264B1CC00B7CC14 /* MPCManager.swift in Sources */,
 				D3E6D58A22281F2400AF73D7 /* ValidationError.swift in Sources */,
+				D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */,
 				D3E6D5672216D94100AF73D7 /* RegisterInteractor.swift in Sources */,
 				D3E6D5702216E89A00AF73D7 /* InteractorFactory.swift in Sources */,
+				D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */,
 				D3E6D58722281D5D00AF73D7 /* RegisterValidator.swift in Sources */,
 				D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */,
 				D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */,
@@ -717,7 +615,9 @@
 				D32B288F223A8C9800F25FC2 /* WorkerFactory.swift in Sources */,
 				D3E6D58D2228209F00AF73D7 /* Optional+NilOrEmpty.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* RegisterViewController.swift in Sources */,
+				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,
 				D3E6D5692216D94A00AF73D7 /* RegisterPresenter.swift in Sources */,
+				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3E6D58422281BD800AF73D7 /* RegisterWorker.swift in Sources */,
 				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
