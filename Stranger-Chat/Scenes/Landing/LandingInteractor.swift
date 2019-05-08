@@ -10,22 +10,16 @@ import UIKit
 import RxSwift
 
 protocol LandingInteractor: AnyObject {
-    var loginButtonObserver: AnyObserver<Void> { get }
-    var offlineModeButtonObserver: AnyObserver<Void> { get }
+    var loginPressed: PublishSubject<Void> { get }
+    var offlineModePressed: PublishSubject<Void> { get }
 }
 
 final class LandingInteractorImpl: LandingInteractor {
 
     private let bag = DisposeBag()
     private let router: LandingRouter
-    private let loginSubject = PublishSubject<Void>()
-    private let offlineModeSubject = PublishSubject<Void>()
-    var loginButtonObserver: AnyObserver<Void> {
-        return loginSubject.asObserver()
-    }
-    var offlineModeButtonObserver: AnyObserver<Void> {
-        return offlineModeSubject.asObserver()
-    }
+    let loginPressed = PublishSubject<Void>()
+    let offlineModePressed = PublishSubject<Void>()
 
     init(router: LandingRouter) {
         self.router = router
@@ -33,10 +27,10 @@ final class LandingInteractorImpl: LandingInteractor {
     }
 
     private func setupBindings() {
-        loginSubject
+        loginPressed
             .bind(to: router.loginObserver)
             .disposed(by: bag)
-        offlineModeSubject
+        offlineModePressed
             .bind(to: router.offlineModeObserver)
             .disposed(by: bag)
     }

@@ -10,4 +10,8 @@ import UIKit
 
 final class SerializerFactory {
 
+    func getOfflineLoginModeSerializer() -> OfflineModeLoginSerializer {
+        return OfflineModeLoginSerializerImpl()
+    }
+
 }

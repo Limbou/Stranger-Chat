@@ -10,14 +10,17 @@ import UIKit
 import RxSwift
 
 protocol OfflineModeLoginWorker: AnyObject {
-    var nicknameValidationObserver: AnyObserver<String?> { get }
+    var nicknameValidationObserver: PublishSubject<String?> { get }
 }
 
 final class OfflineModeLoginWorkerImpl: OfflineModeLoginWorker {
 
-    private let nicknameValidationSubject = PublishSubject<String?>()
-    var nicknameValidationObserver: AnyObserver<String?> {
-        return nicknameValidationSubject.asObserver()
+    private let serializer: OfflineModeLoginSerializer
+
+    let nicknameValidationObserver = PublishSubject<String?>()
+
+    init(serializer: OfflineModeLoginSerializer) {
+        self.serializer = serializer
     }
 
 }

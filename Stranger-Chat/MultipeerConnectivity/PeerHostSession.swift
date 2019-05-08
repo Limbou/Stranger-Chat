@@ -9,14 +9,14 @@
 import Foundation
 import MultipeerConnectivity
 
-class PeerHostSession:NSObject,PeerConnection,MCNearbyServiceBrowserDelegate {
+final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDelegate {
 
-    let mcSession:MCSession
-    let peerId:MCPeerID
-    var browser:MCNearbyServiceBrowser?
-    let timeout:TimeInterval = 30.0
-    let sessionHandler:MCSessionAdapter
-    unowned let delegate:PeerSessionDelegate
+    let mcSession: MCSession
+    let peerId: MCPeerID
+    var browser: MCNearbyServiceBrowser?
+    let timeout: TimeInterval = 30.0
+    let sessionHandler: MCSessionAdapter
+    unowned let delegate: PeerSessionDelegate
 
     required init(displayName: String, delegate: PeerSessionDelegate) {
         let peerId = MCPeerID(displayName: displayName)
@@ -45,8 +45,8 @@ class PeerHostSession:NSObject,PeerConnection,MCNearbyServiceBrowserDelegate {
         self.delegate.connectionClosed()
     }
 
-    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
-        print(info)
+    func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
+        print(info ?? [])
         self.delegate.peerDiscovered(peerID: peerID)
         browser.invitePeer(peerID, to: self.mcSession, withContext: nil, timeout: self.timeout)
     }

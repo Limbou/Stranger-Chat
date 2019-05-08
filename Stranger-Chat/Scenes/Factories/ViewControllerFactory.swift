@@ -32,7 +32,7 @@ final class ViewControllerFactory {
     func registerViewController() -> OfflineModeLoginViewController {
         let router = routerFactory.getRegisterRouter()
         let presenter = presenterFactory.getRegisterPresenter()
-        let interactor = interactorFactory.getRegisterInteractor(presenter: presenter, router: router)
+        let interactor = interactorFactory.getOfflineModeLoginInteractor(presenter: presenter, router: router)
         let controller = OfflineModeLoginViewController(interactor: interactor)
         router.viewController = controller
         presenter.viewController = controller

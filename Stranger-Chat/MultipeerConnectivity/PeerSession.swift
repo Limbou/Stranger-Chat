@@ -25,11 +25,11 @@ protocol PeerSessionDelegate: AnyObject {
 protocol PeerConnection {
     var mcSession: MCSession { get }
     var delegate: PeerSessionDelegate { get }
-    init(displayName: String,delegate: PeerSessionDelegate)
+    init(displayName: String, delegate: PeerSessionDelegate)
     func connect()
     func disconnect()
     func send(data: Data)
-    func send(data: Data,to peerIDs: [MCPeerID])
+    func send(data: Data, to peerIDs: [MCPeerID])
 }
 
 extension PeerConnection {

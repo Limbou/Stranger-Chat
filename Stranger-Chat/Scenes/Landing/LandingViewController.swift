@@ -35,11 +35,11 @@ final class LandingViewController: UIViewController {
     private func setupButtonsActions() {
         loginButton.rx.tap
             .throttle(1.0, scheduler: MainScheduler.instance)
-            .bind(to: interactor.loginButtonObserver)
+            .bind(to: interactor.loginPressed)
             .disposed(by: bag)
         offlineModeButton.rx.tap
             .throttle(1.0, scheduler: MainScheduler.instance)
-            .bind(to: interactor.offlineModeButtonObserver)
+            .bind(to: interactor.offlineModePressed)
             .disposed(by: bag)
     }
 

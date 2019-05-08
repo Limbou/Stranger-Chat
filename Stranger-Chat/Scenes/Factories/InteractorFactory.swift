@@ -10,12 +10,15 @@ import Foundation
 
 final class InteractorFactory {
 
+    let workerFactory = WorkerFactory()
+
     func getLandingInteractor(router: LandingRouter) -> LandingInteractor {
         return LandingInteractorImpl(router: router)
     }
 
-    func getRegisterInteractor(presenter: OfflineModeLoginPresenter, router: OfflineModeLoginRouter) -> OfflineModeLoginInteractor {
-        return OfflineModeLoginInteractorImpl(presenter: presenter, router: router)
+    func getOfflineModeLoginInteractor(presenter: OfflineModeLoginPresenter, router: OfflineModeLoginRouter) -> OfflineModeLoginInteractor {
+        let worker = workerFactory.getOfflineModeLoginWorker()
+        return OfflineModeLoginInteractorImpl(presenter: presenter, router: router, worker: worker)
     }
 
 }

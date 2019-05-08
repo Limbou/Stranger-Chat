@@ -10,28 +10,27 @@ import UIKit
 import RxSwift
 
 protocol OfflineModeLoginInteractor: AnyObject {
-    var offlineModeLoginButtonObserver: AnyObserver<String?> { get }
+    var offlineModeLoginButtonObserver: PublishSubject<String?> { get }
 }
 
 final class OfflineModeLoginInteractorImpl: OfflineModeLoginInteractor {
 
     private let presenter: OfflineModeLoginPresenter
     private let router: OfflineModeLoginRouter
-    
-    private let bag = DisposeBag()
-    private let offlineModeLoginSubject = PublishSubject<String?>()
-    var offlineModeLoginButtonObserver: AnyObserver<String?> {
-        return offlineModeLoginSubject.asObserver()
-    }
+    private let worker: OfflineModeLoginWorker
 
-    init(presenter: OfflineModeLoginPresenter, router: OfflineModeLoginRouter) {
+    private let bag = DisposeBag()
+    let offlineModeLoginButtonObserver = PublishSubject<String?>()
+
+    init(presenter: OfflineModeLoginPresenter, router: OfflineModeLoginRouter, worker: OfflineModeLoginWorker) {
         self.presenter = presenter
         self.router = router
+        self.worker = worker
         setupBindings()
     }
 
     private func setupBindings() {
-        offlineModeLoginSubject.subscribe { email in
+        offlineModeLoginButtonObserver.subscribe { email in
             print(email)
         }.disposed(by: bag)
     }

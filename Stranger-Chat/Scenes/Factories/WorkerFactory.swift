@@ -13,8 +13,8 @@ final class WorkerFactory {
     let networkingFactory = NetworkingFactory()
     let serializerFactory = SerializerFactory()
 
-    func getRegisterWorker() -> OfflineModeLoginWorker {
-        let serializer = serializerFactory.getRegisterSerializer()
+    func getOfflineModeLoginWorker() -> OfflineModeLoginWorker {
+        let serializer = serializerFactory.getOfflineLoginModeSerializer()
         return OfflineModeLoginWorkerImpl(serializer: serializer)
     }
 
