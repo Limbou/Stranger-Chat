@@ -33,7 +33,7 @@ final class OfflineModeLoginViewController: UIViewController {
 
     private func setupBindings() {
         offlineModeLoginButton.rx.tap
-            .throttle(1.0, latest: false, scheduler: MainScheduler.instance)
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .withLatestFrom(nameField.rx.text)
             .bind(to: interactor.offlineModeLoginButtonObserver)
             .disposed(by: bag)

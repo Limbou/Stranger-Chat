@@ -6,13 +6,13 @@ inhibit_all_warnings!
  end
 
  def rx_pods
-    pod 'RxCocoa', '~> 4.4.0'
-    pod 'RxSwift', '~> 4.4.0'
+    pod 'RxCocoa', '~> 5'
+    pod 'RxSwift', '~> 5'
  end
 
  def test_pods
-   pod 'Nimble', '~> 7.3.1'
-   pod 'Quick', '~> 1.3.2'
+   pod 'Nimble', '~> 7.3.4'
+   pod 'Quick', '~> 1.3.4'
  end
 
  def other_pods

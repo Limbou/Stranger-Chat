@@ -54,13 +54,6 @@
 			remoteGlobalIDString = D3CAAB8521A2083700B9149C;
 			remoteInfo = "Stranger-Chat";
 		};
-		D3CAABA621A2083B00B9149C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D3CAAB7E21A2083700B9149C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D3CAAB8521A2083700B9149C;
-			remoteInfo = "Stranger-Chat";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -87,7 +80,6 @@
 		D3CAAB9521A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3CAAB9A21A2083B00B9149C /* Stranger-ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CAABA021A2083B00B9149C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CAABCF21A2DCA400B9149C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Stranger-Chat/GoogleService/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D3CAABD621A34C8900B9149C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D3CAABD821A355D900B9149C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -129,13 +121,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				960AB30F727C4DC070023546 /* Pods_Stranger_ChatTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3CAABA221A2083B00B9149C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +183,6 @@
 			children = (
 				D3CAAB8621A2083700B9149C /* Stranger-Chat.app */,
 				D3CAAB9A21A2083B00B9149C /* Stranger-ChatTests.xctest */,
-				D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -390,24 +374,6 @@
 			productReference = D3CAAB9A21A2083B00B9149C /* Stranger-ChatTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D3CAABA421A2083B00B9149C /* Stranger-ChatUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D3CAABB421A2083C00B9149C /* Build configuration list for PBXNativeTarget "Stranger-ChatUITests" */;
-			buildPhases = (
-				D3CAABA121A2083B00B9149C /* Sources */,
-				D3CAABA221A2083B00B9149C /* Frameworks */,
-				D3CAABA321A2083B00B9149C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D3CAABA721A2083B00B9149C /* PBXTargetDependency */,
-			);
-			name = "Stranger-ChatUITests";
-			productName = "Stranger-ChatUITests";
-			productReference = D3CAABA521A2083B00B9149C /* Stranger-ChatUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -420,13 +386,11 @@
 				TargetAttributes = {
 					D3CAAB8521A2083700B9149C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					D3CAAB9921A2083B00B9149C = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = D3CAAB8521A2083700B9149C;
-					};
-					D3CAABA421A2083B00B9149C = {
-						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = D3CAAB8521A2083700B9149C;
 					};
 				};
@@ -447,7 +411,6 @@
 			targets = (
 				D3CAAB8521A2083700B9149C /* Stranger-Chat */,
 				D3CAAB9921A2083B00B9149C /* Stranger-ChatTests */,
-				D3CAABA421A2083B00B9149C /* Stranger-ChatUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -467,13 +430,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D3CAAB9821A2083B00B9149C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D3CAABA321A2083B00B9149C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -538,8 +494,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -549,8 +505,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -646,13 +602,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D3CAABA121A2083B00B9149C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -660,11 +609,6 @@
 			isa = PBXTargetDependency;
 			target = D3CAAB8521A2083700B9149C /* Stranger-Chat */;
 			targetProxy = D3CAAB9B21A2083B00B9149C /* PBXContainerItemProxy */;
-		};
-		D3CAABA721A2083B00B9149C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D3CAAB8521A2083700B9149C /* Stranger-Chat */;
-			targetProxy = D3CAABA621A2083B00B9149C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -823,7 +767,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "danielczyk.Stranger-Chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -843,7 +787,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "danielczyk.Stranger-Chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -864,7 +808,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "danielczyk.Stranger-ChatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stranger-Chat.app/Stranger-Chat";
 			};
@@ -886,49 +830,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "danielczyk.Stranger-ChatTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Stranger-Chat.app/Stranger-Chat";
-			};
-			name = Release;
-		};
-		D3CAABB521A2083C00B9149C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G34D5LLHQD;
-				INFOPLIST_FILE = "Stranger-ChatUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "danielczyk.Stranger-ChatUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Stranger-Chat";
-			};
-			name = Debug;
-		};
-		D3CAABB621A2083C00B9149C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G34D5LLHQD;
-				INFOPLIST_FILE = "Stranger-ChatUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "danielczyk.Stranger-ChatUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Stranger-Chat";
 			};
 			name = Release;
 		};
@@ -958,15 +862,6 @@
 			buildConfigurations = (
 				D3CAABB221A2083C00B9149C /* Debug */,
 				D3CAABB321A2083C00B9149C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D3CAABB421A2083C00B9149C /* Build configuration list for PBXNativeTarget "Stranger-ChatUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D3CAABB521A2083C00B9149C /* Debug */,
-				D3CAABB621A2083C00B9149C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

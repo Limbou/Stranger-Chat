@@ -27,6 +27,8 @@ final class MCSessionAdapter: NSObject, MCSessionDelegate {
             self.delegate?.peerConnected(peerID: peerID)
         case .notConnected:
             self.delegate?.peerDisconnected(peerID: peerID)
+        default:
+            break
         }
     }
 
