@@ -11,6 +11,10 @@ import RxSwift
 import RxCocoa
 import MultipeerConnectivity
 
+private enum Constants {
+    static let title = "landing.title"
+}
+
 final class LandingViewController: UIViewController {
 
     private let bag = DisposeBag()
@@ -35,6 +39,7 @@ final class LandingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = Constants.title.localized()
         setupButtonsActions()
 
         // 1

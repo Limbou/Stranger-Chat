@@ -25,7 +25,7 @@ final class LandingRouterImpl: LandingRouter {
     }
 
     func showRegisterScene() {
-        let registerViewController = UIViewController()
+        let registerViewController = Provider.get.instanceOf(RegisterViewController.self)
         push(viewController: registerViewController)
     }
 

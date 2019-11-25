@@ -1,4 +1,3 @@
-
 //
 //  LoginInteractor.swift
 //  Stranger-Chat

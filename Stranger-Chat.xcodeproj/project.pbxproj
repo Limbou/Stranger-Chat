@@ -34,6 +34,8 @@
 		D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */; };
 		D3632ACD238C5FFB0072A762 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */; };
 		D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632ACE238C60130072A762 /* RegisterViewController.xib */; };
+		D3632AD1238C61D40072A762 /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD0238C61D40072A762 /* RegisterData.swift */; };
+		D3632AD3238C74580072A762 /* Error+Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD2238C74580072A762 /* Error+Code.swift */; };
 		D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38004D1226F30DA00C01683 /* RoundButton.swift */; };
 		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
 		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
@@ -116,6 +118,8 @@
 		D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		D3632ACE238C60130072A762 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		D3632AD0238C61D40072A762 /* RegisterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
+		D3632AD2238C74580072A762 /* Error+Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Code.swift"; sourceTree = "<group>"; };
 		D38004D1226F30DA00C01683 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
 		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 				D3632AC4238C5FFB0072A762 /* RegisterPresenter.swift */,
 				D3632AC6238C5FFB0072A762 /* RegisterRouter.swift */,
 				D3632AC5238C5FFB0072A762 /* RegisterWorker.swift */,
+				D3632AD0238C61D40072A762 /* RegisterData.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -459,6 +464,7 @@
 				D3E6D58C2228209E00AF73D7 /* Optional+NilOrEmpty.swift */,
 				D3E6D5622216D60800AF73D7 /* UIControl+Localizable.swift */,
 				D3331DA92285D21100301CBA /* String+isValidName.swift */,
+				D3632AD2238C74580072A762 /* Error+Code.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -781,10 +787,12 @@
 				D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */,
 				D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */,
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
+				D3632AD3238C74580072A762 /* Error+Code.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3615AF422AF8EAE0021B346 /* AlertBuilder.swift in Sources */,
 				D3632AB5238C4B5D0072A762 /* LoginWorker.swift in Sources */,
 				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
+				D3632AD1238C61D40072A762 /* RegisterData.swift in Sources */,
 				D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */,
 				D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */,
 				D348D12A238716640012D43C /* Provider.swift in Sources */,

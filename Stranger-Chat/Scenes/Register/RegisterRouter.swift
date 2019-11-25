@@ -12,10 +12,15 @@ import UIKit
 
 protocol RegisterRouter: AnyObject {
     var viewController: UIViewController? { get set }
+    func goToMainScreen()
 }
 
 final class RegisterRouterImpl: RegisterRouter {
 
     weak var viewController: UIViewController?
+
+    func goToMainScreen() {
+
+    }
 
 }

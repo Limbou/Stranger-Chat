@@ -29,6 +29,16 @@ final class ScreenAssembly: Assembly {
             router.viewController = resolver ~> LoginViewController.self
         }
 
+        container.autoregister(RegisterViewController.self, initializer: RegisterViewController.init(interactor:))
+        container.autoregister(RegisterInteractor.self, initializer: RegisterInteractorImpl.init(presenter:router:worker:))
+        container.autoregister(RegisterPresenter.self, initializer: RegisterPresenterImpl.init).initCompleted { (resolver, presenter) in
+            presenter.viewController = resolver ~> RegisterViewController.self
+        }
+        container.autoregister(RegisterWorker.self, initializer: RegisterWorkerImpl.init(usersRepository:))
+        container.autoregister(RegisterRouter.self, initializer: RegisterRouterImpl.init).initCompleted { (resolver, router) in
+            router.viewController = resolver ~> RegisterViewController.self
+        }
+
         container.autoregister(OfflineModeLoginViewController.self, initializer: OfflineModeLoginViewController.init(interactor:))
         container.autoregister(OfflineModeLoginInteractor.self, initializer: OfflineModeLoginInteractorImpl.init(presenter:router:worker:))
         container.autoregister(OfflineModeLoginPresenter.self, initializer: OfflineModeLoginPresenterImpl.init).initCompleted { (resolver, presenter) in

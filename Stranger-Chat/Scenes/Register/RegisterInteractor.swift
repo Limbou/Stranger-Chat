@@ -13,9 +13,8 @@ import RxSwift
 import RxSwiftExt
 
 protocol RegisterInteractor: AnyObject {
-
+    var registerObserver: PublishSubject<RegisterData> { get }
 }
-
 
 final class RegisterInteractorImpl: RegisterInteractor {
 
@@ -23,6 +22,8 @@ final class RegisterInteractorImpl: RegisterInteractor {
     private let router: RegisterRouter
     private let worker: RegisterWorker
     private let bag = DisposeBag()
+
+    let registerObserver = PublishSubject<RegisterData>()
 
     init(presenter: RegisterPresenter, router: RegisterRouter, worker: RegisterWorker) {
         self.presenter = presenter
@@ -32,7 +33,20 @@ final class RegisterInteractorImpl: RegisterInteractor {
     }
 
     private func setupBindings() {
+        registerObserver
+            .subscribe(onNext: { data in
+                self.register(with: data)
+            }).disposed(by: bag)
+    }
 
+    private func register(with data: RegisterData) {
+        worker.register(with: data).subscribe(onNext: { success in
+            if success {
+                self.router.goToMainScreen()
+            }
+        }, onError: { error in
+            self.presenter.show(error: error)
+        }).disposed(by: bag)
     }
 
 }

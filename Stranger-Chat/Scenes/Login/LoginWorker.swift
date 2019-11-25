@@ -23,9 +23,7 @@ final class LoginWorkerImpl: LoginWorker {
 
     func login(with data: LoginData) -> Observable<Bool> {
         return usersRepository.login(with: data.email, password: data.password)
-            .map { user in
-            return user != nil
-        }
+            .map { $0 != nil }
     }
 
 }

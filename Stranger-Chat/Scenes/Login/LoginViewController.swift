@@ -13,6 +13,7 @@ import RxCocoa
 private enum Constants {
     static let errorTitle = "login.error.title"
     static let errorMessage = "login.error.message"
+    static let title = "login.title"
 }
 
 final class LoginViewController: UIViewController {
@@ -35,18 +36,16 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = Constants.title.localized()
         setupBindings()
     }
 
     private func setupBindings() {
         loginButton.rx.tap
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
-            .map({ _  in
-                return LoginData(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
-            })
+            .map({ LoginData(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") })
             .bind(to: interactor.loginObserver)
             .disposed(by: bag)
-    
     }
 
 }

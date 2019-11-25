@@ -11,15 +11,19 @@
 import Foundation
 
 protocol RegisterDisplayable: AnyObject {
-
+    func show(error: String)
 }
 
 protocol RegisterPresenter: AnyObject {
     var viewController: RegisterDisplayable? { get set }
+    func show(error: Error)
 }
 
 final class RegisterPresenterImpl: RegisterPresenter {
 
     weak var viewController: RegisterDisplayable?
 
+    func show(error: Error) {
+        viewController?.show(error: error.localizedDescription)
+    }
 }

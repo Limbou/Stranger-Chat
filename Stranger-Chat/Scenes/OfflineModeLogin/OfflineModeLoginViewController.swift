@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 private enum Constants {
+    static let title = "offlineModeLogin.title"
     static let alertTitle = "offlineModeLogin.alert.title"
     static let alertMessage = "offlineModeLogin.alert.message"
 }
@@ -33,6 +34,7 @@ final class OfflineModeLoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = Constants.title.localized()
         setupBindings()
     }
 
