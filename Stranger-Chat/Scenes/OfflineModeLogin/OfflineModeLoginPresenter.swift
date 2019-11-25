@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol OfflineModeLoginDisplayable: AnyObject {
-
+    func showWrongNameAlert()
 }
 
 protocol OfflineModeLoginPresenter: AnyObject {
     var viewController: OfflineModeLoginDisplayable? { get set }
+    func showWrongNameAlert()
 }
 
 final class OfflineModeLoginPresenterImpl: OfflineModeLoginPresenter {
 
     weak var viewController: OfflineModeLoginDisplayable?
 
+    func showWrongNameAlert() {
+        viewController?.showWrongNameAlert()
+    }
 }

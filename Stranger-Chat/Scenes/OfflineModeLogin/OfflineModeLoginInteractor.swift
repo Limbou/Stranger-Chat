@@ -8,9 +8,10 @@
 
 import UIKit
 import RxSwift
+import RxSwiftExt
 
 protocol OfflineModeLoginInteractor: AnyObject {
-    var offlineModeLoginButtonObserver: PublishSubject<String?> { get }
+    var offlineModeLoginObserver: PublishSubject<String?> { get }
 }
 
 final class OfflineModeLoginInteractorImpl: OfflineModeLoginInteractor {
@@ -20,7 +21,7 @@ final class OfflineModeLoginInteractorImpl: OfflineModeLoginInteractor {
     private let worker: OfflineModeLoginWorker
 
     private let bag = DisposeBag()
-    let offlineModeLoginButtonObserver = PublishSubject<String?>()
+    let offlineModeLoginObserver = PublishSubject<String?>()
 
     init(presenter: OfflineModeLoginPresenter, router: OfflineModeLoginRouter, worker: OfflineModeLoginWorker) {
         self.presenter = presenter
@@ -30,9 +31,26 @@ final class OfflineModeLoginInteractorImpl: OfflineModeLoginInteractor {
     }
 
     private func setupBindings() {
-        offlineModeLoginButtonObserver.subscribe { email in
-            print(email)
-        }.disposed(by: bag)
+        offlineModeLoginObserver
+            .unwrap()
+            .filter { name in name.isValidName()}
+            .subscribe(onNext: { name in
+                self.login(name: name)
+            })
+            .disposed(by: bag)
+
+        offlineModeLoginObserver
+            .filter { name in !(name?.isValidName() ?? true) }
+            .map { _ in }
+            .subscribe(onNext: { _ in
+                self.presenter.showWrongNameAlert()
+            })
+            .disposed(by: bag)
+    }
+
+    private func login(name: String) {
+        worker.saveUser(name: name)
+        router.showMainScreen()
     }
 
 }

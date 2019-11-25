@@ -1,0 +1,63 @@
+//
+//  LoginViewController.swift
+//  Stranger-Chat
+//
+//  Created by Jakub Danielczyk on 25/11/2019.
+//  Copyright © 2019 Jakub Danielczyk. All rights reserved.
+//
+
+import UIKit
+import RxSwift
+import RxCocoa
+
+private enum Constants {
+    static let errorTitle = "login.error.title"
+    static let errorMessage = "login.error.message"
+}
+
+final class LoginViewController: UIViewController {
+
+    private let interactor: LoginInteractor
+    private let bag = DisposeBag()
+
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var loginButton: RoundButton!
+
+    init(interactor: LoginInteractor) {
+        self.interactor = interactor
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupBindings()
+    }
+
+    private func setupBindings() {
+        loginButton.rx.tap
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .map({ _  in
+                return LoginData(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "")
+            })
+            .bind(to: interactor.loginObserver)
+            .disposed(by: bag)
+    
+    }
+
+}
+
+extension LoginViewController: LoginDisplayable {
+
+    func showWrongCredentialsError() {
+        let alert = AlertBuilder.shared.buildOkAlert(with: Constants.errorTitle.localized(),
+                                                     message: Constants.errorMessage.localized(),
+                                                     buttonPressHandler: nil)
+        present(alert, animated: true, completion: nil)
+    }
+
+}

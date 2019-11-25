@@ -1,8 +1,8 @@
 //
-//  RegisterWorker.swift
+//  OfflineModeLoginWorker.swift
 //  Stranger-Chat
 //
-//  Created by Jakub Danielczyk on 28/02/2019.
+//  Created by Jakub Danielczyk on 25/11/2019.
 //  Copyright © 2019 Jakub Danielczyk. All rights reserved.
 //
 
@@ -10,17 +10,19 @@ import UIKit
 import RxSwift
 
 protocol OfflineModeLoginWorker: AnyObject {
-    var nicknameValidationObserver: PublishSubject<String?> { get }
+    func saveUser(name: String)
 }
 
 final class OfflineModeLoginWorkerImpl: OfflineModeLoginWorker {
 
-    private let serializer: OfflineModeLoginSerializer
+    private let localUserRepository: LocalUserRepository
 
-    let nicknameValidationObserver = PublishSubject<String?>()
+    init(localUserRepository: LocalUserRepository) {
+        self.localUserRepository = localUserRepository
+    }
 
-    init(serializer: OfflineModeLoginSerializer) {
-        self.serializer = serializer
+    func saveUser(name: String) {
+        localUserRepository.saveUser(name: name)
     }
 
 }

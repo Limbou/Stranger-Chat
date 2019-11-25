@@ -1,5 +1,6 @@
 excluded:
   - Pods
+  - "Stranger-Chat/Services/Realm/RealmManager.swift"
 line_length: 150
 disabled_rules:
   - nesting

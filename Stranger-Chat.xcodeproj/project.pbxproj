@@ -8,10 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		960AB30F727C4DC070023546 /* Pods_Stranger_ChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BEEFFE643688F4A05751E6D /* Pods_Stranger_ChatTests.framework */; };
-		D32B2888223A8AE500F25FC2 /* OfflineModeLoginSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2887223A8AE500F25FC2 /* OfflineModeLoginSerializer.swift */; };
-		D32B288C223A8BEF00F25FC2 /* SerializerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B288B223A8BEF00F25FC2 /* SerializerFactory.swift */; };
-		D32B288F223A8C9800F25FC2 /* WorkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B288E223A8C9800F25FC2 /* WorkerFactory.swift */; };
-		D32B2891223A8D8D00F25FC2 /* NetworkingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32B2890223A8D8D00F25FC2 /* NetworkingFactory.swift */; };
+		D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3331DA92285D21100301CBA /* String+isValidName.swift */; };
+		D348D12A238716640012D43C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D129238716640012D43C /* Provider.swift */; };
+		D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12B2387168D0012D43C /* ScreenAssembly.swift */; };
+		D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12D238716C10012D43C /* RepositoryAssembly.swift */; };
+		D348D130238719950012D43C /* ServicesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12F238719950012D43C /* ServicesAssembly.swift */; };
+		D348D134238721AF0012D43C /* FirebaseUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D133238721AF0012D43C /* FirebaseUsersRepository.swift */; };
+		D348D13723872C700012D43C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D13623872C700012D43C /* RealmManager.swift */; };
+		D348D13A23872EFF0012D43C /* AppUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D13923872EFF0012D43C /* AppUserModel.swift */; };
+		D348D13D23872F330012D43C /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D13C23872F330012D43C /* AppUser.swift */; };
+		D361596E22A544400021B346 /* LoginUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D361596B22A544300021B346 /* LoginUITests.swift */; };
+		D3615AF422AF8EAE0021B346 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3615AF322AF8EAE0021B346 /* AlertBuilder.swift */; };
+		D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AA3238C3B340072A762 /* OfflineModeLoginWorker.swift */; };
+		D3632AA7238C3EEF0072A762 /* LocalUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AA6238C3EEF0072A762 /* LocalUserRepository.swift */; };
+		D3632AAC238C4B340072A762 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AAA238C4B340072A762 /* LoginViewController.swift */; };
+		D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632AAB238C4B340072A762 /* LoginViewController.xib */; };
+		D3632AAF238C4B440072A762 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AAE238C4B440072A762 /* LoginInteractor.swift */; };
+		D3632AB1238C4B4D0072A762 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AB0238C4B4D0072A762 /* LoginPresenter.swift */; };
+		D3632AB3238C4B540072A762 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AB2238C4B540072A762 /* LoginRouter.swift */; };
+		D3632AB5238C4B5D0072A762 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AB4238C4B5D0072A762 /* LoginWorker.swift */; };
+		D3632AC3238C504B0072A762 /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC2238C504B0072A762 /* LoginData.swift */; };
+		D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC4238C5FFB0072A762 /* RegisterPresenter.swift */; };
+		D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC5238C5FFB0072A762 /* RegisterWorker.swift */; };
+		D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC6238C5FFB0072A762 /* RegisterRouter.swift */; };
+		D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */; };
+		D3632ACD238C5FFB0072A762 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */; };
+		D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632ACE238C60130072A762 /* RegisterViewController.xib */; };
 		D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38004D1226F30DA00C01683 /* RoundButton.swift */; };
 		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
 		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
@@ -24,8 +46,6 @@
 		D3CAABD721A34C8900B9149C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD621A34C8900B9149C /* Router.swift */; };
 		D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD821A355D900B9149C /* LandingViewController.swift */; };
 		D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABDC21A3560100B9149C /* LandingRouter.swift */; };
-		D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */; };
-		D3CAABED21A48D9B00B9149C /* RouterSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */; };
 		D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABFF21A5DE0F00B9149C /* Localizable.strings */; };
 		D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */; };
 		D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D55B2216CA7100AF73D7 /* OfflineModeLoginViewController.swift */; };
@@ -35,10 +55,6 @@
 		D3E6D5672216D94100AF73D7 /* OfflineModeLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5662216D94100AF73D7 /* OfflineModeLoginInteractor.swift */; };
 		D3E6D5692216D94A00AF73D7 /* OfflineModeLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5682216D94A00AF73D7 /* OfflineModeLoginPresenter.swift */; };
 		D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D56A2216D96C00AF73D7 /* OfflineModeLoginRouter.swift */; };
-		D3E6D5702216E89A00AF73D7 /* InteractorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */; };
-		D3E6D5722216E8A300AF73D7 /* PresenterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */; };
-		D3E6D5742216E8B600AF73D7 /* RouterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */; };
-		D3E6D58422281BD800AF73D7 /* OfflineModeLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58322281BD700AF73D7 /* OfflineModeLoginWorker.swift */; };
 		D3E6D58722281D5D00AF73D7 /* RegisterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58622281D5D00AF73D7 /* RegisterValidator.swift */; };
 		D3E6D58A22281F2400AF73D7 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58922281F2400AF73D7 /* ValidationError.swift */; };
 		D3E6D58D2228209F00AF73D7 /* Optional+NilOrEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58C2228209E00AF73D7 /* Optional+NilOrEmpty.swift */; };
@@ -47,6 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D361596622A544180021B346 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3CAAB7E21A2083700B9149C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3CAAB8521A2083700B9149C;
+			remoteInfo = "Stranger-Chat";
+		};
 		D3CAAB9B21A2083B00B9149C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D3CAAB7E21A2083700B9149C /* Project object */;
@@ -64,10 +87,35 @@
 		96B9FC2CD652D695ABFB7ADB /* Pods-Stranger-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stranger-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat.release.xcconfig"; sourceTree = "<group>"; };
 		9BCEF05A18C9AB33A5302B59 /* Pods-Stranger-ChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stranger-ChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stranger-ChatTests/Pods-Stranger-ChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		A594BC1B4CE144C08DF6A978 /* Pods_Stranger_ChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stranger_ChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D32B2887223A8AE500F25FC2 /* OfflineModeLoginSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginSerializer.swift; sourceTree = "<group>"; };
-		D32B288B223A8BEF00F25FC2 /* SerializerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializerFactory.swift; sourceTree = "<group>"; };
-		D32B288E223A8C9800F25FC2 /* WorkerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerFactory.swift; sourceTree = "<group>"; };
-		D32B2890223A8D8D00F25FC2 /* NetworkingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingFactory.swift; sourceTree = "<group>"; };
+		D3331DA92285D21100301CBA /* String+isValidName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidName.swift"; sourceTree = "<group>"; };
+		D348D129238716640012D43C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		D348D12B2387168D0012D43C /* ScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAssembly.swift; sourceTree = "<group>"; };
+		D348D12D238716C10012D43C /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
+		D348D12F238719950012D43C /* ServicesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesAssembly.swift; sourceTree = "<group>"; };
+		D348D133238721AF0012D43C /* FirebaseUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUsersRepository.swift; sourceTree = "<group>"; };
+		D348D13623872C700012D43C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		D348D13923872EFF0012D43C /* AppUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserModel.swift; sourceTree = "<group>"; };
+		D348D13C23872F330012D43C /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		D361595C22A543B40021B346 /* Stranger-ChatTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Stranger-ChatTests copy-Info.plist"; path = "/Users/jakubdanielczyk/Dev/Stranger-Chat/Stranger-ChatTests copy-Info.plist"; sourceTree = "<absolute>"; };
+		D361596122A544180021B346 /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D361596522A544180021B346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D361596B22A544300021B346 /* LoginUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUITests.swift; sourceTree = "<group>"; };
+		D3615AF322AF8EAE0021B346 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		D3632AA3238C3B340072A762 /* OfflineModeLoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginWorker.swift; sourceTree = "<group>"; };
+		D3632AA6238C3EEF0072A762 /* LocalUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserRepository.swift; sourceTree = "<group>"; };
+		D3632AAA238C4B340072A762 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D3632AAB238C4B340072A762 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		D3632AAE238C4B440072A762 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		D3632AB0238C4B4D0072A762 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		D3632AB2238C4B540072A762 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		D3632AB4238C4B5D0072A762 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		D3632AC2238C504B0072A762 /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		D3632AC4238C5FFB0072A762 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		D3632AC5238C5FFB0072A762 /* RegisterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWorker.swift; sourceTree = "<group>"; };
+		D3632AC6238C5FFB0072A762 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		D3632ACE238C60130072A762 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		D38004D1226F30DA00C01683 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
 		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
@@ -84,8 +132,6 @@
 		D3CAABD621A34C8900B9149C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D3CAABD821A355D900B9149C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		D3CAABDC21A3560100B9149C /* LandingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingRouter.swift; sourceTree = "<group>"; };
-		D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
-		D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSpec.swift; sourceTree = "<group>"; };
 		D3CAABFE21A5DE0F00B9149C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingInteractor.swift; sourceTree = "<group>"; };
 		D3E6D55B2216CA7100AF73D7 /* OfflineModeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginViewController.swift; sourceTree = "<group>"; };
@@ -97,10 +143,6 @@
 		D3E6D5662216D94100AF73D7 /* OfflineModeLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginInteractor.swift; sourceTree = "<group>"; };
 		D3E6D5682216D94A00AF73D7 /* OfflineModeLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginPresenter.swift; sourceTree = "<group>"; };
 		D3E6D56A2216D96C00AF73D7 /* OfflineModeLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginRouter.swift; sourceTree = "<group>"; };
-		D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorFactory.swift; sourceTree = "<group>"; };
-		D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterFactory.swift; sourceTree = "<group>"; };
-		D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterFactory.swift; sourceTree = "<group>"; };
-		D3E6D58322281BD700AF73D7 /* OfflineModeLoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginWorker.swift; sourceTree = "<group>"; };
 		D3E6D58622281D5D00AF73D7 /* RegisterValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidator.swift; sourceTree = "<group>"; };
 		D3E6D58922281F2400AF73D7 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		D3E6D58C2228209E00AF73D7 /* Optional+NilOrEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Optional+NilOrEmpty.swift"; path = "/Users/jakubdanielczyk/Dev/Stranger-Chat/Stranger-Chat/Extensions/Optional+NilOrEmpty.swift"; sourceTree = "<absolute>"; };
@@ -108,6 +150,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D361595E22A544180021B346 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3CAAB8321A2083700B9149C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,12 +197,110 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D348D13123871C140012D43C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AA5238C3EDC0072A762 /* Repository */,
+				D348D13523872C620012D43C /* Realm */,
+				D348D13223871C1F0012D43C /* Firebase */,
+				D3B6B89A2264B1B300B7CC14 /* MultipeerConnectivity */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D348D13223871C1F0012D43C /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				D348D133238721AF0012D43C /* FirebaseUsersRepository.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		D348D13523872C620012D43C /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				D348D13623872C700012D43C /* RealmManager.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		D348D13823872EEE0012D43C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D348D13923872EFF0012D43C /* AppUserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D348D13B23872F250012D43C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D348D13C23872F330012D43C /* AppUser.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		D361596222A544180021B346 /* Stranger-ChatUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D361596B22A544300021B346 /* LoginUITests.swift */,
+				D361596522A544180021B346 /* Info.plist */,
+			);
+			path = "Stranger-ChatUITests";
+			sourceTree = "<group>";
+		};
+		D3632AA5238C3EDC0072A762 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AA6238C3EEF0072A762 /* LocalUserRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D3632AA8238C4B080072A762 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AAA238C4B340072A762 /* LoginViewController.swift */,
+				D3632AAB238C4B340072A762 /* LoginViewController.xib */,
+				D3632AAE238C4B440072A762 /* LoginInteractor.swift */,
+				D3632AB0238C4B4D0072A762 /* LoginPresenter.swift */,
+				D3632AB2238C4B540072A762 /* LoginRouter.swift */,
+				D3632AB4238C4B5D0072A762 /* LoginWorker.swift */,
+				D3632AC2238C504B0072A762 /* LoginData.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D3632AA9238C4B0D0072A762 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */,
+				D3632ACE238C60130072A762 /* RegisterViewController.xib */,
+				D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */,
+				D3632AC4238C5FFB0072A762 /* RegisterPresenter.swift */,
+				D3632AC6238C5FFB0072A762 /* RegisterRouter.swift */,
+				D3632AC5238C5FFB0072A762 /* RegisterWorker.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		D38004D0226F30BD00C01683 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				D38004D1226F30DA00C01683 /* RoundButton.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		D39529C1238715E10039F671 /* Injection */ = {
+			isa = PBXGroup;
+			children = (
+				D348D129238716640012D43C /* Provider.swift */,
+				D348D12B2387168D0012D43C /* ScreenAssembly.swift */,
+				D348D12D238716C10012D43C /* RepositoryAssembly.swift */,
+				D348D12F238719950012D43C /* ServicesAssembly.swift */,
+			);
+			path = Injection;
 			sourceTree = "<group>";
 		};
 		D3B6B89A2264B1B300B7CC14 /* MultipeerConnectivity */ = {
@@ -172,9 +319,11 @@
 			children = (
 				D3CAAB8821A2083700B9149C /* Stranger-Chat */,
 				D3CAAB9D21A2083B00B9149C /* Stranger-ChatTests */,
+				D361596222A544180021B346 /* Stranger-ChatUITests */,
 				D3CAAB8721A2083700B9149C /* Products */,
 				7A4D3047CC991EBC6303170D /* Pods */,
 				6981C91022EA75AEB3A6CE53 /* Frameworks */,
+				D361595C22A543B40021B346 /* Stranger-ChatTests copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -183,6 +332,7 @@
 			children = (
 				D3CAAB8621A2083700B9149C /* Stranger-Chat.app */,
 				D3CAAB9A21A2083B00B9149C /* Stranger-ChatTests.xctest */,
+				D361596122A544180021B346 /* Stranger-ChatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,7 +340,10 @@
 		D3CAAB8821A2083700B9149C /* Stranger-Chat */ = {
 			isa = PBXGroup;
 			children = (
-				D3B6B89A2264B1B300B7CC14 /* MultipeerConnectivity */,
+				D39529C1238715E10039F671 /* Injection */,
+				D348D13123871C140012D43C /* Services */,
+				D348D13823872EEE0012D43C /* Models */,
+				D348D13B23872F250012D43C /* Entities */,
 				D3CAABD421A34C6100B9149C /* Base */,
 				D3CAABD321A34C2D00B9149C /* Scenes */,
 				D38004D0226F30BD00C01683 /* CustomViews */,
@@ -210,7 +363,6 @@
 		D3CAAB9D21A2083B00B9149C /* Stranger-ChatTests */ = {
 			isa = PBXGroup;
 			children = (
-				D3CAABF921A5D52800B9149C /* Router */,
 				D3CAABF721A5D4FA00B9149C /* Landing */,
 				D3CAABA021A2083B00B9149C /* Info.plist */,
 			);
@@ -228,8 +380,9 @@
 		D3CAABD321A34C2D00B9149C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D3CAABE621A3616C00B9149C /* Factories */,
 				D3CAABD521A34C6500B9149C /* Landing */,
+				D3632AA8238C4B080072A762 /* Login */,
+				D3632AA9238C4B0D0072A762 /* Register */,
 				D3E6D5522216C97D00AF73D7 /* OfflineModeLogin */,
 			);
 			path = Scenes;
@@ -254,34 +407,12 @@
 			path = Landing;
 			sourceTree = "<group>";
 		};
-		D3CAABE621A3616C00B9149C /* Factories */ = {
-			isa = PBXGroup;
-			children = (
-				D3CAABE821A3618400B9149C /* ViewControllerFactory.swift */,
-				D3E6D56F2216E89A00AF73D7 /* InteractorFactory.swift */,
-				D3E6D5712216E8A200AF73D7 /* PresenterFactory.swift */,
-				D3E6D5732216E8B600AF73D7 /* RouterFactory.swift */,
-				D32B288E223A8C9800F25FC2 /* WorkerFactory.swift */,
-				D32B2890223A8D8D00F25FC2 /* NetworkingFactory.swift */,
-				D32B288B223A8BEF00F25FC2 /* SerializerFactory.swift */,
-			);
-			path = Factories;
-			sourceTree = "<group>";
-		};
 		D3CAABF721A5D4FA00B9149C /* Landing */ = {
 			isa = PBXGroup;
 			children = (
 				D3E6D58E222820B400AF73D7 /* LandingInteractor.swift */,
 			);
 			path = Landing;
-			sourceTree = "<group>";
-		};
-		D3CAABF921A5D52800B9149C /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				D3CAABEC21A48D9B00B9149C /* RouterSpec.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		D3E6D5522216C97D00AF73D7 /* OfflineModeLogin */ = {
@@ -292,8 +423,7 @@
 				D3E6D5662216D94100AF73D7 /* OfflineModeLoginInteractor.swift */,
 				D3E6D5682216D94A00AF73D7 /* OfflineModeLoginPresenter.swift */,
 				D3E6D56A2216D96C00AF73D7 /* OfflineModeLoginRouter.swift */,
-				D3E6D58322281BD700AF73D7 /* OfflineModeLoginWorker.swift */,
-				D32B2887223A8AE500F25FC2 /* OfflineModeLoginSerializer.swift */,
+				D3632AA3238C3B340072A762 /* OfflineModeLoginWorker.swift */,
 			);
 			path = OfflineModeLogin;
 			sourceTree = "<group>";
@@ -301,6 +431,7 @@
 		D3E6D5612216D5E000AF73D7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D3615AF322AF8EAE0021B346 /* AlertBuilder.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,6 +458,7 @@
 			children = (
 				D3E6D58C2228209E00AF73D7 /* Optional+NilOrEmpty.swift */,
 				D3E6D5622216D60800AF73D7 /* UIControl+Localizable.swift */,
+				D3331DA92285D21100301CBA /* String+isValidName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +466,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D361596022A544180021B346 /* Stranger-ChatUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D361596822A544180021B346 /* Build configuration list for PBXNativeTarget "Stranger-ChatUITests" */;
+			buildPhases = (
+				D361595D22A544180021B346 /* Sources */,
+				D361595E22A544180021B346 /* Frameworks */,
+				D361595F22A544180021B346 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D361596722A544180021B346 /* PBXTargetDependency */,
+			);
+			name = "Stranger-ChatUITests";
+			productName = "Stranger-ChatUITests";
+			productReference = D361596122A544180021B346 /* Stranger-ChatUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		D3CAAB8521A2083700B9149C /* Stranger-Chat */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3CAABAE21A2083C00B9149C /* Build configuration list for PBXNativeTarget "Stranger-Chat" */;
@@ -380,10 +530,14 @@
 		D3CAAB7E21A2083700B9149C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Jakub Danielczyk";
 				TargetAttributes = {
+					D361596022A544180021B346 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = D3CAAB8521A2083700B9149C;
+					};
 					D3CAAB8521A2083700B9149C = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
@@ -411,11 +565,19 @@
 			targets = (
 				D3CAAB8521A2083700B9149C /* Stranger-Chat */,
 				D3CAAB9921A2083B00B9149C /* Stranger-ChatTests */,
+				D361596022A544180021B346 /* Stranger-ChatUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D361595F22A544180021B346 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3CAAB8421A2083700B9149C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,7 +587,9 @@
 				D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */,
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
+				D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
+				D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,22 +656,34 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwiftExt/RxSwiftExt.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/SwinjectAutoregistration/SwinjectAutoregistration.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwiftExt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwinjectAutoregistration.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,37 +735,59 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D361595D22A544180021B346 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D361596E22A544400021B346 /* LoginUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3CAAB8221A2083700B9149C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */,
+				D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */,
+				D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */,
 				D3E6D58A22281F2400AF73D7 /* ValidationError.swift in Sources */,
 				D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */,
+				D3632AAF238C4B440072A762 /* LoginInteractor.swift in Sources */,
 				D3E6D5672216D94100AF73D7 /* OfflineModeLoginInteractor.swift in Sources */,
-				D3E6D5702216E89A00AF73D7 /* InteractorFactory.swift in Sources */,
+				D3632AB3238C4B540072A762 /* LoginRouter.swift in Sources */,
+				D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */,
+				D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */,
+				D348D13723872C700012D43C /* RealmManager.swift in Sources */,
+				D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */,
+				D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */,
 				D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */,
+				D3632ACD238C5FFB0072A762 /* RegisterInteractor.swift in Sources */,
+				D3632AA7238C3EEF0072A762 /* LocalUserRepository.swift in Sources */,
+				D3632AC3238C504B0072A762 /* LoginData.swift in Sources */,
 				D3E6D58722281D5D00AF73D7 /* RegisterValidator.swift in Sources */,
-				D3CAABE921A3618400B9149C /* ViewControllerFactory.swift in Sources */,
+				D348D13D23872F330012D43C /* AppUser.swift in Sources */,
+				D348D13A23872EFF0012D43C /* AppUserModel.swift in Sources */,
+				D348D130238719950012D43C /* ServicesAssembly.swift in Sources */,
+				D3632AAC238C4B340072A762 /* LoginViewController.swift in Sources */,
+				D3632AB1238C4B4D0072A762 /* LoginPresenter.swift in Sources */,
 				D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */,
-				D32B2888223A8AE500F25FC2 /* OfflineModeLoginSerializer.swift in Sources */,
+				D348D134238721AF0012D43C /* FirebaseUsersRepository.swift in Sources */,
 				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
-				D32B2891223A8D8D00F25FC2 /* NetworkingFactory.swift in Sources */,
 				D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */,
-				D32B288F223A8C9800F25FC2 /* WorkerFactory.swift in Sources */,
 				D3E6D58D2228209F00AF73D7 /* Optional+NilOrEmpty.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */,
 				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,
 				D3E6D5692216D94A00AF73D7 /* OfflineModeLoginPresenter.swift in Sources */,
+				D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */,
+				D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */,
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
-				D3E6D58422281BD800AF73D7 /* OfflineModeLoginWorker.swift in Sources */,
+				D3615AF422AF8EAE0021B346 /* AlertBuilder.swift in Sources */,
+				D3632AB5238C4B5D0072A762 /* LoginWorker.swift in Sources */,
 				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
 				D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */,
-				D32B288C223A8BEF00F25FC2 /* SerializerFactory.swift in Sources */,
-				D3E6D5722216E8A300AF73D7 /* PresenterFactory.swift in Sources */,
 				D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */,
-				D3E6D5742216E8B600AF73D7 /* RouterFactory.swift in Sources */,
+				D348D12A238716640012D43C /* Provider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +795,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CAABED21A48D9B00B9149C /* RouterSpec.swift in Sources */,
 				D3E6D58F222820B500AF73D7 /* LandingInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -605,6 +802,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D361596722A544180021B346 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3CAAB8521A2083700B9149C /* Stranger-Chat */;
+			targetProxy = D361596622A544180021B346 /* PBXContainerItemProxy */;
+		};
 		D3CAAB9C21A2083B00B9149C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D3CAAB8521A2083700B9149C /* Stranger-Chat */;
@@ -634,6 +836,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D361596922A544180021B346 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Stranger-ChatUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ireckonu.publichotel.mobilekeys.Stranger-ChatUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Stranger-Chat";
+			};
+			name = Debug;
+		};
+		D361596A22A544180021B346 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Stranger-ChatUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ireckonu.publichotel.mobilekeys.Stranger-ChatUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Stranger-Chat";
+			};
+			name = Release;
+		};
 		D3CAABAC21A2083C00B9149C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -796,7 +1036,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B1927CEBC69B3FCEDF5BC7C /* Pods-Stranger-ChatTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G34D5LLHQD;
@@ -818,7 +1057,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9BCEF05A18C9AB33A5302B59 /* Pods-Stranger-ChatTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G34D5LLHQD;
@@ -839,6 +1077,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D361596822A544180021B346 /* Build configuration list for PBXNativeTarget "Stranger-ChatUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D361596922A544180021B346 /* Debug */,
+				D361596A22A544180021B346 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3CAAB8121A2083700B9149C /* Build configuration list for PBXProject "Stranger-Chat" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -6,9 +6,20 @@
   Copyright © 2018 Jakub Danielczyk. All rights reserved.
 */
 
+"alert.button.ok" = "Ok";
+
 "landing.loginButton.title" = "Zaloguj";
+"landing.loginButton.title" = "Zarejestruj";
 "landing.offlineModeButton.title" = "Tryb Offline";
+
+"login.email.title" = "Email";
+"login.password.title" = "Hasło";
+"login.button.title" = "Zaloguj";
+"login.error.title" = "Złe dane";
+"login.error.message" = "Sprawdź swój email oraz hasło i spróbuj ponownie.";
 
 "offlineModeLogin.name.title" = "Podaj swoją nazwę";
 "offlineModeLogin.name.placeholder" = "nazwa";
 "offlineModeLogin.button.title" = "Zaloguj";
+"offlineModeLogin.alert.title" = "Nazwa za krótka!";
+"offlineModeLogin.alert.message" = "Nazwa użytkownika powinna składać się z przynajmniej 3 znaków.";

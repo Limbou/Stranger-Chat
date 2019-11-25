@@ -9,31 +9,17 @@
 import UIKit
 import RxSwift
 
-protocol OfflineModeLoginRouter: Router {
-    var offlineModeLoginObserver: AnyObserver<Void> { get }
+protocol OfflineModeLoginRouter: AnyObject {
+    var viewController: UIViewController? { get set }
+    func showMainScreen()
 }
 
 final class OfflineModeLoginRouterImpl: OfflineModeLoginRouter {
 
-    private let bag = DisposeBag()
-    private let offlineModeLoginSubject = PublishSubject<Void>()
-    var offlineModeLoginObserver: AnyObserver<Void> {
-        return offlineModeLoginSubject.asObserver()
-    }
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
 
-    init() {
-        setupBindings()
-    }
-
-    private func setupBindings() {
-        offlineModeLoginSubject.subscribe { _ in
-            self.goToMainView()
-        }.disposed(by: bag)
-    }
-
-    private func goToMainView() {
-
+    func showMainScreen() {
+        print("Poszlo")
     }
 
 }

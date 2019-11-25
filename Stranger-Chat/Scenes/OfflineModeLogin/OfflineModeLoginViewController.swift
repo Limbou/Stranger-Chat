@@ -10,6 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+private enum Constants {
+    static let alertTitle = "offlineModeLogin.alert.title"
+    static let alertMessage = "offlineModeLogin.alert.message"
+}
+
 final class OfflineModeLoginViewController: UIViewController {
 
     private let interactor: OfflineModeLoginInteractor
@@ -35,12 +40,19 @@ final class OfflineModeLoginViewController: UIViewController {
         offlineModeLoginButton.rx.tap
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .withLatestFrom(nameField.rx.text)
-            .bind(to: interactor.offlineModeLoginButtonObserver)
+            .bind(to: interactor.offlineModeLoginObserver)
             .disposed(by: bag)
     }
 
 }
 
 extension OfflineModeLoginViewController: OfflineModeLoginDisplayable {
+
+    func showWrongNameAlert() {
+        let alert = AlertBuilder.shared.buildOkAlert(with: Constants.alertTitle.localized(),
+                                                     message: Constants.alertMessage.localized(),
+                                                     buttonPressHandler: nil)
+        present(alert, animated: true, completion: nil)
+    }
 
 }
