@@ -11,8 +11,6 @@ import RxSwift
 import RxCocoa
 
 private enum Constants {
-    static let errorTitle = "login.error.title"
-    static let errorMessage = "login.error.message"
     static let title = "login.title"
 }
 
@@ -52,9 +50,9 @@ final class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginDisplayable {
 
-    func showWrongCredentialsError() {
-        let alert = AlertBuilder.shared.buildOkAlert(with: Constants.errorTitle.localized(),
-                                                     message: Constants.errorMessage.localized(),
+    func showError(title: String, message: String) {
+        let alert = AlertBuilder.shared.buildOkAlert(with: title,
+                                                     message: message,
                                                      buttonPressHandler: nil)
         present(alert, animated: true, completion: nil)
     }

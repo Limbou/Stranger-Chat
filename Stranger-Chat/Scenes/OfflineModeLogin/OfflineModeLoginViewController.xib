@@ -30,7 +30,7 @@
                     </userDefinedRuntimeAttributes>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="860-uA-bs7" customClass="RoundButton" customModule="Stranger_Chat" customModuleProvider="target">
-                    <rect key="frame" x="100" y="150" width="214" height="40"/>
+                    <rect key="frame" x="100" y="758" width="214" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Xbw-1Z-ak7"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="Fp0-w3-Ig9" firstAttribute="top" secondItem="GXB-GY-edh" secondAttribute="bottom" constant="5" id="OKW-UZ-12M"/>
                 <constraint firstItem="GXB-GY-edh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UjK-bz-tPx"/>
                 <constraint firstItem="860-uA-bs7" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="YVg-aC-vFw"/>
-                <constraint firstItem="860-uA-bs7" firstAttribute="top" secondItem="Fp0-w3-Ig9" secondAttribute="bottom" constant="40" id="ehr-jS-WE4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="860-uA-bs7" secondAttribute="bottom" constant="64" id="kge-vO-JI6"/>
                 <constraint firstItem="GXB-GY-edh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="tb1-gS-Dpa"/>
                 <constraint firstItem="860-uA-bs7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="100" id="vaO-SZ-Poi"/>
             </constraints>

@@ -36,6 +36,20 @@
 		D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632ACE238C60130072A762 /* RegisterViewController.xib */; };
 		D3632AD1238C61D40072A762 /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD0238C61D40072A762 /* RegisterData.swift */; };
 		D3632AD3238C74580072A762 /* Error+Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD2238C74580072A762 /* Error+Code.swift */; };
+		D3632ADA238D9CD50072A762 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD5238D9CD40072A762 /* HomePresenter.swift */; };
+		D3632ADB238D9CD50072A762 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD6238D9CD40072A762 /* HomeWorker.swift */; };
+		D3632ADC238D9CD50072A762 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD7238D9CD40072A762 /* HomeRouter.swift */; };
+		D3632ADD238D9CD50072A762 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD8238D9CD40072A762 /* HomeViewController.swift */; };
+		D3632ADE238D9CD50072A762 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD9238D9CD40072A762 /* HomeInteractor.swift */; };
+		D3632AE0238D9CE60072A762 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632ADF238D9CE60072A762 /* HomeViewController.xib */; };
+		D3632AE3238DA0F00072A762 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AE2238DA0F00072A762 /* MainTabBarController.swift */; };
+		D3632AEB238DA8D60072A762 /* StrangersBrowserPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AE6238DA8D50072A762 /* StrangersBrowserPresenter.swift */; };
+		D3632AEC238DA8D60072A762 /* StrangersBrowserWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AE7238DA8D50072A762 /* StrangersBrowserWorker.swift */; };
+		D3632AED238DA8D60072A762 /* StrangersBrowserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AE8238DA8D50072A762 /* StrangersBrowserRouter.swift */; };
+		D3632AEE238DA8D60072A762 /* StrangersBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AE9238DA8D50072A762 /* StrangersBrowserViewController.swift */; };
+		D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AEA238DA8D50072A762 /* StrangersBrowserInteractor.swift */; };
+		D3632AF1238DA8F80072A762 /* StrangersBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632AF0238DA8F80072A762 /* StrangersBrowserViewController.xib */; };
+		D3632AF4238DB8680072A762 /* CurrentUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AF3238DB8680072A762 /* CurrentUserRepository.swift */; };
 		D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38004D1226F30DA00C01683 /* RoundButton.swift */; };
 		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
 		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
@@ -120,6 +134,20 @@
 		D3632ACE238C60130072A762 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		D3632AD0238C61D40072A762 /* RegisterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
 		D3632AD2238C74580072A762 /* Error+Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Code.swift"; sourceTree = "<group>"; };
+		D3632AD5238D9CD40072A762 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		D3632AD6238D9CD40072A762 /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
+		D3632AD7238D9CD40072A762 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		D3632AD8238D9CD40072A762 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D3632AD9238D9CD40072A762 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		D3632ADF238D9CE60072A762 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		D3632AE2238DA0F00072A762 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		D3632AE6238DA8D50072A762 /* StrangersBrowserPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangersBrowserPresenter.swift; sourceTree = "<group>"; };
+		D3632AE7238DA8D50072A762 /* StrangersBrowserWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangersBrowserWorker.swift; sourceTree = "<group>"; };
+		D3632AE8238DA8D50072A762 /* StrangersBrowserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangersBrowserRouter.swift; sourceTree = "<group>"; };
+		D3632AE9238DA8D50072A762 /* StrangersBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangersBrowserViewController.swift; sourceTree = "<group>"; };
+		D3632AEA238DA8D50072A762 /* StrangersBrowserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangersBrowserInteractor.swift; sourceTree = "<group>"; };
+		D3632AF0238DA8F80072A762 /* StrangersBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrangersBrowserViewController.xib; sourceTree = "<group>"; };
+		D3632AF3238DB8680072A762 /* CurrentUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserRepository.swift; sourceTree = "<group>"; };
 		D38004D1226F30DA00C01683 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
 		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
@@ -204,6 +232,7 @@
 		D348D13123871C140012D43C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D3632AF2238DB82D0072A762 /* User */,
 				D3632AA5238C3EDC0072A762 /* Repository */,
 				D348D13523872C620012D43C /* Realm */,
 				D348D13223871C1F0012D43C /* Firebase */,
@@ -287,6 +316,48 @@
 				D3632AD0238C61D40072A762 /* RegisterData.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		D3632AD4238D9CBB0072A762 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AD8238D9CD40072A762 /* HomeViewController.swift */,
+				D3632ADF238D9CE60072A762 /* HomeViewController.xib */,
+				D3632AD9238D9CD40072A762 /* HomeInteractor.swift */,
+				D3632AD5238D9CD40072A762 /* HomePresenter.swift */,
+				D3632AD7238D9CD40072A762 /* HomeRouter.swift */,
+				D3632AD6238D9CD40072A762 /* HomeWorker.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D3632AE1238DA09A0072A762 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AE2238DA0F00072A762 /* MainTabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		D3632AE4238DA8B20072A762 /* StrangersBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AE9238DA8D50072A762 /* StrangersBrowserViewController.swift */,
+				D3632AF0238DA8F80072A762 /* StrangersBrowserViewController.xib */,
+				D3632AEA238DA8D50072A762 /* StrangersBrowserInteractor.swift */,
+				D3632AE6238DA8D50072A762 /* StrangersBrowserPresenter.swift */,
+				D3632AE8238DA8D50072A762 /* StrangersBrowserRouter.swift */,
+				D3632AE7238DA8D50072A762 /* StrangersBrowserWorker.swift */,
+			);
+			path = StrangersBrowser;
+			sourceTree = "<group>";
+		};
+		D3632AF2238DB82D0072A762 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D3632AF3238DB8680072A762 /* CurrentUserRepository.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		D38004D0226F30BD00C01683 /* CustomViews */ = {
@@ -389,6 +460,9 @@
 				D3632AA8238C4B080072A762 /* Login */,
 				D3632AA9238C4B0D0072A762 /* Register */,
 				D3E6D5522216C97D00AF73D7 /* OfflineModeLogin */,
+				D3632AE1238DA09A0072A762 /* TabBarController */,
+				D3632AD4238D9CBB0072A762 /* Home */,
+				D3632AE4238DA8B20072A762 /* StrangersBrowser */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -596,6 +670,8 @@
 				D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
 				D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */,
+				D3632AE0238D9CE60072A762 /* HomeViewController.xib in Resources */,
+				D3632AF1238DA8F80072A762 /* StrangersBrowserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,17 +829,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */,
 				D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */,
 				D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */,
 				D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */,
+				D3632AF4238DB8680072A762 /* CurrentUserRepository.swift in Sources */,
+				D3632ADE238D9CD50072A762 /* HomeInteractor.swift in Sources */,
 				D3E6D58A22281F2400AF73D7 /* ValidationError.swift in Sources */,
 				D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */,
 				D3632AAF238C4B440072A762 /* LoginInteractor.swift in Sources */,
 				D3E6D5672216D94100AF73D7 /* OfflineModeLoginInteractor.swift in Sources */,
 				D3632AB3238C4B540072A762 /* LoginRouter.swift in Sources */,
 				D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */,
+				D3632AE3238DA0F00072A762 /* MainTabBarController.swift in Sources */,
 				D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */,
 				D348D13723872C700012D43C /* RealmManager.swift in Sources */,
+				D3632ADC238D9CD50072A762 /* HomeRouter.swift in Sources */,
 				D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */,
 				D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */,
 				D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */,
@@ -771,7 +852,9 @@
 				D3632AA7238C3EEF0072A762 /* LocalUserRepository.swift in Sources */,
 				D3632AC3238C504B0072A762 /* LoginData.swift in Sources */,
 				D3E6D58722281D5D00AF73D7 /* RegisterValidator.swift in Sources */,
+				D3632ADD238D9CD50072A762 /* HomeViewController.swift in Sources */,
 				D348D13D23872F330012D43C /* AppUser.swift in Sources */,
+				D3632AEB238DA8D60072A762 /* StrangersBrowserPresenter.swift in Sources */,
 				D348D13A23872EFF0012D43C /* AppUserModel.swift in Sources */,
 				D348D130238719950012D43C /* ServicesAssembly.swift in Sources */,
 				D3632AAC238C4B340072A762 /* LoginViewController.swift in Sources */,
@@ -781,12 +864,16 @@
 				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
 				D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */,
 				D3E6D58D2228209F00AF73D7 /* Optional+NilOrEmpty.swift in Sources */,
+				D3632ADB238D9CD50072A762 /* HomeWorker.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */,
 				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,
 				D3E6D5692216D94A00AF73D7 /* OfflineModeLoginPresenter.swift in Sources */,
+				D3632AEE238DA8D60072A762 /* StrangersBrowserViewController.swift in Sources */,
 				D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */,
 				D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */,
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
+				D3632AEC238DA8D60072A762 /* StrangersBrowserWorker.swift in Sources */,
+				D3632AED238DA8D60072A762 /* StrangersBrowserRouter.swift in Sources */,
 				D3632AD3238C74580072A762 /* Error+Code.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3615AF422AF8EAE0021B346 /* AlertBuilder.swift in Sources */,
@@ -796,6 +883,7 @@
 				D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */,
 				D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */,
 				D348D12A238716640012D43C /* Provider.swift in Sources */,
+				D3632ADA238D9CD50072A762 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1008,7 +1096,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G34D5LLHQD;
 				INFOPLIST_FILE = "Stranger-Chat/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1028,7 +1116,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G34D5LLHQD;
 				INFOPLIST_FILE = "Stranger-Chat/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

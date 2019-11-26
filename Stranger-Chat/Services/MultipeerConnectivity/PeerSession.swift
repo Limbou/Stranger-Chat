@@ -24,8 +24,8 @@ protocol PeerSessionDelegate: AnyObject {
 
 protocol PeerConnection {
     var mcSession: MCSession { get }
-    var delegate: PeerSessionDelegate { get }
-    init(displayName: String, delegate: PeerSessionDelegate)
+    var delegate: PeerSessionDelegate? { get set }
+    init(displayName: String)
     func connect()
     func disconnect()
     func send(data: Data)
@@ -42,10 +42,10 @@ extension PeerConnection {
         do {
             try self.mcSession.send(data, toPeers: peerIDs, with: MCSessionSendDataMode.reliable)
         } catch let error {
-            self.delegate.peerConnectionError(error)
+            self.delegate?.peerConnectionError(error)
         }
     }
 
 }
 
-let peerServiceType = "ttemsctoy"
+let peerServiceType = "strangerChat"

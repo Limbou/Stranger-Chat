@@ -16,16 +16,19 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
     var browser: MCNearbyServiceBrowser?
     let timeout: TimeInterval = 30.0
     let sessionHandler: MCSessionAdapter
-    unowned let delegate: PeerSessionDelegate
+    weak var delegate: PeerSessionDelegate? {
+        didSet(newValue) {
+            sessionHandler.delegate = newValue
+        }
+    }
 
-    required init(displayName: String, delegate: PeerSessionDelegate) {
+    required init(displayName: String) {
         let peerId = MCPeerID(displayName: displayName)
         self.peerId = peerId
-        self.delegate = delegate
         self.mcSession = MCSession(peer: peerId, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
         let sessionHandler = MCSessionAdapter()
         sessionHandler.setSession(self.mcSession)
-        sessionHandler.delegate = delegate
+
         self.sessionHandler = sessionHandler
         super.init()
     }
@@ -36,27 +39,27 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
         self.browser = browser
         browser.delegate = self
         browser.startBrowsingForPeers()
-        self.delegate.connectionReady()
+        self.delegate?.connectionReady()
     }
 
     func disconnect() {
         self.browser?.stopBrowsingForPeers()
         self.browser = nil
-        self.delegate.connectionClosed()
+        self.delegate?.connectionClosed()
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
         print(info ?? [])
-        self.delegate.peerDiscovered(peerID: peerID)
+        self.delegate?.peerDiscovered(peerID: peerID)
         browser.invitePeer(peerID, to: self.mcSession, withContext: nil, timeout: self.timeout)
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        self.delegate.peerLost(peerID: peerID)
+        self.delegate?.peerLost(peerID: peerID)
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        self.delegate.peerConnectionError(error)
+        self.delegate?.peerConnectionError(error)
     }
 
 }

@@ -9,17 +9,19 @@
 import UIKit
 import RxSwift
 
-protocol OfflineModeLoginRouter: AnyObject {
-    var viewController: UIViewController? { get set }
-    func showMainScreen()
+protocol OfflineModeLoginRouter: Router {
+    func showHomeScreen()
 }
 
 final class OfflineModeLoginRouterImpl: OfflineModeLoginRouter {
 
     weak var viewController: UIViewController?
 
-    func showMainScreen() {
-        print("Poszlo")
+    func showHomeScreen() {
+        let mainTab = Provider.get.instanceOf(MainTabBarController.self)
+        guard let window = UIApplication.shared.keyWindow else { return }
+        window.rootViewController = mainTab
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
     }
 
 }

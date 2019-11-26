@@ -50,7 +50,7 @@ final class OfflineModeLoginInteractorImpl: OfflineModeLoginInteractor {
 
     private func login(name: String) {
         worker.saveUser(name: name)
-        router.showMainScreen()
+        router.showHomeScreen()
     }
 
 }

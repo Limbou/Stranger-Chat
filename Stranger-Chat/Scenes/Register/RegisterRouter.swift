@@ -10,16 +10,19 @@
 
 import UIKit
 
-protocol RegisterRouter: AnyObject {
-    var viewController: UIViewController? { get set }
-    func goToMainScreen()
+protocol RegisterRouter: Router {
+    func goToHomeScreen()
 }
 
 final class RegisterRouterImpl: RegisterRouter {
 
     weak var viewController: UIViewController?
 
-    func goToMainScreen() {
+    func goToHomeScreen() {
+        let mainTab = Provider.get.instanceOf(MainTabBarController.self)
+        guard let window = UIApplication.shared.keyWindow else { return }
+        window.rootViewController = mainTab
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
 
     }
 

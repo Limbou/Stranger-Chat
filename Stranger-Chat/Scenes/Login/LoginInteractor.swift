@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxSwiftExt
+import FirebaseAuth
 
 protocol LoginInteractor: AnyObject {
     var loginObserver: PublishSubject<LoginData> { get }
@@ -39,11 +40,25 @@ final class LoginInteractorImpl: LoginInteractor {
     private func login(with data: LoginData) {
         worker.login(with: data).subscribe(onNext: { success in
             if success {
-                self.router.goToMainScreen()
+                self.router.goToHomeScreen()
             }
         }, onError: { error in
+            self.handle(error: error)
             self.presenter.showWrongCredentialsError()
         }).disposed(by: bag)
+    }
+
+    private func handle(error: Error) {
+        guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+            presenter.showConnectionError()
+            return
+        }
+        let authErrors: [AuthErrorCode] = [.missingEmail, .invalidEmail, .wrongPassword, .userNotFound]
+        if authErrors.contains(errorCode) {
+            presenter.showWrongCredentialsError()
+        } else {
+            presenter.showConnectionError()
+        }
     }
 
 }

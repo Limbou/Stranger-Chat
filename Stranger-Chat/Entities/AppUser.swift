@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class AppUser {
 
@@ -25,6 +26,13 @@ final class AppUser {
                 return nil
         }
         self.init(userId: userId, name: name)
+    }
+
+    convenience init?(from user: User) {
+        guard let name = user.displayName else {
+            return nil
+        }
+        self.init(userId: user.uid, name: name)
     }
 
 }

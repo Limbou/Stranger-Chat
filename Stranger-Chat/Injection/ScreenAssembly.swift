@@ -49,6 +49,28 @@ final class ScreenAssembly: Assembly {
             router.viewController = resolver ~> OfflineModeLoginViewController.self
         }
 
+        container.autoregister(MainTabBarController.self, initializer: MainTabBarController.init)
+
+        container.autoregister(HomeViewController.self, initializer: HomeViewController.init(interactor:))
+        container.autoregister(HomeInteractor.self, initializer: HomeInteractorImpl.init(presenter:router:worker:))
+        container.autoregister(HomePresenter.self, initializer: HomePresenterImpl.init).initCompleted { (resolver, presenter) in
+            presenter.viewController = resolver ~> HomeViewController.self
+        }
+        container.autoregister(HomeWorker.self, initializer: HomeWorkerImpl.init)
+        container.autoregister(HomeRouter.self, initializer: HomeRouterImpl.init).initCompleted { (resolver, router) in
+            router.viewController = resolver ~> HomeViewController.self
+        }
+
+        container.autoregister(StrangersBrowserViewController.self, initializer: StrangersBrowserViewController.init(interactor:))
+        container.autoregister(StrangersBrowserInteractor.self, initializer: StrangersBrowserInteractorImpl.init(presenter:router:worker:))
+        container.autoregister(StrangersBrowserPresenter.self, initializer: StrangersBrowserPresenterImpl.init).initCompleted { (resolver, presenter) in
+            presenter.viewController = resolver ~> StrangersBrowserViewController.self
+        }
+        container.autoregister(StrangersBrowserWorker.self, initializer: StrangersBrowserWorkerImpl.init)
+        container.autoregister(StrangersBrowserRouter.self, initializer: StrangersBrowserRouterImpl.init).initCompleted { (resolver, router) in
+            router.viewController = resolver ~> StrangersBrowserViewController.self
+        }
+
     }
 
 }

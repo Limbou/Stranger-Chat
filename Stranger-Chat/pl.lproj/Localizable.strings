@@ -32,3 +32,7 @@
 "offlineModeLogin.button.title" = "Zaloguj";
 "offlineModeLogin.alert.title" = "Nazwa za krótka!";
 "offlineModeLogin.alert.message" = "Nazwa użytkownika powinna składać się z przynajmniej 3 znaków.";
+
+"home.findStrangerButton.title" = "Znajdź nieznajomego";
+"home.makeVisibleButton.title" = "Stań się dostępny";
+"home.makeInvisibleButton.title" = "Ukryj się";

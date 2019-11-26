@@ -42,7 +42,7 @@ final class RegisterInteractorImpl: RegisterInteractor {
     private func register(with data: RegisterData) {
         worker.register(with: data).subscribe(onNext: { success in
             if success {
-                self.router.goToMainScreen()
+                self.router.goToHomeScreen()
             }
         }, onError: { error in
             self.presenter.show(error: error)

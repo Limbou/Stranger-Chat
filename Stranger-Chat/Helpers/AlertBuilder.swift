@@ -8,8 +8,8 @@
 
 import UIKit
 
-fileprivate struct Constants {
-    static let ok = "alert.button.ok"
+private enum Constants {
+    static let alertOk = "alert.button.ok"
 }
 
 typealias ButtonPressHandler = ((UIAlertAction) -> Void)?
@@ -22,7 +22,7 @@ final class AlertBuilder {
 
     func buildOkAlert(with title: String?, message: String?, buttonPressHandler: ButtonPressHandler) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: Constants.ok.localized(), style: .default, handler: buttonPressHandler)
+        let alertAction = UIAlertAction(title: Constants.alertOk.localized(), style: .default, handler: buttonPressHandler)
         alertController.addAction(alertAction)
         return alertController
     }

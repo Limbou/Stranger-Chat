@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -29,10 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func configureRootViewController() {
-        let controller = Provider.get.instanceOf(LandingViewController.self)
-        let navigationController = UINavigationController(rootViewController: controller)
+        let controller = Provider.get.instanceOf(MainTabBarController.self)
+        //let navigationController = UINavigationController(rootViewController: controller)
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
+        window?.rootViewController = controller
         window?.makeKeyAndVisible()
     }
 

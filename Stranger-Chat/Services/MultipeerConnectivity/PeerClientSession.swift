@@ -14,14 +14,13 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
     let mcSession: MCSession
     var advertiser: MCNearbyServiceAdvertiser?
     let peerId: MCPeerID
-    unowned let delegate: PeerSessionDelegate
     var sessionHandler: MCSessionAdapter?
+    weak var delegate: PeerSessionDelegate?
 
-    required init(displayName: String, delegate: PeerSessionDelegate) {
-        self.delegate = delegate
+    required init(displayName: String) {
         let peerdId = MCPeerID(displayName: displayName)
         self.peerId = peerdId
-        let session = MCSession(peer: peerId, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none)
+        let session = MCSession(peer: peerId, securityIdentity: nil, encryptionPreference: .required)
         self.mcSession = session
         super.init()
     }
@@ -45,11 +44,11 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
         self.mcSession.disconnect()
         self.sessionHandler = nil
         self.mcSession.disconnect()
-        self.delegate.connectionClosed()
+        self.delegate?.connectionClosed()
     }
 
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Swift.Error) {
-        self.delegate.peerConnectionError(error)
+        self.delegate?.peerConnectionError(error)
     }
 
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
@@ -59,7 +58,7 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
         print("Before invitation handler - \(mcSession.connectedPeers)")
         invitationHandler(true, self.mcSession)
         print("After invitation handler - \(mcSession.connectedPeers)")
-        self.delegate.invitationReceived(from: peerID)
+        self.delegate?.invitationReceived(from: peerID)
     }
 
 }

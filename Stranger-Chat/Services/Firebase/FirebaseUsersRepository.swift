@@ -10,11 +10,16 @@ import FirebaseAuth
 import RxSwift
 
 protocol FirebaseUsersRepository: AnyObject {
+    func currentUser() -> User?
     func login(with email: String, password: String) -> Observable<User?>
     func register(with email: String, password: String) -> Observable<User?>
 }
 
 final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
+
+    func currentUser() -> User? {
+        return Auth.auth().currentUser
+    }
 
     func login(with email: String, password: String) -> Observable<User?> {
         return Observable.create { observer in
