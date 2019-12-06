@@ -32,7 +32,7 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
     private let discovered = PublishSubject<[MCPeerID]>()
     private let connectionState = PublishSubject<ConnectionState>()
 
-    init(currentUserRepository: CurrentUserRepository, session: PeerHostSession) {
+    init(currentUserRepository: CurrentUserRepository, session: PeerHostSession = PeerHostSession.getInstance(name: "Abcd")) {
         self.currentUserRepository = currentUserRepository
         self.session = session
     }
@@ -42,7 +42,6 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
 //            print("No user")
 //            return Observable.empty()
 //        }
-        session.displayName = "Iphonesfdsf"
         session.delegate = self
         session.connect()
         return discovered
@@ -53,11 +52,14 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
     }
 
     func sendInvitationTo(peerIndex: Int) -> Observable<ConnectionState> {
-        guard let peer = discoveredPeers[safe: peerIndex], let mcSession = session.mcSession else {
+        guard let peer = discoveredPeers[safe: peerIndex] else {
             print("No peer with such index")
             return Observable.empty()
         }
-        session.browser?.invitePeer(peer, to: mcSession, withContext: nil, timeout: 15)
+        session.browser.invitePeer(peer, to: session.mcSession, withContext: nil, timeout: 15)
+//        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
+//            print(self.session.mcSession?.connectedPeers)
+//        }
         return connectionState
     }
 

@@ -27,7 +27,7 @@ final class HomeWorkerImpl: HomeWorker {
     private let invitations = PublishSubject<SessionInvitation>()
     private var latestInvitationHandler: InvitationHandler?
 
-    init(currentUserRepository: CurrentUserRepository, session: PeerClientSession) {
+    init(currentUserRepository: CurrentUserRepository, session: PeerClientSession = PeerClientSession.getInstance(name: "Siemka")) {
         self.currentUserRepository = currentUserRepository
         self.session = session
     }
@@ -37,7 +37,6 @@ final class HomeWorkerImpl: HomeWorker {
 //            print("No user")
 //            return
 //        }
-        session.displayName = "Siemka"
         session.delegate = self
         session.connect()
         return invitations
@@ -48,12 +47,11 @@ final class HomeWorkerImpl: HomeWorker {
     }
 
     func acceptInvitation() {
-        guard let session = session.mcSession,
-            let latestInvitationHandler = latestInvitationHandler else {
-            print("No session")
+        guard let latestInvitationHandler = latestInvitationHandler else {
+            print("No invitation handler")
             return
         }
-        latestInvitationHandler(true, session)
+        latestInvitationHandler(true, session.mcSession)
     }
 
 }

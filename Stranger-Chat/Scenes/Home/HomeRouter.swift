@@ -25,8 +25,8 @@ final class HomeRouterImpl: HomeRouter {
     }
 
     func goToChat() {
-        let chatViewController = UIViewController()
-        push(viewController: chatViewController)
+//        let chatViewController = UIViewController()
+//        push(viewController: chatViewController)
     }
 
 }

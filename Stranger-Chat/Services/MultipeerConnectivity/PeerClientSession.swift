@@ -11,47 +11,49 @@ import MultipeerConnectivity
 
 class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDelegate {
 
-    static let shared = PeerClientSession()
-    var mcSession: MCSession?
-    var advertiser: MCNearbyServiceAdvertiser?
-    var peerId: MCPeerID?
-    var sessionHandler: MCSessionAdapter?
-    var displayName: String? {
-        didSet(newName) {
-            initialize(displayName: newName)
-        }
-    }
+    static private var instance: PeerClientSession?
+    let mcSession: MCSession
+    private let advertiser: MCNearbyServiceAdvertiser
+    private let peerId: MCPeerID
+    private let sessionHandler: MCSessionAdapter
     weak var delegate: PeerSessionDelegate? {
-        didSet(newValue) {
-            sessionHandler?.delegate = newValue
+        didSet {
+            sessionHandler.delegate = delegate
         }
     }
 
-    private override init() {}
+    override convenience private init() {
+        self.init(name: "iPhone")
+    }
+
+    private init(name: String) {
+        self.peerId = MCPeerID(displayName: name)
+        self.mcSession = MCSession(peer: self.peerId, securityIdentity: nil, encryptionPreference: .required)
+        self.advertiser = MCNearbyServiceAdvertiser(peer: self.peerId, discoveryInfo: nil, serviceType: peerServiceType)
+        self.sessionHandler = MCSessionAdapter()
+        self.sessionHandler.setSession(self.mcSession)
+        super.init()
+        self.advertiser.delegate = self
+    }
+
+    class func getInstance(name: String) -> PeerClientSession {
+        if let instance = instance {
+            return instance
+        }
+        let newInstance = PeerClientSession(name: name)
+        instance = newInstance
+        return newInstance
+    }
 
     func connect() {
         self.disconnect()
-
-        let sessionHandler = MCSessionAdapter()
-        if let session = self.mcSession {
-            sessionHandler.setSession(session)
-        }
-        sessionHandler.delegate = self.delegate
-        self.sessionHandler = sessionHandler
-        guard let peerId = self.peerId else {
-            return
-        }
-        let advertiser = MCNearbyServiceAdvertiser(peer: peerId, discoveryInfo: nil, serviceType: peerServiceType)
-        advertiser.delegate = self
-        self.advertiser = advertiser
         advertiser.startAdvertisingPeer()
     }
 
     func disconnect() {
-        self.advertiser?.stopAdvertisingPeer()
-        self.mcSession?.disconnect()
-        self.sessionHandler = nil
-        self.mcSession?.disconnect()
+        self.advertiser.stopAdvertisingPeer()
+        self.mcSession.disconnect()
+        self.mcSession.disconnect()
         self.delegate?.connectionClosed()
     }
 
@@ -63,22 +65,13 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        print("Before invitation handler - \(mcSession?.connectedPeers)")
-        //invitationHandler(true, self.mcSession)
-        print("After invitation handler - \(mcSession?.connectedPeers)")
-        self.delegate?.invitationReceived(from: peerID,
-                                          context: context,
-                                          invitationHandler: invitationHandler)
-    }
-
-    private func initialize(displayName: String?) {
-        guard let name = displayName else {
-            return
-        }
-        let peerId = MCPeerID(displayName: name)
-        self.peerId = peerId
-        let session = MCSession(peer: peerId, securityIdentity: nil, encryptionPreference: .required)
-        self.mcSession = session
+        print("Before invitation handler - \(mcSession.connectedPeers)")
+        print("Session: \(self.mcSession)")
+        invitationHandler(true, self.mcSession)
+        print("After invitation handler - \(mcSession.connectedPeers)")
+//        self.delegate?.invitationReceived(from: peerID,
+//                                          context: context,
+//                                          invitationHandler: invitationHandler)
     }
 
 }
