@@ -28,4 +28,10 @@ final class RoundButton: UIButton {
         }
     }
 
+    override func prepareForInterfaceBuilder() {
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = borderWidth
+        super.prepareForInterfaceBuilder()
+    }
+
 }

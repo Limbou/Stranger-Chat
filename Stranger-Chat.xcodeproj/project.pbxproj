@@ -63,7 +63,6 @@
 		D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD821A355D900B9149C /* LandingViewController.swift */; };
 		D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABDC21A3560100B9149C /* LandingRouter.swift */; };
 		D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABFF21A5DE0F00B9149C /* Localizable.strings */; };
-		D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */; };
 		D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D55B2216CA7100AF73D7 /* OfflineModeLoginViewController.swift */; };
 		D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55C2216CA7100AF73D7 /* OfflineModeLoginViewController.xib */; };
 		D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */; };
@@ -73,8 +72,10 @@
 		D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D56A2216D96C00AF73D7 /* OfflineModeLoginRouter.swift */; };
 		D3E6D58722281D5D00AF73D7 /* RegisterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58622281D5D00AF73D7 /* RegisterValidator.swift */; };
 		D3E6D58A22281F2400AF73D7 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58922281F2400AF73D7 /* ValidationError.swift */; };
-		D3E6D58D2228209F00AF73D7 /* Optional+NilOrEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58C2228209E00AF73D7 /* Optional+NilOrEmpty.swift */; };
 		D3E6D58F222820B500AF73D7 /* LandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D58E222820B400AF73D7 /* LandingInteractor.swift */; };
+		D3ECC597239A8FDC00548E9B /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC596239A8FDC00548E9B /* Collection+SafeIndex.swift */; };
+		D3ECC599239B0B7900548E9B /* Optional+NilOrEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC598239B0B7900548E9B /* Optional+NilOrEmpty.swift */; };
+		D3ECC59B239B112F00548E9B /* LandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC59A239B112F00548E9B /* LandingInteractor.swift */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,7 +166,6 @@
 		D3CAABD821A355D900B9149C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		D3CAABDC21A3560100B9149C /* LandingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingRouter.swift; sourceTree = "<group>"; };
 		D3CAABFE21A5DE0F00B9149C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingInteractor.swift; sourceTree = "<group>"; };
 		D3E6D55B2216CA7100AF73D7 /* OfflineModeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginViewController.swift; sourceTree = "<group>"; };
 		D3E6D55C2216CA7100AF73D7 /* OfflineModeLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfflineModeLoginViewController.xib; sourceTree = "<group>"; };
 		D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
@@ -177,8 +177,10 @@
 		D3E6D56A2216D96C00AF73D7 /* OfflineModeLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginRouter.swift; sourceTree = "<group>"; };
 		D3E6D58622281D5D00AF73D7 /* RegisterValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidator.swift; sourceTree = "<group>"; };
 		D3E6D58922281F2400AF73D7 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
-		D3E6D58C2228209E00AF73D7 /* Optional+NilOrEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Optional+NilOrEmpty.swift"; path = "/Users/jakubdanielczyk/Dev/Stranger-Chat/Stranger-Chat/Extensions/Optional+NilOrEmpty.swift"; sourceTree = "<absolute>"; };
 		D3E6D58E222820B400AF73D7 /* LandingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LandingInteractor.swift; path = "/Users/jakubdanielczyk/Dev/Stranger-Chat/Stranger-ChatTests/Landing/LandingInteractor.swift"; sourceTree = "<absolute>"; };
+		D3ECC596239A8FDC00548E9B /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
+		D3ECC598239B0B7900548E9B /* Optional+NilOrEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+NilOrEmpty.swift"; sourceTree = "<group>"; };
+		D3ECC59A239B112F00548E9B /* LandingInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,9 +480,9 @@
 		D3CAABD521A34C6500B9149C /* Landing */ = {
 			isa = PBXGroup;
 			children = (
+				D3ECC59A239B112F00548E9B /* LandingInteractor.swift */,
 				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
 				D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */,
-				D3E6D5502216B66600AF73D7 /* LandingInteractor.swift */,
 				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
 			);
 			path = Landing;
@@ -535,10 +537,11 @@
 		D3E6D58B2228202E00AF73D7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D3E6D58C2228209E00AF73D7 /* Optional+NilOrEmpty.swift */,
+				D3ECC598239B0B7900548E9B /* Optional+NilOrEmpty.swift */,
 				D3E6D5622216D60800AF73D7 /* UIControl+Localizable.swift */,
 				D3331DA92285D21100301CBA /* String+isValidName.swift */,
 				D3632AD2238C74580072A762 /* Error+Code.swift */,
+				D3ECC596239A8FDC00548E9B /* Collection+SafeIndex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */,
 				D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */,
 				D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */,
+				D3ECC597239A8FDC00548E9B /* Collection+SafeIndex.swift in Sources */,
 				D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */,
 				D3632AF4238DB8680072A762 /* CurrentUserRepository.swift in Sources */,
 				D3632ADE238D9CD50072A762 /* HomeInteractor.swift in Sources */,
@@ -844,6 +848,7 @@
 				D3632AE3238DA0F00072A762 /* MainTabBarController.swift in Sources */,
 				D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */,
 				D348D13723872C700012D43C /* RealmManager.swift in Sources */,
+				D3ECC599239B0B7900548E9B /* Optional+NilOrEmpty.swift in Sources */,
 				D3632ADC238D9CD50072A762 /* HomeRouter.swift in Sources */,
 				D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */,
 				D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */,
@@ -853,17 +858,16 @@
 				D3632AC3238C504B0072A762 /* LoginData.swift in Sources */,
 				D3E6D58722281D5D00AF73D7 /* RegisterValidator.swift in Sources */,
 				D3632ADD238D9CD50072A762 /* HomeViewController.swift in Sources */,
+				D3ECC59B239B112F00548E9B /* LandingInteractor.swift in Sources */,
 				D348D13D23872F330012D43C /* AppUser.swift in Sources */,
 				D3632AEB238DA8D60072A762 /* StrangersBrowserPresenter.swift in Sources */,
 				D348D13A23872EFF0012D43C /* AppUserModel.swift in Sources */,
 				D348D130238719950012D43C /* ServicesAssembly.swift in Sources */,
 				D3632AAC238C4B340072A762 /* LoginViewController.swift in Sources */,
 				D3632AB1238C4B4D0072A762 /* LoginPresenter.swift in Sources */,
-				D3E6D5512216B66600AF73D7 /* LandingInteractor.swift in Sources */,
 				D348D134238721AF0012D43C /* FirebaseUsersRepository.swift in Sources */,
 				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
 				D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */,
-				D3E6D58D2228209F00AF73D7 /* Optional+NilOrEmpty.swift in Sources */,
 				D3632ADB238D9CD50072A762 /* HomeWorker.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */,
 				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,

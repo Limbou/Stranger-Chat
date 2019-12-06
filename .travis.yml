@@ -1,8 +1,8 @@
-osx_image: xcode10.1
-language: objective-c
+osx_image: xcode11.2
+language: swift
 xcode_workspace: Stranger-Chat.xcworkspace
 xcode_scheme: Stranger-Chat
-xcode_destination: platform=iOS Simulator,name=iPhone 8
+xcode_destination: platform=iOS Simulator,OS=13.2.2,name=iPhone 11 Pro
 podfile: Podfile
 before_install:
  - bundle install

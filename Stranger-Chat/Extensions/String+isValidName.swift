@@ -14,6 +14,13 @@ private struct Constants {
 
 extension String {
 
+    init?(fromData data: Data?) {
+        guard let data = data else {
+            return nil
+        }
+        self.init(decoding: data, as: UTF8.self)
+    }
+
     func isValidName() -> Bool {
         return self.count >= Constants.minimumNameLength
     }

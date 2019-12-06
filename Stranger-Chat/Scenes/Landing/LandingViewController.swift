@@ -62,13 +62,13 @@ final class LandingViewController: UIViewController {
 
     // 1
     func hostSession(action: UIAlertAction) {
-      mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "ioscreator-chat", discoveryInfo: nil, session: mcSession)
+      mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: peerServiceType, discoveryInfo: nil, session: mcSession)
       mcAdvertiserAssistant.start()
     }
 
     // 2
     func joinSession(action: UIAlertAction) {
-      let mcBrowser = MCBrowserViewController(serviceType: "ioscreator-chat", session: mcSession)
+      let mcBrowser = MCBrowserViewController(serviceType: peerServiceType, session: mcSession)
       mcBrowser.delegate = self
       present(mcBrowser, animated: true)
     }

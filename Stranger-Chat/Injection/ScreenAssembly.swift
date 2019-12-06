@@ -66,7 +66,7 @@ final class ScreenAssembly: Assembly {
         container.autoregister(StrangersBrowserPresenter.self, initializer: StrangersBrowserPresenterImpl.init).initCompleted { (resolver, presenter) in
             presenter.viewController = resolver ~> StrangersBrowserViewController.self
         }
-        container.autoregister(StrangersBrowserWorker.self, initializer: StrangersBrowserWorkerImpl.init)
+        container.autoregister(StrangersBrowserWorker.self, initializer: StrangersBrowserWorkerImpl.init(currentUserRepository:session:))
         container.autoregister(StrangersBrowserRouter.self, initializer: StrangersBrowserRouterImpl.init).initCompleted { (resolver, router) in
             router.viewController = resolver ~> StrangersBrowserViewController.self
         }

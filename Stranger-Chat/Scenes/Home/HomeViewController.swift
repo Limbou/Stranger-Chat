@@ -13,7 +13,8 @@ import RxSwift
 import RxCocoa
 
 private enum Constants {
-
+    static let gotInvitation = "invitation.title"
+    static let invitationFrom = "invitation.from"
 }
 
 final class HomeViewController: UIViewController {
@@ -52,5 +53,18 @@ final class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeDisplayable {
+
+    func setAdvertisingButton(advertising: Bool) {
+        makeVisibleButton.setTitle(advertising ? "Hide" : "Make visible", for: .normal)
+    }
+
+    func presentInvitation(from sender: String, additionalInfo: String?) {
+        let alert = AlertBuilder.shared.buildYesNoAlert(with: Constants.gotInvitation.localized(),
+                                                        message: Constants.invitationFrom.localized(),
+                                                        yesHandler: { _ in
+                                                            self.interactor.invitationAccepted.onNext(())
+        }) { _ in }
+        present(alert, animated: true, completion: nil)
+    }
 
 }

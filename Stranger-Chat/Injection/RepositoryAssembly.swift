@@ -15,6 +15,8 @@ final class RepositoryAssembly: Assembly {
 
         container.autoregister(FirebaseUsersRepository.self, initializer: FirebaseUsersRepositoryImpl.init)
         container.autoregister(LocalUserRepository.self, initializer: LocalUserRepositoryImpl.init(localStorage:))
+        container.autoregister(CurrentUserRepository.self, initializer: CurrentUserRepositoryImpl.init(firebaseUsersRepository:localUsersRepository:))
+        
     }
 
 }

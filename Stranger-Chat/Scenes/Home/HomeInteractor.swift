@@ -15,8 +15,8 @@ import RxSwiftExt
 protocol HomeInteractor: AnyObject {
     var findPressed: PublishSubject<Void> { get }
     var makeVisiblePressed: PublishSubject<Void> { get }
+    var invitationAccepted: PublishSubject<Void> { get }
 }
-
 
 final class HomeInteractorImpl: HomeInteractor {
 
@@ -26,6 +26,12 @@ final class HomeInteractorImpl: HomeInteractor {
     private let bag = DisposeBag()
     let findPressed = PublishSubject<Void>()
     let makeVisiblePressed = PublishSubject<Void>()
+    let invitationAccepted = PublishSubject<Void>()
+    private var advertising = false {
+        didSet {
+            toggleAdvertising()
+        }
+    }
 
     init(presenter: HomePresenter, router: HomeRouter, worker: HomeWorker) {
         self.presenter = presenter
@@ -40,8 +46,33 @@ final class HomeInteractorImpl: HomeInteractor {
         }).disposed(by: bag)
 
         makeVisiblePressed.subscribe(onNext: { _ in
-
+            self.advertising.toggle()
         }).disposed(by: bag)
+
+        invitationAccepted.subscribe(onNext: { _ in
+            self.handleInvitationAccepted()
+        }).disposed(by: bag)
+    }
+
+    private func toggleAdvertising() {
+        if advertising {
+            worker.startAdvertising().subscribe(onNext: { invitation in
+                self.presentInvitation(invitation)
+            }).disposed(by: bag)
+        } else {
+            worker.stopAdvertising()
+        }
+        presenter.setAdvertisingButton(advertising: advertising)
+    }
+
+    private func presentInvitation(_ invitation: SessionInvitation) {
+        presenter.presentInvitation(from: invitation.peerId.displayName,
+                                    additionalInfo: String(fromData: invitation.context))
+    }
+
+    private func handleInvitationAccepted() {
+        worker.acceptInvitation()
+        router.goToChat()
     }
 
 }

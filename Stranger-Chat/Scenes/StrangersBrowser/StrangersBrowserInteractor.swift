@@ -11,9 +11,12 @@
 import Foundation
 import RxSwift
 import RxSwiftExt
+import MultipeerConnectivity
 
 protocol StrangersBrowserInteractor: AnyObject {
-    var onWillAppear: PublishSubject<Void> { get }
+    var onWillAppear: PublishSubject<[Any]> { get }
+    var onWillDisappear: PublishSubject<[Any]> { get }
+    var selectCell: PublishSubject<Int> { get }
 }
 
 
@@ -23,7 +26,10 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     private let router: StrangersBrowserRouter
     private let worker: StrangersBrowserWorker
     private let bag = DisposeBag()
-    let onWillAppear = PublishSubject<Void>()
+    private var discoveredUsers: [MCPeerID] = []
+    let onWillAppear = PublishSubject<[Any]>()
+    let onWillDisappear = PublishSubject<[Any]>()
+    let selectCell = PublishSubject<Int>()
 
     init(presenter: StrangersBrowserPresenter, router: StrangersBrowserRouter, worker: StrangersBrowserWorker) {
         self.presenter = presenter
@@ -35,11 +41,44 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     private func setupBindings() {
         onWillAppear.subscribe(onNext: { _ in
             self.startBrowsing()
-        })
+        }).disposed(by: bag)
+
+        onWillDisappear.subscribe(onNext: { _ in
+            self.stopBrowsing()
+        }).disposed(by: bag)
+
+        selectCell.subscribe(onNext: { index in
+            self.selectedCell(index)
+        }).disposed(by: bag)
     }
 
     private func startBrowsing() {
-        print("Browse")
+        worker.startBrowsing().subscribe(onNext: { discoveredUsers in
+            self.discoveredUsers = discoveredUsers
+            self.presenter.display(users: discoveredUsers.map({ $0.displayName }))
+        }).disposed(by: bag)
+    }
+
+    private func stopBrowsing() {
+        worker.stopBrowsing()
+    }
+
+    private func selectedCell(_ index: Int) {
+        worker.sendInvitationTo(peerIndex: index).subscribe(onNext: { state in
+            self.handleConnectionStateChange(state: state)
+        }).disposed(by: bag)
+        presenter.presentInvitationSentAlert()
+    }
+
+    private func handleConnectionStateChange(state: ConnectionState) {
+        switch state {
+        case .connecting:
+            break
+        case .connected:
+            break
+        case .disconnected:
+            break
+        }
     }
 
 }

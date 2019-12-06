@@ -27,8 +27,8 @@ final class CurrentUserRepositoryImpl: CurrentUserRepository {
     func currentUser() -> AppUser? {
         if let user = firebaseUsersRepository.currentUser() {
             return AppUser(from: user)
-        } else if let user = localUsersRepository.getUser() {
-            return user
+        } else if let localUser = localUsersRepository.getUser() {
+            return localUser
         }
         return nil
     }
