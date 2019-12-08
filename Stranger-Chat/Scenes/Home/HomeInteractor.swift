@@ -71,8 +71,22 @@ final class HomeInteractorImpl: HomeInteractor {
     }
 
     private func handleInvitationAccepted() {
-        worker.acceptInvitation()
-        router.goToChat()
+        worker.acceptInvitation().subscribe(onNext: { state in
+            DispatchQueue.main.async {
+                self.handleConnectionStateChange(state)
+            }
+        }).disposed(by: bag)
+    }
+
+    private func handleConnectionStateChange(_ state: ConnectionState) {
+        switch state {
+        case .connecting:
+            break
+        case .connected:
+            router.goToChat()
+        case .disconnected:
+            print("Disconnected!")
+        }
     }
 
 }

@@ -16,4 +16,8 @@ class StrangerChatUITests: XCTestCase {
 
     override func tearDown() {}
 
+    func testExample() {
+
+    }
+
 }

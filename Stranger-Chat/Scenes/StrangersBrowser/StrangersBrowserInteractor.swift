@@ -65,7 +65,9 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
 
     private func selectedCell(_ index: Int) {
         worker.sendInvitationTo(peerIndex: index).subscribe(onNext: { state in
-            self.handleConnectionStateChange(state: state)
+            DispatchQueue.main.async {
+                self.handleConnectionStateChange(state: state)
+            }
         }).disposed(by: bag)
         presenter.presentInvitationSentAlert()
     }
@@ -75,9 +77,9 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
         case .connecting:
             break
         case .connected:
-            break
+            router.goToChat()
         case .disconnected:
-            break
+            print("Disconnected!")
         }
     }
 

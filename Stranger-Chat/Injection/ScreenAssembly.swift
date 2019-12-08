@@ -56,7 +56,9 @@ final class ScreenAssembly: Assembly {
         container.autoregister(HomePresenter.self, initializer: HomePresenterImpl.init).initCompleted { (resolver, presenter) in
             presenter.viewController = resolver ~> HomeViewController.self
         }
-        container.autoregister(HomeWorker.self, initializer: HomeWorkerImpl.init)
+        container.register(HomeWorker.self) { resolver in
+            return HomeWorkerImpl(currentUserRepository: resolver.resolve(CurrentUserRepository.self)!)
+        }
         container.autoregister(HomeRouter.self, initializer: HomeRouterImpl.init).initCompleted { (resolver, router) in
             router.viewController = resolver ~> HomeViewController.self
         }
@@ -66,9 +68,37 @@ final class ScreenAssembly: Assembly {
         container.autoregister(StrangersBrowserPresenter.self, initializer: StrangersBrowserPresenterImpl.init).initCompleted { (resolver, presenter) in
             presenter.viewController = resolver ~> StrangersBrowserViewController.self
         }
-        container.autoregister(StrangersBrowserWorker.self, initializer: StrangersBrowserWorkerImpl.init(currentUserRepository:session:))
+        container.register(StrangersBrowserWorker.self) { resolver in
+            StrangersBrowserWorkerImpl(currentUserRepository: resolver.resolve(CurrentUserRepository.self)!)
+        }
         container.autoregister(StrangersBrowserRouter.self, initializer: StrangersBrowserRouterImpl.init).initCompleted { (resolver, router) in
             router.viewController = resolver ~> StrangersBrowserViewController.self
+        }
+
+        var peerConnectionArgument: PeerConnection!
+        container.register(ChatViewController.self) { (resolver, peerConnection: PeerConnection) in
+            peerConnectionArgument = peerConnection
+            return ChatViewController(interactor: resolver.resolve(ChatInteractor.self, argument: peerConnection)!)
+        }
+
+        container.register(ChatInteractor.self) { (resolver, peerConnection: PeerConnection) in
+            ChatInteractorImpl(presenter: resolver ~> ChatPresenter.self,
+                               router: resolver.resolve(ChatRouter.self, argument: peerConnection)!,
+                               worker: resolver.resolve(ChatWorker.self, argument: peerConnection)!)
+        }
+        container.autoregister(ChatPresenter.self, initializer: ChatPresenterImpl.init).initCompleted { (resolver, presenter) in
+            presenter.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
+        }
+        container.register(ChatWorker.self) { _, peerConnection in
+            ChatWorkerImpl(peerConnection: peerConnection)
+        }
+        container.autoregister(ChatRouter.self, initializer: ChatRouterImpl.init).initCompleted { (resolver, router) in
+            router.viewController = resolver ~> ChatViewController.self
+        }
+        container.register(ChatRouter.self) { (resolver, peerConnection: PeerConnection) in
+            return ChatRouterImpl()
+        }.initCompleted { (resolver, router) in
+            router.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
         }
 
     }

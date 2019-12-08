@@ -75,6 +75,14 @@
 		D3ECC59B239B112F00548E9B /* LandingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC59A239B112F00548E9B /* LandingInteractor.swift */; };
 		D3ECC5A3239BA91600548E9B /* StrangerChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5A2239BA91600548E9B /* StrangerChatTests.swift */; };
 		D3ECC5B1239BA91F00548E9B /* StrangerChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5B0239BA91F00548E9B /* StrangerChatUITests.swift */; };
+		D3ECC5E4239D14A500548E9B /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */; };
+		D3ECC5E5239D14A500548E9B /* ChatWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E0239D14A400548E9B /* ChatWorker.swift */; };
+		D3ECC5E6239D14A500548E9B /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E1239D14A400548E9B /* ChatRouter.swift */; };
+		D3ECC5E7239D14A500548E9B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E2239D14A400548E9B /* ChatViewController.swift */; };
+		D3ECC5E8239D14A500548E9B /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E3239D14A400548E9B /* ChatInteractor.swift */; };
+		D3ECC5EA239D14BC00548E9B /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3ECC5E9239D14BC00548E9B /* ChatViewController.xib */; };
+		D3ECC5EC239D16B800548E9B /* ChatInputField.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3ECC5EB239D16B700548E9B /* ChatInputField.xib */; };
+		D3ECC5EE239D21BC00548E9B /* ChatInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5ED239D21BC00548E9B /* ChatInputField.swift */; };
 		FDAB1AE32676E023C30312C5 /* Pods_Stranger_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AEFBFAD0AC8547E53D115D1 /* Pods_Stranger_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +188,14 @@
 		D3ECC5AE239BA91F00548E9B /* Stranger-ChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stranger-ChatUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3ECC5B0239BA91F00548E9B /* StrangerChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerChatUITests.swift; sourceTree = "<group>"; };
 		D3ECC5B2239BA91F00548E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		D3ECC5E0239D14A400548E9B /* ChatWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWorker.swift; sourceTree = "<group>"; };
+		D3ECC5E1239D14A400548E9B /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		D3ECC5E2239D14A400548E9B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D3ECC5E3239D14A400548E9B /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		D3ECC5E9239D14BC00548E9B /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		D3ECC5EB239D16B700548E9B /* ChatInputField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInputField.xib; sourceTree = "<group>"; };
+		D3ECC5ED239D21BC00548E9B /* ChatInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +461,7 @@
 				D3632AE1238DA09A0072A762 /* TabBarController */,
 				D3632AD4238D9CBB0072A762 /* Home */,
 				D3632AE4238DA8B20072A762 /* StrangersBrowser */,
+				D3ECC5DE239D148F00548E9B /* Chat */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -460,9 +477,9 @@
 		D3CAABD521A34C6500B9149C /* Landing */ = {
 			isa = PBXGroup;
 			children = (
-				D3ECC59A239B112F00548E9B /* LandingInteractor.swift */,
 				D3CAABD821A355D900B9149C /* LandingViewController.swift */,
 				D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */,
+				D3ECC59A239B112F00548E9B /* LandingInteractor.swift */,
 				D3CAABDC21A3560100B9149C /* LandingRouter.swift */,
 			);
 			path = Landing;
@@ -534,6 +551,29 @@
 				D3ECC5B2239BA91F00548E9B /* Info.plist */,
 			);
 			path = "Stranger-ChatUITests";
+			sourceTree = "<group>";
+		};
+		D3ECC5DE239D148F00548E9B /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D3ECC5E2239D14A400548E9B /* ChatViewController.swift */,
+				D3ECC5E9239D14BC00548E9B /* ChatViewController.xib */,
+				D3ECC5E3239D14A400548E9B /* ChatInteractor.swift */,
+				D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */,
+				D3ECC5E1239D14A400548E9B /* ChatRouter.swift */,
+				D3ECC5E0239D14A400548E9B /* ChatWorker.swift */,
+				D3ECC5EF239D21C200548E9B /* InputField */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		D3ECC5EF239D21C200548E9B /* InputField */ = {
+			isa = PBXGroup;
+			children = (
+				D3ECC5ED239D21BC00548E9B /* ChatInputField.swift */,
+				D3ECC5EB239D16B700548E9B /* ChatInputField.xib */,
+			);
+			path = InputField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -650,7 +690,9 @@
 				D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */,
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
+				D3ECC5EA239D14BC00548E9B /* ChatViewController.xib in Resources */,
 				D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */,
+				D3ECC5EC239D16B800548E9B /* ChatInputField.xib in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
 				D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */,
 				D3632AE0238D9CE60072A762 /* HomeViewController.xib in Resources */,
@@ -766,16 +808,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */,
+				D3ECC5E8239D14A500548E9B /* ChatInteractor.swift in Sources */,
 				D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */,
 				D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */,
 				D3ECC597239A8FDC00548E9B /* Collection+SafeIndex.swift in Sources */,
 				D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */,
 				D3632AF4238DB8680072A762 /* CurrentUserRepository.swift in Sources */,
+				D3ECC5E4239D14A500548E9B /* ChatPresenter.swift in Sources */,
+				D3ECC5E5239D14A500548E9B /* ChatWorker.swift in Sources */,
+				D3ECC5E6239D14A500548E9B /* ChatRouter.swift in Sources */,
 				D3632ADE238D9CD50072A762 /* HomeInteractor.swift in Sources */,
 				D3E6D58A22281F2400AF73D7 /* ValidationError.swift in Sources */,
 				D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */,
 				D3632AAF238C4B440072A762 /* LoginInteractor.swift in Sources */,
 				D3E6D5672216D94100AF73D7 /* OfflineModeLoginInteractor.swift in Sources */,
+				D3ECC5EE239D21BC00548E9B /* ChatInputField.swift in Sources */,
 				D3632AB3238C4B540072A762 /* LoginRouter.swift in Sources */,
 				D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */,
 				D3632AE3238DA0F00072A762 /* MainTabBarController.swift in Sources */,
@@ -820,6 +867,7 @@
 				D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */,
 				D3CAAB8A21A2083700B9149C /* AppDelegate.swift in Sources */,
 				D348D12A238716640012D43C /* Provider.swift in Sources */,
+				D3ECC5E7239D14A500548E9B /* ChatViewController.swift in Sources */,
 				D3632ADA238D9CD50072A762 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

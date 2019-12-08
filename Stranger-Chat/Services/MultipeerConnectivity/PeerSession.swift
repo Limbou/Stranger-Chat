@@ -24,7 +24,7 @@ protocol PeerSessionDelegate: AnyObject {
                             invitationHandler: @escaping (Bool, MCSession?) -> Void)
 }
 
-protocol PeerConnection {
+protocol PeerConnection: AnyObject {
     var mcSession: MCSession { get }
     var delegate: PeerSessionDelegate? { get set }
     func connect()
@@ -36,7 +36,7 @@ protocol PeerConnection {
 extension PeerConnection {
 
     func send(data: Data) {
-        self.send(data: data, to: self.mcSession.connectedPeers ?? [])
+        self.send(data: data, to: self.mcSession.connectedPeers)
     }
 
     func send(data: Data, to peerIDs: [MCPeerID]) {

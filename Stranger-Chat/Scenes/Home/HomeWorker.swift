@@ -15,7 +15,7 @@ import MultipeerConnectivity
 protocol HomeWorker: AnyObject {
     func startAdvertising() -> Observable<SessionInvitation>
     func stopAdvertising()
-    func acceptInvitation()
+    func acceptInvitation() -> Observable<ConnectionState>
 }
 
 typealias InvitationHandler = (Bool, MCSession?) -> Void
@@ -26,6 +26,7 @@ final class HomeWorkerImpl: HomeWorker {
     private let session: PeerClientSession
     private let invitations = PublishSubject<SessionInvitation>()
     private var latestInvitationHandler: InvitationHandler?
+    private let connectionState = PublishSubject<ConnectionState>()
 
     init(currentUserRepository: CurrentUserRepository, session: PeerClientSession = PeerClientSession.getInstance(name: "Siemka")) {
         self.currentUserRepository = currentUserRepository
@@ -46,12 +47,13 @@ final class HomeWorkerImpl: HomeWorker {
         session.disconnect()
     }
 
-    func acceptInvitation() {
+    func acceptInvitation() -> Observable<ConnectionState> {
         guard let latestInvitationHandler = latestInvitationHandler else {
             print("No invitation handler")
-            return
+            return Observable.empty()
         }
         latestInvitationHandler(true, session.mcSession)
+        return connectionState
     }
 
 }
@@ -68,6 +70,18 @@ extension HomeWorkerImpl: PeerSessionDelegate {
         latestInvitationHandler = invitationHandler
         let invitation = SessionInvitation(peerId: peerID, context: context)
         invitations.onNext(invitation)
+    }
+
+    func peerConnecting(peerID: MCPeerID) {
+        connectionState.onNext(.connecting)
+    }
+
+    func peerConnected(peerID: MCPeerID) {
+        connectionState.onNext(.connected)
+    }
+
+    func peerDisconnected(peerID: MCPeerID) {
+        connectionState.onNext(.disconnected)
     }
 
 }

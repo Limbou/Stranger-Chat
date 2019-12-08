@@ -36,7 +36,7 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
         self.advertiser.delegate = self
     }
 
-    class func getInstance(name: String) -> PeerClientSession {
+    class func getInstance(name: String = "iPhone") -> PeerClientSession {
         if let instance = instance {
             return instance
         }
@@ -53,7 +53,6 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
     func disconnect() {
         self.advertiser.stopAdvertisingPeer()
         self.mcSession.disconnect()
-        self.mcSession.disconnect()
         self.delegate?.connectionClosed()
     }
 
@@ -65,13 +64,9 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        print("Before invitation handler - \(mcSession.connectedPeers)")
-        print("Session: \(self.mcSession)")
-        invitationHandler(true, self.mcSession)
-        print("After invitation handler - \(mcSession.connectedPeers)")
-//        self.delegate?.invitationReceived(from: peerID,
-//                                          context: context,
-//                                          invitationHandler: invitationHandler)
+        self.delegate?.invitationReceived(from: peerID,
+                                          context: context,
+                                          invitationHandler: invitationHandler)
     }
 
 }

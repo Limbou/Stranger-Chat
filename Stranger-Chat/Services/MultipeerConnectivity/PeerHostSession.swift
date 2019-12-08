@@ -37,7 +37,7 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
         self.browser.delegate = self
     }
 
-    class func getInstance(name: String) -> PeerHostSession {
+    class func getInstance(name: String = "iPhone") -> PeerHostSession {
         if let instance = instance {
             return instance
         }
@@ -58,11 +58,7 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
-        print(info ?? [])
         self.delegate?.peerDiscovered(peerID: peerID)
-//        if let session = self.mcSession {
-//            browser.invitePeer(peerID, to: session, withContext: nil, timeout: self.timeout)
-//        }
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {

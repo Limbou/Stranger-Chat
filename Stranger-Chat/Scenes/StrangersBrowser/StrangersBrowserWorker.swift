@@ -57,9 +57,6 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
             return Observable.empty()
         }
         session.browser.invitePeer(peer, to: session.mcSession, withContext: nil, timeout: 15)
-//        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { _ in
-//            print(self.session.mcSession?.connectedPeers)
-//        }
         return connectionState
     }
 

@@ -8,5 +8,3 @@ before_install:
  - bundle install
  - bundle exec pod repo update
  - bundle exec pod install
-after_success:
- - bash <(curl -s https://codecov.io/bash) -J 'Stranger-Chat'

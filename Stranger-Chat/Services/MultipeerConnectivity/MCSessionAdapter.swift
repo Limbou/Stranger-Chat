@@ -20,7 +20,6 @@ final class MCSessionAdapter: NSObject, MCSessionDelegate {
     }
 
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        print(state.rawValue)
         switch state {
         case .connecting:
             self.delegate?.peerConnecting(peerID: peerID)
