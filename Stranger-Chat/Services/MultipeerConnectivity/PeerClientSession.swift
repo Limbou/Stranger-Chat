@@ -12,10 +12,11 @@ import MultipeerConnectivity
 class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDelegate {
 
     static private var instance: PeerClientSession?
-    let mcSession: MCSession
-    private let advertiser: MCNearbyServiceAdvertiser
-    private let peerId: MCPeerID
+    var mcSession: MCSession
+    private var advertiser: MCNearbyServiceAdvertiser
+    private var peerId: MCPeerID
     private let sessionHandler: MCSessionAdapter
+    private let displayName: String
     weak var delegate: PeerSessionDelegate? {
         didSet {
             sessionHandler.delegate = delegate
@@ -27,6 +28,7 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
     }
 
     private init(name: String) {
+        self.displayName = name
         self.peerId = MCPeerID(displayName: name)
         self.mcSession = MCSession(peer: self.peerId, securityIdentity: nil, encryptionPreference: .required)
         self.advertiser = MCNearbyServiceAdvertiser(peer: self.peerId, discoveryInfo: nil, serviceType: peerServiceType)
@@ -46,29 +48,38 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
     }
 
     func connect() {
-        self.disconnect()
+        disconnect()
         advertiser.startAdvertisingPeer()
     }
 
     func disconnect() {
-        self.advertiser.stopAdvertisingPeer()
-        self.mcSession.disconnect()
-        self.delegate?.connectionClosed()
+        advertiser.stopAdvertisingPeer()
+        mcSession.disconnect()
+        delegate?.connectionClosed()
+    }
+
+    func reset() {
+        disconnect()
+        peerId = MCPeerID(displayName: displayName)
+        mcSession = MCSession(peer: self.peerId, securityIdentity: nil, encryptionPreference: .required)
+        advertiser = MCNearbyServiceAdvertiser(peer: self.peerId, discoveryInfo: nil, serviceType: peerServiceType)
+        sessionHandler.setSession(self.mcSession)
+        advertiser.delegate = self
     }
 
     func stopAdvertising() {
-        self.advertiser.stopAdvertisingPeer()
+        advertiser.stopAdvertisingPeer()
     }
 
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Swift.Error) {
-        self.delegate?.peerConnectionError(error)
+        delegate?.peerConnectionError(error)
     }
 
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        self.delegate?.invitationReceived(from: peerID,
+        delegate?.invitationReceived(from: peerID,
                                           context: context,
                                           invitationHandler: invitationHandler)
     }

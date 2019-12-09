@@ -70,6 +70,7 @@ extension StrangersBrowserWorkerImpl: PeerSessionDelegate {
     }
 
     func peerLost(peerID: MCPeerID) {
+        print("Lost peer: \(peerID.displayName)")
         guard let indexOfPeer = discoveredPeers.firstIndex(of: peerID) else {
             return
         }

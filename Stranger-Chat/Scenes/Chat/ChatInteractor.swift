@@ -14,7 +14,7 @@ import RxSwiftExt
 
 protocol ChatInteractor: AnyObject {
     var sendPressed: PublishSubject<String?> { get }
-    var imagePressed: PublishSubject<Void> { get }
+    var imagePicked: PublishSubject<UIImage> { get }
     var dismissPressed: PublishSubject<Void> { get }
     func setupBindings()
 }
@@ -28,7 +28,7 @@ final class ChatInteractorImpl: ChatInteractor {
     private var messages = [ChatMessage]()
 
     let sendPressed = PublishSubject<String?>()
-    let imagePressed = PublishSubject<Void>()
+    let imagePicked = PublishSubject<UIImage>()
     let dismissPressed = PublishSubject<Void>()
 
     init(presenter: ChatPresenter, router: ChatRouter, worker: ChatWorker) {
@@ -42,8 +42,8 @@ final class ChatInteractorImpl: ChatInteractor {
             self.handleSendPress(text)
         }).disposed(by: bag)
 
-        imagePressed.subscribe(onNext: { _ in
-            self.handleImagePress()
+        imagePicked.subscribe(onNext: { image in
+            self.handleImagePick(image: image)
         }).disposed(by: bag)
 
         dismissPressed.subscribe(onNext: { _ in
@@ -52,6 +52,10 @@ final class ChatInteractorImpl: ChatInteractor {
 
         worker.receivedMessages.subscribe(onNext: { message in
             self.handleReceived(message: message)
+        }).disposed(by: bag)
+
+        worker.disconnected.subscribe(onNext: { message in
+            self.handleDisconnect()
         }).disposed(by: bag)
     }
 
@@ -67,8 +71,8 @@ final class ChatInteractorImpl: ChatInteractor {
         }
     }
 
-    private func handleImagePress() {
-        print("Image pressed")
+    private func handleImagePick(image: UIImage) {
+        worker.send(image: image)
     }
 
     private func handleDismissPress() {
@@ -86,6 +90,10 @@ final class ChatInteractorImpl: ChatInteractor {
         let chatMessage = ChatMessage(content: message, isAuthor: false)
         messages.append(chatMessage)
         presenter.display(messages: messages)
+    }
+
+    private func handleDisconnect() {
+        endChat()
     }
 
     private func endChat() {

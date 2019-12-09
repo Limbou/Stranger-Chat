@@ -16,11 +16,12 @@ private enum Constants {
 
 }
 
-final class ChatViewController: UIViewController {
+final class ChatViewController: UIViewController, UINavigationControllerDelegate {
 
     private let interactor: ChatInteractor
     private let bag = DisposeBag()
     private var messages = [ChatMessage]()
+    private let imagePicker = UIImagePickerController()
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var inputField: ChatInputField!
@@ -38,7 +39,7 @@ final class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
-        tableView.delegate = self
+        imagePicker.delegate = self
         setupNavbar()
         setupBindings()
         setupObservers()
@@ -94,7 +95,9 @@ final class ChatViewController: UIViewController {
 
         inputField.imageButton.rx.tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .bind(to: interactor.imagePressed)
+            .subscribe(onNext: { _ in
+                self.pickImage()
+            })
             .disposed(by: bag)
     }
 
@@ -106,6 +109,11 @@ final class ChatViewController: UIViewController {
     @objc
     private func dismissClicked() {
         interactor.dismissPressed.onNext(())
+    }
+
+    private func pickImage() {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
     }
 
 }
@@ -135,7 +143,17 @@ extension ChatViewController: UITableViewDataSource {
 
 }
 
-extension ChatViewController: UITableViewDelegate {
+extension ChatViewController: UIImagePickerControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else {
+            print("Error picking image")
+            return
+        }
+        interactor.imagePicked.onNext(image)
+    }
 
 }
 

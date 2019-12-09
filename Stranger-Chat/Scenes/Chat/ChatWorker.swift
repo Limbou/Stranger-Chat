@@ -14,7 +14,9 @@ import MultipeerConnectivity
 
 protocol ChatWorker: AnyObject {
     var receivedMessages: PublishSubject<String> { get }
+    var disconnected: PublishSubject<Void> { get }
     func send(message: String)
+    func send(image: UIImage)
     func disconnectFromSession()
 }
 
@@ -22,6 +24,7 @@ final class ChatWorkerImpl: ChatWorker {
 
     private let peerConnection: PeerConnection
     let receivedMessages = PublishSubject<String>()
+    let disconnected = PublishSubject<Void>()
 
     init(peerConnection: PeerConnection) {
         self.peerConnection = peerConnection
@@ -33,11 +36,28 @@ final class ChatWorkerImpl: ChatWorker {
             print("Error converting message")
             return
         }
+        print(peerConnection.mcSession.connectedPeers)
         peerConnection.send(data: messageData)
     }
 
+    func send(image: UIImage) {
+        guard let imageData = image.pngData() else { return }
+        let fileManager = FileManager.default
+        let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let photoURL = path.appendingPathComponent("image.png")
+        do {
+            try imageData.write(to: photoURL)
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        peerConnection.sendResource(at: photoURL, withName: "image.png", toPeer: peerConnection.mcSession.connectedPeers[0]) { error in
+            print(error?.localizedDescription)
+        }
+    }
+
     func disconnectFromSession() {
-        peerConnection.mcSession.disconnect()
+        peerConnection.reset()
     }
 
 }
@@ -54,16 +74,9 @@ extension ChatWorkerImpl: PeerSessionDelegate {
         }
     }
 
-    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        switch state {
-        case .connecting:
-            print("Connecting")
-        case .connected:
-            print("Connected")
-        case .notConnected:
-            print("Disconnected")
-        default:
-            break
+    func peerDisconnected(peerID: MCPeerID) {
+        DispatchQueue.main.async {
+            self.disconnected.onNext(())
         }
     }
 

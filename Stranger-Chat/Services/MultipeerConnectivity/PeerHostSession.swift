@@ -12,11 +12,12 @@ import MultipeerConnectivity
 final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDelegate {
 
     static private var instance: PeerHostSession?
-    let mcSession: MCSession
-    let browser: MCNearbyServiceBrowser
-    private let peerId: MCPeerID
+    var mcSession: MCSession
+    var browser: MCNearbyServiceBrowser
+    private var peerId: MCPeerID
     private let timeout: TimeInterval = 15.0
     private let sessionHandler: MCSessionAdapter
+    private let displayName: String
     weak var delegate: PeerSessionDelegate? {
         didSet {
             sessionHandler.delegate = delegate
@@ -28,6 +29,7 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
     }
 
     private init(name: String) {
+        self.displayName = name
         self.peerId = MCPeerID(displayName: name)
         self.mcSession = MCSession(peer: self.peerId, securityIdentity: nil, encryptionPreference: .required)
         self.browser = MCNearbyServiceBrowser(peer: self.peerId, serviceType: peerServiceType)
@@ -47,26 +49,36 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
     }
 
     func connect() {
-        self.disconnect()
+        disconnect()
         browser.startBrowsingForPeers()
-        self.delegate?.connectionReady()
+        delegate?.connectionReady()
     }
 
     func disconnect() {
-        self.browser.stopBrowsingForPeers()
-        self.delegate?.connectionClosed()
+        browser.stopBrowsingForPeers()
+        delegate?.connectionClosed()
+    }
+
+    func reset() {
+        disconnect()
+        mcSession.disconnect()
+        peerId = MCPeerID(displayName: displayName)
+        mcSession = MCSession(peer: self.peerId, securityIdentity: nil, encryptionPreference: .required)
+        browser = MCNearbyServiceBrowser(peer: self.peerId, serviceType: peerServiceType)
+        sessionHandler.setSession(self.mcSession)
+        browser.delegate = self
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
-        self.delegate?.peerDiscovered(peerID: peerID)
+        delegate?.peerDiscovered(peerID: peerID)
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
-        self.delegate?.peerLost(peerID: peerID)
+        delegate?.peerLost(peerID: peerID)
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        self.delegate?.peerConnectionError(error)
+        delegate?.peerConnectionError(error)
     }
 
 }

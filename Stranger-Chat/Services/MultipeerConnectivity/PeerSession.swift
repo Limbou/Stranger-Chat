@@ -29,8 +29,10 @@ protocol PeerConnection: AnyObject {
     var delegate: PeerSessionDelegate? { get set }
     func connect()
     func disconnect()
+    func reset()
     func send(data: Data)
     func send(data: Data, to peerIDs: [MCPeerID])
+    func sendResource(at resourceURL: URL, withName resourceName: String, toPeer peerID: MCPeerID, withCompletionHandler completionHandler: ((Error?) -> Void)?) -> Progress?
 }
 
 extension PeerConnection {
@@ -45,6 +47,10 @@ extension PeerConnection {
         } catch let error {
             self.delegate?.peerConnectionError(error)
         }
+    }
+
+    func sendResource(at resourceURL: URL, withName resourceName: String, toPeer peerID: MCPeerID, withCompletionHandler completionHandler: ((Error?) -> Void)? = nil) -> Progress? {
+        return self.mcSession.sendResource(at: resourceURL, withName: resourceName, toPeer: peerID, withCompletionHandler: completionHandler)
     }
 
 }
