@@ -44,7 +44,7 @@ final class HomeWorkerImpl: HomeWorker {
     }
 
     func stopAdvertising() {
-        session.disconnect()
+        session.stopAdvertising()
     }
 
     func acceptInvitation() -> Observable<ConnectionState> {

@@ -15,6 +15,7 @@ import MultipeerConnectivity
 protocol ChatWorker: AnyObject {
     var receivedMessages: PublishSubject<String> { get }
     func send(message: String)
+    func disconnectFromSession()
 }
 
 final class ChatWorkerImpl: ChatWorker {
@@ -35,6 +36,10 @@ final class ChatWorkerImpl: ChatWorker {
         peerConnection.send(data: messageData)
     }
 
+    func disconnectFromSession() {
+        peerConnection.mcSession.disconnect()
+    }
+
 }
 
 extension ChatWorkerImpl: PeerSessionDelegate {
@@ -49,8 +54,22 @@ extension ChatWorkerImpl: PeerSessionDelegate {
         }
     }
 
+    func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
+        switch state {
+        case .connecting:
+            print("Connecting")
+        case .connected:
+            print("Connected")
+        case .notConnected:
+            print("Disconnected")
+        default:
+            break
+        }
+    }
+
     func peerConnectionError(_ error: Error) {
         print("Failed to send data")
+        print(error.localizedDescription)
     }
 
 }

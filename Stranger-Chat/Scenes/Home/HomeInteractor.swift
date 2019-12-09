@@ -83,6 +83,7 @@ final class HomeInteractorImpl: HomeInteractor {
         case .connecting:
             break
         case .connected:
+            advertising.toggle()
             router.goToChat()
         case .disconnected:
             print("Disconnected!")

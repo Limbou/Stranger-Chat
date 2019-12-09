@@ -11,19 +11,19 @@
 import Foundation
 
 protocol ChatDisplayable: AnyObject {
-    func display(messages: [String])
+    func display(messages: [ChatMessage])
 }
 
 protocol ChatPresenter: AnyObject {
     var viewController: ChatDisplayable? { get set }
-    func display(messages: [String])
+    func display(messages: [ChatMessage])
 }
 
 final class ChatPresenterImpl: ChatPresenter {
 
     weak var viewController: ChatDisplayable?
 
-    func display(messages: [String]) {
+    func display(messages: [ChatMessage]) {
         viewController?.display(messages: messages)
     }
 

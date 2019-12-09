@@ -48,6 +48,14 @@
 		D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AEA238DA8D50072A762 /* StrangersBrowserInteractor.swift */; };
 		D3632AF1238DA8F80072A762 /* StrangersBrowserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632AF0238DA8F80072A762 /* StrangersBrowserViewController.xib */; };
 		D3632AF4238DB8680072A762 /* CurrentUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AF3238DB8680072A762 /* CurrentUserRepository.swift */; };
+		D3669FBA239EB4DE00C171DC /* MyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FB8239EB4DE00C171DC /* MyMessageCell.swift */; };
+		D3669FBB239EB4DE00C171DC /* MyMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3669FB9239EB4DE00C171DC /* MyMessageCell.xib */; };
+		D3669FBE239EB4F200C171DC /* ForeignMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FBC239EB4F200C171DC /* ForeignMessageCell.swift */; };
+		D3669FBF239EB4F200C171DC /* ForeignMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3669FBD239EB4F200C171DC /* ForeignMessageCell.xib */; };
+		D3669FC1239EB64A00C171DC /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FC0239EB64A00C171DC /* UITableViewCell+Extension.swift */; };
+		D3669FC3239EB65C00C171DC /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FC2239EB65C00C171DC /* UITableView+Extension.swift */; };
+		D3669FC5239EC32000C171DC /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FC4239EC32000C171DC /* ChatMessage.swift */; };
+		D3669FC8239ECB8F00C171DC /* ChatSecretMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FC7239ECB8F00C171DC /* ChatSecretMessages.swift */; };
 		D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38004D1226F30DA00C01683 /* RoundButton.swift */; };
 		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
 		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
@@ -153,6 +161,14 @@
 		D3632AEA238DA8D50072A762 /* StrangersBrowserInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangersBrowserInteractor.swift; sourceTree = "<group>"; };
 		D3632AF0238DA8F80072A762 /* StrangersBrowserViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrangersBrowserViewController.xib; sourceTree = "<group>"; };
 		D3632AF3238DB8680072A762 /* CurrentUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserRepository.swift; sourceTree = "<group>"; };
+		D3669FB8239EB4DE00C171DC /* MyMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
+		D3669FB9239EB4DE00C171DC /* MyMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMessageCell.xib; sourceTree = "<group>"; };
+		D3669FBC239EB4F200C171DC /* ForeignMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignMessageCell.swift; sourceTree = "<group>"; };
+		D3669FBD239EB4F200C171DC /* ForeignMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForeignMessageCell.xib; sourceTree = "<group>"; };
+		D3669FC0239EB64A00C171DC /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
+		D3669FC2239EB65C00C171DC /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		D3669FC4239EC32000C171DC /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		D3669FC7239ECB8F00C171DC /* ChatSecretMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSecretMessages.swift; sourceTree = "<group>"; };
 		D38004D1226F30DA00C01683 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
 		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
@@ -285,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				D348D13C23872F330012D43C /* AppUser.swift */,
+				D3669FC4239EC32000C171DC /* ChatMessage.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -367,6 +384,25 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		D3669FB7239EB4A900C171DC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D3669FB8239EB4DE00C171DC /* MyMessageCell.swift */,
+				D3669FB9239EB4DE00C171DC /* MyMessageCell.xib */,
+				D3669FBC239EB4F200C171DC /* ForeignMessageCell.swift */,
+				D3669FBD239EB4F200C171DC /* ForeignMessageCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D3669FC6239ECB6F00C171DC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D3669FC7239ECB8F00C171DC /* ChatSecretMessages.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		D38004D0226F30BD00C01683 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +467,7 @@
 				D3CAABD321A34C2D00B9149C /* Scenes */,
 				D38004D0226F30BD00C01683 /* CustomViews */,
 				D3E6D58522281D3D00AF73D7 /* Validators */,
+				D3669FC6239ECB6F00C171DC /* Constants */,
 				D3E6D5612216D5E000AF73D7 /* Helpers */,
 				D3E6D58B2228202E00AF73D7 /* Extensions */,
 				D3CAAB8921A2083700B9149C /* AppDelegate.swift */,
@@ -531,6 +568,8 @@
 				D3331DA92285D21100301CBA /* String+isValidName.swift */,
 				D3632AD2238C74580072A762 /* Error+Code.swift */,
 				D3ECC596239A8FDC00548E9B /* Collection+SafeIndex.swift */,
+				D3669FC0239EB64A00C171DC /* UITableViewCell+Extension.swift */,
+				D3669FC2239EB65C00C171DC /* UITableView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -562,6 +601,7 @@
 				D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */,
 				D3ECC5E1239D14A400548E9B /* ChatRouter.swift */,
 				D3ECC5E0239D14A400548E9B /* ChatWorker.swift */,
+				D3669FB7239EB4A900C171DC /* Cells */,
 				D3ECC5EF239D21C200548E9B /* InputField */,
 			);
 			path = Chat;
@@ -687,6 +727,7 @@
 			files = (
 				D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */,
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
+				D3669FBB239EB4DE00C171DC /* MyMessageCell.xib in Resources */,
 				D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */,
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
@@ -694,6 +735,7 @@
 				D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */,
 				D3ECC5EC239D16B800548E9B /* ChatInputField.xib in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
+				D3669FBF239EB4F200C171DC /* ForeignMessageCell.xib in Resources */,
 				D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */,
 				D3632AE0238D9CE60072A762 /* HomeViewController.xib in Resources */,
 				D3632AF1238DA8F80072A762 /* StrangersBrowserViewController.xib in Resources */,
@@ -809,6 +851,7 @@
 			files = (
 				D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */,
 				D3ECC5E8239D14A500548E9B /* ChatInteractor.swift in Sources */,
+				D3669FBE239EB4F200C171DC /* ForeignMessageCell.swift in Sources */,
 				D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */,
 				D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */,
 				D3ECC597239A8FDC00548E9B /* Collection+SafeIndex.swift in Sources */,
@@ -817,11 +860,13 @@
 				D3ECC5E4239D14A500548E9B /* ChatPresenter.swift in Sources */,
 				D3ECC5E5239D14A500548E9B /* ChatWorker.swift in Sources */,
 				D3ECC5E6239D14A500548E9B /* ChatRouter.swift in Sources */,
+				D3669FC3239EB65C00C171DC /* UITableView+Extension.swift in Sources */,
 				D3632ADE238D9CD50072A762 /* HomeInteractor.swift in Sources */,
 				D3E6D58A22281F2400AF73D7 /* ValidationError.swift in Sources */,
 				D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */,
 				D3632AAF238C4B440072A762 /* LoginInteractor.swift in Sources */,
 				D3E6D5672216D94100AF73D7 /* OfflineModeLoginInteractor.swift in Sources */,
+				D3669FC1239EB64A00C171DC /* UITableViewCell+Extension.swift in Sources */,
 				D3ECC5EE239D21BC00548E9B /* ChatInputField.swift in Sources */,
 				D3632AB3238C4B540072A762 /* LoginRouter.swift in Sources */,
 				D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */,
@@ -833,6 +878,7 @@
 				D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */,
 				D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */,
 				D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */,
+				D3669FC8239ECB8F00C171DC /* ChatSecretMessages.swift in Sources */,
 				D3632ACD238C5FFB0072A762 /* RegisterInteractor.swift in Sources */,
 				D3632AA7238C3EEF0072A762 /* LocalUserRepository.swift in Sources */,
 				D3632AC3238C504B0072A762 /* LoginData.swift in Sources */,
@@ -858,9 +904,11 @@
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
 				D3632AEC238DA8D60072A762 /* StrangersBrowserWorker.swift in Sources */,
 				D3632AED238DA8D60072A762 /* StrangersBrowserRouter.swift in Sources */,
+				D3669FC5239EC32000C171DC /* ChatMessage.swift in Sources */,
 				D3632AD3238C74580072A762 /* Error+Code.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3615AF422AF8EAE0021B346 /* AlertBuilder.swift in Sources */,
+				D3669FBA239EB4DE00C171DC /* MyMessageCell.swift in Sources */,
 				D3632AB5238C4B5D0072A762 /* LoginWorker.swift in Sources */,
 				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
 				D3632AD1238C61D40072A762 /* RegisterData.swift in Sources */,

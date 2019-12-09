@@ -56,6 +56,10 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
         self.delegate?.connectionClosed()
     }
 
+    func stopAdvertising() {
+        self.advertiser.stopAdvertisingPeer()
+    }
+
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Swift.Error) {
         self.delegate?.peerConnectionError(error)
     }
