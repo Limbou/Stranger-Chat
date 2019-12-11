@@ -89,8 +89,8 @@ final class ScreenAssembly: Assembly {
         container.autoregister(ChatPresenter.self, initializer: ChatPresenterImpl.init).initCompleted { (resolver, presenter) in
             presenter.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
         }
-        container.register(ChatWorker.self) { _, peerConnection in
-            ChatWorkerImpl(peerConnection: peerConnection)
+        container.register(ChatWorker.self) { resolver, peerConnection in
+            ChatWorkerImpl(peerConnection: peerConnection, fileManager: resolver ~> FileManager.self)
         }
         container.autoregister(ChatRouter.self, initializer: ChatRouterImpl.init).initCompleted { (resolver, router) in
             router.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)

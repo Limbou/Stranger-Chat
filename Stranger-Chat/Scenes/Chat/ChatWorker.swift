@@ -23,15 +23,18 @@ protocol ChatWorker: AnyObject {
 final class ChatWorkerImpl: ChatWorker {
 
     private let peerConnection: PeerConnection
+    private let fileManager: FileManager
     let receivedMessages = PublishSubject<String>()
     let disconnected = PublishSubject<Void>()
 
-    init(peerConnection: PeerConnection) {
+    init(peerConnection: PeerConnection, fileManager: FileManager) {
         self.peerConnection = peerConnection
+        self.fileManager = fileManager
         self.peerConnection.delegate = self
     }
 
     func send(message: String) {
+        print(peerConnection)
         guard let messageData = message.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
             print("Error converting message")
             return
@@ -41,17 +44,21 @@ final class ChatWorkerImpl: ChatWorker {
     }
 
     func send(image: UIImage) {
-        guard let imageData = image.pngData() else { return }
-        let fileManager = FileManager.default
-        let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let photoURL = path.appendingPathComponent("image.png")
+        guard let imageData = image.pngData(),
+            let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first,
+            let peer = peerConnection.mcSession.connectedPeers.first else {
+                print("Error sending image")
+                return
+        }
+        let imageId = UUID().uuidString
+        let photoURL = path.appendingPathComponent("\(imageId).png")
         do {
             try imageData.write(to: photoURL)
         } catch {
             print(error.localizedDescription)
+            return
         }
-
-        peerConnection.sendResource(at: photoURL, withName: "image.png", toPeer: peerConnection.mcSession.connectedPeers[0]) { error in
+        peerConnection.sendResource(at: photoURL, withName: "\(imageId).png", toPeer: peer) { error in
             print(error?.localizedDescription)
         }
     }
@@ -75,6 +82,7 @@ extension ChatWorkerImpl: PeerSessionDelegate {
     }
 
     func peerDisconnected(peerID: MCPeerID) {
+        print("Disconnected")
         DispatchQueue.main.async {
             self.disconnected.onNext(())
         }
@@ -83,6 +91,22 @@ extension ChatWorkerImpl: PeerSessionDelegate {
     func peerConnectionError(_ error: Error) {
         print("Failed to send data")
         print(error.localizedDescription)
+    }
+
+    func session(_ session: MCSession,
+                 didFinishReceivingResourceWithName resourceName: String,
+                 fromPeer peerID: MCPeerID,
+                 at localURL: URL?,
+                 withError error: Error?) {
+        if let url = localURL {
+            do {
+                let localData = try Data(contentsOf: url)
+                let image = UIImage(data: localData)
+                print(image?.isSymbolImage)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 
 }

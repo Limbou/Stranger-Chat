@@ -26,6 +26,7 @@ final class MCSessionAdapter: NSObject, MCSessionDelegate {
         case .connected:
             self.delegate?.peerConnected(peerID: peerID)
         case .notConnected:
+            print("NotConnected session: \(session)")
             self.delegate?.peerDisconnected(peerID: peerID)
         default:
             break
@@ -55,6 +56,11 @@ final class MCSessionAdapter: NSObject, MCSessionDelegate {
                  fromPeer peerID: MCPeerID,
                  at localURL: URL?,
                  withError error: Error?) {
+        self.delegate?.session(session,
+                               didFinishReceivingResourceWithName: resourceName,
+                               fromPeer: peerID,
+                               at: localURL,
+                               withError: error)
     }
 
     func session(_ session: MCSession,

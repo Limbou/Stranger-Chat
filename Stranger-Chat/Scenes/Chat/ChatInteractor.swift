@@ -54,7 +54,7 @@ final class ChatInteractorImpl: ChatInteractor {
             self.handleReceived(message: message)
         }).disposed(by: bag)
 
-        worker.disconnected.subscribe(onNext: { message in
+        worker.disconnected.subscribe(onNext: { _ in
             self.handleDisconnect()
         }).disposed(by: bag)
     }
@@ -93,7 +93,7 @@ final class ChatInteractorImpl: ChatInteractor {
     }
 
     private func handleDisconnect() {
-        endChat()
+//        endChat()
     }
 
     private func endChat() {

@@ -12,10 +12,10 @@ import SwinjectAutoregistration
 final class ServicesAssembly: Assembly {
 
     func assemble(container: Container) {
-
         container.register(LocalStorageProtocol.self) { _ in RealmManager.shared }
 //        container.register(PeerHostSession.self) { _ in PeerHostSession.shared }
 //        container.register(PeerClientSession.self) { _ in PeerClientSession.shared }
+        container.register(FileManager.self) { _ in FileManager.default }
 
     }
 

@@ -15,6 +15,7 @@ import MultipeerConnectivity
 protocol HomeWorker: AnyObject {
     func startAdvertising() -> Observable<SessionInvitation>
     func stopAdvertising()
+    func declineInvitation()
     func acceptInvitation() -> Observable<ConnectionState>
 }
 
@@ -28,7 +29,7 @@ final class HomeWorkerImpl: HomeWorker {
     private var latestInvitationHandler: InvitationHandler?
     private let connectionState = PublishSubject<ConnectionState>()
 
-    init(currentUserRepository: CurrentUserRepository, session: PeerClientSession = PeerClientSession.getInstance(name: "Siemka")) {
+    init(currentUserRepository: CurrentUserRepository, session: PeerClientSession = PeerClientSession.getInstance(name: "iPhone")) {
         self.currentUserRepository = currentUserRepository
         self.session = session
     }
@@ -47,11 +48,20 @@ final class HomeWorkerImpl: HomeWorker {
         session.stopAdvertising()
     }
 
+    func declineInvitation() {
+        guard let latestInvitationHandler = latestInvitationHandler else {
+            print("No invitation handler")
+            return
+        }
+        latestInvitationHandler(false, nil)
+    }
+
     func acceptInvitation() -> Observable<ConnectionState> {
         guard let latestInvitationHandler = latestInvitationHandler else {
             print("No invitation handler")
             return Observable.empty()
         }
+        print(latestInvitationHandler)
         latestInvitationHandler(true, session.mcSession)
         return connectionState
     }

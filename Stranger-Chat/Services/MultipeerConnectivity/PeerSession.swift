@@ -22,6 +22,11 @@ protocol PeerSessionDelegate: AnyObject {
     func invitationReceived(from peerID: MCPeerID,
                             context: Data?,
                             invitationHandler: @escaping (Bool, MCSession?) -> Void)
+    func session(_ session: MCSession,
+                 didFinishReceivingResourceWithName resourceName: String,
+                 fromPeer peerID: MCPeerID,
+                 at localURL: URL?,
+                 withError error: Error?)
 }
 
 protocol PeerConnection: AnyObject {
@@ -32,7 +37,10 @@ protocol PeerConnection: AnyObject {
     func reset()
     func send(data: Data)
     func send(data: Data, to peerIDs: [MCPeerID])
-    func sendResource(at resourceURL: URL, withName resourceName: String, toPeer peerID: MCPeerID, withCompletionHandler completionHandler: ((Error?) -> Void)?) -> Progress?
+    func sendResource(at resourceURL: URL,
+                      withName resourceName: String,
+                      toPeer peerID: MCPeerID,
+                      withCompletionHandler completionHandler: ((Error?) -> Void)?) -> Progress?
 }
 
 extension PeerConnection {
@@ -49,7 +57,10 @@ extension PeerConnection {
         }
     }
 
-    func sendResource(at resourceURL: URL, withName resourceName: String, toPeer peerID: MCPeerID, withCompletionHandler completionHandler: ((Error?) -> Void)? = nil) -> Progress? {
+    func sendResource(at resourceURL: URL,
+                      withName resourceName: String,
+                      toPeer peerID: MCPeerID,
+                      withCompletionHandler completionHandler: ((Error?) -> Void)? = nil) -> Progress? {
         return self.mcSession.sendResource(at: resourceURL, withName: resourceName, toPeer: peerID, withCompletionHandler: completionHandler)
     }
 
@@ -68,6 +79,11 @@ extension PeerSessionDelegate {
     func invitationReceived(from peerID: MCPeerID,
                             context: Data?,
                             invitationHandler: @escaping (Bool, MCSession?) -> Void) {}
+    func session(_ session: MCSession,
+                 didFinishReceivingResourceWithName resourceName: String,
+                 fromPeer peerID: MCPeerID,
+                 at localURL: URL?,
+                 withError error: Error?) {}
 }
 
 let peerServiceType = "strangerChat"

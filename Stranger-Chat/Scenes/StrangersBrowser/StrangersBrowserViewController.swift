@@ -67,6 +67,7 @@ extension StrangersBrowserViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(userNames[indexPath.row])
         interactor.selectCell.onNext(indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

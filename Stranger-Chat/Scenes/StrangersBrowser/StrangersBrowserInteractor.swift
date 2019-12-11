@@ -31,11 +31,19 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     let onWillDisappear = PublishSubject<[Any]>()
     let selectCell = PublishSubject<Int>()
 
+    private var subscription: Disposable?
+    private var subscription2: Disposable?
+
     init(presenter: StrangersBrowserPresenter, router: StrangersBrowserRouter, worker: StrangersBrowserWorker) {
         self.presenter = presenter
         self.router = router
         self.worker = worker
         setupBindings()
+    }
+
+    deinit {
+        subscription?.dispose()
+        subscription2?.dispose()
     }
 
     private func setupBindings() {
@@ -53,10 +61,13 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     }
 
     private func startBrowsing() {
-        worker.startBrowsing().subscribe(onNext: { discoveredUsers in
+        discoveredUsers = []
+        presenter.display(users: [])
+        subscription2?.dispose()
+        subscription2 = worker.startBrowsing().subscribe(onNext: { discoveredUsers in
             self.discoveredUsers = discoveredUsers
             self.presenter.display(users: discoveredUsers.map({ $0.displayName }))
-        }).disposed(by: bag)
+        })
     }
 
     private func stopBrowsing() {
@@ -64,11 +75,12 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     }
 
     private func selectedCell(_ index: Int) {
-        worker.sendInvitationTo(peerIndex: index).subscribe(onNext: { state in
+        subscription?.dispose()
+        subscription = worker.sendInvitationTo(peerIndex: index).subscribe(onNext: { state in
             DispatchQueue.main.async {
-                self.handleConnectionStateChange(state: state)
+                 self.handleConnectionStateChange(state: state)
             }
-        }).disposed(by: bag)
+        })
         presenter.presentInvitationSentAlert()
     }
 
@@ -77,8 +89,10 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
         case .connecting:
             break
         case .connected:
+            stopBrowsing()
             router.goToChat()
         case .disconnected:
+            print(UIDevice.current.name)
             print("Disconnected!")
         }
     }

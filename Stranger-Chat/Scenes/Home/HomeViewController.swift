@@ -62,8 +62,10 @@ extension HomeViewController: HomeDisplayable {
         let alert = AlertBuilder.shared.buildYesNoAlert(with: Constants.gotInvitation.localized(),
                                                         message: Constants.invitationFrom.localized(),
                                                         yesHandler: { _ in
-                                                            self.interactor.invitationAccepted.onNext(())
-        }) { _ in }
+                                                            self.interactor.invitationAccepted.onNext(true)
+        }) { _ in
+            self.interactor.invitationAccepted.onNext(false)
+        }
         present(alert, animated: true, completion: nil)
     }
 

@@ -42,6 +42,7 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
 //            print("No user")
 //            return Observable.empty()
 //        }
+        discoveredPeers = []
         session.delegate = self
         session.connect()
         return discovered
@@ -89,8 +90,10 @@ extension StrangersBrowserWorkerImpl: PeerSessionDelegate {
     }
 
     func peerDisconnected(peerID: MCPeerID) {
-        print("#$&#$& DISCONNECTED")
-        connectionState.onNext(.disconnected)
+        print("#$&#$& DISCONNECTED: \(peerID)")
+        DispatchQueue.main.async {
+            self.connectionState.onNext(.disconnected)
+        }
     }
 
 }

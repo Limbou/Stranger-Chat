@@ -30,7 +30,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func configureRootViewController() {
         let controller = Provider.get.instanceOf(MainTabBarController.self)
-        //let navigationController = UINavigationController(rootViewController: controller)
+//        let navigationController = UINavigationController(rootViewController: controller)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = controller
         window?.makeKeyAndVisible()

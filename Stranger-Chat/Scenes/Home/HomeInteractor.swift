@@ -15,7 +15,7 @@ import RxSwiftExt
 protocol HomeInteractor: AnyObject {
     var findPressed: PublishSubject<Void> { get }
     var makeVisiblePressed: PublishSubject<Void> { get }
-    var invitationAccepted: PublishSubject<Void> { get }
+    var invitationAccepted: PublishSubject<Bool> { get }
 }
 
 final class HomeInteractorImpl: HomeInteractor {
@@ -26,18 +26,26 @@ final class HomeInteractorImpl: HomeInteractor {
     private let bag = DisposeBag()
     let findPressed = PublishSubject<Void>()
     let makeVisiblePressed = PublishSubject<Void>()
-    let invitationAccepted = PublishSubject<Void>()
+    let invitationAccepted = PublishSubject<Bool>()
     private var advertising = false {
         didSet {
             toggleAdvertising()
         }
     }
 
+    private var subscription: Disposable?
+    private var subscription2: Disposable?
+
     init(presenter: HomePresenter, router: HomeRouter, worker: HomeWorker) {
         self.presenter = presenter
         self.router = router
         self.worker = worker
         setupBindings()
+    }
+
+    deinit {
+        subscription?.dispose()
+        subscription2?.dispose()
     }
 
     private func setupBindings() {
@@ -49,16 +57,17 @@ final class HomeInteractorImpl: HomeInteractor {
             self.advertising.toggle()
         }).disposed(by: bag)
 
-        invitationAccepted.subscribe(onNext: { _ in
-            self.handleInvitationAccepted()
+        invitationAccepted.subscribe(onNext: { accepted in
+            self.handleInvitation(accepted: accepted)
         }).disposed(by: bag)
     }
 
     private func toggleAdvertising() {
         if advertising {
-            worker.startAdvertising().subscribe(onNext: { invitation in
+            subscription2?.dispose()
+            subscription2 = worker.startAdvertising().subscribe(onNext: { invitation in
                 self.presentInvitation(invitation)
-            }).disposed(by: bag)
+            })
         } else {
             worker.stopAdvertising()
         }
@@ -70,12 +79,17 @@ final class HomeInteractorImpl: HomeInteractor {
                                     additionalInfo: String(fromData: invitation.context))
     }
 
-    private func handleInvitationAccepted() {
-        worker.acceptInvitation().subscribe(onNext: { state in
+    private func handleInvitation(accepted: Bool) {
+        guard accepted else {
+            worker.declineInvitation()
+            return
+        }
+        subscription?.dispose()
+        subscription = worker.acceptInvitation().subscribe(onNext: { state in
             DispatchQueue.main.async {
                 self.handleConnectionStateChange(state)
             }
-        }).disposed(by: bag)
+        })
     }
 
     private func handleConnectionStateChange(_ state: ConnectionState) {
@@ -86,6 +100,7 @@ final class HomeInteractorImpl: HomeInteractor {
             advertising.toggle()
             router.goToChat()
         case .disconnected:
+            print(UIDevice.current.name)
             print("Disconnected!")
         }
     }
