@@ -10,21 +10,29 @@ import UIKit
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+        configureFirebase()
         configureRootViewController()
         return true
     }
 
+    private func configureFirebase() {
+        FirebaseApp.configure()
+        #if DEBUG
+        #else
+        FirebaseApp.configure()
+        #endif
+    }
+
     private func configureRootViewController() {
-        let controller = ViewControllerFactory().getLandingViewController()
-        let navigationController = UINavigationController(rootViewController: controller)
+        let controller = Provider.get.instanceOf(MainTabBarController.self)
+//        let navigationController = UINavigationController(rootViewController: controller)
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navigationController
+        window?.rootViewController = controller
         window?.makeKeyAndVisible()
     }
 

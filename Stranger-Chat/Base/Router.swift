@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Router {
+protocol Router: AnyObject {
 
     var viewController: UIViewController? { get set }
 
@@ -28,10 +28,10 @@ extension Router {
     }
 
     func present(viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
-        guard self.viewController != nil else {
+        guard let currentViewController = self.viewController else {
             return
         }
-        self.viewController?.present(viewController, animated: animated, completion: completion)
+        currentViewController.present(viewController, animated: animated, completion: completion)
     }
 
     func dismiss() {

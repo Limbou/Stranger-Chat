@@ -3,20 +3,28 @@ inhibit_all_warnings!
 
  def firebase_pods
     pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Firestore'
+ end
+
+ def database_pods
+     pod 'RealmSwift'
  end
 
  def rx_pods
-    pod 'RxCocoa', '~> 4.4.0'
-    pod 'RxSwift', '~> 4.4.0'
+    pod 'RxCocoa', '~> 5'
+    pod 'RxSwift', '~> 5'
+    pod 'RxSwiftExt', '~> 5'
  end
 
  def test_pods
-   pod 'Nimble', '~> 7.3.1'
-   pod 'Quick', '~> 1.3.2'
+   pod 'Nimble', '~> 7.3.4'
+   pod 'Quick', '~> 1.3.4'
  end
 
- def ui_pods
-   pod 'SnapKit', '~> 4.2.0'
+ def injection_pods
+     pod 'Swinject'
+     pod 'SwinjectAutoregistration'
  end
 
  def other_pods
@@ -28,8 +36,9 @@ inhibit_all_warnings!
 target 'Stranger-Chat' do
   use_frameworks!
   firebase_pods
+  database_pods
   rx_pods
-  ui_pods
+  injection_pods
   other_pods
   
 

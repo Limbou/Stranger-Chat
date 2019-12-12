@@ -1,0 +1,38 @@
+/* 
+  localizable.strings
+  Stranger-Chat
+
+  Created by Jakub Danielczyk on 21/11/2018.
+  Copyright © 2018 Jakub Danielczyk. All rights reserved.
+*/
+
+"alert.button.ok" = "Ok";
+
+"landing.title" = "Witaj!";
+"landing.loginButton.title" = "Zaloguj";
+"landing.loginButton.title" = "Zarejestruj";
+"landing.offlineModeButton.title" = "Tryb Offline";
+
+"login.title" = "Logowanie";
+"login.email.title" = "Email";
+"login.password.title" = "Hasło";
+"login.button.title" = "Zaloguj";
+"login.error.title" = "Złe dane";
+"login.error.message" = "Sprawdź swój email oraz hasło i spróbuj ponownie.";
+
+"register.title" = "Rejestracja";
+"register.email.title" = "Email";
+"register.password.title" = "Hasło";
+"register.button.title" = "Zarejestruj";
+"register.error.title" = "Błąd";
+
+"offlineModeLogin.title" = "Logowanie";
+"offlineModeLogin.name.title" = "Podaj swoją nazwę";
+"offlineModeLogin.name.placeholder" = "nazwa";
+"offlineModeLogin.button.title" = "Zaloguj";
+"offlineModeLogin.alert.title" = "Nazwa za krótka!";
+"offlineModeLogin.alert.message" = "Nazwa użytkownika powinna składać się z przynajmniej 3 znaków.";
+
+"home.findStrangerButton.title" = "Znajdź nieznajomego";
+"home.makeVisibleButton.title" = "Stań się dostępny";
+"home.makeInvisibleButton.title" = "Ukryj się";

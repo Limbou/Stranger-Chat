@@ -7,27 +7,31 @@
 //
 
 import UIKit
+import RxSwift
 
-struct LandingRouter {
+protocol LandingRouter: Router {
+    func showLoginScene()
+    func showRegisterScene()
+    func showOfflineModeLoginScene()
+}
+
+final class LandingRouterImpl: LandingRouter {
 
     weak var viewController: UIViewController?
 
-    init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
-
-}
-
-extension LandingRouter: LandingRoutable {
-
     func showLoginScene() {
-        let loginViewController = UIViewController() //LoginViewController in the future
+        let loginViewController = Provider.get.instanceOf(LoginViewController.self)
         push(viewController: loginViewController)
     }
 
     func showRegisterScene() {
-        let registerViewController = UIViewController()
-        push(viewController: registerViewController) //RegisterViewController in the future
+        let registerViewController = Provider.get.instanceOf(RegisterViewController.self)
+        push(viewController: registerViewController)
+    }
+
+    func showOfflineModeLoginScene() {
+        let registerViewController = Provider.get.instanceOf(OfflineModeLoginViewController.self)
+        push(viewController: registerViewController)
     }
 
 }

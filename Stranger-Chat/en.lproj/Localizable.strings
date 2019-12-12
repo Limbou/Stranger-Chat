@@ -6,6 +6,33 @@
   Copyright © 2018 Jakub Danielczyk. All rights reserved.
 */
 
-"landing.titleLabel.text" = "WELCOME";
+"alert.button.ok" = "Ok";
+
+"landing.title" = "Welcome!";
 "landing.loginButton.title" = "Login";
 "landing.registerButton.title" = "Register";
+"landing.offlineModeButton.title" = "Offline Mode";
+
+"login.title" = "Login";
+"login.email.title" = "Email";
+"login.password.title" = "Password";
+"login.button.title" = "Login";
+"login.error.title" = "Wrong credentials";
+"login.error.message" = "Check your email and password and try again.";
+
+"register.title" = "Register";
+"register.email.title" = "Email";
+"register.password.title" = "Password";
+"register.button.title" = "Register";
+"register.error.title" = "Error";
+
+"offlineModeLogin.title" = "Login";
+"offlineModeLogin.name.title" = "Choose your nickname";
+"offlineModeLogin.name.placeholder" = "nickname";
+"offlineModeLogin.button.title" = "Login";
+"offlineModeLogin.alert.title" = "Nickname too short!";
+"offlineModeLogin.alert.message" = "Nickname should be at least 3 characters long.";
+
+"home.findStrangerButton.title" = "Find stranger";
+"home.makeVisibleButton.title" = "Make visible";
+"home.makeInvisibleButton.title" = "Make invisible";
