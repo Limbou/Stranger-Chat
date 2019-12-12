@@ -19,6 +19,7 @@ private enum Constants {
 final class ChatViewController: UIViewController, UINavigationControllerDelegate {
 
     private let interactor: ChatInteractor
+    private let cellFactory: ChatCellFactory
     private let bag = DisposeBag()
     private var messages = [ChatMessage]()
     private let imagePicker = UIImagePickerController()
@@ -27,8 +28,9 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet var inputField: ChatInputField!
     @IBOutlet var inputBottomConstraint: NSLayoutConstraint!
 
-    init(interactor: ChatInteractor) {
+    init(interactor: ChatInteractor, cellFactory: ChatCellFactory) {
         self.interactor = interactor
+        self.cellFactory = cellFactory
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -43,7 +45,7 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
         setupNavbar()
         setupBindings()
         setupObservers()
-        registerCells()
+        cellFactory.registerCells(tableView: tableView)
     }
 
     private func setupNavbar() {
@@ -101,11 +103,6 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
             .disposed(by: bag)
     }
 
-    private func registerCells() {
-        tableView.register(MyMessageCell.self)
-        tableView.register(ForeignMessageCell.self)
-    }
-
     @objc
     private func dismissClicked() {
         interactor.dismissPressed.onNext(())
@@ -126,19 +123,7 @@ extension ChatViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
-        if message.isAuthor {
-            guard let cell = tableView.dequeue(MyMessageCell.self) as? MyMessageCell else {
-                return UITableViewCell()
-            }
-            cell.messageLabel.text = message.content
-            return cell
-        } else {
-            guard let cell = tableView.dequeue(ForeignMessageCell.self) as? ForeignMessageCell else {
-                return UITableViewCell()
-            }
-            cell.messageLabel.text = message.content
-            return cell
-        }
+        return cellFactory.prepareCell(from: message, tableView: tableView)
     }
 
 }

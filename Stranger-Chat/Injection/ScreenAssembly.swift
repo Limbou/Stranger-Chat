@@ -78,7 +78,8 @@ final class ScreenAssembly: Assembly {
         var peerConnectionArgument: PeerConnection!
         container.register(ChatViewController.self) { (resolver, peerConnection: PeerConnection) in
             peerConnectionArgument = peerConnection
-            return ChatViewController(interactor: resolver.resolve(ChatInteractor.self, argument: peerConnection)!)
+            return ChatViewController(interactor: resolver.resolve(ChatInteractor.self, argument: peerConnection)!,
+                                      cellFactory: resolver ~> ChatCellFactory.self)
         }
 
         container.register(ChatInteractor.self) { (resolver, peerConnection: PeerConnection) in
@@ -100,6 +101,7 @@ final class ScreenAssembly: Assembly {
         }.initCompleted { (resolver, router) in
             router.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
         }
+        container.autoregister(ChatCellFactory.self, initializer: ChatCellFactoryImpl.init)
 
     }
 

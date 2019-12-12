@@ -73,6 +73,11 @@ final class ChatInteractorImpl: ChatInteractor {
 
     private func handleImagePick(image: UIImage) {
         worker.send(image: image)
+        let chatMessage = ChatMessage(image: image, isAuthor: true)
+        messages.append(chatMessage)
+        DispatchQueue.main.async {
+            self.presenter.display(messages: self.messages)
+        }
     }
 
     private func handleDismissPress() {
@@ -82,18 +87,17 @@ final class ChatInteractorImpl: ChatInteractor {
         }
     }
 
-    private func handleReceived(message: String) {
-        if message == ChatSecretMessages.endChat.rawValue {
+    private func handleReceived(message: ChatMessage) {
+        if message.content == ChatSecretMessages.endChat.rawValue {
             endChat()
             return
         }
-        let chatMessage = ChatMessage(content: message, isAuthor: false)
-        messages.append(chatMessage)
+        messages.append(message)
         presenter.display(messages: messages)
     }
 
     private func handleDisconnect() {
-//        endChat()
+        endChat()
     }
 
     private func endChat() {

@@ -13,7 +13,7 @@ import RxSwift
 import MultipeerConnectivity
 
 protocol ChatWorker: AnyObject {
-    var receivedMessages: PublishSubject<String> { get }
+    var receivedMessages: PublishSubject<ChatMessage> { get }
     var disconnected: PublishSubject<Void> { get }
     func send(message: String)
     func send(image: UIImage)
@@ -24,7 +24,7 @@ final class ChatWorkerImpl: ChatWorker {
 
     private let peerConnection: PeerConnection
     private let fileManager: FileManager
-    let receivedMessages = PublishSubject<String>()
+    let receivedMessages = PublishSubject<ChatMessage>()
     let disconnected = PublishSubject<Void>()
 
     init(peerConnection: PeerConnection, fileManager: FileManager) {
@@ -34,17 +34,15 @@ final class ChatWorkerImpl: ChatWorker {
     }
 
     func send(message: String) {
-        print(peerConnection)
         guard let messageData = message.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
             print("Error converting message")
             return
         }
-        print(peerConnection.mcSession.connectedPeers)
         peerConnection.send(data: messageData)
     }
 
     func send(image: UIImage) {
-        guard let imageData = image.pngData(),
+        guard let imageData = image.jpegData(compressionQuality: 1),
             let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first,
             let peer = peerConnection.mcSession.connectedPeers.first else {
                 print("Error sending image")
@@ -67,6 +65,22 @@ final class ChatWorkerImpl: ChatWorker {
         peerConnection.reset()
     }
 
+    private func tryToGetImageFrom(url: URL) {
+        do {
+            let localData = try Data(contentsOf: url)
+            guard let image = UIImage(data: localData) else {
+                print("Error geting image from data")
+                return
+            }
+            let chatMessage = ChatMessage(image: image, isAuthor: false)
+            DispatchQueue.main.async {
+                self.receivedMessages.onNext(chatMessage)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
 }
 
 extension ChatWorkerImpl: PeerSessionDelegate {
@@ -76,13 +90,13 @@ extension ChatWorkerImpl: PeerSessionDelegate {
             print("Error converting data to message")
             return
         }
+        let chatMessage = ChatMessage(content: message, isAuthor: false)
         DispatchQueue.main.async {
-            self.receivedMessages.onNext(message)
+            self.receivedMessages.onNext(chatMessage)
         }
     }
 
     func peerDisconnected(peerID: MCPeerID) {
-        print("Disconnected")
         DispatchQueue.main.async {
             self.disconnected.onNext(())
         }
@@ -99,13 +113,7 @@ extension ChatWorkerImpl: PeerSessionDelegate {
                  at localURL: URL?,
                  withError error: Error?) {
         if let url = localURL {
-            do {
-                let localData = try Data(contentsOf: url)
-                let image = UIImage(data: localData)
-                print(image?.isSymbolImage)
-            } catch {
-                print(error.localizedDescription)
-            }
+            tryToGetImageFrom(url: url)
         }
     }
 

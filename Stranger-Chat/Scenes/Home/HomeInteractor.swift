@@ -100,7 +100,6 @@ final class HomeInteractorImpl: HomeInteractor {
             advertising.toggle()
             router.goToChat()
         case .disconnected:
-            print(UIDevice.current.name)
             print("Disconnected!")
         }
     }

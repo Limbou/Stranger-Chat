@@ -92,7 +92,6 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
             stopBrowsing()
             router.goToChat()
         case .disconnected:
-            print(UIDevice.current.name)
             print("Disconnected!")
         }
     }

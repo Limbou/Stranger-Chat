@@ -61,7 +61,6 @@ final class HomeWorkerImpl: HomeWorker {
             print("No invitation handler")
             return Observable.empty()
         }
-        print(latestInvitationHandler)
         latestInvitationHandler(true, session.mcSession)
         return connectionState
     }

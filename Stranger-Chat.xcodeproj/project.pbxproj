@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3065CE823A215B600C04C1E /* MyImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CE623A215B600C04C1E /* MyImageCell.swift */; };
+		D3065CE923A215B600C04C1E /* MyImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3065CE723A215B600C04C1E /* MyImageCell.xib */; };
+		D3065CEC23A215C500C04C1E /* ForeignImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CEA23A215C500C04C1E /* ForeignImageCell.swift */; };
+		D3065CED23A215C500C04C1E /* ForeignImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3065CEB23A215C500C04C1E /* ForeignImageCell.xib */; };
+		D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */; };
 		D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3331DA92285D21100301CBA /* String+isValidName.swift */; };
 		D348D12A238716640012D43C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D129238716640012D43C /* Provider.swift */; };
 		D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12B2387168D0012D43C /* ScreenAssembly.swift */; };
@@ -119,6 +124,11 @@
 		96B9FC2CD652D695ABFB7ADB /* Pods-Stranger-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stranger-Chat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stranger-Chat/Pods-Stranger-Chat.release.xcconfig"; sourceTree = "<group>"; };
 		9BCEF05A18C9AB33A5302B59 /* Pods-Stranger-ChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stranger-ChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stranger-ChatTests/Pods-Stranger-ChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		A594BC1B4CE144C08DF6A978 /* Pods_Stranger_ChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stranger_ChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3065CE623A215B600C04C1E /* MyImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageCell.swift; sourceTree = "<group>"; };
+		D3065CE723A215B600C04C1E /* MyImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyImageCell.xib; sourceTree = "<group>"; };
+		D3065CEA23A215C500C04C1E /* ForeignImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignImageCell.swift; sourceTree = "<group>"; };
+		D3065CEB23A215C500C04C1E /* ForeignImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForeignImageCell.xib; sourceTree = "<group>"; };
+		D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellFactory.swift; sourceTree = "<group>"; };
 		D3331DA92285D21100301CBA /* String+isValidName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidName.swift"; sourceTree = "<group>"; };
 		D348D129238716640012D43C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		D348D12B2387168D0012D43C /* ScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAssembly.swift; sourceTree = "<group>"; };
@@ -391,6 +401,10 @@
 				D3669FB9239EB4DE00C171DC /* MyMessageCell.xib */,
 				D3669FBC239EB4F200C171DC /* ForeignMessageCell.swift */,
 				D3669FBD239EB4F200C171DC /* ForeignMessageCell.xib */,
+				D3065CE623A215B600C04C1E /* MyImageCell.swift */,
+				D3065CE723A215B600C04C1E /* MyImageCell.xib */,
+				D3065CEA23A215C500C04C1E /* ForeignImageCell.swift */,
+				D3065CEB23A215C500C04C1E /* ForeignImageCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -601,6 +615,7 @@
 				D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */,
 				D3ECC5E1239D14A400548E9B /* ChatRouter.swift */,
 				D3ECC5E0239D14A400548E9B /* ChatWorker.swift */,
+				D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */,
 				D3669FB7239EB4A900C171DC /* Cells */,
 				D3ECC5EF239D21C200548E9B /* InputField */,
 			);
@@ -725,7 +740,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3065CE923A215B600C04C1E /* MyImageCell.xib in Resources */,
 				D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */,
+				D3065CED23A215C500C04C1E /* ForeignImageCell.xib in Resources */,
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
 				D3669FBB239EB4DE00C171DC /* MyMessageCell.xib in Resources */,
 				D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */,
@@ -894,11 +911,13 @@
 				D348D134238721AF0012D43C /* FirebaseUsersRepository.swift in Sources */,
 				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
 				D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */,
+				D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */,
 				D3632ADB238D9CD50072A762 /* HomeWorker.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */,
 				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,
 				D3E6D5692216D94A00AF73D7 /* OfflineModeLoginPresenter.swift in Sources */,
 				D3632AEE238DA8D60072A762 /* StrangersBrowserViewController.swift in Sources */,
+				D3065CEC23A215C500C04C1E /* ForeignImageCell.swift in Sources */,
 				D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */,
 				D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */,
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
@@ -909,6 +928,7 @@
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3615AF422AF8EAE0021B346 /* AlertBuilder.swift in Sources */,
 				D3669FBA239EB4DE00C171DC /* MyMessageCell.swift in Sources */,
+				D3065CE823A215B600C04C1E /* MyImageCell.swift in Sources */,
 				D3632AB5238C4B5D0072A762 /* LoginWorker.swift in Sources */,
 				D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */,
 				D3632AD1238C61D40072A762 /* RegisterData.swift in Sources */,
