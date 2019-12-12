@@ -57,7 +57,9 @@ final class ChatWorkerImpl: ChatWorker {
             return
         }
         peerConnection.sendResource(at: photoURL, withName: "\(imageId).png", toPeer: peer) { error in
-            print(error?.localizedDescription)
+            if let error = error {
+                print(error.localizedDescription)
+            }
         }
     }
 
