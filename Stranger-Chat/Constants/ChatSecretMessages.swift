@@ -11,5 +11,6 @@ import Foundation
 enum ChatSecretMessages: String, CaseIterable {
 
     case endChat = "/chat-disconnect"
+    case conversationId = "/conversationId="
 
 }

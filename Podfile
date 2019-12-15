@@ -5,6 +5,7 @@ inhibit_all_warnings!
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Firestore'
+    pod 'CodableFirebase'
  end
 
  def database_pods

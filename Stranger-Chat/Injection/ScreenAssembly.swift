@@ -34,7 +34,7 @@ final class ScreenAssembly: Assembly {
         container.autoregister(RegisterPresenter.self, initializer: RegisterPresenterImpl.init).initCompleted { (resolver, presenter) in
             presenter.viewController = resolver ~> RegisterViewController.self
         }
-        container.autoregister(RegisterWorker.self, initializer: RegisterWorkerImpl.init(usersRepository:))
+        container.autoregister(RegisterWorker.self, initializer: RegisterWorkerImpl.init(usersRepository:firestoreUsersRepository:))
         container.autoregister(RegisterRouter.self, initializer: RegisterRouterImpl.init).initCompleted { (resolver, router) in
             router.viewController = resolver ~> RegisterViewController.self
         }
@@ -91,7 +91,7 @@ final class ScreenAssembly: Assembly {
             presenter.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
         }
         container.register(ChatWorker.self) { resolver, peerConnection in
-            ChatWorkerImpl(peerConnection: peerConnection, fileManager: resolver ~> FileManager.self)
+            FirebaseChatWorker(peerConnection: peerConnection, chatRepository: resolver ~> FirestoreChatRepository.self, userRepository: resolver ~> FirebaseUsersRepository.self)
         }
         container.autoregister(ChatRouter.self, initializer: ChatRouterImpl.init).initCompleted { (resolver, router) in
             router.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)

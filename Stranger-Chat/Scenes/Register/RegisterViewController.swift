@@ -38,14 +38,29 @@ final class RegisterViewController: UIViewController {
         super.viewDidLoad()
         title = Constants.title.localized()
         setupBindings()
+        setupDelegates()
     }
 
     private func setupBindings() {
         registerButton.rx.tap
-        .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
-        .map({ RegisterData(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") })
-        .bind(to: interactor.registerObserver)
-        .disposed(by: bag)
+            .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
+            .map({ RegisterData(displayName: "abcd", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") })
+            .bind(to: interactor.registerObserver)
+            .disposed(by: bag)
+    }
+
+    private func setupDelegates() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
 }

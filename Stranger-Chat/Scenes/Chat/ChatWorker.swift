@@ -14,10 +14,16 @@ import MultipeerConnectivity
 
 protocol ChatWorker: AnyObject {
     var receivedMessages: PublishSubject<ChatMessage> { get }
+    var receivedMessagesArray: PublishSubject<[ChatMessage]> { get }
     var disconnected: PublishSubject<Void> { get }
+    func initializeConnection()
     func send(message: String)
     func send(image: UIImage)
     func disconnectFromSession()
+}
+
+extension ChatWorker {
+    func initializeConnection() {}
 }
 
 final class ChatWorkerImpl: ChatWorker {
@@ -25,6 +31,7 @@ final class ChatWorkerImpl: ChatWorker {
     private let peerConnection: PeerConnection
     private let fileManager: FileManager
     let receivedMessages = PublishSubject<ChatMessage>()
+    let receivedMessagesArray = PublishSubject<[ChatMessage]>()
     let disconnected = PublishSubject<Void>()
 
     init(peerConnection: PeerConnection, fileManager: FileManager) {

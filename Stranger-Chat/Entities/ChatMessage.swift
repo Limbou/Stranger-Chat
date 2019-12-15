@@ -19,11 +19,11 @@ final class ChatMessage {
         self.isAuthor = isAuthor
     }
 
-    convenience init(content: String, isAuthor: Bool) {
+    convenience init(content: String?, isAuthor: Bool) {
         self.init(content: content, image: nil, isAuthor: isAuthor)
     }
 
-    convenience init(image: UIImage, isAuthor: Bool) {
+    convenience init(image: UIImage?, isAuthor: Bool) {
         self.init(content: nil, image: image, isAuthor: isAuthor)
     }
 }

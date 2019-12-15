@@ -16,7 +16,7 @@ protocol ChatInteractor: AnyObject {
     var sendPressed: PublishSubject<String?> { get }
     var imagePicked: PublishSubject<UIImage> { get }
     var dismissPressed: PublishSubject<Void> { get }
-    func setupBindings()
+    func setup()
 }
 
 final class ChatInteractorImpl: ChatInteractor {
@@ -37,7 +37,12 @@ final class ChatInteractorImpl: ChatInteractor {
         self.worker = worker
     }
 
-    func setupBindings() {
+    func setup() {
+        setupBindings()
+        worker.initializeConnection()
+    }
+
+    private func setupBindings() {
         sendPressed.subscribe(onNext: { text in
             self.handleSendPress(text)
         }).disposed(by: bag)
@@ -54,6 +59,10 @@ final class ChatInteractorImpl: ChatInteractor {
             self.handleReceived(message: message)
         }).disposed(by: bag)
 
+        worker.receivedMessagesArray.subscribe(onNext: { messages in
+            self.presenter.display(messages: messages)
+        }).disposed(by: bag)
+
         worker.disconnected.subscribe(onNext: { _ in
             self.handleDisconnect()
         }).disposed(by: bag)
@@ -64,11 +73,11 @@ final class ChatInteractorImpl: ChatInteractor {
             return
         }
         worker.send(message: text)
-        let chatMessage = ChatMessage(content: text, isAuthor: true)
-        messages.append(chatMessage)
-        DispatchQueue.main.async {
-            self.presenter.display(messages: self.messages)
-        }
+//        let chatMessage = ChatMessage(content: text, isAuthor: true)
+//        messages.append(chatMessage)
+//        DispatchQueue.main.async {
+//            self.presenter.display(messages: self.messages)
+//        }
     }
 
     private func handleImagePick(image: UIImage) {
