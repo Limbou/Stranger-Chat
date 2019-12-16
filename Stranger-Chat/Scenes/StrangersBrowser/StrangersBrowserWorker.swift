@@ -32,16 +32,17 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
     private let discovered = PublishSubject<[MCPeerID]>()
     private let connectionState = PublishSubject<ConnectionState>()
 
-    init(currentUserRepository: CurrentUserRepository, session: PeerHostSession = PeerHostSession.getInstance(name: "Abcd")) {
+    init(currentUserRepository: CurrentUserRepository, session: PeerHostSession) {
         self.currentUserRepository = currentUserRepository
         self.session = session
+        setupDisplayName()
     }
 
     func startBrowsing() -> Observable<[MCPeerID]> {
-//        guard let userName = currentUserRepository.currentUser()?.name else {
-//            print("No user")
-//            return Observable.empty()
-//        }
+        guard currentUserRepository.currentUser() != nil else {
+            print("No user")
+            return Observable.empty()
+        }
         discoveredPeers = []
         session.delegate = self
         session.connect()
@@ -57,15 +58,23 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
             print("No peer with such index")
             return Observable.empty()
         }
-        session.browser.invitePeer(peer, to: session.mcSession, withContext: nil, timeout: 15)
+        session.invite(peer: peer, withContext: nil)
         return connectionState
+    }
+
+    private func setupDisplayName() {
+        guard let userName = currentUserRepository.currentUser()?.name else {
+            print("No user")
+            return
+        }
+        session.displayName = userName
     }
 
 }
 
 extension StrangersBrowserWorkerImpl: PeerSessionDelegate {
 
-    func peerDiscovered(peerID: MCPeerID) {
+    func peerDiscovered(peerID: MCPeerID, discoveryInfo: [String: String]?) {
         discoveredPeers.append(peerID)
         discovered.onNext(discoveredPeers)
     }

@@ -12,18 +12,11 @@ import Foundation
 import RxSwift
 import RxSwiftExt
 
-protocol ChatInteractor: AnyObject {
-    var sendPressed: PublishSubject<String?> { get }
-    var imagePicked: PublishSubject<UIImage> { get }
-    var dismissPressed: PublishSubject<Void> { get }
-    func setup()
-}
-
-final class ChatInteractorImpl: ChatInteractor {
+final class ChatOnlineInteractor: ChatInteractor {
 
     private let presenter: ChatPresenter
     private let router: ChatRouter
-    private let worker: ChatWorker
+    private let worker: ChatOnlineWorker
     private let bag = DisposeBag()
     private var messages = [ChatMessage]()
 
@@ -31,7 +24,7 @@ final class ChatInteractorImpl: ChatInteractor {
     let imagePicked = PublishSubject<UIImage>()
     let dismissPressed = PublishSubject<Void>()
 
-    init(presenter: ChatPresenter, router: ChatRouter, worker: ChatWorker) {
+    init(presenter: ChatPresenter, router: ChatRouter, worker: ChatOnlineWorker) {
         self.presenter = presenter
         self.router = router
         self.worker = worker
@@ -55,11 +48,7 @@ final class ChatInteractorImpl: ChatInteractor {
             self.handleDismissPress()
         }).disposed(by: bag)
 
-        worker.receivedMessages.subscribe(onNext: { message in
-            self.handleReceived(message: message)
-        }).disposed(by: bag)
-
-        worker.receivedMessagesArray.subscribe(onNext: { messages in
+        worker.receivedMessages.subscribe(onNext: { messages in
             self.presenter.display(messages: messages)
         }).disposed(by: bag)
 
@@ -73,24 +62,19 @@ final class ChatInteractorImpl: ChatInteractor {
             return
         }
         worker.send(message: text)
-//        let chatMessage = ChatMessage(content: text, isAuthor: true)
+    }
+
+    private func handleImagePick(image: UIImage) {
+//        worker.send(image: image)
+//        let chatMessage = ChatMessage(image: image, isAuthor: true)
 //        messages.append(chatMessage)
 //        DispatchQueue.main.async {
 //            self.presenter.display(messages: self.messages)
 //        }
     }
 
-    private func handleImagePick(image: UIImage) {
-        worker.send(image: image)
-        let chatMessage = ChatMessage(image: image, isAuthor: true)
-        messages.append(chatMessage)
-        DispatchQueue.main.async {
-            self.presenter.display(messages: self.messages)
-        }
-    }
-
     private func handleDismissPress() {
-        worker.send(message: ChatSecretMessages.endChat.rawValue)
+//        worker.send(message: ChatSecretMessages.endChat.rawValue)
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
             self.endChat()
         }

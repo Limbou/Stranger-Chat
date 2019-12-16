@@ -14,7 +14,7 @@
 		D3065CEC23A215C500C04C1E /* ForeignImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CEA23A215C500C04C1E /* ForeignImageCell.swift */; };
 		D3065CED23A215C500C04C1E /* ForeignImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3065CEB23A215C500C04C1E /* ForeignImageCell.xib */; };
 		D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */; };
-		D3065CF123A2B4A400C04C1E /* FirebaseChatWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CF023A2B4A300C04C1E /* FirebaseChatWorker.swift */; };
+		D3065CF123A2B4A400C04C1E /* ChatOnlineWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CF023A2B4A300C04C1E /* ChatOnlineWorker.swift */; };
 		D3065CF323A2CBB100C04C1E /* FirestoreUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CF223A2CBB100C04C1E /* FirestoreUsersRepository.swift */; };
 		D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3331DA92285D21100301CBA /* String+isValidName.swift */; };
 		D348D12A238716640012D43C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D129238716640012D43C /* Provider.swift */; };
@@ -70,6 +70,8 @@
 		D3B5AC4523A2E315008EF38A /* FirestoreChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4423A2E315008EF38A /* FirestoreChatRepository.swift */; };
 		D3B5AC4723A3BD8E008EF38A /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4623A3BD8E008EF38A /* Conversation.swift */; };
 		D3B5AC4923A65688008EF38A /* FirebaseChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */; };
+		D3B5AC4B23A7CA77008EF38A /* ChatOnlineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4A23A7CA77008EF38A /* ChatOnlineInteractor.swift */; };
+		D3B5AC4D23A7E1BE008EF38A /* PeerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4C23A7E1BE008EF38A /* PeerConstants.swift */; };
 		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
 		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
 		D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */; };
@@ -97,10 +99,10 @@
 		D3ECC5A3239BA91600548E9B /* StrangerChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5A2239BA91600548E9B /* StrangerChatTests.swift */; };
 		D3ECC5B1239BA91F00548E9B /* StrangerChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5B0239BA91F00548E9B /* StrangerChatUITests.swift */; };
 		D3ECC5E4239D14A500548E9B /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */; };
-		D3ECC5E5239D14A500548E9B /* ChatWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E0239D14A400548E9B /* ChatWorker.swift */; };
+		D3ECC5E5239D14A500548E9B /* ChatOfflineWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E0239D14A400548E9B /* ChatOfflineWorker.swift */; };
 		D3ECC5E6239D14A500548E9B /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E1239D14A400548E9B /* ChatRouter.swift */; };
 		D3ECC5E7239D14A500548E9B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E2239D14A400548E9B /* ChatViewController.swift */; };
-		D3ECC5E8239D14A500548E9B /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E3239D14A400548E9B /* ChatInteractor.swift */; };
+		D3ECC5E8239D14A500548E9B /* ChatOfflineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5E3239D14A400548E9B /* ChatOfflineInteractor.swift */; };
 		D3ECC5EA239D14BC00548E9B /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3ECC5E9239D14BC00548E9B /* ChatViewController.xib */; };
 		D3ECC5EC239D16B800548E9B /* ChatInputField.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3ECC5EB239D16B700548E9B /* ChatInputField.xib */; };
 		D3ECC5EE239D21BC00548E9B /* ChatInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ECC5ED239D21BC00548E9B /* ChatInputField.swift */; };
@@ -131,7 +133,7 @@
 		D3065CEA23A215C500C04C1E /* ForeignImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignImageCell.swift; sourceTree = "<group>"; };
 		D3065CEB23A215C500C04C1E /* ForeignImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForeignImageCell.xib; sourceTree = "<group>"; };
 		D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellFactory.swift; sourceTree = "<group>"; };
-		D3065CF023A2B4A300C04C1E /* FirebaseChatWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatWorker.swift; sourceTree = "<group>"; };
+		D3065CF023A2B4A300C04C1E /* ChatOnlineWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOnlineWorker.swift; sourceTree = "<group>"; };
 		D3065CF223A2CBB100C04C1E /* FirestoreUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUsersRepository.swift; sourceTree = "<group>"; };
 		D3331DA92285D21100301CBA /* String+isValidName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidName.swift"; sourceTree = "<group>"; };
 		D348D129238716640012D43C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
@@ -188,6 +190,8 @@
 		D3B5AC4423A2E315008EF38A /* FirestoreChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreChatRepository.swift; sourceTree = "<group>"; };
 		D3B5AC4623A3BD8E008EF38A /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatMessage.swift; sourceTree = "<group>"; };
+		D3B5AC4A23A7CA77008EF38A /* ChatOnlineInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOnlineInteractor.swift; sourceTree = "<group>"; };
+		D3B5AC4C23A7E1BE008EF38A /* PeerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerConstants.swift; sourceTree = "<group>"; };
 		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
 		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
 		D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerHostSession.swift; sourceTree = "<group>"; };
@@ -223,10 +227,10 @@
 		D3ECC5B0239BA91F00548E9B /* StrangerChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerChatUITests.swift; sourceTree = "<group>"; };
 		D3ECC5B2239BA91F00548E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
-		D3ECC5E0239D14A400548E9B /* ChatWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWorker.swift; sourceTree = "<group>"; };
+		D3ECC5E0239D14A400548E9B /* ChatOfflineWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOfflineWorker.swift; sourceTree = "<group>"; };
 		D3ECC5E1239D14A400548E9B /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
 		D3ECC5E2239D14A400548E9B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		D3ECC5E3239D14A400548E9B /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		D3ECC5E3239D14A400548E9B /* ChatOfflineInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOfflineInteractor.swift; sourceTree = "<group>"; };
 		D3ECC5E9239D14BC00548E9B /* ChatViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 		D3ECC5EB239D16B700548E9B /* ChatInputField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInputField.xib; sourceTree = "<group>"; };
 		D3ECC5ED239D21BC00548E9B /* ChatInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputField.swift; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */,
 				D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */,
 				D3B6B8A32265AE6900B7CC14 /* PeerSession.swift */,
+				D3B5AC4C23A7E1BE008EF38A /* PeerConstants.swift */,
 			);
 			path = MultipeerConnectivity;
 			sourceTree = "<group>";
@@ -619,11 +624,12 @@
 			children = (
 				D3ECC5E2239D14A400548E9B /* ChatViewController.swift */,
 				D3ECC5E9239D14BC00548E9B /* ChatViewController.xib */,
-				D3ECC5E3239D14A400548E9B /* ChatInteractor.swift */,
+				D3ECC5E3239D14A400548E9B /* ChatOfflineInteractor.swift */,
+				D3B5AC4A23A7CA77008EF38A /* ChatOnlineInteractor.swift */,
 				D3ECC5DF239D14A400548E9B /* ChatPresenter.swift */,
 				D3ECC5E1239D14A400548E9B /* ChatRouter.swift */,
-				D3ECC5E0239D14A400548E9B /* ChatWorker.swift */,
-				D3065CF023A2B4A300C04C1E /* FirebaseChatWorker.swift */,
+				D3ECC5E0239D14A400548E9B /* ChatOfflineWorker.swift */,
+				D3065CF023A2B4A300C04C1E /* ChatOnlineWorker.swift */,
 				D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */,
 				D3669FB7239EB4A900C171DC /* Cells */,
 				D3ECC5EF239D21C200548E9B /* InputField */,
@@ -951,15 +957,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */,
-				D3ECC5E8239D14A500548E9B /* ChatInteractor.swift in Sources */,
+				D3ECC5E8239D14A500548E9B /* ChatOfflineInteractor.swift in Sources */,
 				D3669FBE239EB4F200C171DC /* ForeignMessageCell.swift in Sources */,
 				D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */,
 				D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */,
+				D3B5AC4B23A7CA77008EF38A /* ChatOnlineInteractor.swift in Sources */,
 				D3ECC597239A8FDC00548E9B /* Collection+SafeIndex.swift in Sources */,
 				D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */,
 				D3632AF4238DB8680072A762 /* CurrentUserRepository.swift in Sources */,
 				D3ECC5E4239D14A500548E9B /* ChatPresenter.swift in Sources */,
-				D3ECC5E5239D14A500548E9B /* ChatWorker.swift in Sources */,
+				D3ECC5E5239D14A500548E9B /* ChatOfflineWorker.swift in Sources */,
 				D3ECC5E6239D14A500548E9B /* ChatRouter.swift in Sources */,
 				D3669FC3239EB65C00C171DC /* UITableView+Extension.swift in Sources */,
 				D3632ADE238D9CD50072A762 /* HomeInteractor.swift in Sources */,
@@ -974,6 +981,7 @@
 				D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */,
 				D3632AE3238DA0F00072A762 /* MainTabBarController.swift in Sources */,
 				D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */,
+				D3B5AC4D23A7E1BE008EF38A /* PeerConstants.swift in Sources */,
 				D348D13723872C700012D43C /* RealmManager.swift in Sources */,
 				D3ECC599239B0B7900548E9B /* Optional+NilOrEmpty.swift in Sources */,
 				D3632ADC238D9CD50072A762 /* HomeRouter.swift in Sources */,
@@ -990,7 +998,7 @@
 				D3ECC59B239B112F00548E9B /* LandingInteractor.swift in Sources */,
 				D348D13D23872F330012D43C /* AppUser.swift in Sources */,
 				D3632AEB238DA8D60072A762 /* StrangersBrowserPresenter.swift in Sources */,
-				D3065CF123A2B4A400C04C1E /* FirebaseChatWorker.swift in Sources */,
+				D3065CF123A2B4A400C04C1E /* ChatOnlineWorker.swift in Sources */,
 				D348D13A23872EFF0012D43C /* AppUserModel.swift in Sources */,
 				D348D130238719950012D43C /* ServicesAssembly.swift in Sources */,
 				D3632AAC238C4B340072A762 /* LoginViewController.swift in Sources */,

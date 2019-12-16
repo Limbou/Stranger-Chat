@@ -1,5 +1,3 @@
-
-
 //
 //  CurrentUserRepository.swift
 //  Stranger-Chat
@@ -12,6 +10,7 @@ import UIKit
 
 protocol CurrentUserRepository: AnyObject {
     func currentUser() -> AppUser?
+    func isOnline() -> Bool
 }
 
 final class CurrentUserRepositoryImpl: CurrentUserRepository {
@@ -31,6 +30,10 @@ final class CurrentUserRepositoryImpl: CurrentUserRepository {
             return localUser
         }
         return nil
+    }
+
+    func isOnline() -> Bool {
+        return firebaseUsersRepository.currentUser() != nil
     }
 
 }

@@ -11,15 +11,23 @@ import RxSwift
 import FirebaseFirestore
 import MultipeerConnectivity
 
-final class FirebaseChatWorker: ChatWorker {
+protocol ChatOnlineWorker: AnyObject {
+    var receivedMessages: PublishSubject<[ChatMessage]> { get }
+    var disconnected: PublishSubject<Void> { get }
+    func initializeConnection()
+    func send(message: String)
+    func send(image: UIImage)
+    func disconnectFromSession()
+}
+
+final class ChatOnlineWorkerImpl: ChatOnlineWorker {
 
     private let peerConnection: PeerConnection
     private let chatRepository: FirestoreChatRepository
     private let userRepository: FirebaseUsersRepository
     private var conversationId: String = ""
     private var userId: String = ""
-    let receivedMessages = PublishSubject<ChatMessage>()
-    let receivedMessagesArray = PublishSubject<[ChatMessage]>()
+    let receivedMessages = PublishSubject<[ChatMessage]>()
     let disconnected = PublishSubject<Void>()
     let bag = DisposeBag()
 
@@ -47,7 +55,7 @@ final class FirebaseChatWorker: ChatWorker {
             let userId = self.userRepository.currentUser()?.uid ?? ""
             return firebaseMessages.map { ChatMessage(content: $0.content, isAuthor: $0.senderId == userId) }
         }
-        .bind(to: receivedMessagesArray)
+        .bind(to: receivedMessages)
         .disposed(by: bag)
     }
 
@@ -83,13 +91,13 @@ final class FirebaseChatWorker: ChatWorker {
             let userId = self.userRepository.currentUser()?.uid ?? ""
             return firebaseMessages.map { ChatMessage(content: $0.content, isAuthor: $0.senderId == userId) }
         }
-        .bind(to: receivedMessagesArray)
+        .bind(to: receivedMessages)
         .disposed(by: bag)
     }
 
 }
 
-extension FirebaseChatWorker: PeerSessionDelegate {
+extension ChatOnlineWorkerImpl: PeerSessionDelegate {
 
     func peerReceived(data: Data, from peerID: MCPeerID) {
         guard let message = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? else {
@@ -98,11 +106,6 @@ extension FirebaseChatWorker: PeerSessionDelegate {
         }
         if message.contains(ChatSecretMessages.conversationId.rawValue) {
             handleConverstaionIdMessage(message)
-            return
-        }
-        let chatMessage = ChatMessage(content: message, isAuthor: false)
-        DispatchQueue.main.async {
-            self.receivedMessages.onNext(chatMessage)
         }
     }
 

@@ -29,16 +29,17 @@ final class HomeWorkerImpl: HomeWorker {
     private var latestInvitationHandler: InvitationHandler?
     private let connectionState = PublishSubject<ConnectionState>()
 
-    init(currentUserRepository: CurrentUserRepository, session: PeerClientSession = PeerClientSession.getInstance(name: "iPhone")) {
+    init(currentUserRepository: CurrentUserRepository, session: PeerClientSession) {
         self.currentUserRepository = currentUserRepository
         self.session = session
+        setupSession()
     }
 
     func startAdvertising() -> Observable<SessionInvitation> {
-//        guard let userName = currentUserRepository.currentUser()?.name else {
-//            print("No user")
-//            return
-//        }
+        guard currentUserRepository.currentUser() != nil else {
+            print("No user")
+            return Observable.empty()
+        }
         session.delegate = self
         session.connect()
         return invitations
@@ -63,6 +64,15 @@ final class HomeWorkerImpl: HomeWorker {
         }
         latestInvitationHandler(true, session.mcSession)
         return connectionState
+    }
+
+    private func setupSession() {
+        guard let userName = currentUserRepository.currentUser()?.name else {
+            print("No user")
+            return
+        }
+        let discoveryInfo = [PeerConstants.isOnlineKey: "\(currentUserRepository.isOnline())"]
+        session.set(displayName: userName, discoveryInfo: discoveryInfo)
     }
 
 }

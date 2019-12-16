@@ -98,7 +98,7 @@ final class HomeInteractorImpl: HomeInteractor {
             break
         case .connected:
             advertising.toggle()
-            router.goToChat()
+            router.goToChat(online: false)
         case .disconnected:
             print("Disconnected!")
         }

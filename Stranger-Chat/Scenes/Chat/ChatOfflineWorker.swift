@@ -12,21 +12,15 @@ import Foundation
 import RxSwift
 import MultipeerConnectivity
 
-protocol ChatWorker: AnyObject {
+protocol ChatOfflineWorker: AnyObject {
     var receivedMessages: PublishSubject<ChatMessage> { get }
-    var receivedMessagesArray: PublishSubject<[ChatMessage]> { get }
     var disconnected: PublishSubject<Void> { get }
-    func initializeConnection()
     func send(message: String)
     func send(image: UIImage)
     func disconnectFromSession()
 }
 
-extension ChatWorker {
-    func initializeConnection() {}
-}
-
-final class ChatWorkerImpl: ChatWorker {
+final class ChatOfflineWorkerImpl: ChatOfflineWorker {
 
     private let peerConnection: PeerConnection
     private let fileManager: FileManager
@@ -92,7 +86,7 @@ final class ChatWorkerImpl: ChatWorker {
 
 }
 
-extension ChatWorkerImpl: PeerSessionDelegate {
+extension ChatOfflineWorkerImpl: PeerSessionDelegate {
 
     func peerReceived(data: Data, from peerID: MCPeerID) {
         guard let message = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? else {

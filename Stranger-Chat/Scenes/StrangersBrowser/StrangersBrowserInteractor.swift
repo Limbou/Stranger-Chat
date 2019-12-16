@@ -90,7 +90,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
             break
         case .connected:
             stopBrowsing()
-            router.goToChat()
+            router.goToChat(online: false)
         case .disconnected:
             print("Disconnected!")
         }
