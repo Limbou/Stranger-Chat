@@ -16,28 +16,32 @@ protocol ChatInteractor: AnyObject {
     var sendPressed: PublishSubject<String?> { get }
     var imagePicked: PublishSubject<UIImage> { get }
     var dismissPressed: PublishSubject<Void> { get }
-    func setupBindings()
+    func setup()
 }
 
-final class ChatInteractorImpl: ChatInteractor {
+final class ChatOfflineInteractor: ChatInteractor {
 
     private let presenter: ChatPresenter
     private let router: ChatRouter
-    private let worker: ChatWorker
+    private let worker: ChatOfflineWorker
     private let bag = DisposeBag()
-    private var messages = [ChatMessage]()
+    private var conversation = LocalConversation()
 
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
     let dismissPressed = PublishSubject<Void>()
 
-    init(presenter: ChatPresenter, router: ChatRouter, worker: ChatWorker) {
+    init(presenter: ChatPresenter, router: ChatRouter, worker: ChatOfflineWorker) {
         self.presenter = presenter
         self.router = router
         self.worker = worker
     }
 
-    func setupBindings() {
+    func setup() {
+        setupBindings()
+    }
+
+    private func setupBindings() {
         sendPressed.subscribe(onNext: { text in
             self.handleSendPress(text)
         }).disposed(by: bag)
@@ -65,19 +69,21 @@ final class ChatInteractorImpl: ChatInteractor {
         }
         worker.send(message: text)
         let chatMessage = ChatMessage(content: text, isAuthor: true)
-        messages.append(chatMessage)
+        conversation.messages.append(chatMessage)
         DispatchQueue.main.async {
-            self.presenter.display(messages: self.messages)
+            self.presenter.display(messages: self.conversation.messages)
         }
     }
 
     private func handleImagePick(image: UIImage) {
-        worker.send(image: image)
         let chatMessage = ChatMessage(image: image, isAuthor: true)
-        messages.append(chatMessage)
+        let imagePath = worker.send(image: image, messageId: chatMessage.messageId)
+        conversation.messages.append(chatMessage)
         DispatchQueue.main.async {
-            self.presenter.display(messages: self.messages)
+            self.presenter.display(messages: self.conversation.messages)
         }
+        chatMessage.imagePath = imagePath
+        worker.save(conversation: conversation)
     }
 
     private func handleDismissPress() {
@@ -92,8 +98,10 @@ final class ChatInteractorImpl: ChatInteractor {
             endChat()
             return
         }
-        messages.append(message)
-        presenter.display(messages: messages)
+        conversation.messages.append(message)
+        presenter.display(messages: conversation.messages)
+        print(message.imagePath)
+        worker.save(conversation: conversation)
     }
 
     private func handleDisconnect() {

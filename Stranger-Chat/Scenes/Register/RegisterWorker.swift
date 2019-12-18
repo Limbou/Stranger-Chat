@@ -10,6 +10,7 @@
 
 import Foundation
 import RxSwift
+import FirebaseAuth
 
 protocol RegisterWorker: AnyObject {
     func register(with data: RegisterData) -> Observable<Bool>
@@ -18,14 +19,25 @@ protocol RegisterWorker: AnyObject {
 final class RegisterWorkerImpl: RegisterWorker {
 
     private let usersRepository: FirebaseUsersRepository
+    private let firestoreUsersRepository: FirestoreUsersRepository
 
-    init(usersRepository: FirebaseUsersRepository) {
+    init(usersRepository: FirebaseUsersRepository, firestoreUsersRepository: FirestoreUsersRepository) {
         self.usersRepository = usersRepository
+        self.firestoreUsersRepository = firestoreUsersRepository
     }
 
     func register(with data: RegisterData) -> Observable<Bool> {
-        return usersRepository.register(with: data.email, password: data.password)
-            .map { $0 != nil }
+        usersRepository.register(with: data.email, password: data.password, displayName: data.displayName)
+            .flatMap({ user in
+                return self.saveUserInFirestore(user: user)
+            })
+    }
+
+    private func saveUserInFirestore(user: AppUser?) -> Observable<Bool> {
+        guard let user = user else {
+            return Observable.just(false)
+        }
+        return firestoreUsersRepository.setUserData(appUser: user)
     }
 
 }

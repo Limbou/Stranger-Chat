@@ -13,11 +13,14 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
 
     static private var instance: PeerHostSession?
     var mcSession: MCSession
-    var browser: MCNearbyServiceBrowser
+    private var browser: MCNearbyServiceBrowser
     private var peerId: MCPeerID
-    private let timeout: TimeInterval = 15.0
     private let sessionHandler: MCSessionAdapter
-    private let displayName: String
+    var displayName: String {
+        didSet {
+            reset()
+        }
+    }
     weak var delegate: PeerSessionDelegate? {
         didSet {
             sessionHandler.delegate = delegate
@@ -59,6 +62,10 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
         delegate?.connectionClosed()
     }
 
+    func invite(peer: MCPeerID, withContext context: Data?, timeout: TimeInterval = 15) {
+        browser.invitePeer(peer, to: mcSession, withContext: context, timeout: timeout)
+    }
+
     func reset() {
         disconnect()
         mcSession.disconnect()
@@ -70,7 +77,7 @@ final class PeerHostSession: NSObject, PeerConnection, MCNearbyServiceBrowserDel
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String: String]?) {
-        delegate?.peerDiscovered(peerID: peerID)
+        delegate?.peerDiscovered(peerID: peerID, discoveryInfo: info)
     }
 
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {

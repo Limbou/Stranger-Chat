@@ -11,15 +11,15 @@
 import UIKit
 
 protocol StrangersBrowserRouter: Router {
-    func goToChat()
+    func goToChat(online: Bool)
 }
 
 final class StrangersBrowserRouterImpl: StrangersBrowserRouter {
 
     weak var viewController: UIViewController?
 
-    func goToChat() {
-        let chatViewController = Provider.get.instanceOf(ChatViewController.self, argument: PeerHostSession.getInstance() as PeerConnection)
+    func goToChat(online: Bool) {
+        let chatViewController = Provider.get.instanceOf(ChatViewController.self, arguments: PeerHostSession.getInstance() as PeerConnection, online)
         let navigationController = UINavigationController(rootViewController: chatViewController)
         navigationController.modalPresentationStyle = .fullScreen
         present(viewController: navigationController)

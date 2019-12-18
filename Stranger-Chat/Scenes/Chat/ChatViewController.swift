@@ -43,6 +43,7 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
         tableView.dataSource = self
         imagePicker.delegate = self
         setupNavbar()
+        setupScrollView()
         setupBindings()
         setupObservers()
         cellFactory.registerCells(tableView: tableView)
@@ -53,6 +54,10 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
                                      target: self,
                                      action: #selector(dismissClicked))
         navigationItem.leftBarButtonItem = button
+    }
+
+    private func setupScrollView() {
+        
     }
 
     private func setupObservers() {
@@ -85,7 +90,7 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     }
 
     private func setupBindings() {
-        interactor.setupBindings() //Workaround for swinject's problem causing interactor to init 3 times and though call setupBindings 3 times
+        interactor.setup() //Workaround for swinject's problem causing interactor to init 3 times and though call setupBindings 3 times
         inputField.sendButton.rx.tap
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .map({ self.inputField.inputField.text })
@@ -147,7 +152,9 @@ extension ChatViewController: ChatDisplayable {
     func display(messages: [ChatMessage]) {
         self.messages = messages
         tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
+        if !messages.isEmpty {
+            tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
+        }
     }
 
 }

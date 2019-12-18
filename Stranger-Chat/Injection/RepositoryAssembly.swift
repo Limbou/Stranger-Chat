@@ -16,6 +16,9 @@ final class RepositoryAssembly: Assembly {
         container.autoregister(FirebaseUsersRepository.self, initializer: FirebaseUsersRepositoryImpl.init)
         container.autoregister(LocalUserRepository.self, initializer: LocalUserRepositoryImpl.init(localStorage:))
         container.autoregister(CurrentUserRepository.self, initializer: CurrentUserRepositoryImpl.init(firebaseUsersRepository:localUsersRepository:))
+        container.autoregister(FirestoreUsersRepository.self, initializer: FirestoreUsersRepositoryImpl.init(firestore:))
+        container.autoregister(FirestoreChatRepository.self, initializer: FirestoreChatRepositoryImpl.init(firestore:storage:decoder:encoder:))
+        container.autoregister(LocalConversationRepository.self, initializer: LocalConversationRepositoryImpl.init(localStorage:fileManager:))
         
     }
 

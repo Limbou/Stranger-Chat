@@ -9,14 +9,20 @@
 import UIKit
 import FirebaseAuth
 
-final class AppUser {
+final class AppUser: Codable {
 
     let userId: String
-    let name: String
+    var name: String
+    var chatsIds: [String]
 
-    init(userId: String, name: String) {
+    init(userId: String, name: String, chatsIds: [String] = []) {
         self.userId = userId
         self.name = name
+        self.chatsIds = chatsIds
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case userId, name, chatsIds
     }
 
     convenience init?(from model: AppUserModel?) {
@@ -28,8 +34,8 @@ final class AppUser {
         self.init(userId: userId, name: name)
     }
 
-    convenience init?(from user: User) {
-        guard let name = user.displayName else {
+    convenience init?(from user: User?) {
+        guard let user = user, let name = user.displayName else {
             return nil
         }
         self.init(userId: user.uid, name: name)

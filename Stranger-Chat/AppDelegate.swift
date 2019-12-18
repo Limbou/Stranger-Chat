@@ -13,8 +13,10 @@ import Firebase
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    private var currentUserRepository: CurrentUserRepository!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        currentUserRepository = Provider.get.instanceOf(CurrentUserRepository.self)
         configureFirebase()
         configureRootViewController()
         return true
@@ -22,15 +24,16 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func configureFirebase() {
         FirebaseApp.configure()
-        #if DEBUG
-        #else
-        FirebaseApp.configure()
-        #endif
     }
 
     private func configureRootViewController() {
-        let controller = Provider.get.instanceOf(MainTabBarController.self)
-//        let navigationController = UINavigationController(rootViewController: controller)
+        var controller: UIViewController
+        if currentUserRepository.currentUser() != nil {
+            controller = Provider.get.instanceOf(MainTabBarController.self)
+        } else {
+            let viewController = Provider.get.instanceOf(LandingViewController.self)
+            controller = UINavigationController(rootViewController: viewController)
+        }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = controller
         window?.makeKeyAndVisible()

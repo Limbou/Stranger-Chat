@@ -13,7 +13,7 @@ protocol PeerSessionDelegate: AnyObject {
     func peerConnected(peerID: MCPeerID)
     func peerConnecting(peerID: MCPeerID)
     func peerDisconnected(peerID: MCPeerID)
-    func peerDiscovered(peerID: MCPeerID)
+    func peerDiscovered(peerID: MCPeerID, discoveryInfo: [String: String]?)
     func peerLost(peerID: MCPeerID)
     func peerReceived(data: Data, from peerID: MCPeerID)
     func peerConnectionError(_ error: Error)
@@ -70,7 +70,7 @@ extension PeerSessionDelegate {
     func peerConnected(peerID: MCPeerID) {}
     func peerConnecting(peerID: MCPeerID) {}
     func peerDisconnected(peerID: MCPeerID) {}
-    func peerDiscovered(peerID: MCPeerID) {}
+    func peerDiscovered(peerID: MCPeerID, discoveryInfo: [String: String]?) {}
     func peerLost(peerID: MCPeerID) {}
     func peerReceived(data: Data, from peerID: MCPeerID) {}
     func peerConnectionError(_ error: Error) {}

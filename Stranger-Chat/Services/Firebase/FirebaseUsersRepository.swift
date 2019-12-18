@@ -11,39 +11,60 @@ import RxSwift
 
 protocol FirebaseUsersRepository: AnyObject {
     func currentUser() -> User?
-    func login(with email: String, password: String) -> Observable<User?>
-    func register(with email: String, password: String) -> Observable<User?>
+    func login(with email: String, password: String) -> Observable<AppUser?>
+    func register(with email: String, password: String, displayName: String) -> Observable<AppUser?>
 }
 
 final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
 
     func currentUser() -> User? {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+
+        }
         return Auth.auth().currentUser
     }
 
-    func login(with email: String, password: String) -> Observable<User?> {
+    func login(with email: String, password: String) -> Observable<AppUser?> {
         return Observable.create { observer in
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 if let error = error {
                     observer.onError(error)
                 }
-                observer.onNext(result?.user)
+                observer.onNext(AppUser(from: result?.user))
                 observer.onCompleted()
             }
             return Disposables.create()
         }
     }
 
-    func register(with email: String, password: String) -> Observable<User?> {
+    func register(with email: String, password: String, displayName: String) -> Observable<AppUser?> {
         return Observable.create { observer in
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if let error = error {
                     observer.onError(error)
                 }
-                observer.onNext(result?.user)
-                observer.onCompleted()
+                self.updateDisplayName(user: result?.user, displayName: displayName, observer: observer)
             }
             return Disposables.create()
+        }
+    }
+
+    private func updateDisplayName(user: User?, displayName: String, observer: AnyObserver<AppUser?>) {
+        guard let user = user else {
+            observer.onNext(nil)
+            observer.onCompleted()
+            return
+        }
+        let profileChangeRequest = user.createProfileChangeRequest()
+        profileChangeRequest.displayName = displayName
+        profileChangeRequest.commitChanges { error in
+            if let error = error {
+                observer.onError(error)
+            }
+            observer.onNext(AppUser(from: user))
+            observer.onCompleted()
         }
     }
 

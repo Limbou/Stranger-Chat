@@ -12,7 +12,7 @@ import UIKit
 
 protocol HomeRouter: Router {
     func goToStrangersBrowser()
-    func goToChat()
+    func goToChat(online: Bool)
 }
 
 final class HomeRouterImpl: HomeRouter {
@@ -24,8 +24,8 @@ final class HomeRouterImpl: HomeRouter {
         push(viewController: browserViewController)
     }
 
-    func goToChat() {
-        let chatViewController = Provider.get.instanceOf(ChatViewController.self, argument: PeerClientSession.getInstance() as PeerConnection)
+    func goToChat(online: Bool) {
+        let chatViewController = Provider.get.instanceOf(ChatViewController.self, arguments: PeerClientSession.getInstance() as PeerConnection, online)
         let navigationController = UINavigationController(rootViewController: chatViewController)
         navigationController.modalPresentationStyle = .fullScreen
         present(viewController: navigationController)

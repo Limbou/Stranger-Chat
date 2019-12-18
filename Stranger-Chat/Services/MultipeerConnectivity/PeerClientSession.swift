@@ -16,7 +16,8 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
     private var advertiser: MCNearbyServiceAdvertiser
     private var peerId: MCPeerID
     private let sessionHandler: MCSessionAdapter
-    private let displayName: String
+    private var displayName: String
+    private var discoveryInfo: [String: String]?
     weak var delegate: PeerSessionDelegate? {
         didSet {
             sessionHandler.delegate = delegate
@@ -47,6 +48,12 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
         return newInstance
     }
 
+    func set(displayName: String, discoveryInfo: [String: String]?) {
+        self.displayName = displayName
+        self.discoveryInfo = discoveryInfo
+        reset()
+    }
+
     func connect() {
         disconnect()
         advertiser.startAdvertisingPeer()
@@ -62,7 +69,7 @@ class PeerClientSession: NSObject, PeerConnection, MCNearbyServiceAdvertiserDele
         disconnect()
         peerId = MCPeerID(displayName: displayName)
         mcSession = MCSession(peer: self.peerId, securityIdentity: nil, encryptionPreference: .required)
-        advertiser = MCNearbyServiceAdvertiser(peer: self.peerId, discoveryInfo: nil, serviceType: peerServiceType)
+        advertiser = MCNearbyServiceAdvertiser(peer: self.peerId, discoveryInfo: self.discoveryInfo, serviceType: peerServiceType)
         sessionHandler.setSession(self.mcSession)
         advertiser.delegate = self
     }

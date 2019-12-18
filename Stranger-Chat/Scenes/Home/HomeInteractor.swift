@@ -27,14 +27,15 @@ final class HomeInteractorImpl: HomeInteractor {
     let findPressed = PublishSubject<Void>()
     let makeVisiblePressed = PublishSubject<Void>()
     let invitationAccepted = PublishSubject<Bool>()
-    private var advertising = false {
+    private var shouldGoOnline = false
+    private var shouldAdvertise = false {
         didSet {
             toggleAdvertising()
         }
     }
 
-    private var subscription: Disposable?
-    private var subscription2: Disposable?
+    private var invitationSubscription: Disposable?
+    private var advertisingSubscription: Disposable?
 
     init(presenter: HomePresenter, router: HomeRouter, worker: HomeWorker) {
         self.presenter = presenter
@@ -44,8 +45,8 @@ final class HomeInteractorImpl: HomeInteractor {
     }
 
     deinit {
-        subscription?.dispose()
-        subscription2?.dispose()
+        invitationSubscription?.dispose()
+        advertisingSubscription?.dispose()
     }
 
     private func setupBindings() {
@@ -54,7 +55,7 @@ final class HomeInteractorImpl: HomeInteractor {
         }).disposed(by: bag)
 
         makeVisiblePressed.subscribe(onNext: { _ in
-            self.advertising.toggle()
+            self.shouldAdvertise.toggle()
         }).disposed(by: bag)
 
         invitationAccepted.subscribe(onNext: { accepted in
@@ -63,20 +64,36 @@ final class HomeInteractorImpl: HomeInteractor {
     }
 
     private func toggleAdvertising() {
-        if advertising {
-            subscription2?.dispose()
-            subscription2 = worker.startAdvertising().subscribe(onNext: { invitation in
-                self.presentInvitation(invitation)
+        if shouldAdvertise {
+            advertisingSubscription?.dispose()
+            advertisingSubscription = worker.startAdvertising().subscribe(onNext: { invitation in
+                self.handleReceived(invitation: invitation)
             })
         } else {
             worker.stopAdvertising()
         }
-        presenter.setAdvertisingButton(advertising: advertising)
+        presenter.setAdvertisingButton(advertising: shouldAdvertise)
     }
 
-    private func presentInvitation(_ invitation: SessionInvitation) {
-        presenter.presentInvitation(from: invitation.peerId.displayName,
-                                    additionalInfo: String(fromData: invitation.context))
+    private func handleReceived(invitation: SessionInvitation) {
+        if let invitationContext = getInvitationContext(data: invitation.context),
+            let isOnline = invitationContext[PeerConstants.isOnlineKey] {
+            shouldGoOnline = isOnline
+        }
+        presenter.presentInvitation(from: invitation.peerId.displayName, additionalInfo: nil)
+    }
+
+    private func getInvitationContext(data: Data?) -> [String: Bool]? {
+        guard let data = data else {
+            return nil
+        }
+        do {
+            let context = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Bool]
+            return context
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
 
     private func handleInvitation(accepted: Bool) {
@@ -84,8 +101,8 @@ final class HomeInteractorImpl: HomeInteractor {
             worker.declineInvitation()
             return
         }
-        subscription?.dispose()
-        subscription = worker.acceptInvitation().subscribe(onNext: { state in
+        invitationSubscription?.dispose()
+        invitationSubscription = worker.acceptInvitation().subscribe(onNext: { state in
             DispatchQueue.main.async {
                 self.handleConnectionStateChange(state)
             }
@@ -97,8 +114,8 @@ final class HomeInteractorImpl: HomeInteractor {
         case .connecting:
             break
         case .connected:
-            advertising.toggle()
-            router.goToChat()
+            shouldAdvertise.toggle()
+            router.goToChat(online: shouldGoOnline)
         case .disconnected:
             print("Disconnected!")
         }
