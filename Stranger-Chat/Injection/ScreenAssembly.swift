@@ -128,7 +128,9 @@ final class ScreenAssembly: Assembly {
                                  firestoreUserRepository: resolver ~> FirestoreUsersRepository.self)
         }
         container.register(ChatOfflineWorker.self) { resolver, peerConnection in
-            ChatOfflineWorkerImpl(peerConnection: peerConnection, fileManager: resolver ~> FileManager.self)
+            ChatOfflineWorkerImpl(peerConnection: peerConnection,
+                                  fileManager: resolver ~> FileManager.self,
+                                  localConversationRepository: resolver ~> LocalConversationRepository.self)
         }
         container.register(ChatRouter.self) { (resolver, peerConnection: PeerConnection) in
             return ChatRouterImpl()

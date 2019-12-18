@@ -25,7 +25,7 @@ final class ChatOfflineInteractor: ChatInteractor {
     private let router: ChatRouter
     private let worker: ChatOfflineWorker
     private let bag = DisposeBag()
-    private var messages = [ChatMessage]()
+    private var conversation = LocalConversation()
 
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
@@ -69,19 +69,21 @@ final class ChatOfflineInteractor: ChatInteractor {
         }
         worker.send(message: text)
         let chatMessage = ChatMessage(content: text, isAuthor: true)
-        messages.append(chatMessage)
+        conversation.messages.append(chatMessage)
         DispatchQueue.main.async {
-            self.presenter.display(messages: self.messages)
+            self.presenter.display(messages: self.conversation.messages)
         }
     }
 
     private func handleImagePick(image: UIImage) {
-        worker.send(image: image)
         let chatMessage = ChatMessage(image: image, isAuthor: true)
-        messages.append(chatMessage)
+        let imagePath = worker.send(image: image, messageId: chatMessage.messageId)
+        conversation.messages.append(chatMessage)
         DispatchQueue.main.async {
-            self.presenter.display(messages: self.messages)
+            self.presenter.display(messages: self.conversation.messages)
         }
+        chatMessage.imagePath = imagePath
+        worker.save(conversation: conversation)
     }
 
     private func handleDismissPress() {
@@ -96,8 +98,10 @@ final class ChatOfflineInteractor: ChatInteractor {
             endChat()
             return
         }
-        messages.append(message)
-        presenter.display(messages: messages)
+        conversation.messages.append(message)
+        presenter.display(messages: conversation.messages)
+        print(message.imagePath)
+        worker.save(conversation: conversation)
     }
 
     private func handleDisconnect() {

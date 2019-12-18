@@ -16,7 +16,8 @@ protocol ChatOfflineWorker: AnyObject {
     var receivedMessages: PublishSubject<ChatMessage> { get }
     var disconnected: PublishSubject<Void> { get }
     func send(message: String)
-    func send(image: UIImage)
+    func send(image: UIImage, messageId: String) -> String?
+    func save(conversation: LocalConversation)
     func disconnectFromSession()
 }
 
@@ -24,13 +25,17 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
 
     private let peerConnection: PeerConnection
     private let fileManager: FileManager
+    private let localConversationRepository: LocalConversationRepository
     let receivedMessages = PublishSubject<ChatMessage>()
     let receivedMessagesArray = PublishSubject<[ChatMessage]>()
     let disconnected = PublishSubject<Void>()
 
-    init(peerConnection: PeerConnection, fileManager: FileManager) {
+    init(peerConnection: PeerConnection,
+         fileManager: FileManager,
+         localConversationRepository: LocalConversationRepository) {
         self.peerConnection = peerConnection
         self.fileManager = fileManager
+        self.localConversationRepository = localConversationRepository
         self.peerConnection.delegate = self
     }
 
@@ -42,26 +47,31 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
         peerConnection.send(data: messageData)
     }
 
-    func send(image: UIImage) {
+    func send(image: UIImage, messageId: String) -> String? {
         guard let imageData = image.jpegData(compressionQuality: 1),
             let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first,
             let peer = peerConnection.mcSession.connectedPeers.first else {
                 print("Error sending image")
-                return
+                return nil
         }
-        let imageId = UUID().uuidString
-        let photoURL = path.appendingPathComponent("\(imageId).png")
+        let photoURL = path.appendingPathComponent("\(messageId).jpg")
         do {
             try imageData.write(to: photoURL)
         } catch {
             print(error.localizedDescription)
-            return
+            return nil
         }
-        peerConnection.sendResource(at: photoURL, withName: "\(imageId).png", toPeer: peer) { error in
+        self.peerConnection.sendResource(at: photoURL, withName: "\(messageId).jpg", toPeer: peer) { error in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
+        print(photoURL.path)
+        return photoURL.path
+    }
+
+    func save(conversation: LocalConversation) {
+        localConversationRepository.save(conversation: conversation)
     }
 
     func disconnectFromSession() {
@@ -76,11 +86,27 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
                 return
             }
             let chatMessage = ChatMessage(image: image, isAuthor: false)
+            let imagePath = saveImage(data: localData, name: chatMessage.messageId)
+            chatMessage.imagePath = imagePath
             DispatchQueue.main.async {
                 self.receivedMessages.onNext(chatMessage)
             }
         } catch {
             print(error.localizedDescription)
+        }
+    }
+
+    private func saveImage(data: Data, name: String) -> String? {
+        guard let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        let photoURL = path.appendingPathComponent("\(name).jpg")
+        do {
+            try data.write(to: photoURL)
+            return photoURL.path
+        } catch {
+            print(error.localizedDescription)
+            return nil
         }
     }
 
