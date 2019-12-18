@@ -13,7 +13,7 @@ final class AppUser: Codable {
 
     let userId: String
     var name: String
-    let chatsIds: [String]
+    var chatsIds: [String]
 
     init(userId: String, name: String, chatsIds: [String] = []) {
         self.userId = userId

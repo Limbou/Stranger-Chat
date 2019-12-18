@@ -37,7 +37,7 @@ final class FirestoreUsersRepositoryImpl: FirestoreUsersRepository {
     func getData(for userId: String) -> Observable<AppUser?> {
         let documentRef = usersRef.document(userId)
         return Observable.create { observable in
-            documentRef.addSnapshotListener { (documentSnapshot, error) in
+            documentRef.getDocument { (documentSnapshot, error) in
                 self.handleNewUserData(snapshot: documentSnapshot, error: error, observable: observable)
             }
             return Disposables.create()
@@ -67,6 +67,7 @@ final class FirestoreUsersRepositoryImpl: FirestoreUsersRepository {
         do {
             let user = try self.decoder.decode(AppUser.self, from: data)
             observable.onNext(user)
+            observable.onCompleted()
         } catch {
             print(error.localizedDescription)
         }

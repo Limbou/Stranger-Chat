@@ -26,13 +26,14 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     private let router: StrangersBrowserRouter
     private let worker: StrangersBrowserWorker
     private let bag = DisposeBag()
-    private var discoveredUsers: [MCPeerID] = []
+    private var discoveredUsers: [DiscoverableUser] = []
+    private var shouldGoOnline = false
     let onWillAppear = PublishSubject<[Any]>()
     let onWillDisappear = PublishSubject<[Any]>()
     let selectCell = PublishSubject<Int>()
 
-    private var subscription: Disposable?
-    private var subscription2: Disposable?
+    private var invitationSubscription: Disposable?
+    private var browsingSubscription: Disposable?
 
     init(presenter: StrangersBrowserPresenter, router: StrangersBrowserRouter, worker: StrangersBrowserWorker) {
         self.presenter = presenter
@@ -42,8 +43,8 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     }
 
     deinit {
-        subscription?.dispose()
-        subscription2?.dispose()
+        invitationSubscription?.dispose()
+        browsingSubscription?.dispose()
     }
 
     private func setupBindings() {
@@ -63,10 +64,10 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     private func startBrowsing() {
         discoveredUsers = []
         presenter.display(users: [])
-        subscription2?.dispose()
-        subscription2 = worker.startBrowsing().subscribe(onNext: { discoveredUsers in
+        browsingSubscription?.dispose()
+        browsingSubscription = worker.startBrowsing().subscribe(onNext: { discoveredUsers in
             self.discoveredUsers = discoveredUsers
-            self.presenter.display(users: discoveredUsers.map({ $0.displayName }))
+            self.presenter.display(users: discoveredUsers.map({ $0.peer.displayName }))
         })
     }
 
@@ -75,13 +76,36 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     }
 
     private func selectedCell(_ index: Int) {
-        subscription?.dispose()
-        subscription = worker.sendInvitationTo(peerIndex: index).subscribe(onNext: { state in
+        guard let user = discoveredUsers[safe: index] else {
+            print("No user at given index")
+            return
+        }
+        let context = prepareInvitationContext(for: user.discoveryInfo)
+        invitationSubscription?.dispose()
+        invitationSubscription = worker.sendInvitationTo(user: user, context: context).subscribe(onNext: { state in
             DispatchQueue.main.async {
                  self.handleConnectionStateChange(state: state)
             }
         })
         presenter.presentInvitationSentAlert()
+    }
+
+    private func prepareInvitationContext(for info: [String: String]?) -> Data? {
+        guard let isOnline = info?[PeerConstants.isOnlineKey]?.bool,
+            isOnline,
+            worker.isOnline() else {
+                shouldGoOnline = false
+                return nil
+        }
+        let goOnlineContext = [PeerConstants.isOnlineKey: true]
+        do {
+            let context = try JSONSerialization.data(withJSONObject: goOnlineContext, options: .prettyPrinted)
+            shouldGoOnline = true
+            return context
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
     }
 
     private func handleConnectionStateChange(state: ConnectionState) {
@@ -90,7 +114,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
             break
         case .connected:
             stopBrowsing()
-            router.goToChat(online: false)
+            router.goToChat(online: shouldGoOnline)
         case .disconnected:
             print("Disconnected!")
         }

@@ -100,8 +100,10 @@ final class ScreenAssembly: Assembly {
 
     private func assembleChat(_ container: Container) {
         var peerConnectionArgument: PeerConnection!
+        var isOnline: Bool!
         container.register(ChatViewController.self) { (resolver, peerConnection: PeerConnection, online: Bool) in
             peerConnectionArgument = peerConnection
+            isOnline = online
             return ChatViewController(interactor: resolver.resolve(ChatInteractor.self, arguments: peerConnection, online)!,
                                       cellFactory: resolver ~> ChatCellFactory.self)
         }
@@ -117,21 +119,21 @@ final class ScreenAssembly: Assembly {
                                          worker: resolver.resolve(ChatOfflineWorker.self, argument: peerConnection)!)
         }
         container.autoregister(ChatPresenter.self, initializer: ChatPresenterImpl.init).initCompleted { (resolver, presenter) in
-            presenter.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
+            presenter.viewController = resolver.resolve(ChatViewController.self, arguments: peerConnectionArgument!, isOnline!)
         }
         container.register(ChatOnlineWorker.self) { resolver, peerConnection in
-            ChatOnlineWorkerImpl(peerConnection: peerConnection, chatRepository: resolver ~> FirestoreChatRepository.self, userRepository: resolver ~> FirebaseUsersRepository.self)
+            ChatOnlineWorkerImpl(peerConnection: peerConnection,
+                                 chatRepository: resolver ~> FirestoreChatRepository.self,
+                                 userRepository: resolver ~> FirebaseUsersRepository.self,
+                                 firestoreUserRepository: resolver ~> FirestoreUsersRepository.self)
         }
         container.register(ChatOfflineWorker.self) { resolver, peerConnection in
             ChatOfflineWorkerImpl(peerConnection: peerConnection, fileManager: resolver ~> FileManager.self)
         }
-        container.autoregister(ChatRouter.self, initializer: ChatRouterImpl.init).initCompleted { (resolver, router) in
-            router.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
-        }
         container.register(ChatRouter.self) { (resolver, peerConnection: PeerConnection) in
             return ChatRouterImpl()
         }.initCompleted { (resolver, router) in
-            router.viewController = resolver.resolve(ChatViewController.self, argument: peerConnectionArgument!)
+            router.viewController = resolver.resolve(ChatViewController.self, arguments: peerConnectionArgument!, isOnline!)
         }
         container.autoregister(ChatCellFactory.self, initializer: ChatCellFactoryImpl.init)
     }

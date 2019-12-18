@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import CodableFirebase
+import FirebaseStorage
 import RxSwift
 import RxSwiftExt
 
@@ -21,17 +22,21 @@ protocol FirestoreChatRepository: AnyObject {
     func setConversation(conversation: Conversation, userId: String)
     func send(message: FirebaseChatMessage, to conversationId: String) -> Observable<Bool>
     func listen(to conversationId: String) -> Observable<[FirebaseChatMessage]>
+    func getImage(for url: String) -> Observable<UIImage?>
 }
 
 final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
 
     private let firestore: Firestore
+    private let storage: Storage
     private let conversationsRef: CollectionReference
     private let decoder: FirebaseDecoder
     private let encoder: FirebaseEncoder
+    private var uploadSubscription: Disposable?
 
-    init(firestore: Firestore, decoder: FirebaseDecoder, encoder: FirebaseEncoder) {
+    init(firestore: Firestore, storage: Storage, decoder: FirebaseDecoder, encoder: FirebaseEncoder) {
         self.firestore = firestore
+        self.storage = storage
         self.decoder = decoder
         self.encoder = encoder
         conversationsRef = firestore.collection(Keys.conversations)
@@ -79,6 +84,27 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
         }
     }
 
+    func getImage(for url: String) -> Observable<UIImage?> {
+        let imageReference = storage.reference(forURL: url)
+        let megaBytes = Int64(10 * 1024 * 1024)
+        return Observable.create { observer in
+            imageReference.getData(maxSize: megaBytes) { (data, error) in
+                if let error = error {
+                    observer.onError(error)
+                }
+                guard let data = data else {
+                    print("No image data at given url")
+                    observer.onNext(nil)
+                    observer.onCompleted()
+                    return
+                }
+                observer.onNext(UIImage(data: data))
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
     private func getConversation(for conversationId: String) -> Observable<Conversation?> {
         let documentRef = conversationsRef.document(conversationId)
         return Single<Conversation?>.create { single in
@@ -106,6 +132,57 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
     }
 
     private func updateConversation(message: FirebaseChatMessage, conversation: Conversation?, conversationId: String) -> Observable<Bool> {
+        if let image = message.image {
+            return upload(image: image, conversationId: conversationId).flatMap { url in
+                return self.updateImageDownloadUrl(message: message, url: url, conversation: conversation, conversationId: conversationId)
+            }
+        } else {
+            return self.addMessageToConversation(message: message, conversation: conversation, conversationId: conversationId)
+        }
+    }
+
+    private func upload(image: UIImage, conversationId: String) -> Observable<URL> {
+        guard let imageData = image.jpegData(compressionQuality: 1) else {
+            return Observable.empty()
+        }
+
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+
+        let imageName = [UUID().uuidString, String(Date().timeIntervalSince1970)].joined()
+        let storageRef = storage.reference()
+        let imageRef = storageRef.child(conversationId).child(imageName)
+        return Observable.create { observer in
+            imageRef.putData(imageData, metadata: metadata) { _, error in
+                if let error = error {
+                    observer.onError(error)
+                }
+                imageRef.downloadURL { (url, error) in
+                    if let error = error {
+                        observer.onError(error)
+                    }
+                    guard let url = url else {
+                        print("No image download url")
+                        observer.onCompleted()
+                        return
+                    }
+                    observer.onNext(url)
+                    observer.onCompleted()
+                }
+            }
+            return Disposables.create()
+        }
+    }
+
+    private func updateImageDownloadUrl(message: FirebaseChatMessage,
+                                        url: URL,
+                                        conversation: Conversation?,
+                                        conversationId: String) -> Observable<Bool> {
+        message.imageUrl = url.absoluteString
+        return addMessageToConversation(message: message, conversation: conversation, conversationId: conversationId)
+    }
+
+    private func addMessageToConversation(message: FirebaseChatMessage, conversation: Conversation?, conversationId: String) -> Observable<Bool> {
         if let conversation = conversation {
             conversation.messages.append(message)
             return self.save(conversation: conversation)

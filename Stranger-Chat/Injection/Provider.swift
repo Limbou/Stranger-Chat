@@ -30,4 +30,8 @@ final class Provider {
         return assembler.resolver.resolve(serviceType, argument: argument)!
     }
 
+    func instanceOf<Service, Argument, Argument2>(_ serviceType: Service.Type, arguments: Argument, _ arg2: Argument2) -> Service {
+        return assembler.resolver.resolve(serviceType, arguments: arguments, arg2)!
+    }
+
 }

@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8SV-Z8-clo">
-                        <rect key="frame" x="212" y="5" width="100" height="125.5"/>
+                        <rect key="frame" x="8" y="5" width="100" height="125.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="128" id="Bac-AX-PAO"/>
                             <constraint firstAttribute="width" constant="100" id="sHE-uo-UpU"/>
@@ -26,9 +26,9 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="8SV-Z8-clo" secondAttribute="trailing" constant="8" id="Kjd-ow-XXG"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8SV-Z8-clo" secondAttribute="trailing" constant="64" id="Kjd-ow-XXG"/>
                     <constraint firstAttribute="bottom" secondItem="8SV-Z8-clo" secondAttribute="bottom" constant="4" id="XJR-0O-eLC"/>
-                    <constraint firstItem="8SV-Z8-clo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="64" id="q3a-ox-H4i"/>
+                    <constraint firstItem="8SV-Z8-clo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="q3a-ox-H4i"/>
                     <constraint firstItem="8SV-Z8-clo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="vaq-p8-ivA"/>
                 </constraints>
             </tableViewCellContentView>

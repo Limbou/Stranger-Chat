@@ -25,7 +25,7 @@ final class HomeRouterImpl: HomeRouter {
     }
 
     func goToChat(online: Bool) {
-        let chatViewController = Provider.get.instanceOf(ChatViewController.self, argument: PeerClientSession.getInstance() as PeerConnection)
+        let chatViewController = Provider.get.instanceOf(ChatViewController.self, arguments: PeerClientSession.getInstance() as PeerConnection, online)
         let navigationController = UINavigationController(rootViewController: chatViewController)
         navigationController.modalPresentationStyle = .fullScreen
         present(viewController: navigationController)

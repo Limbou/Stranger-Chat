@@ -19,17 +19,18 @@ enum ConnectionState {
 }
 
 protocol StrangersBrowserWorker: AnyObject {
-    func startBrowsing() -> Observable<[MCPeerID]>
+    func startBrowsing() -> Observable<[DiscoverableUser]>
     func stopBrowsing()
-    func sendInvitationTo(peerIndex: Int) -> Observable<ConnectionState>
+    func sendInvitationTo(user: DiscoverableUser, context: Data?) -> Observable<ConnectionState>
+    func isOnline() -> Bool
 }
 
 final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
 
     private let currentUserRepository: CurrentUserRepository
     private let session: PeerHostSession
-    private var discoveredPeers: [MCPeerID] = []
-    private let discovered = PublishSubject<[MCPeerID]>()
+    private var discoveredPeers: [DiscoverableUser] = []
+    private let discovered = PublishSubject<[DiscoverableUser]>()
     private let connectionState = PublishSubject<ConnectionState>()
 
     init(currentUserRepository: CurrentUserRepository, session: PeerHostSession) {
@@ -38,7 +39,7 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
         setupDisplayName()
     }
 
-    func startBrowsing() -> Observable<[MCPeerID]> {
+    func startBrowsing() -> Observable<[DiscoverableUser]> {
         guard currentUserRepository.currentUser() != nil else {
             print("No user")
             return Observable.empty()
@@ -53,12 +54,12 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
         session.disconnect()
     }
 
-    func sendInvitationTo(peerIndex: Int) -> Observable<ConnectionState> {
-        guard let peer = discoveredPeers[safe: peerIndex] else {
-            print("No peer with such index")
+    func sendInvitationTo(user: DiscoverableUser, context: Data?) -> Observable<ConnectionState> {
+        guard discoveredPeers.contains(where: { $0.peer == user.peer }) else {
+            print("User already unavailable")
             return Observable.empty()
         }
-        session.invite(peer: peer, withContext: nil)
+        session.invite(peer: user.peer, withContext: context)
         return connectionState
     }
 
@@ -70,18 +71,23 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
         session.displayName = userName
     }
 
+    func isOnline() -> Bool {
+        return currentUserRepository.isOnline()
+    }
+
 }
 
 extension StrangersBrowserWorkerImpl: PeerSessionDelegate {
 
     func peerDiscovered(peerID: MCPeerID, discoveryInfo: [String: String]?) {
-        discoveredPeers.append(peerID)
+        let user = DiscoverableUser(peer: peerID, discoveryInfo: discoveryInfo)
+        discoveredPeers.append(user)
         discovered.onNext(discoveredPeers)
     }
 
     func peerLost(peerID: MCPeerID) {
         print("Lost peer: \(peerID.displayName)")
-        guard let indexOfPeer = discoveredPeers.firstIndex(of: peerID) else {
+        guard let indexOfPeer = discoveredPeers.firstIndex(where: { $0.peer == peerID }) else {
             return
         }
         discoveredPeers.remove(at: indexOfPeer)

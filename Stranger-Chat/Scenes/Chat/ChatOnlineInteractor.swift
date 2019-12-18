@@ -65,12 +65,7 @@ final class ChatOnlineInteractor: ChatInteractor {
     }
 
     private func handleImagePick(image: UIImage) {
-//        worker.send(image: image)
-//        let chatMessage = ChatMessage(image: image, isAuthor: true)
-//        messages.append(chatMessage)
-//        DispatchQueue.main.async {
-//            self.presenter.display(messages: self.messages)
-//        }
+        worker.send(image: image)
     }
 
     private func handleDismissPress() {
@@ -90,7 +85,7 @@ final class ChatOnlineInteractor: ChatInteractor {
     }
 
     private func handleDisconnect() {
-        endChat()
+//        endChat()
     }
 
     private func endChat() {

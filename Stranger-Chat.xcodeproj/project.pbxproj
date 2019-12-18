@@ -72,6 +72,8 @@
 		D3B5AC4923A65688008EF38A /* FirebaseChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */; };
 		D3B5AC4B23A7CA77008EF38A /* ChatOnlineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4A23A7CA77008EF38A /* ChatOnlineInteractor.swift */; };
 		D3B5AC4D23A7E1BE008EF38A /* PeerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4C23A7E1BE008EF38A /* PeerConstants.swift */; };
+		D3B5AC6223A99085008EF38A /* DiscoverableUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC6123A99085008EF38A /* DiscoverableUser.swift */; };
+		D3B5AC6423A99779008EF38A /* String+BoolValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC6323A99779008EF38A /* String+BoolValue.swift */; };
 		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
 		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
 		D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */; };
@@ -192,6 +194,8 @@
 		D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatMessage.swift; sourceTree = "<group>"; };
 		D3B5AC4A23A7CA77008EF38A /* ChatOnlineInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOnlineInteractor.swift; sourceTree = "<group>"; };
 		D3B5AC4C23A7E1BE008EF38A /* PeerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerConstants.swift; sourceTree = "<group>"; };
+		D3B5AC6123A99085008EF38A /* DiscoverableUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverableUser.swift; sourceTree = "<group>"; };
+		D3B5AC6323A99779008EF38A /* String+BoolValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+BoolValue.swift"; sourceTree = "<group>"; };
 		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
 		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
 		D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerHostSession.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				D3669FC4239EC32000C171DC /* ChatMessage.swift */,
 				D3B5AC4623A3BD8E008EF38A /* Conversation.swift */,
 				D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */,
+				D3B5AC6123A99085008EF38A /* DiscoverableUser.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 				D3ECC596239A8FDC00548E9B /* Collection+SafeIndex.swift */,
 				D3669FC0239EB64A00C171DC /* UITableViewCell+Extension.swift */,
 				D3669FC2239EB65C00C171DC /* UITableView+Extension.swift */,
+				D3B5AC6323A99779008EF38A /* String+BoolValue.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -959,6 +965,7 @@
 				D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */,
 				D3ECC5E8239D14A500548E9B /* ChatOfflineInteractor.swift in Sources */,
 				D3669FBE239EB4F200C171DC /* ForeignMessageCell.swift in Sources */,
+				D3B5AC6223A99085008EF38A /* DiscoverableUser.swift in Sources */,
 				D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */,
 				D3632AA4238C3B340072A762 /* OfflineModeLoginWorker.swift in Sources */,
 				D3B5AC4B23A7CA77008EF38A /* ChatOnlineInteractor.swift in Sources */,
@@ -1011,6 +1018,7 @@
 				D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */,
 				D3632ADB238D9CD50072A762 /* HomeWorker.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */,
+				D3B5AC6423A99779008EF38A /* String+BoolValue.swift in Sources */,
 				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,
 				D3E6D5692216D94A00AF73D7 /* OfflineModeLoginPresenter.swift in Sources */,
 				D3632AEE238DA8D60072A762 /* StrangersBrowserViewController.swift in Sources */,

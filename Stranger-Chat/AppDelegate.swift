@@ -15,7 +15,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private var currentUserRepository: CurrentUserRepository!
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         currentUserRepository = Provider.get.instanceOf(CurrentUserRepository.self)
         configureFirebase()

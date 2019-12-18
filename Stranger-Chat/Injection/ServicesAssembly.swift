@@ -9,6 +9,7 @@
 import Swinject
 import SwinjectAutoregistration
 import FirebaseFirestore
+import FirebaseStorage
 import CodableFirebase
 
 final class ServicesAssembly: Assembly {
@@ -21,6 +22,7 @@ final class ServicesAssembly: Assembly {
         container.register(Firestore.self) { _ in Firestore.firestore() }
         container.autoregister(FirebaseEncoder.self, initializer: FirebaseEncoder.init)
         container.autoregister(FirebaseDecoder.self, initializer: FirebaseDecoder.init)
+        container.register(Storage.self) { _ in Storage.storage() }
 
     }
 

@@ -25,16 +25,21 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
     private let peerConnection: PeerConnection
     private let chatRepository: FirestoreChatRepository
     private let userRepository: FirebaseUsersRepository
+    private let firestoreUserRepository: FirestoreUsersRepository
     private var conversationId: String = ""
     private var userId: String = ""
     let receivedMessages = PublishSubject<[ChatMessage]>()
     let disconnected = PublishSubject<Void>()
     let bag = DisposeBag()
 
-    init(peerConnection: PeerConnection, chatRepository: FirestoreChatRepository, userRepository: FirebaseUsersRepository) {
+    init(peerConnection: PeerConnection,
+         chatRepository: FirestoreChatRepository,
+         userRepository: FirebaseUsersRepository,
+         firestoreUserRepository: FirestoreUsersRepository) {
         self.peerConnection = peerConnection
         self.chatRepository = chatRepository
         self.userRepository = userRepository
+        self.firestoreUserRepository = firestoreUserRepository
         self.peerConnection.delegate = self
     }
 
@@ -51,12 +56,13 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
             return
         }
         peerConnection.send(data: messageData)
-        chatRepository.listen(to: conversationId).map { firebaseMessages in
-            let userId = self.userRepository.currentUser()?.uid ?? ""
-            return firebaseMessages.map { ChatMessage(content: $0.content, isAuthor: $0.senderId == userId) }
+        chatRepository.listen(to: conversationId).flatMap { firebaseMessages in
+            return self.convertToChatMessages(firebaseMessages)
         }
         .bind(to: receivedMessages)
         .disposed(by: bag)
+
+        updateUserConverstaions(conversationId: conversationId)
     }
 
     func send(message: String) {
@@ -73,7 +79,16 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
     }
 
     func send(image: UIImage) {
-
+        guard let userId = userRepository.currentUser()?.uid else {
+            print("User is gone")
+            return
+        }
+        let chatMessage = FirebaseChatMessage(senderId: userId, image: image)
+        chatRepository.send(message: chatMessage, to: conversationId).subscribe(onNext: { success in
+            print(success)
+        }, onError: { error in
+            print(error)
+        }).disposed(by: bag)
     }
 
     func disconnectFromSession() {
@@ -87,12 +102,49 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
         let indexAfterEqualSign = message.index(after: indexOfEqualSign)
         let idSubstring = message[indexAfterEqualSign...]
         conversationId = "\(idSubstring)"
-        chatRepository.listen(to: conversationId).map { firebaseMessages in
-            let userId = self.userRepository.currentUser()?.uid ?? ""
-            return firebaseMessages.map { ChatMessage(content: $0.content, isAuthor: $0.senderId == userId) }
+        chatRepository.listen(to: conversationId).flatMap { firebaseMessages in
+            return self.convertToChatMessages(firebaseMessages)
         }
         .bind(to: receivedMessages)
         .disposed(by: bag)
+
+        updateUserConverstaions(conversationId: conversationId)
+    }
+
+    private func updateUserConverstaions(conversationId: String) {
+        guard let userId = userRepository.currentUser()?.uid else {
+            return
+        }
+        firestoreUserRepository.getData(for: userId).flatMap { user -> Observable<Bool> in
+            guard let user = user else {
+                return Observable.just(false)
+            }
+            user.chatsIds.append(conversationId)
+            return self.firestoreUserRepository.setUserData(appUser: user)
+        }
+        .subscribe(onNext: { _ in })
+        .disposed(by: bag)
+    }
+
+    private func convertToChatMessages(_ messages: [FirebaseChatMessage]) -> Observable<[ChatMessage]> {
+        let userId = self.userRepository.currentUser()?.uid ?? ""
+        return Observable.from(messages.map { self.convertToSingleChatMessage($0, userId: userId) })
+            .merge()
+            .toArray()
+            .asObservable()
+    }
+
+    private func convertToSingleChatMessage(_ message: FirebaseChatMessage, userId: String) -> Observable<ChatMessage> {
+        if let imageUrl = message.imageUrl {
+            return self.downloadImageFor(urlString: imageUrl).map { image in
+                return ChatMessage(image: image, isAuthor: message.senderId == userId)
+            }
+        }
+        return Observable.just(ChatMessage(content: message.content, isAuthor: message.senderId == userId))
+    }
+
+    private func downloadImageFor(urlString: String) -> Observable<UIImage?> {
+        return chatRepository.getImage(for: urlString)
     }
 
 }
