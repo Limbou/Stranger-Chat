@@ -36,7 +36,7 @@ final class ChatInputField: UIView {
         inputField.layer.masksToBounds = true
         inputField.layer.cornerRadius = 10
         inputField.layer.borderWidth = 1
-        inputField.layer.borderColor = UIColor.red.cgColor
+        inputField.layer.borderColor = Color.skyGreen.cgColor
     }
 
 }

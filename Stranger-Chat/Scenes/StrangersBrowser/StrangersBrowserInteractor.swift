@@ -28,6 +28,8 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     private let bag = DisposeBag()
     private var discoveredUsers: [DiscoverableUser] = []
     private var shouldGoOnline = false
+    private var chatStarted = false
+    private var gotDisconnected = false
     let onWillAppear = PublishSubject<[Any]>()
     let onWillDisappear = PublishSubject<[Any]>()
     let selectCell = PublishSubject<Int>()
@@ -49,6 +51,8 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
 
     private func setupBindings() {
         onWillAppear.subscribe(onNext: { _ in
+            self.chatStarted = false
+            self.gotDisconnected = false
             self.startBrowsing()
         }).disposed(by: bag)
 
@@ -67,7 +71,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
         browsingSubscription?.dispose()
         browsingSubscription = worker.startBrowsing().subscribe(onNext: { discoveredUsers in
             self.discoveredUsers = discoveredUsers
-            self.presenter.display(users: discoveredUsers.map({ $0.peer.displayName }))
+            self.presenter.display(users: discoveredUsers)
         })
     }
 
@@ -87,7 +91,8 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
                  self.handleConnectionStateChange(state: state)
             }
         })
-        presenter.presentInvitationSentAlert()
+        presenter.presentInvitationSentAlert(user: user.peer.displayName)
+        Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in self.handleTimeoutReached() }
     }
 
     private func prepareInvitationContext(for info: [String: String]?) -> Data? {
@@ -108,15 +113,27 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
         }
     }
 
+    private func handleTimeoutReached() {
+        if !gotDisconnected {
+            presenter.presentInvitationDeclinedAlert()
+        }
+    }
+
     private func handleConnectionStateChange(state: ConnectionState) {
         switch state {
         case .connecting:
             break
         case .connected:
             stopBrowsing()
+            chatStarted = true
+            presenter.hideInvitationSentAlert()
             router.goToChat(online: shouldGoOnline)
         case .disconnected:
             print("Disconnected!")
+            gotDisconnected = true
+            if !chatStarted {
+                presenter.presentInvitationDeclinedAlert()
+            }
         }
     }
 

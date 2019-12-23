@@ -7,6 +7,8 @@
 */
 
 "alert.button.ok" = "Ok";
+"alert.button.no" = "No";
+"alert.button.yes" = "Yes";
 
 "landing.title" = "Welcome!";
 "landing.loginButton.title" = "Login";
@@ -33,6 +35,25 @@
 "offlineModeLogin.alert.title" = "Nickname too short!";
 "offlineModeLogin.alert.message" = "Nickname should be at least 3 characters long.";
 
+"home.chooseMode.text" = "Choose one of the following modes:";
 "home.findStrangerButton.title" = "Find stranger";
+"home.findStranger.description.text" = "Search for other users";
+"home.or.text" = "OR";
 "home.makeVisibleButton.title" = "Make visible";
-"home.makeInvisibleButton.title" = "Make invisible";
+"home.makeInvisibleButton.title" = "Hide";
+"home.makeVisible.description.text" = "Become visible for other people";
+"home.makeInvisible.description.text" = "You are now visible...";
+"home.invitation.title" = "Invitation received!";
+"home.invitation.from" = "Do you want to accept a conversation invitation from ";
+
+"chat.tabbar.title" = "Chat";
+"archive.tabbar.title" = "Archive";
+"chat.title" = "Start chatting";
+"archive.title" = "Previous conversations";
+
+"strangerBrowser.isOnline.text" = "Online mode";
+"strangerBrowser.isOffline.text" = "Offline mode";
+"strangerBrowser.invitationSent.title" = "Invitation Sent!";
+"strangerBrowser.invitationSent.body" = "Waiting for response from ";
+"strangerBrowse.invitationDeclined.title" = "Declined!";
+"strangerBrowse.invitationDeclined.body" = "Your invitation has been declined.";

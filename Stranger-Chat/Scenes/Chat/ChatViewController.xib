@@ -20,19 +20,19 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="35R-x5-NsJ">
-                    <rect key="frame" x="0.0" y="44" width="414" height="718"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="35R-x5-NsJ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="754"/>
+                    <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyN-8e-QrQ" customClass="ChatInputField" customModule="Stranger_Chat" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="762" width="414" height="100"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <rect key="frame" x="0.0" y="798" width="414" height="64"/>
+                    <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="nqs-md-ENn"/>
+                        <constraint firstAttribute="height" constant="64" id="nqs-md-ENn"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="vyN-8e-QrQ" secondAttribute="trailing" id="D9F-Of-ITm"/>
                 <constraint firstItem="vyN-8e-QrQ" firstAttribute="top" secondItem="35R-x5-NsJ" secondAttribute="bottom" id="R3F-Oc-ffv"/>

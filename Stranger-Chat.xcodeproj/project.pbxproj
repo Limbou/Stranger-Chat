@@ -77,6 +77,15 @@
 		D3B5AC6823AA6DA4008EF38A /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC6723AA6DA4008EF38A /* ConversationModel.swift */; };
 		D3B5AC6A23AA6DAE008EF38A /* ChatMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC6923AA6DAD008EF38A /* ChatMessageModel.swift */; };
 		D3B5AC6C23AA785E008EF38A /* LocalConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC6B23AA785E008EF38A /* LocalConversation.swift */; };
+		D3B5AC6E23B0D509008EF38A /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC6D23B0D509008EF38A /* GradientView.swift */; };
+		D3B5AC7023B0D708008EF38A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC6F23B0D708008EF38A /* Color.swift */; };
+		D3B5AC7223B0DEDE008EF38A /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC7123B0DEDE008EF38A /* MainNavigationController.swift */; };
+		D3B5AC7C23B0FC52008EF38A /* StrangerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC7A23B0FC52008EF38A /* StrangerCell.swift */; };
+		D3B5AC7D23B0FC52008EF38A /* StrangerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B5AC7B23B0FC52008EF38A /* StrangerCell.xib */; };
+		D3B5AC7F23B1241D008EF38A /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC7E23B1241D008EF38A /* UIView+Shadow.swift */; };
+		D3B5AC8123B125C5008EF38A /* UIAlertController+Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC8023B125C5008EF38A /* UIAlertController+Activity.swift */; };
+		D3B5AC8523B13C30008EF38A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC8323B13C30008EF38A /* PhotoViewController.swift */; };
+		D3B5AC8623B13C31008EF38A /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B5AC8423B13C30008EF38A /* PhotoViewController.xib */; };
 		D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */; };
 		D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */; };
 		D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */; };
@@ -202,6 +211,15 @@
 		D3B5AC6723AA6DA4008EF38A /* ConversationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModel.swift; sourceTree = "<group>"; };
 		D3B5AC6923AA6DAD008EF38A /* ChatMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageModel.swift; sourceTree = "<group>"; };
 		D3B5AC6B23AA785E008EF38A /* LocalConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalConversation.swift; sourceTree = "<group>"; };
+		D3B5AC6D23B0D509008EF38A /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D3B5AC6F23B0D708008EF38A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D3B5AC7123B0DEDE008EF38A /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		D3B5AC7A23B0FC52008EF38A /* StrangerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrangerCell.swift; sourceTree = "<group>"; };
+		D3B5AC7B23B0FC52008EF38A /* StrangerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StrangerCell.xib; sourceTree = "<group>"; };
+		D3B5AC7E23B1241D008EF38A /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
+		D3B5AC8023B125C5008EF38A /* UIAlertController+Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Activity.swift"; sourceTree = "<group>"; };
+		D3B5AC8323B13C30008EF38A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		D3B5AC8423B13C30008EF38A /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		D3B6B89D2265AE4500B7CC14 /* MCSessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCSessionAdapter.swift; sourceTree = "<group>"; };
 		D3B6B89F2265AE5200B7CC14 /* PeerClientSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerClientSession.swift; sourceTree = "<group>"; };
 		D3B6B8A12265AE5F00B7CC14 /* PeerHostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerHostSession.swift; sourceTree = "<group>"; };
@@ -395,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				D3632AE2238DA0F00072A762 /* MainTabBarController.swift */,
+				D3B5AC7123B0DEDE008EF38A /* MainNavigationController.swift */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
@@ -408,6 +427,8 @@
 				D3632AE6238DA8D50072A762 /* StrangersBrowserPresenter.swift */,
 				D3632AE8238DA8D50072A762 /* StrangersBrowserRouter.swift */,
 				D3632AE7238DA8D50072A762 /* StrangersBrowserWorker.swift */,
+				D3B5AC7A23B0FC52008EF38A /* StrangerCell.swift */,
+				D3B5AC7B23B0FC52008EF38A /* StrangerCell.xib */,
 			);
 			path = StrangersBrowser;
 			sourceTree = "<group>";
@@ -447,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				D38004D1226F30DA00C01683 /* RoundButton.swift */,
+				D3B5AC6D23B0D509008EF38A /* GradientView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -460,6 +482,15 @@
 				D348D12F238719950012D43C /* ServicesAssembly.swift */,
 			);
 			path = Injection;
+			sourceTree = "<group>";
+		};
+		D3B5AC8223B13C12008EF38A /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				D3B5AC8323B13C30008EF38A /* PhotoViewController.swift */,
+				D3B5AC8423B13C30008EF38A /* PhotoViewController.xib */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		D3B6B89A2264B1B300B7CC14 /* MultipeerConnectivity */ = {
@@ -580,6 +611,7 @@
 			isa = PBXGroup;
 			children = (
 				D3615AF322AF8EAE0021B346 /* AlertBuilder.swift */,
+				D3B5AC6F23B0D708008EF38A /* Color.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -612,6 +644,8 @@
 				D3669FC0239EB64A00C171DC /* UITableViewCell+Extension.swift */,
 				D3669FC2239EB65C00C171DC /* UITableView+Extension.swift */,
 				D3B5AC6323A99779008EF38A /* String+BoolValue.swift */,
+				D3B5AC7E23B1241D008EF38A /* UIView+Shadow.swift */,
+				D3B5AC8023B125C5008EF38A /* UIAlertController+Activity.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -648,6 +682,7 @@
 				D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */,
 				D3669FB7239EB4A900C171DC /* Cells */,
 				D3ECC5EF239D21C200548E9B /* InputField */,
+				D3B5AC8223B13C12008EF38A /* Photo */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -790,9 +825,11 @@
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
 				D3ECC5EA239D14BC00548E9B /* ChatViewController.xib in Resources */,
+				D3B5AC8623B13C31008EF38A /* PhotoViewController.xib in Resources */,
 				D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */,
 				D3ECC5EC239D16B800548E9B /* ChatInputField.xib in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
+				D3B5AC7D23B0FC52008EF38A /* StrangerCell.xib in Resources */,
 				D3669FBF239EB4F200C171DC /* ForeignMessageCell.xib in Resources */,
 				D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */,
 				D3632AE0238D9CE60072A762 /* HomeViewController.xib in Resources */,
@@ -991,12 +1028,16 @@
 				D3B6B8A22265AE5F00B7CC14 /* PeerHostSession.swift in Sources */,
 				D3632AAF238C4B440072A762 /* LoginInteractor.swift in Sources */,
 				D3B5AC4923A65688008EF38A /* FirebaseChatMessage.swift in Sources */,
+				D3B5AC8123B125C5008EF38A /* UIAlertController+Activity.swift in Sources */,
 				D3E6D5672216D94100AF73D7 /* OfflineModeLoginInteractor.swift in Sources */,
 				D3669FC1239EB64A00C171DC /* UITableViewCell+Extension.swift in Sources */,
+				D3B5AC6E23B0D509008EF38A /* GradientView.swift in Sources */,
 				D3ECC5EE239D21BC00548E9B /* ChatInputField.swift in Sources */,
+				D3B5AC8523B13C30008EF38A /* PhotoViewController.swift in Sources */,
 				D3632AB3238C4B540072A762 /* LoginRouter.swift in Sources */,
 				D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */,
 				D3632AE3238DA0F00072A762 /* MainTabBarController.swift in Sources */,
+				D3B5AC7023B0D708008EF38A /* Color.swift in Sources */,
 				D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */,
 				D3B5AC4D23A7E1BE008EF38A /* PeerConstants.swift in Sources */,
 				D348D13723872C700012D43C /* RealmManager.swift in Sources */,
@@ -1020,7 +1061,9 @@
 				D3065CF123A2B4A400C04C1E /* ChatOnlineWorker.swift in Sources */,
 				D348D13A23872EFF0012D43C /* AppUserModel.swift in Sources */,
 				D348D130238719950012D43C /* ServicesAssembly.swift in Sources */,
+				D3B5AC7C23B0FC52008EF38A /* StrangerCell.swift in Sources */,
 				D3632AAC238C4B340072A762 /* LoginViewController.swift in Sources */,
+				D3B5AC7F23B1241D008EF38A /* UIView+Shadow.swift in Sources */,
 				D3632AB1238C4B4D0072A762 /* LoginPresenter.swift in Sources */,
 				D348D134238721AF0012D43C /* FirebaseUsersRepository.swift in Sources */,
 				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
@@ -1035,6 +1078,7 @@
 				D3632AEE238DA8D60072A762 /* StrangersBrowserViewController.swift in Sources */,
 				D3065CEC23A215C500C04C1E /* ForeignImageCell.swift in Sources */,
 				D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */,
+				D3B5AC7223B0DEDE008EF38A /* MainNavigationController.swift in Sources */,
 				D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */,
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
 				D3632AEC238DA8D60072A762 /* StrangersBrowserWorker.swift in Sources */,

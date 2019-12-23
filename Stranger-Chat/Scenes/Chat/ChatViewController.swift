@@ -41,9 +41,9 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         imagePicker.delegate = self
         setupNavbar()
-        setupScrollView()
         setupBindings()
         setupObservers()
         cellFactory.registerCells(tableView: tableView)
@@ -54,10 +54,6 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
                                      target: self,
                                      action: #selector(dismissClicked))
         navigationItem.leftBarButtonItem = button
-    }
-
-    private func setupScrollView() {
-        
     }
 
     private func setupObservers() {
@@ -133,6 +129,14 @@ extension ChatViewController: UITableViewDataSource {
 
 }
 
+extension ChatViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor.cellPressed.onNext(indexPath.row)
+    }
+
+}
+
 extension ChatViewController: UIImagePickerControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController,
@@ -155,6 +159,10 @@ extension ChatViewController: ChatDisplayable {
         if !messages.isEmpty {
             tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
         }
+    }
+
+    func setup(title: String) {
+        self.title = title
     }
 
 }

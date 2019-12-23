@@ -23,6 +23,7 @@ final class ChatOnlineInteractor: ChatInteractor {
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
     let dismissPressed = PublishSubject<Void>()
+    let cellPressed = PublishSubject<Int>()
 
     init(presenter: ChatPresenter, router: ChatRouter, worker: ChatOnlineWorker) {
         self.presenter = presenter
@@ -33,6 +34,7 @@ final class ChatOnlineInteractor: ChatInteractor {
     func setup() {
         setupBindings()
         worker.initializeConnection()
+        setupTitle()
     }
 
     private func setupBindings() {
@@ -55,6 +57,22 @@ final class ChatOnlineInteractor: ChatInteractor {
         worker.disconnected.subscribe(onNext: { _ in
             self.handleDisconnect()
         }).disposed(by: bag)
+
+        cellPressed.subscribe(onNext: { index in
+            self.handleCellPressed(index: index)
+        }).disposed(by: bag)
+    }
+
+    private func setupTitle() {
+        let userName = worker.getOtherUserName()
+        presenter.setup(title: userName)
+    }
+
+    private func handleCellPressed(index: Int) {
+        guard let message = messages[safe: index], let image = message.image else {
+            return
+        }
+        router.navigateToImageView(image: image)
     }
 
     private func handleSendPress(_ text: String?) {

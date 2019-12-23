@@ -8,6 +8,13 @@
 
 import UIKit
 
+private enum Constants {
+    static let chat = "chat.tabbar.title"
+    static let archive = "archive.tabbar.title"
+    static let startChatting = "chat.title"
+    static let previousConversations = "archive.title"
+}
+
 final class MainTabBarController: UITabBarController {
 
     init() {
@@ -26,8 +33,9 @@ final class MainTabBarController: UITabBarController {
     }
 
     private func setupTabBar() {
-//        tabBar.unselectedItemTintColor = UIColor.green
-//        tabBar.tintColor = UIColor.red
+        tabBar.unselectedItemTintColor = UIColor.white.withAlphaComponent(0.8)
+        tabBar.tintColor = UIColor.white
+        tabBar.barTintColor = Color.darkBlue
     }
 
     private func setupControllers() {
@@ -39,17 +47,21 @@ final class MainTabBarController: UITabBarController {
 
     private func buildHomeController() -> UINavigationController {
         let viewController = Provider.get.instanceOf(HomeViewController.self)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        viewController.tabBarItem.image = UIImage(systemName: "house")
-        viewController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
+        let navigationController = MainNavigationController(rootViewController: viewController)
+        viewController.tabBarItem.image = UIImage(systemName: "message")
+        viewController.tabBarItem.selectedImage = UIImage(systemName: "message.fill")
+        viewController.tabBarItem.title = Constants.chat.localized()
+        viewController.navigationItem.title = Constants.startChatting.localized()
         return navigationController
     }
 
     private func buildHistoryController() -> UINavigationController {
         let viewController = UIViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let navigationController = MainNavigationController(rootViewController: viewController)
         viewController.tabBarItem.image = UIImage(systemName: "archivebox")
         viewController.tabBarItem.selectedImage = UIImage(systemName: "archivebox.fill")
+        viewController.title = Constants.archive.localized()
+        viewController.navigationItem.title = Constants.previousConversations.localized()
         return navigationController
     }
 

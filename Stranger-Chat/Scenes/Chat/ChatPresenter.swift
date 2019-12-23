@@ -12,11 +12,13 @@ import Foundation
 
 protocol ChatDisplayable: AnyObject {
     func display(messages: [ChatMessage])
+    func setup(title: String)
 }
 
 protocol ChatPresenter: AnyObject {
     var viewController: ChatDisplayable? { get set }
     func display(messages: [ChatMessage])
+    func setup(title: String)
 }
 
 final class ChatPresenterImpl: ChatPresenter {
@@ -25,6 +27,10 @@ final class ChatPresenterImpl: ChatPresenter {
 
     func display(messages: [ChatMessage]) {
         viewController?.display(messages: messages)
+    }
+
+    func setup(title: String) {
+        viewController?.setup(title: title)
     }
 
 }

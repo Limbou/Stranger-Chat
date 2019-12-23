@@ -20,6 +20,7 @@ final class ScreenAssembly: Assembly {
         assembleHome(container)
         assembleStrangerBrowser(container)
         assembleChat(container)
+        assemblePhoto(container)
     }
 
     private func assembleLanding(_ container: Container) {
@@ -138,6 +139,10 @@ final class ScreenAssembly: Assembly {
             router.viewController = resolver.resolve(ChatViewController.self, arguments: peerConnectionArgument!, isOnline!)
         }
         container.autoregister(ChatCellFactory.self, initializer: ChatCellFactoryImpl.init)
+    }
+
+    private func assemblePhoto(_ container: Container) {
+        container.autoregister(PhotoViewController.self, argument: UIImage.self, initializer: PhotoViewController.init(photo:))
     }
 
 }

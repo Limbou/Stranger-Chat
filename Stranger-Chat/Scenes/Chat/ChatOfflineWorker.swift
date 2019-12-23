@@ -15,6 +15,7 @@ import MultipeerConnectivity
 protocol ChatOfflineWorker: AnyObject {
     var receivedMessages: PublishSubject<ChatMessage> { get }
     var disconnected: PublishSubject<Void> { get }
+    func getOtherUserName() -> String
     func send(message: String)
     func send(image: UIImage, messageId: String) -> String?
     func save(conversation: LocalConversation)
@@ -37,6 +38,13 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
         self.fileManager = fileManager
         self.localConversationRepository = localConversationRepository
         self.peerConnection.delegate = self
+    }
+
+    func getOtherUserName() -> String {
+        guard let peer = peerConnection.mcSession.connectedPeers.first else {
+            return ""
+        }
+        return peer.displayName
     }
 
     func send(message: String) {

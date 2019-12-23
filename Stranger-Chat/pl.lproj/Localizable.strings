@@ -7,6 +7,8 @@
 */
 
 "alert.button.ok" = "Ok";
+"alert.button.no" = "Nie";
+"alert.button.yes" = "Tak";
 
 "landing.title" = "Witaj!";
 "landing.loginButton.title" = "Zaloguj";
@@ -33,6 +35,25 @@
 "offlineModeLogin.alert.title" = "Nazwa za krótka!";
 "offlineModeLogin.alert.message" = "Nazwa użytkownika powinna składać się z przynajmniej 3 znaków.";
 
+"home.chooseMode.text" = "Wybierz jeden z dostępnych trybów:";
 "home.findStrangerButton.title" = "Znajdź nieznajomego";
+"home.findStranger.description.text" = "Poszukaj innych użytkowników";
+"home.or.text" = "LUB";
 "home.makeVisibleButton.title" = "Stań się dostępny";
 "home.makeInvisibleButton.title" = "Ukryj się";
+"home.makeVisible.description.text" = "Stań się widoczny dla innych poszukujących";
+"home.makeInvisible.description.text" = "Jesteś teraz widoczny...";
+"home.invitation.title" = "Otrzymano zaproszenie!";
+"home.invitation.from" = "Czy chcesz zaakceptować zaproszenie do rozmowy od użytkownika ";
+
+"chat.tabbar.title" = "Czat";
+"archive.tabbar.title" = "Archiwum";
+"chat.title" = "Rozpocznij rozmowę";
+"archive.title" = "Poprzednie konwersacje";
+
+"strangerBrowser.isOnline.text" = "Tryb online";
+"strangerBrowser.isOffline.text" = "Tryb offline";
+"strangerBrowser.invitationSent.title" = "Zaproszenie wysłano!";
+"strangerBrowser.invitationSent.body" = "Oczekiwanie na odpowiedź użytkownika ";
+"strangerBrowse.invitationDeclined.title" = "Odrzucono!";
+"strangerBrowse.invitationDeclined.body" = "Twoje zaproszenie zostało odrzucone.";

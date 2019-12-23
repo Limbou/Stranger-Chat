@@ -13,8 +13,12 @@ import RxSwift
 import RxCocoa
 
 private enum Constants {
-    static let gotInvitation = "invitation.title"
-    static let invitationFrom = "invitation.from"
+    static let gotInvitation = "home.invitation.title"
+    static let invitationFrom = "home.invitation.from"
+    static let makeVisible = "home.makeVisibleButton.title"
+    static let makeVisibleDescription = "home.makeVisible.description.text"
+    static let hideDescription = "home.makeInvisible.description.text"
+    static let hide = "home.makeInvisibleButton.title"
 }
 
 final class HomeViewController: UIViewController {
@@ -23,6 +27,7 @@ final class HomeViewController: UIViewController {
     private let bag = DisposeBag()
     @IBOutlet var findButton: RoundButton!
     @IBOutlet var makeVisibleButton: RoundButton!
+    @IBOutlet var makeVisibleLabel: UILabel!
 
     init(interactor: HomeInteractor) {
         self.interactor = interactor
@@ -55,12 +60,14 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomeDisplayable {
 
     func setAdvertisingButton(advertising: Bool) {
-        makeVisibleButton.setTitle(advertising ? "Hide" : "Make visible", for: .normal)
+        makeVisibleButton.setTitle(advertising ? Constants.hide.localized() : Constants.makeVisible.localized(), for: .normal)
+        makeVisibleButton.backgroundColor = advertising ? UIColor.clear : Color.skyGreen
+        makeVisibleLabel.text = advertising ? Constants.hideDescription.localized() : Constants.makeVisibleDescription.localized()
     }
 
     func presentInvitation(from sender: String, additionalInfo: String?) {
         let alert = AlertBuilder.shared.buildYesNoAlert(with: Constants.gotInvitation.localized(),
-                                                        message: Constants.invitationFrom.localized(),
+                                                        message: Constants.invitationFrom.localized() + sender,
                                                         yesHandler: { _ in
                                                             self.interactor.invitationAccepted.onNext(true)
         }) { _ in

@@ -15,6 +15,7 @@ protocol ChatOnlineWorker: AnyObject {
     var receivedMessages: PublishSubject<[ChatMessage]> { get }
     var disconnected: PublishSubject<Void> { get }
     func initializeConnection()
+    func getOtherUserName() -> String
     func send(message: String)
     func send(image: UIImage)
     func disconnectFromSession()
@@ -63,6 +64,13 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
         .disposed(by: bag)
 
         updateUserConverstaions(conversationId: conversationId)
+    }
+
+    func getOtherUserName() -> String {
+        guard let peer = peerConnection.mcSession.connectedPeers.first else {
+            return ""
+        }
+        return peer.displayName
     }
 
     func send(message: String) {

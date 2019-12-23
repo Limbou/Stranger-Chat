@@ -16,6 +16,7 @@ protocol ChatInteractor: AnyObject {
     var sendPressed: PublishSubject<String?> { get }
     var imagePicked: PublishSubject<UIImage> { get }
     var dismissPressed: PublishSubject<Void> { get }
+    var cellPressed: PublishSubject<Int> { get }
     func setup()
 }
 
@@ -30,6 +31,7 @@ final class ChatOfflineInteractor: ChatInteractor {
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
     let dismissPressed = PublishSubject<Void>()
+    let cellPressed = PublishSubject<Int>()
 
     init(presenter: ChatPresenter, router: ChatRouter, worker: ChatOfflineWorker) {
         self.presenter = presenter
@@ -39,6 +41,7 @@ final class ChatOfflineInteractor: ChatInteractor {
 
     func setup() {
         setupBindings()
+        setupTitle()
     }
 
     private func setupBindings() {
@@ -61,6 +64,22 @@ final class ChatOfflineInteractor: ChatInteractor {
         worker.disconnected.subscribe(onNext: { _ in
             self.handleDisconnect()
         }).disposed(by: bag)
+
+        cellPressed.subscribe(onNext: { index in
+            self.handleCellPressed(index: index)
+        }).disposed(by: bag)
+    }
+
+    private func setupTitle() {
+        let userName = worker.getOtherUserName()
+        presenter.setup(title: userName)
+    }
+
+    private func handleCellPressed(index: Int) {
+        guard let message = conversation.messages[safe: index], let image = message.image else {
+            return
+        }
+        router.navigateToImageView(image: image)
     }
 
     private func handleSendPress(_ text: String?) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,19 +11,22 @@
             <connections>
                 <outlet property="findButton" destination="YC5-p3-WVk" id="jQy-Am-4E3"/>
                 <outlet property="makeVisibleButton" destination="Xm6-BG-CCo" id="uMC-lB-4Bs"/>
+                <outlet property="makeVisibleLabel" destination="6gz-kZ-xb0" id="VnX-KF-GJm"/>
                 <outlet property="view" destination="iN0-l3-epB" id="XPA-JR-AhP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+        <view contentMode="scaleToFill" interfaceStyle="dark" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YC5-p3-WVk" customClass="RoundButton" customModule="Stranger_Chat" customModuleProvider="target">
-                    <rect key="frame" x="100" y="433" width="214" height="40"/>
+                    <rect key="frame" x="64" y="334.66666666666669" width="247" height="40"/>
+                    <color key="backgroundColor" red="0.21444149970000001" green="0.68207577720000001" blue="0.33981938890000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="e2h-eP-nnN"/>
                     </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Find"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -33,16 +36,18 @@
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="home.findStrangerButton.title"/>
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xm6-BG-CCo" customClass="RoundButton" customModule="Stranger_Chat" customModuleProvider="target">
-                    <rect key="frame" x="100" y="537" width="214" height="40"/>
+                    <rect key="frame" x="64" y="545" width="247" height="40"/>
+                    <color key="backgroundColor" red="0.2148423844" green="0.68335087439999997" blue="0.34045465959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="qoz-yf-FeJ"/>
                     </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Make visible"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -52,23 +57,75 @@
                             <real key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="value" red="0.21324520890000001" green="0.6782707254" blue="0.33792366060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="home.makeVisibleButton.title"/>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="700" text="Descripiton asdfasljkdfkjl asdfl asdhf asdfas d" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQz-YI-BBO">
+                    <rect key="frame" x="36" y="224" width="303" height="52.666666666666686"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="home.chooseMode.text"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="findStranger description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9F-Ed-4ey">
+                    <rect key="frame" x="48" y="390.66666666666669" width="279" height="14.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="home.findStranger.description.text"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Adw-kR-8VO">
+                    <rect key="frame" x="173.66666666666666" y="463" width="27.666666666666657" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="home.or.text"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="makeVisible description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gz-kZ-xb0">
+                    <rect key="frame" x="48" y="601" width="279" height="14.333333333333371"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="home.makeVisible.description.text"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.086828161720000005" green="0.084998345289999999" blue="0.36241094559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Xm6-BG-CCo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="V4E-cj-22F"/>
+                <constraint firstItem="Adw-kR-8VO" firstAttribute="top" secondItem="p9F-Ed-4ey" secondAttribute="bottom" constant="58" id="3Ra-mB-xlb"/>
+                <constraint firstItem="6gz-kZ-xb0" firstAttribute="leading" secondItem="p9F-Ed-4ey" secondAttribute="leading" id="3Sv-79-I5d"/>
+                <constraint firstItem="fQz-YI-BBO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="top" constant="24" id="78e-Q3-zT0"/>
+                <constraint firstItem="fQz-YI-BBO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="AKk-ig-rIa"/>
+                <constraint firstItem="Xm6-BG-CCo" firstAttribute="top" secondItem="Adw-kR-8VO" secondAttribute="bottom" constant="58" id="F3V-0B-wC3"/>
+                <constraint firstItem="Xm6-BG-CCo" firstAttribute="trailing" secondItem="YC5-p3-WVk" secondAttribute="trailing" id="IfG-1P-Jfc"/>
+                <constraint firstItem="p9F-Ed-4ey" firstAttribute="top" secondItem="YC5-p3-WVk" secondAttribute="bottom" constant="16" id="K9f-Vu-eg2"/>
+                <constraint firstItem="6gz-kZ-xb0" firstAttribute="trailing" secondItem="p9F-Ed-4ey" secondAttribute="trailing" id="T6K-Jg-a6M"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="p9F-Ed-4ey" secondAttribute="trailing" constant="48" id="WXF-xv-bgI"/>
                 <constraint firstItem="Xm6-BG-CCo" firstAttribute="centerX" secondItem="YC5-p3-WVk" secondAttribute="centerX" id="XYa-SW-NGi"/>
                 <constraint firstItem="YC5-p3-WVk" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Xsd-lM-dlo"/>
-                <constraint firstItem="YC5-p3-WVk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="csp-sU-Kts"/>
-                <constraint firstItem="Xm6-BG-CCo" firstAttribute="top" secondItem="YC5-p3-WVk" secondAttribute="bottom" constant="64" id="dZj-ys-uWv"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Xm6-BG-CCo" secondAttribute="trailing" constant="100" id="j4H-u3-hD2"/>
-                <constraint firstItem="YC5-p3-WVk" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="rBr-z8-MEq"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YC5-p3-WVk" secondAttribute="trailing" constant="100" id="rf2-fX-KHe"/>
+                <constraint firstItem="Xm6-BG-CCo" firstAttribute="leading" secondItem="YC5-p3-WVk" secondAttribute="leading" id="a2I-xh-VhH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6gz-kZ-xb0" secondAttribute="bottom" constant="32" id="aui-0z-php"/>
+                <constraint firstItem="YC5-p3-WVk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="64" id="csp-sU-Kts"/>
+                <constraint firstItem="6gz-kZ-xb0" firstAttribute="top" secondItem="Xm6-BG-CCo" secondAttribute="bottom" constant="16" id="eEE-Fb-jv8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fQz-YI-BBO" secondAttribute="trailing" constant="36" id="fjn-Sr-LzW"/>
+                <constraint firstItem="Adw-kR-8VO" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="h3y-93-JvV"/>
+                <constraint firstItem="YC5-p3-WVk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fQz-YI-BBO" secondAttribute="bottom" constant="24" id="laN-MU-1fN"/>
+                <constraint firstItem="YC5-p3-WVk" firstAttribute="top" secondItem="fQz-YI-BBO" secondAttribute="bottom" priority="100" constant="58" id="qcH-JH-DCr"/>
+                <constraint firstItem="YC5-p3-WVk" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" priority="900" constant="-54" id="rBr-z8-MEq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YC5-p3-WVk" secondAttribute="trailing" constant="64" id="rf2-fX-KHe"/>
+                <constraint firstItem="p9F-Ed-4ey" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="48" id="s1x-mU-veO"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="139" y="153"/>
         </view>

@@ -41,4 +41,9 @@ final class AlertBuilder {
         return alertController
     }
 
+    func buildNoButtonsAlert(with title: String?, message: String?) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        return alertController
+    }
+
 }
