@@ -21,6 +21,7 @@ final class ScreenAssembly: Assembly {
         assembleStrangerBrowser(container)
         assembleChat(container)
         assemblePhoto(container)
+        assembleBrowsing(container)
     }
 
     private func assembleLanding(_ container: Container) {
@@ -143,6 +144,10 @@ final class ScreenAssembly: Assembly {
 
     private func assemblePhoto(_ container: Container) {
         container.autoregister(PhotoViewController.self, argument: UIImage.self, initializer: PhotoViewController.init(photo:))
+    }
+
+    private func assembleBrowsing(_ container: Container) {
+        container.autoregister(BrowsingViewController.self, initializer: BrowsingViewController.init)
     }
 
 }

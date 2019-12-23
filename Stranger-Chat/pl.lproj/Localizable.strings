@@ -57,3 +57,6 @@
 "strangerBrowser.invitationSent.body" = "Oczekiwanie na odpowiedź użytkownika ";
 "strangerBrowse.invitationDeclined.title" = "Odrzucono!";
 "strangerBrowse.invitationDeclined.body" = "Twoje zaproszenie zostało odrzucone.";
+"strangerBrowser.noUsers.text" = "Nie znaleziono użytkowników w pobliżu. Spróbuj gdzie indziej!";
+
+"browsing.description" = "Wyszukiwanie urządzeń w pobliżu...";

@@ -16,6 +16,11 @@
 		D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */; };
 		D3065CF123A2B4A400C04C1E /* ChatOnlineWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CF023A2B4A300C04C1E /* ChatOnlineWorker.swift */; };
 		D3065CF323A2CBB100C04C1E /* FirestoreUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CF223A2CBB100C04C1E /* FirestoreUsersRepository.swift */; };
+		D331D5B823B1522100D2808C /* BrowsingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D331D5B623B1522100D2808C /* BrowsingViewController.swift */; };
+		D331D5B923B1522100D2808C /* BrowsingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D331D5B723B1522100D2808C /* BrowsingViewController.xib */; };
+		D331D5BB23B1549700D2808C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D331D5BA23B1549700D2808C /* UIViewController+Extension.swift */; };
+		D331D5BE23B1629500D2808C /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D331D5BD23B1629500D2808C /* EmptyTableView.swift */; };
+		D331D5C023B162C700D2808C /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D331D5BF23B162C700D2808C /* EmptyTableView.xib */; };
 		D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3331DA92285D21100301CBA /* String+isValidName.swift */; };
 		D348D12A238716640012D43C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D129238716640012D43C /* Provider.swift */; };
 		D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12B2387168D0012D43C /* ScreenAssembly.swift */; };
@@ -149,6 +154,11 @@
 		D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellFactory.swift; sourceTree = "<group>"; };
 		D3065CF023A2B4A300C04C1E /* ChatOnlineWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOnlineWorker.swift; sourceTree = "<group>"; };
 		D3065CF223A2CBB100C04C1E /* FirestoreUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUsersRepository.swift; sourceTree = "<group>"; };
+		D331D5B623B1522100D2808C /* BrowsingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsingViewController.swift; sourceTree = "<group>"; };
+		D331D5B723B1522100D2808C /* BrowsingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowsingViewController.xib; sourceTree = "<group>"; };
+		D331D5BA23B1549700D2808C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		D331D5BD23B1629500D2808C /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
+		D331D5BF23B162C700D2808C /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
 		D3331DA92285D21100301CBA /* String+isValidName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidName.swift"; sourceTree = "<group>"; };
 		D348D129238716640012D43C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		D348D12B2387168D0012D43C /* ScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAssembly.swift; sourceTree = "<group>"; };
@@ -306,6 +316,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D331D5B523B1520100D2808C /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				D331D5B623B1522100D2808C /* BrowsingViewController.swift */,
+				D331D5B723B1522100D2808C /* BrowsingViewController.xib */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		D331D5BC23B1627A00D2808C /* EmptyTableView */ = {
+			isa = PBXGroup;
+			children = (
+				D331D5BD23B1629500D2808C /* EmptyTableView.swift */,
+				D331D5BF23B162C700D2808C /* EmptyTableView.xib */,
+			);
+			path = EmptyTableView;
+			sourceTree = "<group>";
+		};
 		D348D13123871C140012D43C /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +457,8 @@
 				D3632AE7238DA8D50072A762 /* StrangersBrowserWorker.swift */,
 				D3B5AC7A23B0FC52008EF38A /* StrangerCell.swift */,
 				D3B5AC7B23B0FC52008EF38A /* StrangerCell.xib */,
+				D331D5B523B1520100D2808C /* Loading */,
+				D331D5BC23B1627A00D2808C /* EmptyTableView */,
 			);
 			path = StrangersBrowser;
 			sourceTree = "<group>";
@@ -646,6 +676,7 @@
 				D3B5AC6323A99779008EF38A /* String+BoolValue.swift */,
 				D3B5AC7E23B1241D008EF38A /* UIView+Shadow.swift */,
 				D3B5AC8023B125C5008EF38A /* UIAlertController+Activity.swift */,
+				D331D5BA23B1549700D2808C /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -825,7 +856,9 @@
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
 				D3ECC5EA239D14BC00548E9B /* ChatViewController.xib in Resources */,
+				D331D5C023B162C700D2808C /* EmptyTableView.xib in Resources */,
 				D3B5AC8623B13C31008EF38A /* PhotoViewController.xib in Resources */,
+				D331D5B923B1522100D2808C /* BrowsingViewController.xib in Resources */,
 				D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */,
 				D3ECC5EC239D16B800548E9B /* ChatInputField.xib in Resources */,
 				D3CAAB9121A2083B00B9149C /* Assets.xcassets in Resources */,
@@ -1033,6 +1066,7 @@
 				D3669FC1239EB64A00C171DC /* UITableViewCell+Extension.swift in Sources */,
 				D3B5AC6E23B0D509008EF38A /* GradientView.swift in Sources */,
 				D3ECC5EE239D21BC00548E9B /* ChatInputField.swift in Sources */,
+				D331D5B823B1522100D2808C /* BrowsingViewController.swift in Sources */,
 				D3B5AC8523B13C30008EF38A /* PhotoViewController.swift in Sources */,
 				D3632AB3238C4B540072A762 /* LoginRouter.swift in Sources */,
 				D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */,
@@ -1049,6 +1083,7 @@
 				D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */,
 				D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */,
 				D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */,
+				D331D5BB23B1549700D2808C /* UIViewController+Extension.swift in Sources */,
 				D3669FC8239ECB8F00C171DC /* ChatSecretMessages.swift in Sources */,
 				D3632ACD238C5FFB0072A762 /* RegisterInteractor.swift in Sources */,
 				D3632AA7238C3EEF0072A762 /* LocalUserRepository.swift in Sources */,
@@ -1079,6 +1114,7 @@
 				D3065CEC23A215C500C04C1E /* ForeignImageCell.swift in Sources */,
 				D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */,
 				D3B5AC7223B0DEDE008EF38A /* MainNavigationController.swift in Sources */,
+				D331D5BE23B1629500D2808C /* EmptyTableView.swift in Sources */,
 				D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */,
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
 				D3632AEC238DA8D60072A762 /* StrangersBrowserWorker.swift in Sources */,

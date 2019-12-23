@@ -69,12 +69,11 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
             print(error.localizedDescription)
             return nil
         }
-        self.peerConnection.sendResource(at: photoURL, withName: "\(messageId).jpg", toPeer: peer) { error in
+        let progress = self.peerConnection.sendResource(at: photoURL, withName: "\(messageId).jpg", toPeer: peer) { error in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
-        print(photoURL.path)
         return photoURL.path
     }
 

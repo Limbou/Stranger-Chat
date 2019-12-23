@@ -23,6 +23,7 @@ final class StrangersBrowserViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
 
+    private let noUsersView = EmptyTableView(frame: .zero)
     private let interactor: StrangersBrowserInteractor
     private let bag = DisposeBag()
     private var foundUsers: [DisplayableFoundUser] = []
@@ -41,6 +42,15 @@ final class StrangersBrowserViewController: UIViewController {
         super.viewDidLoad()
         setupBindings()
         setupTableView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let browsing = Provider.get.instanceOf(BrowsingViewController.self)
+        add(child: browsing)
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+            browsing.hide()
+        }
     }
 
     private func setupBindings() {
@@ -94,6 +104,7 @@ extension StrangersBrowserViewController: StrangersBrowserDisplayable {
     func display(users: [DisplayableFoundUser]) {
         foundUsers = users
         tableView.reloadData()
+        tableView.backgroundView = foundUsers.isEmpty ? noUsersView : nil
     }
 
     func presentInvitationSentAlert(user: String) {

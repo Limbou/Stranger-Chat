@@ -57,3 +57,7 @@
 "strangerBrowser.invitationSent.body" = "Waiting for response from ";
 "strangerBrowse.invitationDeclined.title" = "Declined!";
 "strangerBrowse.invitationDeclined.body" = "Your invitation has been declined.";
+"strangerBrowser.noUsers.text" = "No users found nearby. Try somewhere else!";
+
+
+"browsing.description" = "Browsing for users in range...";
