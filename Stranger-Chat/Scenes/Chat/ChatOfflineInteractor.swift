@@ -27,6 +27,7 @@ final class ChatOfflineInteractor: ChatInteractor {
     private let worker: ChatOfflineWorker
     private let bag = DisposeBag()
     private var conversation = LocalConversation()
+    private var imageSendSubscription: Disposable?
 
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
@@ -37,6 +38,10 @@ final class ChatOfflineInteractor: ChatInteractor {
         self.presenter = presenter
         self.router = router
         self.worker = worker
+    }
+
+    deinit {
+        imageSendSubscription?.dispose()
     }
 
     func setup() {
@@ -96,13 +101,30 @@ final class ChatOfflineInteractor: ChatInteractor {
 
     private func handleImagePick(image: UIImage) {
         let chatMessage = ChatMessage(image: image, isAuthor: true)
-        let imagePath = worker.send(image: image, messageId: chatMessage.messageId)
+        guard let imagePath = worker.getImagePath(messageId: chatMessage.messageId) else {
+            print("Could not get image path")
+            return
+        }
+        chatMessage.imagePath = imagePath
+        presenter.presentSendingImageAlert()
+        imageSendSubscription?.dispose()
+        imageSendSubscription = worker.send(image: image, messageId: chatMessage.messageId).subscribe(onNext: { fractionComplete in
+            self.handleFractionCompleteChange(value: fractionComplete, chatMessage: chatMessage)
+        }, onError: { _ in
+            self.presenter.hideSendingImageAlert()
+        })
+    }
+
+    private func handleFractionCompleteChange(value: Double?, chatMessage: ChatMessage) {
+        guard let fraction = value, fraction >= 1 else {
+            return
+        }
         conversation.messages.append(chatMessage)
         DispatchQueue.main.async {
             self.presenter.display(messages: self.conversation.messages)
+            self.worker.save(conversation: self.conversation)
+            self.presenter.hideSendingImageAlert()
         }
-        chatMessage.imagePath = imagePath
-        worker.save(conversation: conversation)
     }
 
     private func handleDismissPress() {
@@ -119,11 +141,11 @@ final class ChatOfflineInteractor: ChatInteractor {
         }
         conversation.messages.append(message)
         presenter.display(messages: conversation.messages)
-        print(message.imagePath)
         worker.save(conversation: conversation)
     }
 
     private func handleDisconnect() {
+        presenter.presentConnectionLostAlert()
         endChat()
     }
 

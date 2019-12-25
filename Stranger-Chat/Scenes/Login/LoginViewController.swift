@@ -36,6 +36,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         title = Constants.title.localized()
         setupBindings()
+        setupDelegates()
     }
 
     private func setupBindings() {
@@ -44,6 +45,20 @@ final class LoginViewController: UIViewController {
             .map({ LoginData(email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") })
             .bind(to: interactor.loginObserver)
             .disposed(by: bag)
+    }
+
+    private func setupDelegates() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+
+}
+
+extension LoginViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
 }

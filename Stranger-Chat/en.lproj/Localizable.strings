@@ -61,3 +61,8 @@
 
 
 "browsing.description" = "Browsing for users in range...";
+
+"chat.connectionLost.title" = "Connection lost!";
+"chat.connectionLost.body" = "Your connection with the other user has been lost.";
+"chat.sendingImage.title" = "Sending";
+"chat.sendingImage.body" = "Your photo is being sent...";

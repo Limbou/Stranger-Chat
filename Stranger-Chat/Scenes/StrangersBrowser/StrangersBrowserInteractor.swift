@@ -19,7 +19,6 @@ protocol StrangersBrowserInteractor: AnyObject {
     var selectCell: PublishSubject<Int> { get }
 }
 
-
 final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
 
     private let presenter: StrangersBrowserPresenter
@@ -36,6 +35,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
 
     private var invitationSubscription: Disposable?
     private var browsingSubscription: Disposable?
+    private var disconnectTimer: Timer?
 
     init(presenter: StrangersBrowserPresenter, router: StrangersBrowserRouter, worker: StrangersBrowserWorker) {
         self.presenter = presenter
@@ -92,7 +92,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
             }
         })
         presenter.presentInvitationSentAlert(user: user.peer.displayName)
-        Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in self.handleTimeoutReached() }
+        disconnectTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in self.handleTimeoutReached() }
     }
 
     private func prepareInvitationContext(for info: [String: String]?) -> Data? {
@@ -124,9 +124,9 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
         case .connecting:
             break
         case .connected:
-            stopBrowsing()
             chatStarted = true
             presenter.hideInvitationSentAlert()
+            disconnectTimer?.invalidate()
             router.goToChat(online: shouldGoOnline)
         case .disconnected:
             print("Disconnected!")

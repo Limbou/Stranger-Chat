@@ -60,3 +60,8 @@
 "strangerBrowser.noUsers.text" = "Nie znaleziono użytkowników w pobliżu. Spróbuj gdzie indziej!";
 
 "browsing.description" = "Wyszukiwanie urządzeń w pobliżu...";
+
+"chat.connectionLost.title" = "Połączenie przerwane!";
+"chat.connectionLost.body" = "Twoje połączenie z drugim użytkownikiem zostało przerwane.";
+"chat.sendingImage.title" = "Wysyłanie";
+"chat.sendingImage.body" = "Trwa przesyłanie zdjęcia...";

@@ -17,7 +17,8 @@ protocol ChatOfflineWorker: AnyObject {
     var disconnected: PublishSubject<Void> { get }
     func getOtherUserName() -> String
     func send(message: String)
-    func send(image: UIImage, messageId: String) -> String?
+    func getImagePath(messageId: String) -> String?
+    func send(image: UIImage, messageId: String) -> Observable<Double?>
     func save(conversation: LocalConversation)
     func disconnectFromSession()
 }
@@ -55,26 +56,37 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
         peerConnection.send(data: messageData)
     }
 
-    func send(image: UIImage, messageId: String) -> String? {
+    func getImagePath(messageId: String) -> String? {
+        guard let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return nil
+        }
+        let imagePath = path.appendingPathComponent("\(messageId).jpg")
+        return imagePath.path
+    }
+
+    func send(image: UIImage, messageId: String) -> Observable<Double?> {
         guard let imageData = image.jpegData(compressionQuality: 1),
             let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first,
             let peer = peerConnection.mcSession.connectedPeers.first else {
                 print("Error sending image")
-                return nil
+                return Observable.empty()
         }
         let photoURL = path.appendingPathComponent("\(messageId).jpg")
         do {
             try imageData.write(to: photoURL)
         } catch {
             print(error.localizedDescription)
-            return nil
+            return Observable.error(error)
         }
         let progress = self.peerConnection.sendResource(at: photoURL, withName: "\(messageId).jpg", toPeer: peer) { error in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
-        return photoURL.path
+        if let progress = progress {
+           return progress.rx.observe(Double.self, "fractionCompleted")
+        }
+        return Observable.empty()
     }
 
     func save(conversation: LocalConversation) {

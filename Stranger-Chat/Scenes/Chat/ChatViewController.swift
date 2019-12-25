@@ -13,7 +13,10 @@ import RxSwift
 import RxCocoa
 
 private enum Constants {
-
+    static let connectionLostTitle = "chat.connectionLost.title"
+    static let connectionLostBody = "chat.connectionLost.body"
+    static let sendingImageTitle = "chat.sendingImage.title"
+    static let sendingImageBody = "chat.sendingImage.body"
 }
 
 final class ChatViewController: UIViewController, UINavigationControllerDelegate {
@@ -23,6 +26,7 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     private let bag = DisposeBag()
     private var messages = [ChatMessage]()
     private let imagePicker = UIImagePickerController()
+    private var sendingImageAlert: UIAlertController?
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var inputField: ChatInputField!
@@ -163,6 +167,26 @@ extension ChatViewController: ChatDisplayable {
 
     func setup(title: String) {
         self.title = title
+    }
+
+    func presentConnectionLostAlert() {
+        let alert = AlertBuilder.shared.buildOkAlert(with: Constants.connectionLostTitle.localized(),
+                                                     message: Constants.connectionLostBody.localized()) { _ in }
+        navigationController?.presentingViewController?.present(alert, animated: true, completion: nil)
+    }
+
+    func presentSendingImageAlert() {
+        sendingImageAlert = AlertBuilder.shared.buildNoButtonsAlert(with: Constants.sendingImageTitle.localized(),
+                                                     message: Constants.sendingImageBody.localized())
+        guard let alert = sendingImageAlert else {
+            return
+        }
+        alert.addActivityIndicator()
+        present(alert, animated: true, completion: nil)
+    }
+
+    func hideSendingImageAlert() {
+        sendingImageAlert?.dismiss(animated: true, completion: nil)
     }
 
 }
