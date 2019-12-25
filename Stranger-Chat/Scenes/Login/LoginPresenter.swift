@@ -15,7 +15,7 @@ private enum Constants {
     static let connectionErrorMessage = "connection.error.message"
 }
 
-protocol LoginDisplayable: AnyObject {
+protocol LoginDisplayable: Displayable {
     func showError(title: String, message: String)
 }
 
@@ -23,6 +23,8 @@ protocol LoginPresenter: AnyObject {
     var viewController: LoginDisplayable? { get set }
     func showWrongCredentialsError()
     func showConnectionError()
+    func presentLoading()
+    func hideLoading()
 }
 
 final class LoginPresenterImpl: LoginPresenter {
@@ -37,6 +39,14 @@ final class LoginPresenterImpl: LoginPresenter {
     func showConnectionError() {
         viewController?.showError(title: Constants.connectionErrorTitle.localized(),
                                   message: Constants.connectionErrorMessage.localized())
+    }
+
+    func presentLoading() {
+        viewController?.presentLoading()
+    }
+
+    func hideLoading() {
+        viewController?.hideLoading()
     }
 
 }

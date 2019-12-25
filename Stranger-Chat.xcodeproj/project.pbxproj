@@ -16,11 +16,18 @@
 		D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */; };
 		D3065CF123A2B4A400C04C1E /* ChatOnlineWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CF023A2B4A300C04C1E /* ChatOnlineWorker.swift */; };
 		D3065CF323A2CBB100C04C1E /* FirestoreUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3065CF223A2CBB100C04C1E /* FirestoreUsersRepository.swift */; };
+		D31510A623B41B0E000EF978 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31510A423B41B0E000EF978 /* LoadingViewController.swift */; };
+		D31510A723B41B0E000EF978 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31510A523B41B0E000EF978 /* LoadingViewController.xib */; };
+		D31510A923B41C54000EF978 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31510A823B41C53000EF978 /* RegisterViewController.swift */; };
+		D31510AB23B41DC4000EF978 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31510AA23B41DC4000EF978 /* Presenter.swift */; };
+		D31510AF23B42776000EF978 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31510AE23B42776000EF978 /* Displayable.swift */; };
+		D31510B123B42ADB000EF978 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = D31510B023B42ADB000EF978 /* loading.json */; };
 		D331D5B823B1522100D2808C /* BrowsingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D331D5B623B1522100D2808C /* BrowsingViewController.swift */; };
 		D331D5B923B1522100D2808C /* BrowsingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D331D5B723B1522100D2808C /* BrowsingViewController.xib */; };
 		D331D5BB23B1549700D2808C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D331D5BA23B1549700D2808C /* UIViewController+Extension.swift */; };
 		D331D5BE23B1629500D2808C /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D331D5BD23B1629500D2808C /* EmptyTableView.swift */; };
 		D331D5C023B162C700D2808C /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D331D5BF23B162C700D2808C /* EmptyTableView.xib */; };
+		D331D5C623B4010300D2808C /* antenna.json in Resources */ = {isa = PBXBuildFile; fileRef = D331D5C523B4010300D2808C /* antenna.json */; };
 		D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3331DA92285D21100301CBA /* String+isValidName.swift */; };
 		D348D12A238716640012D43C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D129238716640012D43C /* Provider.swift */; };
 		D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12B2387168D0012D43C /* ScreenAssembly.swift */; };
@@ -43,7 +50,6 @@
 		D3632AC9238C5FFB0072A762 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC4238C5FFB0072A762 /* RegisterPresenter.swift */; };
 		D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC5238C5FFB0072A762 /* RegisterWorker.swift */; };
 		D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC6238C5FFB0072A762 /* RegisterRouter.swift */; };
-		D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */; };
 		D3632ACD238C5FFB0072A762 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */; };
 		D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3632ACE238C60130072A762 /* RegisterViewController.xib */; };
 		D3632AD1238C61D40072A762 /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3632AD0238C61D40072A762 /* RegisterData.swift */; };
@@ -103,6 +109,7 @@
 		D3CAABD921A355D900B9149C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABD821A355D900B9149C /* LandingViewController.swift */; };
 		D3CAABDD21A3560100B9149C /* LandingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CAABDC21A3560100B9149C /* LandingRouter.swift */; };
 		D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3CAABFF21A5DE0F00B9149C /* Localizable.strings */; };
+		D3CEBA3023B41267008CC3FA /* home.json in Resources */ = {isa = PBXBuildFile; fileRef = D3CEBA2F23B41267008CC3FA /* home.json */; };
 		D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E6D55B2216CA7100AF73D7 /* OfflineModeLoginViewController.swift */; };
 		D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55C2216CA7100AF73D7 /* OfflineModeLoginViewController.xib */; };
 		D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */; };
@@ -154,11 +161,18 @@
 		D3065CEE23A216FE00C04C1E /* ChatCellFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCellFactory.swift; sourceTree = "<group>"; };
 		D3065CF023A2B4A300C04C1E /* ChatOnlineWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOnlineWorker.swift; sourceTree = "<group>"; };
 		D3065CF223A2CBB100C04C1E /* FirestoreUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreUsersRepository.swift; sourceTree = "<group>"; };
+		D31510A423B41B0E000EF978 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		D31510A523B41B0E000EF978 /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		D31510A823B41C53000EF978 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D31510AA23B41DC4000EF978 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		D31510AE23B42776000EF978 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
+		D31510B023B42ADB000EF978 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		D331D5B623B1522100D2808C /* BrowsingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsingViewController.swift; sourceTree = "<group>"; };
 		D331D5B723B1522100D2808C /* BrowsingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrowsingViewController.xib; sourceTree = "<group>"; };
 		D331D5BA23B1549700D2808C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		D331D5BD23B1629500D2808C /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		D331D5BF23B162C700D2808C /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
+		D331D5C523B4010300D2808C /* antenna.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = antenna.json; sourceTree = "<group>"; };
 		D3331DA92285D21100301CBA /* String+isValidName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidName.swift"; sourceTree = "<group>"; };
 		D348D129238716640012D43C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		D348D12B2387168D0012D43C /* ScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAssembly.swift; sourceTree = "<group>"; };
@@ -182,7 +196,6 @@
 		D3632AC4238C5FFB0072A762 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		D3632AC5238C5FFB0072A762 /* RegisterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWorker.swift; sourceTree = "<group>"; };
 		D3632AC6238C5FFB0072A762 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
-		D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		D3632ACE238C60130072A762 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		D3632AD0238C61D40072A762 /* RegisterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
@@ -244,6 +257,7 @@
 		D3CAABD821A355D900B9149C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		D3CAABDC21A3560100B9149C /* LandingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingRouter.swift; sourceTree = "<group>"; };
 		D3CAABFE21A5DE0F00B9149C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D3CEBA2F23B41267008CC3FA /* home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home.json; sourceTree = "<group>"; };
 		D3E6D55B2216CA7100AF73D7 /* OfflineModeLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineModeLoginViewController.swift; sourceTree = "<group>"; };
 		D3E6D55C2216CA7100AF73D7 /* OfflineModeLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfflineModeLoginViewController.xib; sourceTree = "<group>"; };
 		D3E6D55F2216CA9300AF73D7 /* LandingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LandingViewController.xib; sourceTree = "<group>"; };
@@ -314,6 +328,15 @@
 				D203B9E38F1C8559F1E0D069 /* Pods-Stranger-ChatTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		D31510A323B41AFC000EF978 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				D31510A423B41B0E000EF978 /* LoadingViewController.swift */,
+				D31510A523B41B0E000EF978 /* LoadingViewController.xib */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		D331D5B523B1520100D2808C /* Loading */ = {
@@ -413,7 +436,7 @@
 		D3632AA9238C4B0D0072A762 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				D3632AC7238C5FFB0072A762 /* RegisterViewController.swift */,
+				D31510A823B41C53000EF978 /* RegisterViewController.swift */,
 				D3632ACE238C60130072A762 /* RegisterViewController.xib */,
 				D3632AC8238C5FFB0072A762 /* RegisterInteractor.swift */,
 				D3632AC4238C5FFB0072A762 /* RegisterPresenter.swift */,
@@ -561,6 +584,9 @@
 		D3CAAB8821A2083700B9149C /* Stranger-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				D331D5C523B4010300D2808C /* antenna.json */,
+				D3CEBA2F23B41267008CC3FA /* home.json */,
+				D31510B023B42ADB000EF978 /* loading.json */,
 				D39529C1238715E10039F671 /* Injection */,
 				D348D13123871C140012D43C /* Services */,
 				D348D13823872EEE0012D43C /* RealmModels */,
@@ -593,6 +619,7 @@
 		D3CAABD321A34C2D00B9149C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D31510A323B41AFC000EF978 /* Loading */,
 				D3CAABD521A34C6500B9149C /* Landing */,
 				D3632AA8238C4B080072A762 /* Login */,
 				D3632AA9238C4B0D0072A762 /* Register */,
@@ -609,6 +636,8 @@
 			isa = PBXGroup;
 			children = (
 				D3CAABD621A34C8900B9149C /* Router.swift */,
+				D31510AA23B41DC4000EF978 /* Presenter.swift */,
+				D31510AE23B42776000EF978 /* Displayable.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -847,16 +876,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D331D5C623B4010300D2808C /* antenna.json in Resources */,
 				D3065CE923A215B600C04C1E /* MyImageCell.xib in Resources */,
+				D31510B123B42ADB000EF978 /* loading.json in Resources */,
 				D3E6D5602216CA9300AF73D7 /* LandingViewController.xib in Resources */,
 				D3065CED23A215C500C04C1E /* ForeignImageCell.xib in Resources */,
 				D3CAAB9421A2083B00B9149C /* LaunchScreen.storyboard in Resources */,
 				D3669FBB239EB4DE00C171DC /* MyMessageCell.xib in Resources */,
+				D3CEBA3023B41267008CC3FA /* home.json in Resources */,
 				D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */,
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
 				D3ECC5EA239D14BC00548E9B /* ChatViewController.xib in Resources */,
 				D331D5C023B162C700D2808C /* EmptyTableView.xib in Resources */,
+				D31510A723B41B0E000EF978 /* LoadingViewController.xib in Resources */,
 				D3B5AC8623B13C31008EF38A /* PhotoViewController.xib in Resources */,
 				D331D5B923B1522100D2808C /* BrowsingViewController.xib in Resources */,
 				D3632AAD238C4B340072A762 /* LoginViewController.xib in Resources */,
@@ -916,6 +949,7 @@
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -942,6 +976,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1050,6 +1085,7 @@
 				D3B5AC4B23A7CA77008EF38A /* ChatOnlineInteractor.swift in Sources */,
 				D3ECC597239A8FDC00548E9B /* Collection+SafeIndex.swift in Sources */,
 				D3632ACA238C5FFB0072A762 /* RegisterWorker.swift in Sources */,
+				D31510A623B41B0E000EF978 /* LoadingViewController.swift in Sources */,
 				D3632AF4238DB8680072A762 /* CurrentUserRepository.swift in Sources */,
 				D3ECC5E4239D14A500548E9B /* ChatPresenter.swift in Sources */,
 				D3B5AC6A23AA6DAE008EF38A /* ChatMessageModel.swift in Sources */,
@@ -1080,7 +1116,6 @@
 				D3ECC599239B0B7900548E9B /* Optional+NilOrEmpty.swift in Sources */,
 				D3632ADC238D9CD50072A762 /* HomeRouter.swift in Sources */,
 				D3065CF323A2CBB100C04C1E /* FirestoreUsersRepository.swift in Sources */,
-				D3632ACC238C5FFB0072A762 /* RegisterViewController.swift in Sources */,
 				D3632ACB238C5FFB0072A762 /* RegisterRouter.swift in Sources */,
 				D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */,
 				D331D5BB23B1549700D2808C /* UIViewController+Extension.swift in Sources */,
@@ -1102,10 +1137,13 @@
 				D3632AB1238C4B4D0072A762 /* LoginPresenter.swift in Sources */,
 				D348D134238721AF0012D43C /* FirebaseUsersRepository.swift in Sources */,
 				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
+				D31510A923B41C54000EF978 /* RegisterViewController.swift in Sources */,
 				D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */,
 				D3B5AC4723A3BD8E008EF38A /* Conversation.swift in Sources */,
+				D31510AF23B42776000EF978 /* Displayable.swift in Sources */,
 				D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */,
 				D3632ADB238D9CD50072A762 /* HomeWorker.swift in Sources */,
+				D31510AB23B41DC4000EF978 /* Presenter.swift in Sources */,
 				D3E6D55D2216CA7100AF73D7 /* OfflineModeLoginViewController.swift in Sources */,
 				D3B5AC6423A99779008EF38A /* String+BoolValue.swift in Sources */,
 				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,

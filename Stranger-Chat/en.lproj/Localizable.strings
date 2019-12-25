@@ -10,6 +10,9 @@
 "alert.button.no" = "No";
 "alert.button.yes" = "Yes";
 
+"loading.text" = "Please wait...";
+
+"landing.signin.text" = "In order to start using the application, sign in first:";
 "landing.title" = "Welcome!";
 "landing.loginButton.title" = "Login";
 "landing.registerButton.title" = "Register";
@@ -24,13 +27,13 @@
 
 "register.title" = "Register";
 "register.email.title" = "Email";
+"register.nickname.title" = "Nickname";
 "register.password.title" = "Password";
 "register.button.title" = "Register";
 "register.error.title" = "Error";
 
 "offlineModeLogin.title" = "Login";
-"offlineModeLogin.name.title" = "Choose your nickname";
-"offlineModeLogin.name.placeholder" = "nickname";
+"offlineModeLogin.name.title" = "Nickname";
 "offlineModeLogin.button.title" = "Login";
 "offlineModeLogin.alert.title" = "Nickname too short!";
 "offlineModeLogin.alert.message" = "Nickname should be at least 3 characters long.";

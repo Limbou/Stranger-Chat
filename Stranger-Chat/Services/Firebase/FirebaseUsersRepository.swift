@@ -18,11 +18,6 @@ protocol FirebaseUsersRepository: AnyObject {
 final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
 
     func currentUser() -> User? {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-
-        }
         return Auth.auth().currentUser
     }
 

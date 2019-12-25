@@ -44,6 +44,10 @@ final class HomeViewController: UIViewController {
     }
 
     private func setupBindings() {
+        rx.methodInvoked(#selector(viewWillDisappear(_:)))
+        .bind(to: interactor.onWillDisappear)
+        .disposed(by: bag)
+
         findButton.rx.tap
         .throttle(.seconds(1), scheduler: MainScheduler.instance)
         .bind(to: interactor.findPressed)

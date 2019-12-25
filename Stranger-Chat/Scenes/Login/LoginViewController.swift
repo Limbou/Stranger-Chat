@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 private enum Constants {
     static let title = "login.title"

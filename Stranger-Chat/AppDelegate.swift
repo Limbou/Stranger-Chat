@@ -28,12 +28,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func configureRootViewController() {
         var controller: UIViewController
-        if currentUserRepository.currentUser() != nil {
-            controller = Provider.get.instanceOf(MainTabBarController.self)
-        } else {
-            let viewController = Provider.get.instanceOf(LandingViewController.self)
-            controller = UINavigationController(rootViewController: viewController)
-        }
+        let viewController = Provider.get.instanceOf(LandingViewController.self)
+        controller = MainNavigationController(rootViewController: viewController)
+//        if currentUserRepository.currentUser() != nil {
+//            controller = Provider.get.instanceOf(MainTabBarController.self)
+//        } else {
+//
+//        }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = controller
         window?.makeKeyAndVisible()

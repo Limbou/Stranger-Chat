@@ -28,7 +28,6 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     private var discoveredUsers: [DiscoverableUser] = []
     private var shouldGoOnline = false
     private var chatStarted = false
-    private var gotDisconnected = false
     let onWillAppear = PublishSubject<[Any]>()
     let onWillDisappear = PublishSubject<[Any]>()
     let selectCell = PublishSubject<Int>()
@@ -51,8 +50,6 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
 
     private func setupBindings() {
         onWillAppear.subscribe(onNext: { _ in
-            self.chatStarted = false
-            self.gotDisconnected = false
             self.startBrowsing()
         }).disposed(by: bag)
 
@@ -84,6 +81,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
             print("No user at given index")
             return
         }
+        chatStarted = false
         let context = prepareInvitationContext(for: user.discoveryInfo)
         invitationSubscription?.dispose()
         invitationSubscription = worker.sendInvitationTo(user: user, context: context).subscribe(onNext: { state in
@@ -114,9 +112,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     }
 
     private func handleTimeoutReached() {
-        if !gotDisconnected {
-            presenter.presentInvitationDeclinedAlert()
-        }
+        presenter.presentInvitationDeclinedAlert()
     }
 
     private func handleConnectionStateChange(state: ConnectionState) {
@@ -130,7 +126,6 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
             router.goToChat(online: shouldGoOnline)
         case .disconnected:
             print("Disconnected!")
-            gotDisconnected = true
             if !chatStarted {
                 presenter.presentInvitationDeclinedAlert()
             }

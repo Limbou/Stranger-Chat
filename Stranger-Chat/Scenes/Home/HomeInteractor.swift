@@ -13,6 +13,7 @@ import RxSwift
 import RxSwiftExt
 
 protocol HomeInteractor: AnyObject {
+    var onWillDisappear: PublishSubject<[Any]> { get }
     var findPressed: PublishSubject<Void> { get }
     var makeVisiblePressed: PublishSubject<Void> { get }
     var invitationAccepted: PublishSubject<Bool> { get }
@@ -24,6 +25,7 @@ final class HomeInteractorImpl: HomeInteractor {
     private let router: HomeRouter
     private let worker: HomeWorker
     private let bag = DisposeBag()
+    let onWillDisappear = PublishSubject<[Any]>()
     let findPressed = PublishSubject<Void>()
     let makeVisiblePressed = PublishSubject<Void>()
     let invitationAccepted = PublishSubject<Bool>()
@@ -50,6 +52,10 @@ final class HomeInteractorImpl: HomeInteractor {
     }
 
     private func setupBindings() {
+        onWillDisappear.subscribe(onNext: { _ in
+            self.shouldAdvertise = false
+        }).disposed(by: bag)
+
         findPressed.subscribe(onNext: { _ in
             self.router.goToStrangersBrowser()
         }).disposed(by: bag)

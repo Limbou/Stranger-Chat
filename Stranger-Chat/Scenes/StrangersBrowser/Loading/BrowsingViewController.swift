@@ -7,16 +7,11 @@
 //
 
 import UIKit
-
-private enum Constants {
-    static let numberOfPulses = 3
-}
+import Lottie
 
 final class BrowsingViewController: UIViewController {
 
-    @IBOutlet var imageView: UIImageView!
-    private var pulsesCount = 0
-    private var timer: Timer?
+    @IBOutlet var animationView: AnimationView!
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -28,9 +23,11 @@ final class BrowsingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.layer.masksToBounds = false
-        imageView.clipsToBounds = false
-        startPulsing()
+        let animation = Animation.named("antenna")
+        animationView.animation = animation
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 1.5
+        animationView.play()
     }
 
     func hide() {
@@ -39,55 +36,6 @@ final class BrowsingViewController: UIViewController {
         }) { _ in
             self.remove()
         }
-    }
-
-    private func startPulsing() {
-        createPulse()
-        pulsesCount += 1
-        timer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
-            guard self.pulsesCount < Constants.numberOfPulses else {
-                self.timer?.invalidate()
-                return
-            }
-            self.createPulse()
-            self.pulsesCount += 1
-        }
-    }
-
-    private func createPulse() {
-        let circularPath = UIBezierPath(arcCenter: .zero,
-                                        radius: UIScreen.main.bounds.size.width / 2,
-                                        startAngle: 0,
-                                        endAngle: 2 * .pi,
-                                        clockwise: true)
-        let pulseLayer = CAShapeLayer()
-        pulseLayer.path = circularPath.cgPath
-        pulseLayer.lineWidth = 6.0
-        pulseLayer.fillColor = UIColor.clear.cgColor
-        pulseLayer.strokeColor = Color.skyGreen.cgColor
-        pulseLayer.lineCap = .round
-        let position = imageView.frame.size.width / 2
-        pulseLayer.position = CGPoint(x: position, y: position)
-        imageView.layer.addSublayer(pulseLayer)
-        animate(pulse: pulseLayer)
-    }
-
-    private func animate(pulse: CAShapeLayer) {
-        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scaleAnimation.duration = 2
-        scaleAnimation.fromValue = 0
-        scaleAnimation.toValue = 0.9
-        scaleAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        scaleAnimation.repeatCount = .greatestFiniteMagnitude
-        pulse.add(scaleAnimation, forKey: "scale")
-
-        let opacityAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
-        opacityAnimation.duration = 2
-        opacityAnimation.fromValue = 0.9
-        opacityAnimation.toValue = 0
-        opacityAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-        opacityAnimation.repeatCount = .greatestFiniteMagnitude
-        pulse.add(opacityAnimation, forKey: "opacity")
     }
 
 }

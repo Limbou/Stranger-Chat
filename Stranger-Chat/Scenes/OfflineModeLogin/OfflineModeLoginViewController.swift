@@ -36,6 +36,7 @@ final class OfflineModeLoginViewController: UIViewController {
         super.viewDidLoad()
         title = Constants.title.localized()
         setupBindings()
+        nameField.delegate = self
     }
 
     private func setupBindings() {
@@ -44,6 +45,15 @@ final class OfflineModeLoginViewController: UIViewController {
             .withLatestFrom(nameField.rx.text)
             .bind(to: interactor.offlineModeLoginObserver)
             .disposed(by: bag)
+    }
+
+}
+
+extension OfflineModeLoginViewController: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
 }

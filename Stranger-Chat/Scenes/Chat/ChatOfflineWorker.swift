@@ -94,7 +94,7 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
     }
 
     func disconnectFromSession() {
-        peerConnection.reset()
+        peerConnection.disconnect()
     }
 
     private func tryToGetImageFrom(url: URL) {
@@ -145,9 +145,8 @@ extension ChatOfflineWorkerImpl: PeerSessionDelegate {
     }
 
     func peerDisconnected(peerID: MCPeerID) {
-        DispatchQueue.main.async {
-            self.disconnected.onNext(())
-        }
+        print("Disconnected: \(peerID.displayName)")
+        self.disconnected.onNext(())
     }
 
     func peerConnectionError(_ error: Error) {

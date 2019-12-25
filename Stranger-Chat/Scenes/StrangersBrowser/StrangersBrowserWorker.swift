@@ -19,6 +19,7 @@ enum ConnectionState {
 }
 
 protocol StrangersBrowserWorker: AnyObject {
+    func resetConnection()
     func startBrowsing() -> Observable<[DiscoverableUser]>
     func stopBrowsing()
     func sendInvitationTo(user: DiscoverableUser, context: Data?) -> Observable<ConnectionState>
@@ -37,6 +38,10 @@ final class StrangersBrowserWorkerImpl: StrangersBrowserWorker {
         self.currentUserRepository = currentUserRepository
         self.session = session
         setupDisplayName()
+    }
+
+    func resetConnection() {
+        session.reset()
     }
 
     func startBrowsing() -> Observable<[DiscoverableUser]> {

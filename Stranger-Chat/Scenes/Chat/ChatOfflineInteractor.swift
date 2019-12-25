@@ -28,6 +28,7 @@ final class ChatOfflineInteractor: ChatInteractor {
     private let bag = DisposeBag()
     private var conversation = LocalConversation()
     private var imageSendSubscription: Disposable?
+    private var connectionClosed = false
 
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
@@ -136,7 +137,7 @@ final class ChatOfflineInteractor: ChatInteractor {
 
     private func handleReceived(message: ChatMessage) {
         if message.content == ChatSecretMessages.endChat.rawValue {
-            endChat()
+            handleDisconnect()
             return
         }
         conversation.messages.append(message)
@@ -145,8 +146,12 @@ final class ChatOfflineInteractor: ChatInteractor {
     }
 
     private func handleDisconnect() {
+        guard !connectionClosed else {
+            return
+        }
         presenter.presentConnectionLostAlert()
         endChat()
+        connectionClosed = true
     }
 
     private func endChat() {

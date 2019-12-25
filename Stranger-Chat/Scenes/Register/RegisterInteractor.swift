@@ -40,11 +40,14 @@ final class RegisterInteractorImpl: RegisterInteractor {
     }
 
     private func register(with data: RegisterData) {
+        presenter.presentLoading()
         worker.register(with: data).subscribe(onNext: { success in
+            self.presenter.hideLoading()
             if success {
                 self.router.goToHomeScreen()
             }
         }, onError: { error in
+            self.presenter.hideLoading()
             self.presenter.show(error: error)
         }).disposed(by: bag)
     }

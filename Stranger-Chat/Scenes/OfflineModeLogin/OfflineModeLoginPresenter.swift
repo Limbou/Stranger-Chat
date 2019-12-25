@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-protocol OfflineModeLoginDisplayable: AnyObject {
+protocol OfflineModeLoginDisplayable: Displayable {
     func showWrongNameAlert()
 }
 
@@ -25,4 +25,5 @@ final class OfflineModeLoginPresenterImpl: OfflineModeLoginPresenter {
     func showWrongNameAlert() {
         viewController?.showWrongNameAlert()
     }
+    
 }

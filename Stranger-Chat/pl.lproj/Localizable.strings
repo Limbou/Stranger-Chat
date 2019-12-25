@@ -10,9 +10,12 @@
 "alert.button.no" = "Nie";
 "alert.button.yes" = "Tak";
 
+"loading.text" = "Proszę czekać...";
+
+"landing.signin.text" = "Aby rozpocząć korzystanie z aplikacji, zaloguj się:";
 "landing.title" = "Witaj!";
-"landing.loginButton.title" = "Zaloguj";
-"landing.loginButton.title" = "Zarejestruj";
+"landing.loginButton.title" = "Zaloguj się";
+"landing.registerButton.title" = "Zarejestruj się";
 "landing.offlineModeButton.title" = "Tryb Offline";
 
 "login.title" = "Logowanie";
@@ -23,14 +26,14 @@
 "login.error.message" = "Sprawdź swój email oraz hasło i spróbuj ponownie.";
 
 "register.title" = "Rejestracja";
+"register.nickname.title" = "Nazwa użytkownika";
 "register.email.title" = "Email";
 "register.password.title" = "Hasło";
 "register.button.title" = "Zarejestruj";
 "register.error.title" = "Błąd";
 
 "offlineModeLogin.title" = "Logowanie";
-"offlineModeLogin.name.title" = "Podaj swoją nazwę";
-"offlineModeLogin.name.placeholder" = "nazwa";
+"offlineModeLogin.name.title" = "Nazwa użytkownika";
 "offlineModeLogin.button.title" = "Zaloguj";
 "offlineModeLogin.alert.title" = "Nazwa za krótka!";
 "offlineModeLogin.alert.message" = "Nazwa użytkownika powinna składać się z przynajmniej 3 znaków.";

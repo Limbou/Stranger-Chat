@@ -33,4 +33,13 @@ extension UIViewController {
         removeFromParent()
     }
 
+    func presentLoading() {
+        let browsing = LoadingViewController.shared
+        add(child: browsing)
+    }
+
+    func hideLoading() {
+        LoadingViewController.shared.hide()
+    }
+
 }

@@ -20,6 +20,7 @@ private enum Constants {
 final class RegisterViewController: UIViewController {
 
     private let interactor: RegisterInteractor
+    @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var registerButton: RoundButton!
@@ -44,12 +45,15 @@ final class RegisterViewController: UIViewController {
     private func setupBindings() {
         registerButton.rx.tap
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
-            .map({ RegisterData(displayName: "abcd", email: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "") })
+            .map({ RegisterData(displayName: self.nicknameTextField.text ?? "",
+                                email: self.emailTextField.text ?? "",
+                                password: self.passwordTextField.text ?? "") })
             .bind(to: interactor.registerObserver)
             .disposed(by: bag)
     }
 
     private func setupDelegates() {
+        nicknameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }

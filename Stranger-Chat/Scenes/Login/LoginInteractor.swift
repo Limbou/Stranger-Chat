@@ -38,17 +38,19 @@ final class LoginInteractorImpl: LoginInteractor {
     }
 
     private func login(with data: LoginData) {
+        presenter.presentLoading()
         worker.login(with: data).subscribe(onNext: { success in
+            self.presenter.hideLoading()
             if success {
                 self.router.goToHomeScreen()
             }
         }, onError: { error in
             self.handle(error: error)
-            self.presenter.showWrongCredentialsError()
         }).disposed(by: bag)
     }
 
     private func handle(error: Error) {
+        presenter.hideLoading()
         guard let errorCode = AuthErrorCode(rawValue: error.code) else {
             presenter.showConnectionError()
             return
