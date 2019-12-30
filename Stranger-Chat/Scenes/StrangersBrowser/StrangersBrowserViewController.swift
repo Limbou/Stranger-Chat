@@ -42,15 +42,7 @@ final class StrangersBrowserViewController: UIViewController {
         super.viewDidLoad()
         setupBindings()
         setupTableView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let browsing = Provider.get.instanceOf(BrowsingViewController.self)
-        add(child: browsing)
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
-            browsing.hide()
-        }
+        showBrowsing()
     }
 
     private func setupBindings() {
@@ -67,6 +59,14 @@ final class StrangersBrowserViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(StrangerCell.self)
+    }
+
+    private func showBrowsing() {
+        let browsing = Provider.get.instanceOf(BrowsingViewController.self)
+        add(child: browsing)
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { _ in
+            browsing.hide()
+        }
     }
 
 }

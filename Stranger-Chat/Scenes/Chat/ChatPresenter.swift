@@ -8,10 +8,23 @@
 //
 //
 
-import Foundation
+import UIKit
+
+final class ChatMessageViewModel {
+
+    let content: String?
+    let image: UIImage?
+    let isAuthor: Bool
+
+    init(content: String?, image: UIImage?, isAuthor: Bool) {
+        self.content = content
+        self.image = image
+        self.isAuthor = isAuthor
+    }
+}
 
 protocol ChatDisplayable: AnyObject {
-    func display(messages: [ChatMessage])
+    func display(messages: [ChatMessageViewModel])
     func setup(title: String)
     func presentConnectionLostAlert()
     func presentSendingImageAlert()
@@ -30,9 +43,23 @@ protocol ChatPresenter: AnyObject {
 final class ChatPresenterImpl: ChatPresenter {
 
     weak var viewController: ChatDisplayable?
+    private let currentUserRepository: CurrentUserRepository
+
+    init(currentUserRepository: CurrentUserRepository) {
+        self.currentUserRepository = currentUserRepository
+    }
 
     func display(messages: [ChatMessage]) {
-        viewController?.display(messages: messages)
+        guard let userId = currentUserRepository.currentUser()?.userId else {
+            print("No user")
+            return
+        }
+        let messageViewModels = messages.map { message in
+            return ChatMessageViewModel(content: message.content,
+                                        image: message.image,
+                                        isAuthor: message.senderId == userId)
+        }
+        viewController?.display(messages: messageViewModels)
     }
 
     func setup(title: String) {

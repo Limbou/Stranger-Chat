@@ -93,17 +93,21 @@ final class ChatOfflineInteractor: ChatInteractor {
             return
         }
         worker.send(message: text)
-        let chatMessage = ChatMessage(content: text, isAuthor: true)
-        conversation.messages.append(chatMessage)
+        guard let chatMessage = worker.createChatMessageWith(content: text, image: nil) else {
+            print("Could not create message: no user")
+            return
+        }
+        conversation.localMessages.append(chatMessage)
+        worker.save(conversation: conversation)
         DispatchQueue.main.async {
-            self.presenter.display(messages: self.conversation.messages)
+            self.presenter.display(messages: self.conversation.localMessages)
         }
     }
 
     private func handleImagePick(image: UIImage) {
-        let chatMessage = ChatMessage(image: image, isAuthor: true)
-        guard let imagePath = worker.getImagePath(messageId: chatMessage.messageId) else {
-            print("Could not get image path")
+        guard let chatMessage = worker.createChatMessageWith(content: nil, image: image),
+            let imagePath = worker.getImagePath(messageId: chatMessage.messageId) else {
+            print("Could not get image path or create chat message")
             return
         }
         chatMessage.imagePath = imagePath
@@ -120,9 +124,9 @@ final class ChatOfflineInteractor: ChatInteractor {
         guard let fraction = value, fraction >= 1 else {
             return
         }
-        conversation.messages.append(chatMessage)
+        conversation.localMessages.append(chatMessage)
         DispatchQueue.main.async {
-            self.presenter.display(messages: self.conversation.messages)
+            self.presenter.display(messages: self.conversation.localMessages)
             self.worker.save(conversation: self.conversation)
             self.presenter.hideSendingImageAlert()
         }
@@ -140,8 +144,8 @@ final class ChatOfflineInteractor: ChatInteractor {
             handleDisconnect()
             return
         }
-        conversation.messages.append(message)
-        presenter.display(messages: conversation.messages)
+        conversation.localMessages.append(message)
+        presenter.display(messages: conversation.localMessages)
         worker.save(conversation: conversation)
     }
 
@@ -149,9 +153,11 @@ final class ChatOfflineInteractor: ChatInteractor {
         guard !connectionClosed else {
             return
         }
-        presenter.presentConnectionLostAlert()
-        endChat()
-        connectionClosed = true
+        DispatchQueue.main.async {
+            self.presenter.presentConnectionLostAlert()
+            self.endChat()
+            self.connectionClosed = true
+        }
     }
 
     private func endChat() {

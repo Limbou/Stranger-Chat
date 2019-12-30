@@ -11,10 +11,10 @@ import RealmSwift
 @objcMembers
 final class ChatMessageModel: Object {
 
+    dynamic var senderId: String?
     dynamic var messageId: String?
     dynamic var content: String?
     dynamic var imagePath: String?
-    dynamic var isAuthor: Bool = false
 
     override static func primaryKey() -> String? {
         return "messageId"

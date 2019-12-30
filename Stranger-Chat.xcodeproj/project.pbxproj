@@ -77,8 +77,16 @@
 		D3669FC5239EC32000C171DC /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FC4239EC32000C171DC /* ChatMessage.swift */; };
 		D3669FC8239ECB8F00C171DC /* ChatSecretMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3669FC7239ECB8F00C171DC /* ChatSecretMessages.swift */; };
 		D38004D2226F30DA00C01683 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38004D1226F30DA00C01683 /* RoundButton.swift */; };
+		D3B352DC23B8D90000BEDD43 /* ArchivePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B352D723B8D90000BEDD43 /* ArchivePresenter.swift */; };
+		D3B352DD23B8D90000BEDD43 /* ArchiveWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B352D823B8D90000BEDD43 /* ArchiveWorker.swift */; };
+		D3B352DE23B8D90000BEDD43 /* ArchiveRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B352D923B8D90000BEDD43 /* ArchiveRouter.swift */; };
+		D3B352DF23B8D90000BEDD43 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B352DA23B8D90000BEDD43 /* ArchiveViewController.swift */; };
+		D3B352E023B8D90000BEDD43 /* ArchiveInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B352DB23B8D90000BEDD43 /* ArchiveInteractor.swift */; };
+		D3B352E223B8D92400BEDD43 /* ArchiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3B352E123B8D92400BEDD43 /* ArchiveViewController.xib */; };
+		D3B352E423B8E4E500BEDD43 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B352E323B8E4E500BEDD43 /* Message.swift */; };
+		D3B352E623B8F6DE00BEDD43 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B352E523B8F6DE00BEDD43 /* Conversation.swift */; };
 		D3B5AC4523A2E315008EF38A /* FirestoreChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4423A2E315008EF38A /* FirestoreChatRepository.swift */; };
-		D3B5AC4723A3BD8E008EF38A /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4623A3BD8E008EF38A /* Conversation.swift */; };
+		D3B5AC4723A3BD8E008EF38A /* OnlineConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4623A3BD8E008EF38A /* OnlineConversation.swift */; };
 		D3B5AC4923A65688008EF38A /* FirebaseChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */; };
 		D3B5AC4B23A7CA77008EF38A /* ChatOnlineInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4A23A7CA77008EF38A /* ChatOnlineInteractor.swift */; };
 		D3B5AC4D23A7E1BE008EF38A /* PeerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B5AC4C23A7E1BE008EF38A /* PeerConstants.swift */; };
@@ -223,8 +231,16 @@
 		D3669FC4239EC32000C171DC /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		D3669FC7239ECB8F00C171DC /* ChatSecretMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSecretMessages.swift; sourceTree = "<group>"; };
 		D38004D1226F30DA00C01683 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		D3B352D723B8D90000BEDD43 /* ArchivePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivePresenter.swift; sourceTree = "<group>"; };
+		D3B352D823B8D90000BEDD43 /* ArchiveWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveWorker.swift; sourceTree = "<group>"; };
+		D3B352D923B8D90000BEDD43 /* ArchiveRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveRouter.swift; sourceTree = "<group>"; };
+		D3B352DA23B8D90000BEDD43 /* ArchiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
+		D3B352DB23B8D90000BEDD43 /* ArchiveInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveInteractor.swift; sourceTree = "<group>"; };
+		D3B352E123B8D92400BEDD43 /* ArchiveViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchiveViewController.xib; sourceTree = "<group>"; };
+		D3B352E323B8E4E500BEDD43 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		D3B352E523B8F6DE00BEDD43 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		D3B5AC4423A2E315008EF38A /* FirestoreChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreChatRepository.swift; sourceTree = "<group>"; };
-		D3B5AC4623A3BD8E008EF38A /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		D3B5AC4623A3BD8E008EF38A /* OnlineConversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineConversation.swift; sourceTree = "<group>"; };
 		D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChatMessage.swift; sourceTree = "<group>"; };
 		D3B5AC4A23A7CA77008EF38A /* ChatOnlineInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatOnlineInteractor.swift; sourceTree = "<group>"; };
 		D3B5AC4C23A7E1BE008EF38A /* PeerConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeerConstants.swift; sourceTree = "<group>"; };
@@ -401,9 +417,11 @@
 			isa = PBXGroup;
 			children = (
 				D348D13C23872F330012D43C /* AppUser.swift */,
-				D3669FC4239EC32000C171DC /* ChatMessage.swift */,
+				D3B352E523B8F6DE00BEDD43 /* Conversation.swift */,
 				D3B5AC6B23AA785E008EF38A /* LocalConversation.swift */,
-				D3B5AC4623A3BD8E008EF38A /* Conversation.swift */,
+				D3B5AC4623A3BD8E008EF38A /* OnlineConversation.swift */,
+				D3B352E323B8E4E500BEDD43 /* Message.swift */,
+				D3669FC4239EC32000C171DC /* ChatMessage.swift */,
 				D3B5AC4823A65688008EF38A /* FirebaseChatMessage.swift */,
 				D3B5AC6123A99085008EF38A /* DiscoverableUser.swift */,
 			);
@@ -537,6 +555,19 @@
 			path = Injection;
 			sourceTree = "<group>";
 		};
+		D3B352D623B8D8D000BEDD43 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				D3B352DA23B8D90000BEDD43 /* ArchiveViewController.swift */,
+				D3B352E123B8D92400BEDD43 /* ArchiveViewController.xib */,
+				D3B352DB23B8D90000BEDD43 /* ArchiveInteractor.swift */,
+				D3B352D723B8D90000BEDD43 /* ArchivePresenter.swift */,
+				D3B352D923B8D90000BEDD43 /* ArchiveRouter.swift */,
+				D3B352D823B8D90000BEDD43 /* ArchiveWorker.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
 		D3B5AC8223B13C12008EF38A /* Photo */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +659,7 @@
 				D3632AD4238D9CBB0072A762 /* Home */,
 				D3632AE4238DA8B20072A762 /* StrangersBrowser */,
 				D3ECC5DE239D148F00548E9B /* Chat */,
+				D3B352D623B8D8D000BEDD43 /* Archive */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -899,6 +931,7 @@
 				D3669FBF239EB4F200C171DC /* ForeignMessageCell.xib in Resources */,
 				D3632ACF238C60130072A762 /* RegisterViewController.xib in Resources */,
 				D3632AE0238D9CE60072A762 /* HomeViewController.xib in Resources */,
+				D3B352E223B8D92400BEDD43 /* ArchiveViewController.xib in Resources */,
 				D3632AF1238DA8F80072A762 /* StrangersBrowserViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1077,6 +1110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3632AEF238DA8D60072A762 /* StrangersBrowserInteractor.swift in Sources */,
+				D3B352DF23B8D90000BEDD43 /* ArchiveViewController.swift in Sources */,
 				D3ECC5E8239D14A500548E9B /* ChatOfflineInteractor.swift in Sources */,
 				D3669FBE239EB4F200C171DC /* ForeignMessageCell.swift in Sources */,
 				D3B5AC6223A99085008EF38A /* DiscoverableUser.swift in Sources */,
@@ -1120,6 +1154,7 @@
 				D3B6B8A02265AE5200B7CC14 /* PeerClientSession.swift in Sources */,
 				D331D5BB23B1549700D2808C /* UIViewController+Extension.swift in Sources */,
 				D3669FC8239ECB8F00C171DC /* ChatSecretMessages.swift in Sources */,
+				D3B352DD23B8D90000BEDD43 /* ArchiveWorker.swift in Sources */,
 				D3632ACD238C5FFB0072A762 /* RegisterInteractor.swift in Sources */,
 				D3632AA7238C3EEF0072A762 /* LocalUserRepository.swift in Sources */,
 				D3632AC3238C504B0072A762 /* LoginData.swift in Sources */,
@@ -1127,6 +1162,7 @@
 				D3632ADD238D9CD50072A762 /* HomeViewController.swift in Sources */,
 				D3ECC59B239B112F00548E9B /* LandingInteractor.swift in Sources */,
 				D348D13D23872F330012D43C /* AppUser.swift in Sources */,
+				D3B352DC23B8D90000BEDD43 /* ArchivePresenter.swift in Sources */,
 				D3632AEB238DA8D60072A762 /* StrangersBrowserPresenter.swift in Sources */,
 				D3065CF123A2B4A400C04C1E /* ChatOnlineWorker.swift in Sources */,
 				D348D13A23872EFF0012D43C /* AppUserModel.swift in Sources */,
@@ -1135,11 +1171,13 @@
 				D3632AAC238C4B340072A762 /* LoginViewController.swift in Sources */,
 				D3B5AC7F23B1241D008EF38A /* UIView+Shadow.swift in Sources */,
 				D3632AB1238C4B4D0072A762 /* LoginPresenter.swift in Sources */,
+				D3B352DE23B8D90000BEDD43 /* ArchiveRouter.swift in Sources */,
 				D348D134238721AF0012D43C /* FirebaseUsersRepository.swift in Sources */,
+				D3B352E623B8F6DE00BEDD43 /* Conversation.swift in Sources */,
 				D3E6D5632216D60800AF73D7 /* UIControl+Localizable.swift in Sources */,
 				D31510A923B41C54000EF978 /* RegisterViewController.swift in Sources */,
 				D3E6D56B2216D96C00AF73D7 /* OfflineModeLoginRouter.swift in Sources */,
-				D3B5AC4723A3BD8E008EF38A /* Conversation.swift in Sources */,
+				D3B5AC4723A3BD8E008EF38A /* OnlineConversation.swift in Sources */,
 				D31510AF23B42776000EF978 /* Displayable.swift in Sources */,
 				D3065CEF23A216FE00C04C1E /* ChatCellFactory.swift in Sources */,
 				D3632ADB238D9CD50072A762 /* HomeWorker.swift in Sources */,
@@ -1149,12 +1187,14 @@
 				D3B6B89E2265AE4500B7CC14 /* MCSessionAdapter.swift in Sources */,
 				D3E6D5692216D94A00AF73D7 /* OfflineModeLoginPresenter.swift in Sources */,
 				D3632AEE238DA8D60072A762 /* StrangersBrowserViewController.swift in Sources */,
+				D3B352E423B8E4E500BEDD43 /* Message.swift in Sources */,
 				D3065CEC23A215C500C04C1E /* ForeignImageCell.swift in Sources */,
 				D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */,
 				D3B5AC7223B0DEDE008EF38A /* MainNavigationController.swift in Sources */,
 				D331D5BE23B1629500D2808C /* EmptyTableView.swift in Sources */,
 				D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */,
 				D3B6B8A42265AE6900B7CC14 /* PeerSession.swift in Sources */,
+				D3B352E023B8D90000BEDD43 /* ArchiveInteractor.swift in Sources */,
 				D3632AEC238DA8D60072A762 /* StrangersBrowserWorker.swift in Sources */,
 				D3632AED238DA8D60072A762 /* StrangersBrowserRouter.swift in Sources */,
 				D3669FC5239EC32000C171DC /* ChatMessage.swift in Sources */,

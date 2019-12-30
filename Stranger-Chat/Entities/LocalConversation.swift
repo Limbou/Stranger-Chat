@@ -8,14 +8,17 @@
 
 import UIKit
 
-final class LocalConversation {
+final class LocalConversation: Conversation {
 
     let conversationId: String
-    var messages: [ChatMessage]
+    var messages: [Message] {
+        return localMessages
+    }
+    var localMessages: [ChatMessage]
 
     init(conversationId: String = UUID().uuidString, messages: [ChatMessage] = []) {
         self.conversationId = conversationId
-        self.messages = messages
+        self.localMessages = messages
     }
 
 }

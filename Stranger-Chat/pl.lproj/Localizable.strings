@@ -9,6 +9,7 @@
 "alert.button.ok" = "Ok";
 "alert.button.no" = "Nie";
 "alert.button.yes" = "Tak";
+"alert.button.cancel" = "Anuluj";
 
 "loading.text" = "Proszę czekać...";
 
@@ -68,3 +69,6 @@
 "chat.connectionLost.body" = "Twoje połączenie z drugim użytkownikiem zostało przerwane.";
 "chat.sendingImage.title" = "Wysyłanie";
 "chat.sendingImage.body" = "Trwa przesyłanie zdjęcia...";
+"chat.image.source.text" = "Wybierz źródło";
+"chat.image.source.camera" = "Aparat";
+"chat.image.source.gallery" = "Galeria zdjęć";

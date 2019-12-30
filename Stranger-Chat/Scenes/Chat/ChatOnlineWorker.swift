@@ -120,9 +120,10 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
     }
 
     private func updateUserConverstaions(conversationId: String) {
-        guard let userId = userRepository.currentUser()?.uid else {
+        guard let currentUser = userRepository.currentUser() else {
             return
         }
+        let userId = currentUser.uid
         firestoreUserRepository.getData(for: userId).flatMap { user -> Observable<Bool> in
             guard let user = user else {
                 return Observable.just(false)
@@ -145,10 +146,10 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
     private func convertToSingleChatMessage(_ message: FirebaseChatMessage, userId: String) -> Observable<ChatMessage> {
         if let imageUrl = message.imageUrl {
             return self.downloadImageFor(urlString: imageUrl).map { image in
-                return ChatMessage(image: image, isAuthor: message.senderId == userId)
+                return ChatMessage(image: image, senderId: message.senderId)
             }
         }
-        return Observable.just(ChatMessage(content: message.content, isAuthor: message.senderId == userId))
+        return Observable.just(ChatMessage(content: message.content, senderId: message.senderId))
     }
 
     private func downloadImageFor(urlString: String) -> Observable<UIImage?> {

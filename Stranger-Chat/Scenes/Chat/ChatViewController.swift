@@ -17,6 +17,9 @@ private enum Constants {
     static let connectionLostBody = "chat.connectionLost.body"
     static let sendingImageTitle = "chat.sendingImage.title"
     static let sendingImageBody = "chat.sendingImage.body"
+    static let pickImageSource = "chat.image.source.text"
+    static let pickImageCamera = "chat.image.source.camera"
+    static let pickImageGallery = "chat.image.source.gallery"
 }
 
 final class ChatViewController: UIViewController, UINavigationControllerDelegate {
@@ -24,7 +27,7 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     private let interactor: ChatInteractor
     private let cellFactory: ChatCellFactory
     private let bag = DisposeBag()
-    private var messages = [ChatMessage]()
+    private var messages = [ChatMessageViewModel]()
     private let imagePicker = UIImagePickerController()
     private var sendingImageAlert: UIAlertController?
 
@@ -114,9 +117,18 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     }
 
     private func pickImage() {
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        let actionSheet = AlertBuilder.shared.buildTwoOptionsActionSheet(with: Constants.pickImageSource.localized(),
+                                                                         firstOption: Constants.pickImageCamera.localized(),
+                                                                         secondOption: Constants.pickImageGallery.localized(), firstHandler: { _ in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }) { _ in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        present(actionSheet, animated: true, completion: nil)
     }
+
 
 }
 
@@ -157,7 +169,7 @@ extension ChatViewController: UIImagePickerControllerDelegate {
 
 extension ChatViewController: ChatDisplayable {
 
-    func display(messages: [ChatMessage]) {
+    func display(messages: [ChatMessageViewModel]) {
         self.messages = messages
         tableView.reloadData()
         if !messages.isEmpty {

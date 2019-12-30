@@ -8,27 +8,48 @@
 
 import UIKit
 
-final class ChatMessage {
+final class ChatMessage: Message {
 
+    let senderId: String
     let messageId: String
     let content: String?
     let image: UIImage?
     var imagePath: String?
-    let isAuthor: Bool
 
-    init(messageId: String, content: String?, image: UIImage?, imagePath: String?, isAuthor: Bool) {
+    init(messageId: String,
+         senderId: String,
+         content: String?,
+         image: UIImage?,
+         imagePath: String?) {
         self.messageId = messageId
+        self.senderId = senderId
         self.content = content
         self.image = image
         self.imagePath = imagePath
-        self.isAuthor = isAuthor
     }
 
-    convenience init(content: String?, isAuthor: Bool) {
-        self.init(messageId: UUID().uuidString, content: content, image: nil, imagePath: nil, isAuthor: isAuthor)
+    convenience init(content: String?, senderId: String) {
+        self.init(messageId: UUID().uuidString,
+                  senderId: senderId,
+                  content: content,
+                  image: nil,
+                  imagePath: nil)
     }
 
-    convenience init(image: UIImage?, isAuthor: Bool) {
-        self.init(messageId: UUID().uuidString, content: nil, image: image, imagePath: nil, isAuthor: isAuthor)
+    convenience init(image: UIImage?, senderId: String) {
+        self.init(messageId: UUID().uuidString,
+                  senderId: senderId,
+                  content: nil,
+                  image: image,
+                  imagePath: nil)
     }
+
+    convenience init(content: String?, image: UIImage?, senderId: String) {
+        self.init(messageId: UUID().uuidString,
+                  senderId: senderId,
+                  content: content,
+                  image: image,
+                  imagePath: nil)
+    }
+
 }

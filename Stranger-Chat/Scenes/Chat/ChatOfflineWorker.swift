@@ -12,9 +12,15 @@ import Foundation
 import RxSwift
 import MultipeerConnectivity
 
+private enum MessageKeys {
+    static let messsage = "message"
+    static let senderId = "senderId"
+}
+
 protocol ChatOfflineWorker: AnyObject {
     var receivedMessages: PublishSubject<ChatMessage> { get }
     var disconnected: PublishSubject<Void> { get }
+    func createChatMessageWith(content: String?, image: UIImage?) -> ChatMessage?
     func getOtherUserName() -> String
     func send(message: String)
     func getImagePath(messageId: String) -> String?
@@ -28,17 +34,28 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
     private let peerConnection: PeerConnection
     private let fileManager: FileManager
     private let localConversationRepository: LocalConversationRepository
+    private let currentUserRepository: CurrentUserRepository
     let receivedMessages = PublishSubject<ChatMessage>()
     let receivedMessagesArray = PublishSubject<[ChatMessage]>()
     let disconnected = PublishSubject<Void>()
 
     init(peerConnection: PeerConnection,
          fileManager: FileManager,
-         localConversationRepository: LocalConversationRepository) {
+         localConversationRepository: LocalConversationRepository,
+         currentUserRepository: CurrentUserRepository) {
         self.peerConnection = peerConnection
         self.fileManager = fileManager
         self.localConversationRepository = localConversationRepository
+        self.currentUserRepository = currentUserRepository
         self.peerConnection.delegate = self
+    }
+
+    func createChatMessageWith(content: String?, image: UIImage?) -> ChatMessage? {
+        guard let senderId = currentUserRepository.currentUser()?.userId else {
+            print("No user")
+            return nil
+        }
+        return ChatMessage(content: content, image: image, senderId: senderId)
     }
 
     func getOtherUserName() -> String {
@@ -49,11 +66,19 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
     }
 
     func send(message: String) {
-        guard let messageData = message.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
-            print("Error converting message")
+        guard let senderId = currentUserRepository.currentUser()?.userId else {
+            print("No user")
             return
         }
-        peerConnection.send(data: messageData)
+        var messageDict = [String: String]()
+        messageDict[MessageKeys.messsage] = message
+        messageDict[MessageKeys.senderId] = senderId
+        do {
+            let messageData = try JSONSerialization.data(withJSONObject: messageDict, options: .prettyPrinted)
+            peerConnection.send(data: messageData)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
     func getImagePath(messageId: String) -> String? {
@@ -104,7 +129,7 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
                 print("Error geting image from data")
                 return
             }
-            let chatMessage = ChatMessage(image: image, isAuthor: false)
+            let chatMessage = ChatMessage(image: image, senderId: "1")
             let imagePath = saveImage(data: localData, name: chatMessage.messageId)
             chatMessage.imagePath = imagePath
             DispatchQueue.main.async {
@@ -134,13 +159,19 @@ final class ChatOfflineWorkerImpl: ChatOfflineWorker {
 extension ChatOfflineWorkerImpl: PeerSessionDelegate {
 
     func peerReceived(data: Data, from peerID: MCPeerID) {
-        guard let message = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String? else {
-            print("Error converting data to message")
-            return
-        }
-        let chatMessage = ChatMessage(content: message, isAuthor: false)
-        DispatchQueue.main.async {
-            self.receivedMessages.onNext(chatMessage)
+        do {
+            guard let messageJson = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: String],
+                let content = messageJson[MessageKeys.messsage],
+                let senderId = messageJson[MessageKeys.senderId] else {
+                print("Error parsing json")
+                return
+            }
+            let chatMessage = ChatMessage(content: content, senderId: senderId)
+            DispatchQueue.main.async {
+                self.receivedMessages.onNext(chatMessage)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 

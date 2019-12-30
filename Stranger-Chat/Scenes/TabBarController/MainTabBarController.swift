@@ -41,7 +41,7 @@ final class MainTabBarController: UITabBarController {
     private func setupControllers() {
         viewControllers = [
             buildHomeController(),
-            buildHistoryController()
+            buildArchiveController()
         ]
     }
 
@@ -55,8 +55,8 @@ final class MainTabBarController: UITabBarController {
         return navigationController
     }
 
-    private func buildHistoryController() -> UINavigationController {
-        let viewController = UIViewController()
+    private func buildArchiveController() -> UINavigationController {
+        let viewController = Provider.get.instanceOf(ArchiveViewController.self)
         let navigationController = MainNavigationController(rootViewController: viewController)
         viewController.tabBarItem.image = UIImage(systemName: "archivebox")
         viewController.tabBarItem.selectedImage = UIImage(systemName: "archivebox.fill")
