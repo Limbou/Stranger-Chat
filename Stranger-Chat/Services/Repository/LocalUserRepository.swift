@@ -11,6 +11,7 @@ import UIKit
 protocol LocalUserRepository: AnyObject {
     func saveUser(name: String)
     func getUser() -> AppUser?
+    func logout()
 }
 
 final class LocalUserRepositoryImpl: LocalUserRepository {
@@ -32,6 +33,10 @@ final class LocalUserRepositoryImpl: LocalUserRepository {
     func getUser() -> AppUser? {
         let model = localStorage.getObjects(type: AppUserModel.self)?.first
         return AppUser(from: model)
+    }
+
+    func logout() {
+        localStorage.clear()
     }
 
 }

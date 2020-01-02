@@ -11,6 +11,7 @@ import UIKit
 protocol CurrentUserRepository: AnyObject {
     func currentUser() -> AppUser?
     func isOnline() -> Bool
+    func logout()
 }
 
 final class CurrentUserRepositoryImpl: CurrentUserRepository {
@@ -34,6 +35,13 @@ final class CurrentUserRepositoryImpl: CurrentUserRepository {
 
     func isOnline() -> Bool {
         return firebaseUsersRepository.currentUser() != nil
+    }
+
+    func logout() {
+        localUsersRepository.logout()
+        if isOnline() {
+            firebaseUsersRepository.logout()
+        }
     }
 
 }

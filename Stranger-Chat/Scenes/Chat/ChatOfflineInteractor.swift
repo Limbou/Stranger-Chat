@@ -26,7 +26,7 @@ final class ChatOfflineInteractor: ChatInteractor {
     private let router: ChatRouter
     private let worker: ChatOfflineWorker
     private let bag = DisposeBag()
-    private var conversation = LocalConversation()
+    private var conversation: LocalConversation
     private var imageSendSubscription: Disposable?
     private var connectionClosed = false
 
@@ -39,6 +39,7 @@ final class ChatOfflineInteractor: ChatInteractor {
         self.presenter = presenter
         self.router = router
         self.worker = worker
+        conversation = LocalConversation(conversatorName: worker.getOtherUserName())
     }
 
     deinit {
@@ -111,12 +112,12 @@ final class ChatOfflineInteractor: ChatInteractor {
             return
         }
         chatMessage.imagePath = imagePath
-        presenter.presentSendingImageAlert()
+//        presenter.presentSendingImageAlert()
         imageSendSubscription?.dispose()
         imageSendSubscription = worker.send(image: image, messageId: chatMessage.messageId).subscribe(onNext: { fractionComplete in
             self.handleFractionCompleteChange(value: fractionComplete, chatMessage: chatMessage)
         }, onError: { _ in
-            self.presenter.hideSendingImageAlert()
+//            self.presenter.hideSendingImageAlert()
         })
     }
 
@@ -128,7 +129,7 @@ final class ChatOfflineInteractor: ChatInteractor {
         DispatchQueue.main.async {
             self.presenter.display(messages: self.conversation.localMessages)
             self.worker.save(conversation: self.conversation)
-            self.presenter.hideSendingImageAlert()
+//            self.presenter.hideSendingImageAlert()
         }
     }
 

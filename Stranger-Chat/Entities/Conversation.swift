@@ -10,5 +10,7 @@ import UIKit
 
 protocol Conversation: AnyObject {
     var conversationId: String { get }
+    var conversatorName: String { get }
     var messages: [Message] { get }
+    var isOnline: Bool { get }
 }

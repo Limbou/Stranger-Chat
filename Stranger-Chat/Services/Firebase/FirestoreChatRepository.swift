@@ -20,7 +20,7 @@ private enum Keys {
 protocol FirestoreChatRepository: AnyObject {
     func getConversations(for ids: [String]) -> Observable<[OnlineConversation?]>
     func setConversation(conversation: OnlineConversation, userId: String)
-    func send(message: FirebaseChatMessage, to conversationId: String) -> Observable<Bool>
+    func send(message: FirebaseChatMessage, to conversationId: String, conversatorName: String) -> Observable<Bool>
     func listen(to conversationId: String) -> Observable<[FirebaseChatMessage]>
     func getImage(for url: String) -> Observable<UIImage?>
 }
@@ -53,9 +53,12 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
 
     }
 
-    func send(message: FirebaseChatMessage, to conversationId: String) -> Observable<Bool> {
+    func send(message: FirebaseChatMessage, to conversationId: String, conversatorName: String) -> Observable<Bool> {
         return getConversation(for: conversationId)
-            .flatMap { self.updateConversation(message: message, conversation: $0, conversationId: conversationId) }
+            .flatMap { self.updateConversation(message: message,
+                                               conversation: $0,
+                                               conversationId: conversationId,
+                                               conversatorName: conversatorName) }
     }
 
     func listen(to conversationId: String) -> Observable<[FirebaseChatMessage]> {
@@ -125,19 +128,30 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
                     single(.success(conversation))
                 } catch {
                     print(error.localizedDescription)
+                    single(.error(error))
                 }
             }
             return Disposables.create()
         }.asObservable()
     }
 
-    private func updateConversation(message: FirebaseChatMessage, conversation: OnlineConversation?, conversationId: String) -> Observable<Bool> {
+    private func updateConversation(message: FirebaseChatMessage,
+                                    conversation: OnlineConversation?,
+                                    conversationId: String,
+                                    conversatorName: String) -> Observable<Bool> {
         if let image = message.image {
             return upload(image: image, conversationId: conversationId).flatMap { url in
-                return self.updateImageDownloadUrl(message: message, url: url, conversation: conversation, conversationId: conversationId)
+                return self.updateImageDownloadUrl(message: message,
+                                                   url: url,
+                                                   conversation: conversation,
+                                                   conversationId: conversationId,
+                                                   conversatorName: conversatorName)
             }
         } else {
-            return self.addMessageToConversation(message: message, conversation: conversation, conversationId: conversationId)
+            return self.addMessageToConversation(message: message,
+                                                 conversation: conversation,
+                                                 conversationId: conversationId,
+                                                 conversatorName: conversatorName)
         }
     }
 
@@ -177,17 +191,21 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
     private func updateImageDownloadUrl(message: FirebaseChatMessage,
                                         url: URL,
                                         conversation: OnlineConversation?,
-                                        conversationId: String) -> Observable<Bool> {
-        message.imageUrl = url.absoluteString
-        return addMessageToConversation(message: message, conversation: conversation, conversationId: conversationId)
+                                        conversationId: String,
+                                        conversatorName: String) -> Observable<Bool> {
+        message.imagePath = url.absoluteString
+        return addMessageToConversation(message: message, conversation: conversation, conversationId: conversationId, conversatorName: conversatorName)
     }
 
-    private func addMessageToConversation(message: FirebaseChatMessage, conversation: OnlineConversation?, conversationId: String) -> Observable<Bool> {
+    private func addMessageToConversation(message: FirebaseChatMessage,
+                                          conversation: OnlineConversation?,
+                                          conversationId: String,
+                                          conversatorName: String) -> Observable<Bool> {
         if let conversation = conversation {
             conversation.onlineMessages.append(message)
             return self.save(conversation: conversation)
         } else {
-            let conversation = OnlineConversation(conversationId: conversationId, messages: [message])
+            let conversation = OnlineConversation(conversationId: conversationId, conversatorName: conversatorName, messages: [message])
             return self.save(conversation: conversation)
         }
     }

@@ -22,6 +22,7 @@
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fp0-w3-Ig9">
                     <rect key="frame" x="20" y="103" width="374" height="46"/>
                     <color key="backgroundColor" red="0.15872877899999999" green="0.4605042318" blue="0.52211986880000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="AhO-i2-bJ7"/>
                     </constraints>

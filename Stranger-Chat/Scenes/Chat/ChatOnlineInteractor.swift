@@ -25,10 +25,16 @@ final class ChatOnlineInteractor: ChatInteractor {
     let dismissPressed = PublishSubject<Void>()
     let cellPressed = PublishSubject<Int>()
 
+    private var sendImageSubscription: Disposable?
+
     init(presenter: ChatPresenter, router: ChatRouter, worker: ChatOnlineWorker) {
         self.presenter = presenter
         self.router = router
         self.worker = worker
+    }
+
+    deinit {
+        sendImageSubscription?.dispose()
     }
 
     func setup() {
@@ -51,6 +57,7 @@ final class ChatOnlineInteractor: ChatInteractor {
         }).disposed(by: bag)
 
         worker.receivedMessages.subscribe(onNext: { messages in
+            self.messages = messages
             self.presenter.display(messages: messages)
         }).disposed(by: bag)
 
@@ -83,7 +90,11 @@ final class ChatOnlineInteractor: ChatInteractor {
     }
 
     private func handleImagePick(image: UIImage) {
-        worker.send(image: image)
+        presenter.presentSendingImageAlert()
+        sendImageSubscription?.dispose()
+        sendImageSubscription = worker.send(image: image).subscribe(onNext: { _ in
+            self.presenter.hideSendingImageAlert()
+        })
     }
 
     private func handleDismissPress() {

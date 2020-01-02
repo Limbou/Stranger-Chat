@@ -14,6 +14,7 @@ import RxSwiftExt
 
 protocol ArchiveInteractor: AnyObject {
     var onViewWillAppear: PublishSubject<[Any]> { get }
+    var cellSelected: PublishSubject<IndexPath> { get }
 }
 
 final class ArchiveInteractorImpl: ArchiveInteractor {
@@ -24,6 +25,8 @@ final class ArchiveInteractorImpl: ArchiveInteractor {
     private let bag = DisposeBag()
 
     let onViewWillAppear = PublishSubject<[Any]>()
+    let cellSelected = PublishSubject<IndexPath>()
+    private var conversations: [Conversation] = []
     private var conversationsSubscription: Disposable?
 
     init(presenter: ArchivePresenter, router: ArchiveRouter, worker: ArchiveWorker) {
@@ -41,13 +44,26 @@ final class ArchiveInteractorImpl: ArchiveInteractor {
         onViewWillAppear.subscribe(onNext: { _ in
             self.handleOnViewWillAppear()
         }).disposed(by: bag)
+
+        cellSelected.subscribe(onNext: { indexPath in
+            self.handleCellSelected(indexPath)
+        }).disposed(by: bag)
     }
 
     private func handleOnViewWillAppear() {
         conversationsSubscription?.dispose()
         conversationsSubscription = worker.getPastConversations().subscribe(onNext: { conversations in
+            self.conversations = conversations
             self.presenter.display(conversations: conversations)
         })
+    }
+
+    private func handleCellSelected(_ indexPath: IndexPath) {
+        guard let conversation = conversations[safe: indexPath.row] else {
+            print("No conversation")
+            return
+        }
+        router.present(conversation: conversation)
     }
 
 }

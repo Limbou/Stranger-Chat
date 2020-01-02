@@ -13,6 +13,7 @@ protocol FirebaseUsersRepository: AnyObject {
     func currentUser() -> User?
     func login(with email: String, password: String) -> Observable<AppUser?>
     func register(with email: String, password: String, displayName: String) -> Observable<AppUser?>
+    func logout()
 }
 
 final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
@@ -43,6 +44,14 @@ final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
                 self.updateDisplayName(user: result?.user, displayName: displayName, observer: observer)
             }
             return Disposables.create()
+        }
+    }
+
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 

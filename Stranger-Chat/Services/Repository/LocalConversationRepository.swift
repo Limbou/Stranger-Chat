@@ -26,6 +26,7 @@ final class LocalConversationRepositoryImpl: LocalConversationRepository {
     func save(conversation: LocalConversation) {
         let model = ConversationModel()
         model.conversationId = conversation.conversationId
+        model.conversatorName = conversation.conversatorName
         let messagesModels = conversation.localMessages.map { getChatMessageModel(from: $0) }
         model.messages.append(objectsIn: messagesModels)
 
@@ -37,11 +38,11 @@ final class LocalConversationRepositoryImpl: LocalConversationRepository {
     }
 
     private func getConversation(from model: ConversationModel) -> LocalConversation? {
-        guard let conversationId = model.conversationId else {
+        guard let conversationId = model.conversationId, let name = model.conversatorName else {
                 return nil
         }
         let messages: [ChatMessage] = model.messages.compactMap({ self.getChatMessage(from: $0) })
-        return LocalConversation(conversationId: conversationId, messages: messages)
+        return LocalConversation(conversationId: conversationId, conversatorName: name, messages: messages)
     }
 
     private func getChatMessageModel(from message: ChatMessage) -> ChatMessageModel {

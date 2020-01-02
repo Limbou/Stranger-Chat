@@ -10,7 +10,7 @@
 
 import Foundation
 
-protocol ArchiveDisplayable: AnyObject {
+protocol ArchiveDisplayable: Displayable {
     func display(conversations: [Conversation])
 }
 

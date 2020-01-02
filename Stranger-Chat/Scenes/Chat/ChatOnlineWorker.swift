@@ -17,7 +17,7 @@ protocol ChatOnlineWorker: AnyObject {
     func initializeConnection()
     func getOtherUserName() -> String
     func send(message: String)
-    func send(image: UIImage)
+    func send(image: UIImage) -> Observable<Bool>
     func disconnectFromSession()
 }
 
@@ -29,6 +29,7 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
     private let firestoreUserRepository: FirestoreUsersRepository
     private var conversationId: String = ""
     private var userId: String = ""
+    private var conversatorName: String = ""
     let receivedMessages = PublishSubject<[ChatMessage]>()
     let disconnected = PublishSubject<Void>()
     let bag = DisposeBag()
@@ -51,6 +52,7 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
         }
         let newConversationId = UUID().uuidString
         conversationId = newConversationId
+        conversatorName = getOtherUserName()
         let secretConversationIdMessage = ChatSecretMessages.conversationId.rawValue + newConversationId
         guard let messageData = secretConversationIdMessage.data(using: String.Encoding.utf8, allowLossyConversion: false) else {
             print("Error converting message")
@@ -79,24 +81,20 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
             return
         }
         let chatMessage = FirebaseChatMessage(senderId: userId, content: message)
-        chatRepository.send(message: chatMessage, to: conversationId).subscribe(onNext: { success in
+        chatRepository.send(message: chatMessage, to: conversationId, conversatorName: conversatorName).subscribe(onNext: { success in
             print(success)
         }, onError: { error in
             print(error)
         }).disposed(by: bag)
     }
 
-    func send(image: UIImage) {
+    func send(image: UIImage) -> Observable<Bool> {
         guard let userId = userRepository.currentUser()?.uid else {
             print("User is gone")
-            return
+            return Observable.empty()
         }
         let chatMessage = FirebaseChatMessage(senderId: userId, image: image)
-        chatRepository.send(message: chatMessage, to: conversationId).subscribe(onNext: { success in
-            print(success)
-        }, onError: { error in
-            print(error)
-        }).disposed(by: bag)
+        return chatRepository.send(message: chatMessage, to: conversationId, conversatorName: conversatorName)
     }
 
     func disconnectFromSession() {
@@ -137,14 +135,11 @@ final class ChatOnlineWorkerImpl: ChatOnlineWorker {
 
     private func convertToChatMessages(_ messages: [FirebaseChatMessage]) -> Observable<[ChatMessage]> {
         let userId = self.userRepository.currentUser()?.uid ?? ""
-        return Observable.from(messages.map { self.convertToSingleChatMessage($0, userId: userId) })
-            .merge()
-            .toArray()
-            .asObservable()
+        return Observable.combineLatest(messages.map { self.convertToSingleChatMessage($0, userId: userId) })
     }
 
     private func convertToSingleChatMessage(_ message: FirebaseChatMessage, userId: String) -> Observable<ChatMessage> {
-        if let imageUrl = message.imageUrl {
+        if let imageUrl = message.imagePath {
             return self.downloadImageFor(urlString: imageUrl).map { image in
                 return ChatMessage(image: image, senderId: message.senderId)
             }

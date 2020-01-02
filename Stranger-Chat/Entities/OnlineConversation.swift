@@ -11,17 +11,20 @@ import UIKit
 final class OnlineConversation: Conversation, Codable {
 
     let conversationId: String
+    let conversatorName: String
     var messages: [Message] {
         return onlineMessages
     }
     var onlineMessages: [FirebaseChatMessage]
+    var isOnline: Bool = true
 
     enum CodingKeys: String, CodingKey {
-        case conversationId, onlineMessages
+        case conversationId, conversatorName, onlineMessages
     }
 
-    init(conversationId: String, messages: [FirebaseChatMessage] = []) {
+    init(conversationId: String, conversatorName: String, messages: [FirebaseChatMessage] = []) {
         self.conversationId = conversationId
+        self.conversatorName = conversatorName
         self.onlineMessages = messages
     }
 

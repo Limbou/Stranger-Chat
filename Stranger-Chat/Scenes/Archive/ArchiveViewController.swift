@@ -45,6 +45,10 @@ final class ArchiveViewController: UIViewController {
         rx.methodInvoked(#selector(viewWillAppear(_:)))
             .bind(to: interactor.onViewWillAppear)
             .disposed(by: bag)
+
+        tableView.rx.itemSelected
+            .bind(to: interactor.cellSelected)
+            .disposed(by: bag)
     }
 
     private func setupRefreshControl() {
@@ -52,6 +56,8 @@ final class ArchiveViewController: UIViewController {
         refreshControl.tintColor = .white
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        tableView.contentOffset = CGPoint(x: 0, y: -refreshControl.frame.size.height)
+        tableView.refreshControl?.beginRefreshing()
     }
 
     @objc
@@ -61,6 +67,7 @@ final class ArchiveViewController: UIViewController {
 
     private func setupTableView() {
         tableView.dataSource = self
+        tableView.register(ConversationCell.self)
     }
 
 }
@@ -72,13 +79,13 @@ extension ArchiveViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let conversation = conversations[safe: indexPath.row] else {
+        guard let conversation = conversations[safe: indexPath.row],
+            let cell = tableView.dequeue(ConversationCell.self) as? ConversationCell else {
             return UITableViewCell()
         }
-        let cell = UITableViewCell()
-        cell.textLabel?.text = conversation.conversationId
-        cell.tintColor = .white
-        cell.backgroundColor = .red
+        cell.name.text = conversation.conversatorName
+        cell.isOnline = conversation.isOnline
+        cell.numberOfMessages = conversation.messages.count
         return cell
     }
 

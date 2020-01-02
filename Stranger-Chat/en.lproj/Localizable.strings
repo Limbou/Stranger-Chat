@@ -54,6 +54,7 @@
 "archive.tabbar.title" = "Archive";
 "chat.title" = "Start chatting";
 "archive.title" = "Previous conversations";
+"logout.tabbar.title" = "Logout";
 
 "strangerBrowser.isOnline.text" = "Online mode";
 "strangerBrowser.isOffline.text" = "Offline mode";
@@ -73,3 +74,10 @@
 "chat.image.source.text" = "Pick a source";
 "chat.image.source.camera" = "Camera";
 "chat.image.source.gallery" = "Photo gallery";
+
+"archive.conversation.isOnline.text" = "Online conversation";
+"archive.conversation.isOffline.text" = "Offline conversation";
+"archive.numberOfMessages.text" = "Messages sent: ";
+
+"logout.alert.title" = "Do you want to logout?";
+"logout.alert.body" = "Offline mode conversations will be lost.";

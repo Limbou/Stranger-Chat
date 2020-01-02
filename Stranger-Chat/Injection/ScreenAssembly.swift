@@ -23,6 +23,7 @@ final class ScreenAssembly: Assembly {
         assemblePhoto(container)
         assembleBrowsing(container)
         assembleArchive(container)
+        assembleArchiveChat(container)
     }
 
     private func assembleLanding(_ container: Container) {
@@ -162,6 +163,22 @@ final class ScreenAssembly: Assembly {
         container.autoregister(ArchiveRouter.self, initializer: ArchiveRouterImpl.init).initCompleted { (resolver, router) in
             router.viewController = resolver ~> ArchiveViewController.self
         }
+    }
+
+    private func assembleArchiveChat(_ container: Container) {
+        var conversationArgument: Conversation!
+        container.register(ArchiveChatViewController.self) { (resolver, conversation: Conversation) in
+            conversationArgument = conversation
+            return ArchiveChatViewController(conversation: conversationArgument,
+                                             interactor: resolver ~> ArchiveChatInteractor.self,
+                                             cellFactory: resolver ~> ChatCellFactory.self)
+        }
+        container.autoregister(ArchiveChatInteractor.self, initializer: ArchiveChatInteractorImpl.init(presenter:worker:))
+        container.autoregister(ArchiveChatPresenter.self,
+                               initializer: ArchiveChatPresenterImpl.init(currentUserRepository:)).initCompleted { (resolver, presenter) in
+                                presenter.viewController = resolver.resolve(ArchiveChatViewController.self, argument: conversationArgument!)
+        }
+        container.autoregister(ArchiveChatWorker.self, initializer: ArchiveChatWorkerImpl.init(chatRepository:))
     }
 
 }

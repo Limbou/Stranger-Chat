@@ -13,4 +13,5 @@ protocol Message: AnyObject {
     var senderId: String { get }
     var content: String? { get }
     var image: UIImage? { get }
+    var imagePath: String? { get }
 }
