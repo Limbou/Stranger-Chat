@@ -84,8 +84,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="In order to start using the application, sign in first" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foz-qw-HBn">
-                    <rect key="frame" x="32" y="176" width="256" height="60"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="754" text="In order to start using the application, sign in first" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foz-qw-HBn">
+                    <rect key="frame" x="32" y="193" width="256" height="43"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-DG-dRb" customClass="AnimationView" customModule="Lottie">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="160"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="177"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="pXj-DG-dRb" secondAttribute="height" multiplier="2:1" priority="900" id="Zv7-4G-XSk"/>
@@ -113,6 +113,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ewR-HL-MoP" secondAttribute="trailing" constant="100" id="KkU-so-50d"/>
                 <constraint firstItem="OWc-2c-c1M" firstAttribute="top" secondItem="foz-qw-HBn" secondAttribute="bottom" constant="32" id="QGb-OL-SOg"/>
                 <constraint firstAttribute="trailing" secondItem="foz-qw-HBn" secondAttribute="trailing" constant="32" id="SXZ-2O-x9N"/>
+                <constraint firstItem="cnG-bS-8q3" firstAttribute="top" relation="lessThanOrEqual" secondItem="ewR-HL-MoP" secondAttribute="bottom" constant="100" id="Xku-nn-zau"/>
                 <constraint firstItem="cnG-bS-8q3" firstAttribute="height" secondItem="ewR-HL-MoP" secondAttribute="height" id="ceq-8N-osh"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="cnG-bS-8q3" secondAttribute="bottom" constant="48" id="fxR-Fp-aSV"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pXj-DG-dRb" secondAttribute="trailing" id="hAQ-hX-d2i"/>

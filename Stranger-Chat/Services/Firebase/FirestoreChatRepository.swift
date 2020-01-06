@@ -19,7 +19,6 @@ private enum Keys {
 
 protocol FirestoreChatRepository: AnyObject {
     func getConversations(for ids: [String]) -> Observable<[OnlineConversation?]>
-    func setConversation(conversation: OnlineConversation, userId: String)
     func send(message: FirebaseChatMessage, to conversationId: String, conversatorName: String) -> Observable<Bool>
     func listen(to conversationId: String) -> Observable<[FirebaseChatMessage]>
     func getImage(for url: String) -> Observable<UIImage?>
@@ -47,10 +46,6 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
             .merge()
             .toArray()
             .asObservable()
-    }
-
-    func setConversation(conversation: OnlineConversation, userId: String) {
-
     }
 
     func send(message: FirebaseChatMessage, to conversationId: String, conversatorName: String) -> Observable<Bool> {
@@ -119,7 +114,6 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
                 }
                 guard let document = documentSnapshot,
                     let data = document.data() else {
-                        print("Document data was empty.")
                         single(.success(nil))
                         return
                 }

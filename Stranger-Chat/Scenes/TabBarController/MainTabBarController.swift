@@ -111,7 +111,6 @@ extension MainTabBarController: UITabBarControllerDelegate {
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.tag == 2 {
-            print("Logout")
             presentLogoutAlert()
         }
     }

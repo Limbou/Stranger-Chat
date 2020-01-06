@@ -29,6 +29,8 @@
 		D331D5C023B162C700D2808C /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D331D5BF23B162C700D2808C /* EmptyTableView.xib */; };
 		D331D5C623B4010300D2808C /* antenna.json in Resources */ = {isa = PBXBuildFile; fileRef = D331D5C523B4010300D2808C /* antenna.json */; };
 		D3331DAA2285D21100301CBA /* String+isValidName.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3331DA92285D21100301CBA /* String+isValidName.swift */; };
+		D33E6D0A23C37B6800ED04E1 /* EmptyArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33E6D0923C37B6800ED04E1 /* EmptyArchiveView.swift */; };
+		D33E6D0C23C37B7500ED04E1 /* EmptyArchiveView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33E6D0B23C37B7500ED04E1 /* EmptyArchiveView.xib */; };
 		D348D12A238716640012D43C /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D129238716640012D43C /* Provider.swift */; };
 		D348D12C2387168D0012D43C /* ScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12B2387168D0012D43C /* ScreenAssembly.swift */; };
 		D348D12E238716C10012D43C /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348D12D238716C10012D43C /* RepositoryAssembly.swift */; };
@@ -189,6 +191,8 @@
 		D331D5BF23B162C700D2808C /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
 		D331D5C523B4010300D2808C /* antenna.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = antenna.json; sourceTree = "<group>"; };
 		D3331DA92285D21100301CBA /* String+isValidName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidName.swift"; sourceTree = "<group>"; };
+		D33E6D0923C37B6800ED04E1 /* EmptyArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyArchiveView.swift; sourceTree = "<group>"; };
+		D33E6D0B23C37B7500ED04E1 /* EmptyArchiveView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyArchiveView.xib; sourceTree = "<group>"; };
 		D348D129238716640012D43C /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		D348D12B2387168D0012D43C /* ScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAssembly.swift; sourceTree = "<group>"; };
 		D348D12D238716C10012D43C /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
@@ -387,6 +391,15 @@
 			path = EmptyTableView;
 			sourceTree = "<group>";
 		};
+		D33E6D0D23C37CE500ED04E1 /* EmptyArchive */ = {
+			isa = PBXGroup;
+			children = (
+				D33E6D0923C37B6800ED04E1 /* EmptyArchiveView.swift */,
+				D33E6D0B23C37B7500ED04E1 /* EmptyArchiveView.xib */,
+			);
+			path = EmptyArchive;
+			sourceTree = "<group>";
+		};
 		D348D13123871C140012D43C /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,6 +593,7 @@
 				D3B352D823B8D90000BEDD43 /* ArchiveWorker.swift */,
 				D3B352F223BE9B7100BEDD43 /* ConversationCell.swift */,
 				D3B352F323BE9B7100BEDD43 /* ConversationCell.xib */,
+				D33E6D0D23C37CE500ED04E1 /* EmptyArchive */,
 				D3B352E723BE595300BEDD43 /* ArchiveChat */,
 			);
 			path = Archive;
@@ -946,6 +960,7 @@
 				D3669FBB239EB4DE00C171DC /* MyMessageCell.xib in Resources */,
 				D3CEBA3023B41267008CC3FA /* home.json in Resources */,
 				D3E6D55E2216CA7100AF73D7 /* OfflineModeLoginViewController.xib in Resources */,
+				D33E6D0C23C37B7500ED04E1 /* EmptyArchiveView.xib in Resources */,
 				D3CAABFD21A5DE0F00B9149C /* Localizable.strings in Resources */,
 				D3CAABD021A2DCA400B9149C /* GoogleService-Info.plist in Resources */,
 				D3ECC5EA239D14BC00548E9B /* ChatViewController.xib in Resources */,
@@ -1235,6 +1250,7 @@
 				D3632AED238DA8D60072A762 /* StrangersBrowserRouter.swift in Sources */,
 				D3669FC5239EC32000C171DC /* ChatMessage.swift in Sources */,
 				D3632AD3238C74580072A762 /* Error+Code.swift in Sources */,
+				D33E6D0A23C37B6800ED04E1 /* EmptyArchiveView.swift in Sources */,
 				D3CAABD721A34C8900B9149C /* Router.swift in Sources */,
 				D3615AF422AF8EAE0021B346 /* AlertBuilder.swift in Sources */,
 				D3B5AC6C23AA785E008EF38A /* LocalConversation.swift in Sources */,

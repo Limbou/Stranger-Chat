@@ -78,6 +78,7 @@
 "archive.conversation.isOnline.text" = "Online conversation";
 "archive.conversation.isOffline.text" = "Offline conversation";
 "archive.numberOfMessages.text" = "Messages sent: ";
+"archive.empty.text" = "No archive conversations to be displayed";
 
 "logout.alert.title" = "Do you want to logout?";
 "logout.alert.body" = "Offline mode conversations will be lost.";

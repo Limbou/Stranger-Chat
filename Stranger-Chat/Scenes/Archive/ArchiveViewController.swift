@@ -21,6 +21,7 @@ final class ArchiveViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
 
     private let interactor: ArchiveInteractor
+    private let emptyArchiveView = EmptyArchiveView()
     private let bag = DisposeBag()
 
     private var conversations: [Conversation] = []
@@ -97,6 +98,7 @@ extension ArchiveViewController: ArchiveDisplayable {
         self.conversations = conversations
         tableView.reloadData()
         tableView.refreshControl?.endRefreshing()
+        tableView.backgroundView = conversations.isEmpty ? emptyArchiveView : nil
     }
 
 }
