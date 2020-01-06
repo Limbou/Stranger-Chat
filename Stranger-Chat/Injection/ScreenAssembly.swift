@@ -20,6 +20,10 @@ final class ScreenAssembly: Assembly {
         assembleHome(container)
         assembleStrangerBrowser(container)
         assembleChat(container)
+        assemblePhoto(container)
+        assembleBrowsing(container)
+        assembleArchive(container)
+        assembleArchiveChat(container)
     }
 
     private func assembleLanding(_ container: Container) {
@@ -118,7 +122,7 @@ final class ScreenAssembly: Assembly {
                                          router: resolver.resolve(ChatRouter.self, argument: peerConnection)!,
                                          worker: resolver.resolve(ChatOfflineWorker.self, argument: peerConnection)!)
         }
-        container.autoregister(ChatPresenter.self, initializer: ChatPresenterImpl.init).initCompleted { (resolver, presenter) in
+        container.autoregister(ChatPresenter.self, initializer: ChatPresenterImpl.init(currentUserRepository:)).initCompleted { (resolver, presenter) in
             presenter.viewController = resolver.resolve(ChatViewController.self, arguments: peerConnectionArgument!, isOnline!)
         }
         container.register(ChatOnlineWorker.self) { resolver, peerConnection in
@@ -130,7 +134,8 @@ final class ScreenAssembly: Assembly {
         container.register(ChatOfflineWorker.self) { resolver, peerConnection in
             ChatOfflineWorkerImpl(peerConnection: peerConnection,
                                   fileManager: resolver ~> FileManager.self,
-                                  localConversationRepository: resolver ~> LocalConversationRepository.self)
+                                  localConversationRepository: resolver ~> LocalConversationRepository.self,
+                                  currentUserRepository: resolver ~> CurrentUserRepository.self)
         }
         container.register(ChatRouter.self) { (resolver, peerConnection: PeerConnection) in
             return ChatRouterImpl()
@@ -138,6 +143,42 @@ final class ScreenAssembly: Assembly {
             router.viewController = resolver.resolve(ChatViewController.self, arguments: peerConnectionArgument!, isOnline!)
         }
         container.autoregister(ChatCellFactory.self, initializer: ChatCellFactoryImpl.init)
+    }
+
+    private func assemblePhoto(_ container: Container) {
+        container.autoregister(PhotoViewController.self, argument: UIImage.self, initializer: PhotoViewController.init(photo:))
+    }
+
+    private func assembleBrowsing(_ container: Container) {
+        container.autoregister(BrowsingViewController.self, initializer: BrowsingViewController.init)
+    }
+
+    private func assembleArchive(_ container: Container) {
+        container.autoregister(ArchiveViewController.self, initializer: ArchiveViewController.init(interactor:))
+        container.autoregister(ArchiveInteractor.self, initializer: ArchiveInteractorImpl.init(presenter:router:worker:))
+        container.autoregister(ArchivePresenter.self, initializer: ArchivePresenterImpl.init).initCompleted { (resolver, presenter) in
+            presenter.viewController = resolver ~> ArchiveViewController.self
+        }
+        container.autoregister(ArchiveWorker.self, initializer: ArchiveWorkerImpl.init)
+        container.autoregister(ArchiveRouter.self, initializer: ArchiveRouterImpl.init).initCompleted { (resolver, router) in
+            router.viewController = resolver ~> ArchiveViewController.self
+        }
+    }
+
+    private func assembleArchiveChat(_ container: Container) {
+        var conversationArgument: Conversation!
+        container.register(ArchiveChatViewController.self) { (resolver, conversation: Conversation) in
+            conversationArgument = conversation
+            return ArchiveChatViewController(conversation: conversationArgument,
+                                             interactor: resolver ~> ArchiveChatInteractor.self,
+                                             cellFactory: resolver ~> ChatCellFactory.self)
+        }
+        container.autoregister(ArchiveChatInteractor.self, initializer: ArchiveChatInteractorImpl.init(presenter:worker:))
+        container.autoregister(ArchiveChatPresenter.self,
+                               initializer: ArchiveChatPresenterImpl.init(currentUserRepository:)).initCompleted { (resolver, presenter) in
+                                presenter.viewController = resolver.resolve(ArchiveChatViewController.self, argument: conversationArgument!)
+        }
+        container.autoregister(ArchiveChatWorker.self, initializer: ArchiveChatWorkerImpl.init(chatRepository:))
     }
 
 }

@@ -13,7 +13,13 @@ import RxSwift
 import RxCocoa
 
 private enum Constants {
-
+    static let connectionLostTitle = "chat.connectionLost.title"
+    static let connectionLostBody = "chat.connectionLost.body"
+    static let sendingImageTitle = "chat.sendingImage.title"
+    static let sendingImageBody = "chat.sendingImage.body"
+    static let pickImageSource = "chat.image.source.text"
+    static let pickImageCamera = "chat.image.source.camera"
+    static let pickImageGallery = "chat.image.source.gallery"
 }
 
 final class ChatViewController: UIViewController, UINavigationControllerDelegate {
@@ -21,8 +27,9 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     private let interactor: ChatInteractor
     private let cellFactory: ChatCellFactory
     private let bag = DisposeBag()
-    private var messages = [ChatMessage]()
+    private var messages = [ChatMessageViewModel]()
     private let imagePicker = UIImagePickerController()
+    private var sendingImageAlert: UIAlertController?
 
     @IBOutlet var tableView: UITableView!
     @IBOutlet var inputField: ChatInputField!
@@ -41,9 +48,9 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         imagePicker.delegate = self
         setupNavbar()
-        setupScrollView()
         setupBindings()
         setupObservers()
         cellFactory.registerCells(tableView: tableView)
@@ -54,10 +61,6 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
                                      target: self,
                                      action: #selector(dismissClicked))
         navigationItem.leftBarButtonItem = button
-    }
-
-    private func setupScrollView() {
-        
     }
 
     private func setupObservers() {
@@ -114,9 +117,18 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
     }
 
     private func pickImage() {
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        let actionSheet = AlertBuilder.shared.buildTwoOptionsActionSheet(with: Constants.pickImageSource.localized(),
+                                                                         firstOption: Constants.pickImageCamera.localized(),
+                                                                         secondOption: Constants.pickImageGallery.localized(), firstHandler: { _ in
+            self.imagePicker.sourceType = .camera
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }) { _ in
+            self.imagePicker.sourceType = .photoLibrary
+            self.present(self.imagePicker, animated: true, completion: nil)
+        }
+        present(actionSheet, animated: true, completion: nil)
     }
+
 
 }
 
@@ -129,6 +141,14 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
         return cellFactory.prepareCell(from: message, tableView: tableView)
+    }
+
+}
+
+extension ChatViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        interactor.cellPressed.onNext(indexPath.row)
     }
 
 }
@@ -149,12 +169,36 @@ extension ChatViewController: UIImagePickerControllerDelegate {
 
 extension ChatViewController: ChatDisplayable {
 
-    func display(messages: [ChatMessage]) {
+    func display(messages: [ChatMessageViewModel]) {
         self.messages = messages
         tableView.reloadData()
         if !messages.isEmpty {
             tableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
         }
+    }
+
+    func setup(title: String) {
+        self.title = title
+    }
+
+    func presentConnectionLostAlert() {
+        let alert = AlertBuilder.shared.buildOkAlert(with: Constants.connectionLostTitle.localized(),
+                                                     message: Constants.connectionLostBody.localized()) { _ in }
+        navigationController?.presentingViewController?.present(alert, animated: true, completion: nil)
+    }
+
+    func presentSendingImageAlert() {
+        sendingImageAlert = AlertBuilder.shared.buildNoButtonsAlert(with: Constants.sendingImageTitle.localized(),
+                                                     message: Constants.sendingImageBody.localized())
+        guard let alert = sendingImageAlert else {
+            return
+        }
+        alert.addActivityIndicator()
+        present(alert, animated: true, completion: nil)
+    }
+
+    func hideSendingImageAlert() {
+        sendingImageAlert?.dismiss(animated: true, completion: nil)
     }
 
 }

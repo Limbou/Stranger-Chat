@@ -7,10 +7,16 @@
 */
 
 "alert.button.ok" = "Ok";
+"alert.button.no" = "Nie";
+"alert.button.yes" = "Tak";
+"alert.button.cancel" = "Anuluj";
 
+"loading.text" = "Proszę czekać...";
+
+"landing.signin.text" = "Aby rozpocząć korzystanie z aplikacji, zaloguj się:";
 "landing.title" = "Witaj!";
-"landing.loginButton.title" = "Zaloguj";
-"landing.loginButton.title" = "Zarejestruj";
+"landing.loginButton.title" = "Zaloguj się";
+"landing.registerButton.title" = "Zarejestruj się";
 "landing.offlineModeButton.title" = "Tryb Offline";
 
 "login.title" = "Logowanie";
@@ -21,18 +27,57 @@
 "login.error.message" = "Sprawdź swój email oraz hasło i spróbuj ponownie.";
 
 "register.title" = "Rejestracja";
+"register.nickname.title" = "Nazwa użytkownika";
 "register.email.title" = "Email";
 "register.password.title" = "Hasło";
 "register.button.title" = "Zarejestruj";
 "register.error.title" = "Błąd";
 
 "offlineModeLogin.title" = "Logowanie";
-"offlineModeLogin.name.title" = "Podaj swoją nazwę";
-"offlineModeLogin.name.placeholder" = "nazwa";
+"offlineModeLogin.name.title" = "Nazwa użytkownika";
 "offlineModeLogin.button.title" = "Zaloguj";
 "offlineModeLogin.alert.title" = "Nazwa za krótka!";
 "offlineModeLogin.alert.message" = "Nazwa użytkownika powinna składać się z przynajmniej 3 znaków.";
 
+"home.chooseMode.text" = "Wybierz jeden z dostępnych trybów:";
 "home.findStrangerButton.title" = "Znajdź nieznajomego";
+"home.findStranger.description.text" = "Poszukaj innych użytkowników";
+"home.or.text" = "LUB";
 "home.makeVisibleButton.title" = "Stań się dostępny";
 "home.makeInvisibleButton.title" = "Ukryj się";
+"home.makeVisible.description.text" = "Stań się widoczny dla innych poszukujących";
+"home.makeInvisible.description.text" = "Jesteś teraz widoczny...";
+"home.invitation.title" = "Otrzymano zaproszenie!";
+"home.invitation.from" = "Czy chcesz zaakceptować zaproszenie do rozmowy od użytkownika ";
+
+"chat.tabbar.title" = "Czat";
+"archive.tabbar.title" = "Archiwum";
+"chat.title" = "Rozpocznij rozmowę";
+"archive.title" = "Poprzednie konwersacje";
+"logout.tabbar.title" = "Wyloguj";
+
+"strangerBrowser.isOnline.text" = "Tryb online";
+"strangerBrowser.isOffline.text" = "Tryb offline";
+"strangerBrowser.invitationSent.title" = "Zaproszenie wysłano!";
+"strangerBrowser.invitationSent.body" = "Oczekiwanie na odpowiedź użytkownika ";
+"strangerBrowse.invitationDeclined.title" = "Odrzucono!";
+"strangerBrowse.invitationDeclined.body" = "Twoje zaproszenie zostało odrzucone.";
+"strangerBrowser.noUsers.text" = "Nie znaleziono użytkowników w pobliżu. Spróbuj gdzie indziej!";
+
+"browsing.description" = "Wyszukiwanie urządzeń w pobliżu...";
+
+"chat.connectionLost.title" = "Połączenie przerwane!";
+"chat.connectionLost.body" = "Twoje połączenie z drugim użytkownikiem zostało przerwane.";
+"chat.sendingImage.title" = "Wysyłanie";
+"chat.sendingImage.body" = "Trwa przesyłanie zdjęcia...";
+"chat.image.source.text" = "Wybierz źródło";
+"chat.image.source.camera" = "Aparat";
+"chat.image.source.gallery" = "Galeria zdjęć";
+
+"archive.conversation.isOnline.text" = "Konwersacja online";
+"archive.conversation.isOffline.text" = "Konwersacja offline";
+"archive.numberOfMessages.text" = "Wysłane wiadomości: ";
+"archive.empty.text" = "Brak konwersacji do wyświetlenia";
+
+"logout.alert.title" = "Czy chcesz się wylogować?";
+"logout.alert.body" = "Konwersacje prowadzone w trybie offline zostaną utracone.";

@@ -10,6 +10,7 @@ import Swinject
 import SwinjectAutoregistration
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseAuth
 import CodableFirebase
 
 final class ServicesAssembly: Assembly {
@@ -23,6 +24,7 @@ final class ServicesAssembly: Assembly {
         container.autoregister(FirebaseEncoder.self, initializer: FirebaseEncoder.init)
         container.autoregister(FirebaseDecoder.self, initializer: FirebaseDecoder.init)
         container.register(Storage.self) { _ in Storage.storage() }
+        container.register(Auth.self) { _ in Auth.auth() }
 
     }
 

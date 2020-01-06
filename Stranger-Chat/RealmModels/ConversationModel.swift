@@ -12,6 +12,7 @@ import RealmSwift
 final class ConversationModel: Object {
 
     dynamic var conversationId: String?
+    dynamic var conversatorName: String?
     let messages = List<ChatMessageModel>()
 
     override static func primaryKey() -> String? {

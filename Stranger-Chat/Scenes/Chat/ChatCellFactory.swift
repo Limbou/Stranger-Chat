@@ -10,7 +10,7 @@ import UIKit
 
 protocol ChatCellFactory: AnyObject {
     func registerCells(tableView: UITableView)
-    func prepareCell(from message: ChatMessage, tableView: UITableView) -> UITableViewCell
+    func prepareCell(from message: ChatMessageViewModel, tableView: UITableView) -> UITableViewCell
 }
 
 final class ChatCellFactoryImpl: ChatCellFactory {
@@ -22,7 +22,7 @@ final class ChatCellFactoryImpl: ChatCellFactory {
         tableView.register(ForeignImageCell.self)
     }
 
-    func prepareCell(from message: ChatMessage, tableView: UITableView) -> UITableViewCell {
+    func prepareCell(from message: ChatMessageViewModel, tableView: UITableView) -> UITableViewCell {
         if message.content != nil {
             return prepareMessageCell(from: message, tableView: tableView)
         } else if message.image != nil {
@@ -32,7 +32,7 @@ final class ChatCellFactoryImpl: ChatCellFactory {
         }
     }
 
-    private func prepareMessageCell(from message: ChatMessage, tableView: UITableView) -> UITableViewCell {
+    private func prepareMessageCell(from message: ChatMessageViewModel, tableView: UITableView) -> UITableViewCell {
         if message.isAuthor {
             guard let cell = tableView.dequeue(MyMessageCell.self) as? MyMessageCell else {
                 return UITableViewCell()
@@ -48,7 +48,7 @@ final class ChatCellFactoryImpl: ChatCellFactory {
         }
     }
 
-    private func prepareImageCell(from message: ChatMessage, tableView: UITableView) -> UITableViewCell {
+    private func prepareImageCell(from message: ChatMessageViewModel, tableView: UITableView) -> UITableViewCell {
         if message.isAuthor {
             guard let cell = tableView.dequeue(MyImageCell.self) as? MyImageCell else {
                 return UITableViewCell()

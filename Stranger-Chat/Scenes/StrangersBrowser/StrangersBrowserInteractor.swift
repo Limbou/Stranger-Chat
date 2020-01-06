@@ -19,7 +19,6 @@ protocol StrangersBrowserInteractor: AnyObject {
     var selectCell: PublishSubject<Int> { get }
 }
 
-
 final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
 
     private let presenter: StrangersBrowserPresenter
@@ -28,12 +27,14 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
     private let bag = DisposeBag()
     private var discoveredUsers: [DiscoverableUser] = []
     private var shouldGoOnline = false
+    private var chatStarted = false
     let onWillAppear = PublishSubject<[Any]>()
     let onWillDisappear = PublishSubject<[Any]>()
     let selectCell = PublishSubject<Int>()
 
     private var invitationSubscription: Disposable?
     private var browsingSubscription: Disposable?
+    private var disconnectTimer: Timer?
 
     init(presenter: StrangersBrowserPresenter, router: StrangersBrowserRouter, worker: StrangersBrowserWorker) {
         self.presenter = presenter
@@ -67,7 +68,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
         browsingSubscription?.dispose()
         browsingSubscription = worker.startBrowsing().subscribe(onNext: { discoveredUsers in
             self.discoveredUsers = discoveredUsers
-            self.presenter.display(users: discoveredUsers.map({ $0.peer.displayName }))
+            self.presenter.display(users: discoveredUsers)
         })
     }
 
@@ -80,6 +81,7 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
             print("No user at given index")
             return
         }
+        chatStarted = false
         let context = prepareInvitationContext(for: user.discoveryInfo)
         invitationSubscription?.dispose()
         invitationSubscription = worker.sendInvitationTo(user: user, context: context).subscribe(onNext: { state in
@@ -87,7 +89,8 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
                  self.handleConnectionStateChange(state: state)
             }
         })
-        presenter.presentInvitationSentAlert()
+        presenter.presentInvitationSentAlert(user: user.peer.displayName)
+        disconnectTimer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in self.handleTimeoutReached() }
     }
 
     private func prepareInvitationContext(for info: [String: String]?) -> Data? {
@@ -108,15 +111,24 @@ final class StrangersBrowserInteractorImpl: StrangersBrowserInteractor {
         }
     }
 
+    private func handleTimeoutReached() {
+        presenter.presentInvitationDeclinedAlert()
+    }
+
     private func handleConnectionStateChange(state: ConnectionState) {
         switch state {
         case .connecting:
             break
         case .connected:
-            stopBrowsing()
+            chatStarted = true
+            presenter.hideInvitationSentAlert()
+            disconnectTimer?.invalidate()
             router.goToChat(online: shouldGoOnline)
         case .disconnected:
             print("Disconnected!")
+            if !chatStarted {
+                presenter.presentInvitationDeclinedAlert()
+            }
         }
     }
 

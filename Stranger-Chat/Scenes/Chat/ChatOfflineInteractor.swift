@@ -16,6 +16,7 @@ protocol ChatInteractor: AnyObject {
     var sendPressed: PublishSubject<String?> { get }
     var imagePicked: PublishSubject<UIImage> { get }
     var dismissPressed: PublishSubject<Void> { get }
+    var cellPressed: PublishSubject<Int> { get }
     func setup()
 }
 
@@ -25,20 +26,29 @@ final class ChatOfflineInteractor: ChatInteractor {
     private let router: ChatRouter
     private let worker: ChatOfflineWorker
     private let bag = DisposeBag()
-    private var conversation = LocalConversation()
+    private var conversation: LocalConversation
+    private var imageSendSubscription: Disposable?
+    private var connectionClosed = false
 
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
     let dismissPressed = PublishSubject<Void>()
+    let cellPressed = PublishSubject<Int>()
 
     init(presenter: ChatPresenter, router: ChatRouter, worker: ChatOfflineWorker) {
         self.presenter = presenter
         self.router = router
         self.worker = worker
+        conversation = LocalConversation(conversatorName: worker.getOtherUserName())
+    }
+
+    deinit {
+        imageSendSubscription?.dispose()
     }
 
     func setup() {
         setupBindings()
+        setupTitle()
     }
 
     private func setupBindings() {
@@ -61,6 +71,22 @@ final class ChatOfflineInteractor: ChatInteractor {
         worker.disconnected.subscribe(onNext: { _ in
             self.handleDisconnect()
         }).disposed(by: bag)
+
+        cellPressed.subscribe(onNext: { index in
+            self.handleCellPressed(index: index)
+        }).disposed(by: bag)
+    }
+
+    private func setupTitle() {
+        let userName = worker.getOtherUserName()
+        presenter.setup(title: userName)
+    }
+
+    private func handleCellPressed(index: Int) {
+        guard let message = conversation.messages[safe: index], let image = message.image else {
+            return
+        }
+        router.navigateToImageView(image: image)
     }
 
     private func handleSendPress(_ text: String?) {
@@ -68,22 +94,43 @@ final class ChatOfflineInteractor: ChatInteractor {
             return
         }
         worker.send(message: text)
-        let chatMessage = ChatMessage(content: text, isAuthor: true)
-        conversation.messages.append(chatMessage)
+        guard let chatMessage = worker.createChatMessageWith(content: text, image: nil) else {
+            print("Could not create message: no user")
+            return
+        }
+        conversation.localMessages.append(chatMessage)
+        worker.save(conversation: conversation)
         DispatchQueue.main.async {
-            self.presenter.display(messages: self.conversation.messages)
+            self.presenter.display(messages: self.conversation.localMessages)
         }
     }
 
     private func handleImagePick(image: UIImage) {
-        let chatMessage = ChatMessage(image: image, isAuthor: true)
-        let imagePath = worker.send(image: image, messageId: chatMessage.messageId)
-        conversation.messages.append(chatMessage)
-        DispatchQueue.main.async {
-            self.presenter.display(messages: self.conversation.messages)
+        guard let chatMessage = worker.createChatMessageWith(content: nil, image: image),
+            let imagePath = worker.getImagePath(messageId: chatMessage.messageId) else {
+            print("Could not get image path or create chat message")
+            return
         }
         chatMessage.imagePath = imagePath
-        worker.save(conversation: conversation)
+//        presenter.presentSendingImageAlert()
+        imageSendSubscription?.dispose()
+        imageSendSubscription = worker.send(image: image, messageId: chatMessage.messageId).subscribe(onNext: { fractionComplete in
+            self.handleFractionCompleteChange(value: fractionComplete, chatMessage: chatMessage)
+        }, onError: { _ in
+//            self.presenter.hideSendingImageAlert()
+        })
+    }
+
+    private func handleFractionCompleteChange(value: Double?, chatMessage: ChatMessage) {
+        guard let fraction = value, fraction >= 1 else {
+            return
+        }
+        conversation.localMessages.append(chatMessage)
+        DispatchQueue.main.async {
+            self.presenter.display(messages: self.conversation.localMessages)
+            self.worker.save(conversation: self.conversation)
+//            self.presenter.hideSendingImageAlert()
+        }
     }
 
     private func handleDismissPress() {
@@ -95,17 +142,23 @@ final class ChatOfflineInteractor: ChatInteractor {
 
     private func handleReceived(message: ChatMessage) {
         if message.content == ChatSecretMessages.endChat.rawValue {
-            endChat()
+            handleDisconnect()
             return
         }
-        conversation.messages.append(message)
-        presenter.display(messages: conversation.messages)
-        print(message.imagePath)
+        conversation.localMessages.append(message)
+        presenter.display(messages: conversation.localMessages)
         worker.save(conversation: conversation)
     }
 
     private func handleDisconnect() {
-        endChat()
+        guard !connectionClosed else {
+            return
+        }
+        DispatchQueue.main.async {
+            self.presenter.presentConnectionLostAlert()
+            self.endChat()
+            self.connectionClosed = true
+        }
     }
 
     private func endChat() {

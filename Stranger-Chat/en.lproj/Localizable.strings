@@ -7,7 +7,13 @@
 */
 
 "alert.button.ok" = "Ok";
+"alert.button.no" = "No";
+"alert.button.yes" = "Yes";
+"alert.button.cancel" = "Cancel";
 
+"loading.text" = "Please wait...";
+
+"landing.signin.text" = "In order to start using the application, sign in first:";
 "landing.title" = "Welcome!";
 "landing.loginButton.title" = "Login";
 "landing.registerButton.title" = "Register";
@@ -22,17 +28,57 @@
 
 "register.title" = "Register";
 "register.email.title" = "Email";
+"register.nickname.title" = "Nickname";
 "register.password.title" = "Password";
 "register.button.title" = "Register";
 "register.error.title" = "Error";
 
 "offlineModeLogin.title" = "Login";
-"offlineModeLogin.name.title" = "Choose your nickname";
-"offlineModeLogin.name.placeholder" = "nickname";
+"offlineModeLogin.name.title" = "Nickname";
 "offlineModeLogin.button.title" = "Login";
 "offlineModeLogin.alert.title" = "Nickname too short!";
 "offlineModeLogin.alert.message" = "Nickname should be at least 3 characters long.";
 
+"home.chooseMode.text" = "Choose one of the following modes:";
 "home.findStrangerButton.title" = "Find stranger";
+"home.findStranger.description.text" = "Search for other users";
+"home.or.text" = "OR";
 "home.makeVisibleButton.title" = "Make visible";
-"home.makeInvisibleButton.title" = "Make invisible";
+"home.makeInvisibleButton.title" = "Hide";
+"home.makeVisible.description.text" = "Become visible for other people";
+"home.makeInvisible.description.text" = "You are now visible...";
+"home.invitation.title" = "Invitation received!";
+"home.invitation.from" = "Do you want to accept a conversation invitation from ";
+
+"chat.tabbar.title" = "Chat";
+"archive.tabbar.title" = "Archive";
+"chat.title" = "Start chatting";
+"archive.title" = "Previous conversations";
+"logout.tabbar.title" = "Logout";
+
+"strangerBrowser.isOnline.text" = "Online mode";
+"strangerBrowser.isOffline.text" = "Offline mode";
+"strangerBrowser.invitationSent.title" = "Invitation Sent!";
+"strangerBrowser.invitationSent.body" = "Waiting for response from ";
+"strangerBrowse.invitationDeclined.title" = "Declined!";
+"strangerBrowse.invitationDeclined.body" = "Your invitation has been declined.";
+"strangerBrowser.noUsers.text" = "No users found nearby. Try somewhere else!";
+
+
+"browsing.description" = "Browsing for users in range...";
+
+"chat.connectionLost.title" = "Connection lost!";
+"chat.connectionLost.body" = "Your connection with the other user has been lost.";
+"chat.sendingImage.title" = "Sending";
+"chat.sendingImage.body" = "Your photo is being sent...";
+"chat.image.source.text" = "Pick a source";
+"chat.image.source.camera" = "Camera";
+"chat.image.source.gallery" = "Photo gallery";
+
+"archive.conversation.isOnline.text" = "Online conversation";
+"archive.conversation.isOffline.text" = "Offline conversation";
+"archive.numberOfMessages.text" = "Messages sent: ";
+"archive.empty.text" = "No archive conversations to be displayed";
+
+"logout.alert.title" = "Do you want to logout?";
+"logout.alert.body" = "Offline mode conversations will be lost.";

@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 private enum Constants {
     static let title = "landing.title"
@@ -21,6 +22,7 @@ final class LandingViewController: UIViewController {
     @IBOutlet var loginButton: RoundButton!
     @IBOutlet var registerButton: RoundButton!
     @IBOutlet var offlineModeButton: RoundButton!
+    @IBOutlet var animationView: AnimationView!
 
     init(interactor: LandingInteractor) {
         self.interactor = interactor
@@ -35,6 +37,17 @@ final class LandingViewController: UIViewController {
         super.viewDidLoad()
         title = Constants.title.localized()
         setupButtonsActions()
+        setupAnimation()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animationView.play()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        animationView.pause()
     }
 
     private func setupButtonsActions() {
@@ -50,6 +63,13 @@ final class LandingViewController: UIViewController {
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .bind(to: interactor.offlineModePressed)
             .disposed(by: bag)
+    }
+
+    private func setupAnimation() {
+        let animation = Animation.named("home")
+        animationView.animation = animation
+        animationView.loopMode = .loop
+        animationView.contentMode = .scaleAspectFit
     }
 
 }

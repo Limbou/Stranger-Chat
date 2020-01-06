@@ -23,6 +23,9 @@ final class ChatOnlineInteractor: ChatInteractor {
     let sendPressed = PublishSubject<String?>()
     let imagePicked = PublishSubject<UIImage>()
     let dismissPressed = PublishSubject<Void>()
+    let cellPressed = PublishSubject<Int>()
+
+    private var sendImageSubscription: Disposable?
 
     init(presenter: ChatPresenter, router: ChatRouter, worker: ChatOnlineWorker) {
         self.presenter = presenter
@@ -30,9 +33,14 @@ final class ChatOnlineInteractor: ChatInteractor {
         self.worker = worker
     }
 
+    deinit {
+        sendImageSubscription?.dispose()
+    }
+
     func setup() {
         setupBindings()
         worker.initializeConnection()
+        setupTitle()
     }
 
     private func setupBindings() {
@@ -49,12 +57,29 @@ final class ChatOnlineInteractor: ChatInteractor {
         }).disposed(by: bag)
 
         worker.receivedMessages.subscribe(onNext: { messages in
+            self.messages = messages
             self.presenter.display(messages: messages)
         }).disposed(by: bag)
 
         worker.disconnected.subscribe(onNext: { _ in
             self.handleDisconnect()
         }).disposed(by: bag)
+
+        cellPressed.subscribe(onNext: { index in
+            self.handleCellPressed(index: index)
+        }).disposed(by: bag)
+    }
+
+    private func setupTitle() {
+        let userName = worker.getOtherUserName()
+        presenter.setup(title: userName)
+    }
+
+    private func handleCellPressed(index: Int) {
+        guard let message = messages[safe: index], let image = message.image else {
+            return
+        }
+        router.navigateToImageView(image: image)
     }
 
     private func handleSendPress(_ text: String?) {
@@ -65,7 +90,11 @@ final class ChatOnlineInteractor: ChatInteractor {
     }
 
     private func handleImagePick(image: UIImage) {
-        worker.send(image: image)
+        presenter.presentSendingImageAlert()
+        sendImageSubscription?.dispose()
+        sendImageSubscription = worker.send(image: image).subscribe(onNext: { _ in
+            self.presenter.hideSendingImageAlert()
+        })
     }
 
     private func handleDismissPress() {

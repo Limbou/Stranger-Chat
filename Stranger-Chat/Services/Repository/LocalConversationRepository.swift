@@ -10,7 +10,7 @@ import UIKit
 
 protocol LocalConversationRepository: AnyObject {
     func save(conversation: LocalConversation)
-    func getConversations(for ids: [String]) -> [LocalConversation]
+    func getConversations() -> [LocalConversation]
 }
 
 final class LocalConversationRepositoryImpl: LocalConversationRepository {
@@ -26,40 +26,44 @@ final class LocalConversationRepositoryImpl: LocalConversationRepository {
     func save(conversation: LocalConversation) {
         let model = ConversationModel()
         model.conversationId = conversation.conversationId
-        let messagesModels = conversation.messages.map { getChatMessageModel(from: $0) }
+        model.conversatorName = conversation.conversatorName
+        let messagesModels = conversation.localMessages.map { getChatMessageModel(from: $0) }
         model.messages.append(objectsIn: messagesModels)
 
         localStorage.addObject(model)
     }
 
-    func getConversations(for ids: [String]) -> [LocalConversation] {
-        return ids.compactMap { getConversation(for: $0) }
+    func getConversations() -> [LocalConversation] {
+        return localStorage.getObjects(type: ConversationModel.self)?.compactMap { getConversation(from: $0) } ?? []
     }
 
-    private func getConversation(for id: String) -> LocalConversation? {
-        guard let conversationModel = localStorage.getObject(type: ConversationModel.self, objectId: id),
-            let conversationId = conversationModel.conversationId else {
+    private func getConversation(from model: ConversationModel) -> LocalConversation? {
+        guard let conversationId = model.conversationId, let name = model.conversatorName else {
                 return nil
         }
-        let messages: [ChatMessage] = conversationModel.messages.compactMap({ self.getChatMessage(from: $0) })
-        return LocalConversation(conversationId: conversationId, messages: messages)
+        let messages: [ChatMessage] = model.messages.compactMap({ self.getChatMessage(from: $0) })
+        return LocalConversation(conversationId: conversationId, conversatorName: name, messages: messages)
     }
 
     private func getChatMessageModel(from message: ChatMessage) -> ChatMessageModel {
         let model = ChatMessageModel()
         model.messageId = message.messageId
+        model.senderId = message.senderId
         model.content = message.content
         model.imagePath = message.imagePath
-        model.isAuthor = message.isAuthor
         return model
     }
 
     private func getChatMessage(from model: ChatMessageModel) -> ChatMessage? {
-        guard let messageId = model.messageId else {
+        guard let messageId = model.messageId, let senderId = model.senderId else {
             return nil
         }
         let image = loadImage(from: model.imagePath)
-        return ChatMessage(messageId: messageId, content: model.content, image: image, imagePath: model.imagePath, isAuthor: model.isAuthor)
+        return ChatMessage(messageId: messageId,
+                           senderId: senderId,
+                           content: model.content,
+                           image: image,
+                           imagePath: model.imagePath)
     }
 
     private func loadImage(from path: String?) -> UIImage? {

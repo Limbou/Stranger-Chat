@@ -10,9 +10,9 @@
 
 import UIKit
 
-protocol ChatRouter: AnyObject {
-    var viewController: UIViewController? { get set }
+protocol ChatRouter: Router {
     func dismissView()
+    func navigateToImageView(image: UIImage)
 }
 
 final class ChatRouterImpl: ChatRouter {
@@ -21,6 +21,11 @@ final class ChatRouterImpl: ChatRouter {
 
     func dismissView() {
         viewController?.navigationController?.dismiss(animated: true, completion: nil)
+    }
+
+    func navigateToImageView(image: UIImage) {
+        let photoViewController = Provider.get.instanceOf(PhotoViewController.self, argument: image)
+        viewController?.navigationController?.pushViewController(photoViewController, animated: true)
     }
 
 }

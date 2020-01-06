@@ -20,7 +20,7 @@ final class StrangersBrowserRouterImpl: StrangersBrowserRouter {
 
     func goToChat(online: Bool) {
         let chatViewController = Provider.get.instanceOf(ChatViewController.self, arguments: PeerHostSession.getInstance() as PeerConnection, online)
-        let navigationController = UINavigationController(rootViewController: chatViewController)
+        let navigationController = MainNavigationController(rootViewController: chatViewController)
         navigationController.modalPresentationStyle = .fullScreen
         present(viewController: navigationController)
     }

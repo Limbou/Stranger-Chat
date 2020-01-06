@@ -8,37 +8,40 @@
 
 import UIKit
 
-final class FirebaseChatMessage: Codable {
+final class FirebaseChatMessage: Message, Codable {
 
+    let messageId: String
     let senderId: String
     let content: String?
     let image: UIImage?
-    var imageUrl: String?
+    var imagePath: String?
 
     enum CodingKeys: String, CodingKey {
-        case senderId, content, imageUrl
+        case messageId, senderId, content, imagePath
     }
 
-    init(senderId: String, content: String?, image: UIImage?, imageUrl: String?) {
+    init(messageId: String, senderId: String, content: String?, image: UIImage?, imagePath: String?) {
+        self.messageId = messageId
         self.senderId = senderId
         self.content = content
         self.image = image
-        self.imageUrl = imageUrl
+        self.imagePath = imagePath
     }
 
     convenience init(senderId: String, content: String) {
-        self.init(senderId: senderId, content: content, image: nil, imageUrl: nil)
+        self.init(messageId: UUID().uuidString, senderId: senderId, content: content, image: nil, imagePath: nil)
     }
 
-    convenience init(senderId: String, image: UIImage) {
-        self.init(senderId: senderId, content: nil, image: image, imageUrl: nil)
+    convenience init(senderId: String, image: UIImage?) {
+        self.init(messageId: UUID().uuidString, senderId: senderId, content: nil, image: image, imagePath: nil)
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        messageId = try container.decode(String.self, forKey: .messageId)
         senderId = try container.decode(String.self, forKey: .senderId)
         content = try container.decodeIfPresent(String.self, forKey: .content)
-        imageUrl = try container.decodeIfPresent(String.self, forKey: .imageUrl)
+        imagePath = try container.decodeIfPresent(String.self, forKey: .imagePath)
         image = nil
     }
 }

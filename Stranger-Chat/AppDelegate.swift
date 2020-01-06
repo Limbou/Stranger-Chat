@@ -32,7 +32,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             controller = Provider.get.instanceOf(MainTabBarController.self)
         } else {
             let viewController = Provider.get.instanceOf(LandingViewController.self)
-            controller = UINavigationController(rootViewController: viewController)
+            controller = MainNavigationController(rootViewController: viewController)
         }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = controller
