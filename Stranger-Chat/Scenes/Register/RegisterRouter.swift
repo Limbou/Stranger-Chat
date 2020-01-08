@@ -12,6 +12,7 @@ import UIKit
 
 protocol RegisterRouter: Router {
     func goToHomeScreen()
+    func goBackToLanding()
 }
 
 final class RegisterRouterImpl: RegisterRouter {
@@ -23,7 +24,10 @@ final class RegisterRouterImpl: RegisterRouter {
         guard let window = UIApplication.shared.keyWindow else { return }
         window.rootViewController = mainTab
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
+    }
 
+    func goBackToLanding() {
+        viewController?.navigationController?.popViewController(animated: true)
     }
 
 }

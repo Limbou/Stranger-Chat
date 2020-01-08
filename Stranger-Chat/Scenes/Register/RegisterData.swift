@@ -13,5 +13,6 @@ struct RegisterData {
     let displayName: String
     let email: String
     let password: String
+    let reEnteredPassword: String
 
 }

@@ -9,10 +9,12 @@
 import UIKit
 
 private enum Constants {
+    static let generalError = "login.generalError.title"
     static let wrongCredentialsErrorTitle = "login.error.title"
     static let wrongCredentialsErrorMessage = "login.error.message"
     static let connectionErrorTitle = "connection.error.title"
     static let connectionErrorMessage = "connection.error.message"
+    static let emailUnverifiedError = "error.emailUnverified"
 }
 
 protocol LoginDisplayable: Displayable {
@@ -23,6 +25,7 @@ protocol LoginPresenter: AnyObject {
     var viewController: LoginDisplayable? { get set }
     func showWrongCredentialsError()
     func showConnectionError()
+    func showEmailUnverifiedError()
     func presentLoading()
     func hideLoading()
 }
@@ -39,6 +42,11 @@ final class LoginPresenterImpl: LoginPresenter {
     func showConnectionError() {
         viewController?.showError(title: Constants.connectionErrorTitle.localized(),
                                   message: Constants.connectionErrorMessage.localized())
+    }
+
+    func showEmailUnverifiedError() {
+        viewController?.showError(title: Constants.generalError.localized(),
+                                  message: Constants.emailUnverifiedError.localized())
     }
 
     func presentLoading() {

@@ -25,13 +25,20 @@
 "login.button.title" = "Login";
 "login.error.title" = "Wrong credentials";
 "login.error.message" = "Check your email and password and try again.";
+"login.generalError.title" = "Error";
+
+"error.emailUnverified" = "This account is not active yet. Click an activation link sent to given mail to activate it.";
+"error.passwordsNotMatch" = "Given passwords do not match.";
 
 "register.title" = "Register";
 "register.email.title" = "Email";
 "register.nickname.title" = "Nickname";
 "register.password.title" = "Password";
+"register.passwordRe.title" = "Re-enter password";
 "register.button.title" = "Register";
 "register.error.title" = "Error";
+"register.success.title" = "Success!";
+"register.success.body" = "Click the link sent to given e-mail adress to complete registration.";
 
 "offlineModeLogin.title" = "Login";
 "offlineModeLogin.name.title" = "Nickname";
@@ -74,6 +81,8 @@
 "chat.image.source.text" = "Pick a source";
 "chat.image.source.camera" = "Camera";
 "chat.image.source.gallery" = "Photo gallery";
+"chat.endChat.title" = "End a conversation";
+"chat.endChat.body" = "Are you sure you want to end this conversation?";
 
 "archive.conversation.isOnline.text" = "Online conversation";
 "archive.conversation.isOffline.text" = "Offline conversation";

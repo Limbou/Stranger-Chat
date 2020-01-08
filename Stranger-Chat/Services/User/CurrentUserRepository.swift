@@ -25,7 +25,7 @@ final class CurrentUserRepositoryImpl: CurrentUserRepository {
     }
 
     func currentUser() -> AppUser? {
-        if let user = firebaseUsersRepository.currentUser() {
+        if let user = firebaseUsersRepository.currentUser(), user.isEmailVerified {
             return AppUser(from: user)
         } else if let localUser = localUsersRepository.getUser() {
             return localUser

@@ -25,13 +25,20 @@
 "login.button.title" = "Zaloguj";
 "login.error.title" = "Złe dane";
 "login.error.message" = "Sprawdź swój email oraz hasło i spróbuj ponownie.";
+"login.generalError.title" = "Błąd";
+
+"error.emailUnverified" = "To konto nie jest jeszcze aktywne. Kliknij w link aktywacyjny wysłany na podany adres e-mail aby je aktywować.";
+"error.passwordsNotMatch" = "Wpisane hasła nie są takie same.";
 
 "register.title" = "Rejestracja";
 "register.nickname.title" = "Nazwa użytkownika";
 "register.email.title" = "Email";
 "register.password.title" = "Hasło";
+"register.passwordRe.title" = "Podaj ponownie hasło";
 "register.button.title" = "Zarejestruj";
 "register.error.title" = "Błąd";
+"register.success.title" = "Sukces!";
+"register.success.body" = "Kliknij w link wysłany na podany adres e-mail aby dokończyć proces rejestracji.";
 
 "offlineModeLogin.title" = "Logowanie";
 "offlineModeLogin.name.title" = "Nazwa użytkownika";
@@ -73,6 +80,8 @@
 "chat.image.source.text" = "Wybierz źródło";
 "chat.image.source.camera" = "Aparat";
 "chat.image.source.gallery" = "Galeria zdjęć";
+"chat.endChat.title" = "Zakończenie konwersacji";
+"chat.endChat.body" = "Czy jesteś pewien, że chcesz zakończyć tę konwersację?";
 
 "archive.conversation.isOnline.text" = "Konwersacja online";
 "archive.conversation.isOffline.text" = "Konwersacja offline";
