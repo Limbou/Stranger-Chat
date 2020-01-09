@@ -20,6 +20,8 @@ private enum Constants {
     static let pickImageSource = "chat.image.source.text"
     static let pickImageCamera = "chat.image.source.camera"
     static let pickImageGallery = "chat.image.source.gallery"
+    static let leaveConfirmationTitle = "chat.endChat.title"
+    static let leaveConfirmationBody = "chat.endChat.body"
 }
 
 final class ChatViewController: UIViewController, UINavigationControllerDelegate {
@@ -113,7 +115,12 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
 
     @objc
     private func dismissClicked() {
-        interactor.dismissPressed.onNext(())
+        let alert = AlertBuilder.shared.buildYesNoAlert(with: Constants.leaveConfirmationTitle.localized(),
+                                                        message: Constants.leaveConfirmationBody.localized(),
+                                                        yesHandler: { [weak self] _ in
+            self?.interactor.dismissPressed.onNext(())
+        }, noHandler: nil)
+        present(alert, animated: true, completion: nil)
     }
 
     private func pickImage() {

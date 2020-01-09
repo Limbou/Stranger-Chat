@@ -58,6 +58,8 @@ final class LoginInteractorImpl: LoginInteractor {
         let authErrors: [AuthErrorCode] = [.missingEmail, .invalidEmail, .wrongPassword, .userNotFound]
         if authErrors.contains(errorCode) {
             presenter.showWrongCredentialsError()
+        } else if error is EmailUnverifiedError {
+            presenter.showEmailUnverifiedError()
         } else {
             presenter.showConnectionError()
         }

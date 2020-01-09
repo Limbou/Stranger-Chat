@@ -12,6 +12,7 @@ import UIKit
 
 protocol RegisterDisplayable: Displayable {
     func show(error: String)
+    func presentRegisterSuccessful()
 }
 
 protocol RegisterPresenter: AnyObject {
@@ -19,6 +20,7 @@ protocol RegisterPresenter: AnyObject {
     func show(error: Error)
     func presentLoading()
     func hideLoading()
+    func presentRegisterSuccessful()
 }
 
 final class RegisterPresenterImpl: RegisterPresenter {
@@ -35,6 +37,10 @@ final class RegisterPresenterImpl: RegisterPresenter {
 
     func hideLoading() {
         viewController?.hideLoading()
+    }
+
+    func presentRegisterSuccessful() {
+        viewController?.presentRegisterSuccessful()
     }
     
 }

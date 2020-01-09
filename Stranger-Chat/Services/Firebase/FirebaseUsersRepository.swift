@@ -16,6 +16,12 @@ protocol FirebaseUsersRepository: AnyObject {
     func logout()
 }
 
+final class EmailUnverifiedError: Error {
+    var localizedDescription: String {
+        return "error.emailUnverified".localized()
+    }
+}
+
 final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
 
     func currentUser() -> User? {
@@ -27,6 +33,11 @@ final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
             Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
                 if let error = error {
                     observer.onError(error)
+                }
+                guard let user = result?.user, user.isEmailVerified else {
+                    observer.onError(EmailUnverifiedError())
+                    self.logout()
+                    return
                 }
                 observer.onNext(AppUser(from: result?.user))
                 observer.onCompleted()
@@ -67,6 +78,7 @@ final class FirebaseUsersRepositoryImpl: FirebaseUsersRepository {
             if let error = error {
                 observer.onError(error)
             }
+            user.sendEmailVerification(completion: nil)
             observer.onNext(AppUser(from: user))
             observer.onCompleted()
         }

@@ -16,6 +16,12 @@ protocol RegisterInteractor: AnyObject {
     var registerObserver: PublishSubject<RegisterData> { get }
 }
 
+final class PasswordsNotMatchError: LocalizedError {
+    var errorDescription: String? {
+        return "error.passwordsNotMatch".localized()
+    }
+}
+
 final class RegisterInteractorImpl: RegisterInteractor {
 
     private let presenter: RegisterPresenter
@@ -40,11 +46,16 @@ final class RegisterInteractorImpl: RegisterInteractor {
     }
 
     private func register(with data: RegisterData) {
+        guard data.password == data.reEnteredPassword else {
+            presenter.show(error: PasswordsNotMatchError())
+            return
+        }
         presenter.presentLoading()
         worker.register(with: data).subscribe(onNext: { success in
             self.presenter.hideLoading()
             if success {
-                self.router.goToHomeScreen()
+                self.router.goBackToLanding()
+                self.presenter.presentRegisterSuccessful()
             }
         }, onError: { error in
             self.presenter.hideLoading()

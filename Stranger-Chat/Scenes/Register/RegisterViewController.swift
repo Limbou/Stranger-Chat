@@ -15,6 +15,8 @@ import RxCocoa
 private enum Constants {
     static let title = "register.title"
     static let errorTitle = "register.error.title"
+    static let registeredSuccessfullyTitle = "register.success.title"
+    static let registeredSuccessfulyBody = "register.success.body"
 }
 
 final class RegisterViewController: UIViewController {
@@ -23,6 +25,7 @@ final class RegisterViewController: UIViewController {
     @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var rePasswordTextField: UITextField!
     @IBOutlet var registerButton: RoundButton!
     private let bag = DisposeBag()
 
@@ -47,7 +50,8 @@ final class RegisterViewController: UIViewController {
             .throttle(.seconds(1), latest: false, scheduler: MainScheduler.instance)
             .map({ RegisterData(displayName: self.nicknameTextField.text ?? "",
                                 email: self.emailTextField.text ?? "",
-                                password: self.passwordTextField.text ?? "") })
+                                password: self.passwordTextField.text ?? "",
+                                reEnteredPassword: self.rePasswordTextField.text ?? "") })
             .bind(to: interactor.registerObserver)
             .disposed(by: bag)
     }
@@ -56,6 +60,7 @@ final class RegisterViewController: UIViewController {
         nicknameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        rePasswordTextField.delegate = self
     }
 
 }
@@ -74,6 +79,13 @@ extension RegisterViewController: RegisterDisplayable {
     func show(error: String) {
         let alert = AlertBuilder.shared.buildOkAlert(with: Constants.errorTitle.localized(), message: error, buttonPressHandler: nil)
         present(alert, animated: true, completion: nil)
+    }
+
+    func presentRegisterSuccessful() {
+        let alert = AlertBuilder.shared.buildOkAlert(with: Constants.registeredSuccessfullyTitle.localized(),
+                                                     message: Constants.registeredSuccessfulyBody.localized(),
+                                                     buttonPressHandler: nil)
+        navigationController?.present(alert, animated: true, completion: nil)
     }
 
 }
