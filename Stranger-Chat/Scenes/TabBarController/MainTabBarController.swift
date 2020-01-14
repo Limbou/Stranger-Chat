@@ -96,7 +96,7 @@ final class MainTabBarController: UITabBarController {
     private func goToLanding() {
         let landingViewController = Provider.get.instanceOf(LandingViewController.self)
         let navigationController = MainNavigationController(rootViewController: landingViewController)
-        guard let window = UIApplication.shared.keyWindow else { return }
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
         window.rootViewController = navigationController
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
     }

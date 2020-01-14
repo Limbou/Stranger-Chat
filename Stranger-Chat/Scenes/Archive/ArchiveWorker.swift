@@ -55,8 +55,10 @@ final class ArchiveWorkerImpl: ArchiveWorker {
         guard let conversationsId = user?.chatsIds else {
             return Observable.just([])
         }
-        return Observable.zip(Observable.just(self.localConversationRepository.getConversations()),
-                              firestoreConversationRepository.getConversations(for: conversationsId)) { (localConversations: [LocalConversation], onlineConversations: [OnlineConversation?]) -> [Conversation] in
+        let localConversationsObservable = Observable.just(self.localConversationRepository.getConversations())
+        let onlineConversationsObservable = firestoreConversationRepository.getConversations(for: conversationsId)
+        return Observable.zip(localConversationsObservable,
+                              onlineConversationsObservable) { (localConversations, onlineConversations) -> [Conversation] in
             let onlineNonOptional = onlineConversations.compactMap { $0 }
             return localConversations + onlineNonOptional
         }

@@ -136,7 +136,6 @@ final class ChatViewController: UIViewController, UINavigationControllerDelegate
         present(actionSheet, animated: true, completion: nil)
     }
 
-
 }
 
 extension ChatViewController: UITableViewDataSource {

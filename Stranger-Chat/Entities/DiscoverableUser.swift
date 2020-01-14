@@ -1,4 +1,3 @@
-
 //
 //  DiscoverableUser.swift
 //  Stranger-Chat
