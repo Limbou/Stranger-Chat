@@ -70,6 +70,7 @@ final class LandingViewController: UIViewController {
         animationView.animation = animation
         animationView.loopMode = .loop
         animationView.contentMode = .scaleAspectFit
+        animationView.backgroundBehavior = .pauseAndRestore
     }
 
 }

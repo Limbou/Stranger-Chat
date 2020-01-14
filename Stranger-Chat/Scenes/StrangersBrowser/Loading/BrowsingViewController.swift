@@ -25,6 +25,7 @@ final class BrowsingViewController: UIViewController {
         super.viewDidLoad()
         let animation = Animation.named("antenna")
         animationView.animation = animation
+        animationView.backgroundBehavior = .pauseAndRestore
         animationView.loopMode = .loop
         animationView.animationSpeed = 1.5
         animationView.play()

@@ -28,6 +28,7 @@ final class LoadingViewController: UIViewController {
         let animation = Animation.named("loading")
         loadingView.animation = animation
         loadingView.loopMode = .loop
+        loadingView.backgroundBehavior = .pauseAndRestore
     }
 
     override func viewWillAppear(_ animated: Bool) {
