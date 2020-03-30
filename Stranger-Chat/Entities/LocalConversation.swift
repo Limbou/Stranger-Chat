@@ -18,7 +18,7 @@ final class LocalConversation: Conversation {
     var localMessages: [ChatMessage]
     var isOnline: Bool = false
 
-    init(conversationId: String = UUID().uuidString, conversatorName: String,  messages: [ChatMessage] = []) {
+    init(conversationId: String = UUID().uuidString, conversatorName: String, messages: [ChatMessage] = []) {
         self.conversationId = conversationId
         self.conversatorName = conversatorName
         self.localMessages = messages

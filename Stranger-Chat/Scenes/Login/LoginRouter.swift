@@ -18,7 +18,7 @@ final class LoginRouterImpl: LoginRouter {
 
     func goToHomeScreen() {
         let mainTab = Provider.get.instanceOf(MainTabBarController.self)
-        guard let window = UIApplication.shared.keyWindow else { return }
+        guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
         window.rootViewController = mainTab
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: nil)
     }

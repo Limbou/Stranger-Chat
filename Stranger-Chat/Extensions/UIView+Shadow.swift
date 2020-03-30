@@ -16,9 +16,8 @@ import UIKit
         }
         get {
             if let color = layer.shadowColor {
-                return UIColor(cgColor:color)
-            }
-            else {
+                return UIColor(cgColor: color)
+            } else {
                 return nil
             }
         }
@@ -38,7 +37,7 @@ import UIKit
             layer.shadowOffset = CGSize(width: newValue.x, height: newValue.y)
         }
         get {
-            return CGPoint(x: layer.shadowOffset.width, y:layer.shadowOffset.height)
+            return CGPoint(x: layer.shadowOffset.width, y: layer.shadowOffset.height)
         }
     }
 

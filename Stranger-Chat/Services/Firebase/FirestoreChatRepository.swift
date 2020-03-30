@@ -188,7 +188,10 @@ final class FirestoreChatRepositoryImpl: FirestoreChatRepository {
                                         conversationId: String,
                                         conversatorName: String) -> Observable<Bool> {
         message.imagePath = url.absoluteString
-        return addMessageToConversation(message: message, conversation: conversation, conversationId: conversationId, conversatorName: conversatorName)
+        return addMessageToConversation(message: message,
+                                        conversation: conversation,
+                                        conversationId: conversationId,
+                                        conversatorName: conversatorName)
     }
 
     private func addMessageToConversation(message: FirebaseChatMessage,
